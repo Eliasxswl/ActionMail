@@ -1,0 +1,10 @@
+{
+  "case_id": "sample-proposal-request",
+  "target_recipient": "alex@example.com",
+  "received_at": "2026-09-28T09:00:00+08:00",
+  "sender": "manager@example.com",
+  "recipients": ["alex@example.com"],
+  "subject": "Revised proposal",
+  "body": "Alex, please send me the revised proposal by 1 October 2026. I will review it before the client meeting.",
+  "thread": []
+}

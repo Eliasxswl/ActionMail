@@ -1,0 +1,2 @@
+[console_scripts]
+actionmail = actionmail.interfaces.cli:main
