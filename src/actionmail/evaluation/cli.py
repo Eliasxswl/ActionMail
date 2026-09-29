@@ -11,18 +11,21 @@ from uuid import uuid4
 from actionmail.evaluation.baseline import predict_rules
 from actionmail.evaluation.cases import load_cases
 from actionmail.evaluation.history import print_history
-from actionmail.evaluation.metrics import summarize
+from actionmail.evaluation.metrics import summarize, summarize_v2
+from actionmail.evaluation.multi_draft import load_multi_drafts
 from actionmail.evaluation.preflight import PreflightError, account_balance, estimate, key_allowance, model_prices
 from actionmail.content.links import fetch_allowlisted_https
 from actionmail.guardrails.evidence import evidence_errors
 from actionmail.interfaces.cli import OPENROUTER_API_URL
 from actionmail.reasoning.api_client import APIClient, ModelCallError
 from actionmail.workflow.pipeline import SYSTEM_PROMPT, process_email, process_email_with_external
+from actionmail.workflow.multi_pipeline import MAX_ACTIONS, V2_SYSTEM_PROMPT, process_email_multi, process_email_multi_with_external
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_MANIFEST = PROJECT_ROOT / "evaluation" / "cases.jsonl"
 DEFAULT_MAILEX_ROOT = PROJECT_ROOT.parent / "data"
+DEFAULT_MULTI_DRAFT = PROJECT_ROOT / "evaluation" / "multi_action_draft.jsonl"
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -31,10 +34,14 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--history", action="store_true", help="Summarize saved evaluation runs without a model call")
     parser.add_argument("--preflight", action="store_true", help="Show balance and expected cost, then stop before model calls")
     parser.add_argument("--engine", choices=("rules", "llm"), default="llm")
+    parser.add_argument("--schema", choices=("v1", "v2"), default="v1", help="Use the v2 three-action result contract when selected")
     parser.add_argument("--external-mode", choices=("body-only", "snapshots", "allowed-live"), default="body-only")
     parser.add_argument("--allow-domain", action="append", default=[], help="Explicitly allow a domain for live HTTPS reading")
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--mailex-root", type=Path, default=DEFAULT_MAILEX_ROOT)
+    parser.add_argument("--multi-draft", type=Path, default=DEFAULT_MULTI_DRAFT, help="Pending-owner multi-action reference proposals")
+    parser.add_argument("--case-group", choices=("external", "multi-draft"), help="Select the 10 frozen external cases or A16/C13")
+    parser.add_argument("--prepare-multi", action="store_true", help="Validate and show draft multi-action references without API calls")
     parser.add_argument("--model", default=os.getenv("ACTIONMAIL_MODEL"))
     parser.add_argument("--api-url", default=os.getenv("ACTIONMAIL_API_URL", OPENROUTER_API_URL))
     parser.add_argument("--api-key-env", default="OPENROUTER_API_KEY")
@@ -91,7 +98,7 @@ def _show_preflight(args, cases, api_key: str) -> tuple[float, float, float, str
         source = "OpenRouter model catalog at preflight"
     else:
         raise PreflightError("Cannot estimate cost; provide both token prices or restore OpenRouter pricing access")
-    preview = estimate(cases, PROJECT_ROOT / "results" / "evaluation", args.model, input_price, output_price, request_price, args.external_mode)
+    preview = estimate(cases, PROJECT_ROOT / "results" / "evaluation", args.model, input_price, output_price, request_price, args.external_mode, args.schema)
     print(f"Prices ({source}): ${input_price:.4f}/M input, ${output_price:.4f}/M output, ${request_price:.6f}/request")
     print(f"Approximate tokens: {preview['input_tokens']} input; {preview['output_tokens']} output")
     print(f"Expected model calls: up to {preview['model_calls']}")
@@ -103,7 +110,7 @@ def _show_preflight(args, cases, api_key: str) -> tuple[float, float, float, str
     return input_price, output_price, request_price, source
 
 
-def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | None, float | None, float], external_mode: str = "body-only", allow_domains: tuple[str, ...] = ()) -> dict:
+def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | None, float | None, float], external_mode: str = "body-only", allow_domains: tuple[str, ...] = (), schema: str = "v1", multi_draft: dict | None = None) -> dict:
     reply = None
     error = None
     validation_errors = []
@@ -116,10 +123,13 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
             validation_errors = evidence_errors(case.email, prediction)
         else:
             fetch_live = (lambda url: fetch_allowlisted_https(url, allow_domains)) if external_mode == "allowed-live" else None
-            run = process_email(case.email, model) if external_mode == "body-only" else process_email_with_external(case.email, model, fetch_live=fetch_live)
+            if schema == "v2":
+                run = process_email_multi(case.email, model) if external_mode == "body-only" else process_email_multi_with_external(case.email, model, fetch_live=fetch_live)
+            else:
+                run = process_email(case.email, model) if external_mode == "body-only" else process_email_with_external(case.email, model, fetch_live=fetch_live)
             prediction = run.decision
-            reply = run.reply
-            replies = run.replies or (run.reply,)
+            replies = run.replies if schema == "v2" else run.replies or (run.reply,)
+            reply = replies[-1]
             read_records = run.read_records
             validation_errors = list(run.validation_errors)
     except (ModelCallError, OSError, ValueError) as exc:
@@ -135,6 +145,14 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
         }
         if None not in prices and all(item.input_tokens is not None and item.output_tokens is not None for item in replies):
             cost = (usage["input_tokens"] * prices[0] + usage["output_tokens"] * prices[1]) / 1_000_000 + len(replies) * prices[2]
+    established_v2_reference = schema == "v2" and case.record["category"] == "external_content" and multi_draft is None
+    status_correct = (
+        prediction.status == case.gold["status"] if prediction else False
+    ) if schema == "v1" or established_v2_reference else None
+    expected_count = 1 if case.gold["status"] == "action" else 0
+    action_count_match = (
+        prediction is not None and prediction.action_count == expected_count
+    ) if established_v2_reference else None
     return {
         "case_id": case.case_id,
         "category": case.record["category"],
@@ -145,7 +163,9 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
         "target_recipient": case.email.target_recipient,
         "gold": case.gold,
         "prediction": asdict(prediction) if prediction else None,
-        "status_correct": prediction.status == case.gold["status"] if prediction else False,
+        "status_correct": status_correct,
+        "action_count_match": action_count_match,
+        "multi_action_draft": multi_draft,
         "safe_external_abstention": case.record["category"] == "external_content" and prediction is not None and prediction.status == "needs_review" and not read_records,
         "validation_errors": validation_errors,
         "error": error,
@@ -167,19 +187,37 @@ def main(argv: list[str] | None = None) -> int:
             print_history(PROJECT_ROOT / "results" / "evaluation")
             return 0
         cases = load_cases(args.manifest, args.mailex_root)
+        multi_drafts = load_multi_drafts(args.multi_draft, cases) if (args.schema == "v2" or args.prepare_multi or args.case_group == "multi-draft") and args.multi_draft.exists() else {}
+        if args.prepare_multi:
+            if not multi_drafts:
+                raise ValueError(f"Multi-action draft not found: {args.multi_draft}")
+            for case in cases:
+                draft = multi_drafts.get(case.case_id)
+                if draft is None:
+                    continue
+                print(f"{case.case_id}: {draft['proposed_status']} ({draft['review_state']}; {len(draft['candidate_actions'])} candidate tasks)")
+                print(f"  Recipient: {case.email.target_recipient}")
+                for index, action in enumerate(draft["candidate_actions"], start=1):
+                    print(f"  {index}. {action['text']} [{action['evidence'][0]['source_id']}: {action['evidence'][0]['quote']}]")
+                if draft["review_reason"]:
+                    print(f"  Review reason: {draft['review_reason']}")
+            print("These references are drafts awaiting owner review; no correctness score is assigned.")
+            return 0
         if args.external_mode == "allowed-live" and not args.allow_domain:
             raise ValueError("--external-mode allowed-live requires --allow-domain")
         if args.allow_domain and args.external_mode != "allowed-live":
             raise ValueError("--allow-domain requires --external-mode allowed-live")
         if args.engine == "rules" and args.external_mode != "body-only":
             raise ValueError("The rule baseline supports body-only mode")
+        if args.engine == "rules" and args.schema != "v1":
+            raise ValueError("The rule baseline supports only the v1 schema")
         if args.validate:
             print(f"Validated {len(cases)} frozen cases: 15 no-action, 15 explicit-action, 10 context, 5 attachment, 5 link.")
             return 0
         if args.limit is not None and args.limit < 1:
             raise ValueError("--limit must be positive")
-        if args.case_id and args.limit:
-            raise ValueError("Use --case-id or --limit, not both")
+        if sum((bool(args.case_id), bool(args.limit), bool(args.case_group))) > 1:
+            raise ValueError("Use only one of --case-id, --limit, or --case-group")
         if (args.input_price_per_million is None) != (args.output_price_per_million is None):
             raise ValueError("Provide both token prices or neither")
         if any(value is not None and value < 0 for value in (args.input_price_per_million, args.output_price_per_million)):
@@ -189,6 +227,14 @@ def main(argv: list[str] | None = None) -> int:
             selected = [case for case in cases if case.case_id in wanted]
             if len(selected) != len(wanted):
                 raise ValueError("Unknown --case-id in frozen manifest")
+        elif args.case_group == "external":
+            selected = [case for case in cases if case.record["category"] == "external_content"]
+        elif args.case_group == "multi-draft":
+            if not multi_drafts:
+                raise ValueError("Multi-action draft is unavailable")
+            selected = [case for case in cases if case.case_id in multi_drafts]
+            if args.schema != "v2":
+                raise ValueError("--case-group multi-draft requires --schema v2")
         else:
             selected = cases[:args.limit] if args.limit else cases
         model = None
@@ -217,13 +263,16 @@ def main(argv: list[str] | None = None) -> int:
             "run_id": run_id,
             "started_at_utc": datetime.now(timezone.utc).isoformat(),
             "engine": args.engine,
+            "schema": args.schema,
+            "case_group": args.case_group,
+            "multi_draft_sha256": hashlib.sha256(args.multi_draft.read_bytes()).hexdigest() if args.schema == "v2" and multi_drafts else None,
             "external_mode": args.external_mode,
             "allowed_domains": args.allow_domain,
             "model": args.model if args.engine == "llm" else "rules-v1",
             "api_url": args.api_url if args.engine == "llm" else None,
             "manifest_sha256": manifest_hash,
             "code_sha256": code_hash.hexdigest(),
-            "prompt_sha256": hashlib.sha256(SYSTEM_PROMPT.encode("utf-8")).hexdigest() if args.engine == "llm" else None,
+            "prompt_sha256": hashlib.sha256((SYSTEM_PROMPT if args.schema == "v1" else V2_SYSTEM_PROMPT.format(max_actions=MAX_ACTIONS)).encode("utf-8")).hexdigest() if args.engine == "llm" else None,
             "case_ids": [case.case_id for case in selected],
             "input_price_per_million_usd": args.input_price_per_million,
             "output_price_per_million_usd": args.output_price_per_million,
@@ -233,7 +282,7 @@ def main(argv: list[str] | None = None) -> int:
         rows_path = output / "cases.jsonl"
         if args.resume:
             prior = json.loads(meta_path.read_text(encoding="utf-8"))
-            for key in ("engine", "external_mode", "allowed_domains", "model", "api_url", "manifest_sha256", "code_sha256", "prompt_sha256", "case_ids", "input_price_per_million_usd", "output_price_per_million_usd"):
+            for key in ("engine", "schema", "case_group", "multi_draft_sha256", "external_mode", "allowed_domains", "model", "api_url", "manifest_sha256", "code_sha256", "prompt_sha256", "case_ids", "input_price_per_million_usd", "output_price_per_million_usd"):
                 if prior.get(key, "body-only" if key == "external_mode" else [] if key == "allowed_domains" else None) != metadata[key]:
                     raise ValueError(f"Cannot resume: {key} changed")
             metadata = prior
@@ -269,14 +318,14 @@ def main(argv: list[str] | None = None) -> int:
         elif pending:
             _write_json(meta_path, metadata)
         for index, case in enumerate(pending, start=1):
-            row = _run_one(case, args.engine, model, prices, args.external_mode, tuple(args.allow_domain))
+            row = _run_one(case, args.engine, model, prices, args.external_mode, tuple(args.allow_domain), args.schema, multi_drafts.get(case.case_id) if args.schema == "v2" else None)
             with rows_path.open("a", encoding="utf-8") as stream:
                 stream.write(json.dumps(row, ensure_ascii=False) + "\n")
             rows.append(row)
-            _write_json(output / "summary.json", summarize(rows, len(cases)))
+            _write_json(output / "summary.json", summarize(rows, len(selected) if args.case_group else len(cases)) if args.schema == "v1" else summarize_v2(rows, len(selected)))
             status = row["prediction"]["status"] if row["prediction"] else "error"
             print(f"[{index}/{len(pending)}] {case.case_id}: {status} (gold: {case.gold['status']})")
-        _write_json(output / "summary.json", summarize(rows, len(cases)))
+        _write_json(output / "summary.json", summarize(rows, len(selected) if args.case_group else len(cases)) if args.schema == "v1" else summarize_v2(rows, len(selected)))
         print(f"Saved {len(rows)} case result(s) in {output}")
         return 0
     except (OSError, ValueError, KeyError, json.JSONDecodeError) as exc:

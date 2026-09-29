@@ -94,6 +94,27 @@ actionmail-eval --engine llm --model openai/gpt-6-luna --manifest evaluation/cas
 
 If live model pricing is unavailable, supply both `--input-price-per-million` and `--output-price-per-million` after verifying them yourself. Each command asks once before sending its cases. Every run gets a separate directory under `results/evaluation` with `run.json`, per-case `cases.jsonl`, and `summary.json`. If a run is interrupted, pass its directory with `--output-dir` and add `--resume` to skip completed cases. `--history` gives a compact list of these runs without combining scores across different gold versions. The saved status counts, abstentions, token use, latency, and estimated cost support later reporting and visualization. Action wording and whether evidence semantically supports it still require manual review.
 
+### Prepare the v2 evaluation
+
+The ten external-content cases E01-E10 have frozen attachment or page snapshots. Select them as a cohort, preview its cost without sending email content to the model, then run the full-content comparison:
+
+```powershell
+actionmail-eval --engine llm --schema v2 --model openai/gpt-6-luna --case-group external --external-mode snapshots --preflight
+actionmail-eval --engine llm --schema v2 --model openai/gpt-6-luna --case-group external --external-mode snapshots
+```
+
+This cohort contains five attachment and five link cases. Snapshot mode reads the saved text and never fetches the example URLs. Its summary reports status and action-count checks against the existing full-content, single-action reference, along with source hashes, model calls, tokens, latency, and estimated cost. Action wording and evidence meaning still need human review.
+
+A16 and C13 have separate [draft multi-action references](evaluation/multi_action_draft.jsonl). They leave the frozen v1.5 labels unchanged. Inspect the two drafts without an API call, then preview and optionally run the v2 model on those two cases:
+
+```powershell
+actionmail-eval --prepare-multi
+actionmail-eval --engine llm --schema v2 --model openai/gpt-6-luna --case-group multi-draft --preflight
+actionmail-eval --engine llm --schema v2 --model openai/gpt-6-luna --case-group multi-draft
+```
+
+Both draft references await owner approval, so the v2 summary does not score them as correct or incorrect. A16 proposes two separately evidenced tasks. C13 names two candidate requests but remains `needs_review` because MailEx does not contain the attachment needed for the review task. The review page displays each v2 action and saves separate meaning and evidence checks for each predicted action. After a run, open its saved directory with `actionmail-review PATH_TO_RUN`; stop any existing review server on port 61933 first.
+
 ### Review cases in a local browser
 
 Install the updated package with `python -m pip install -e .`, then open the current gold v1.5 model run to review its proposed actions and evidence:

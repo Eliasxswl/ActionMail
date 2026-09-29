@@ -29,7 +29,7 @@ function renderList() {
   const filter = $("#filter").value;
   const cases = state.overview.cases.filter((item) => {
     if (filter === "unreviewed") return !item.reviewed;
-    if (filter === "status-mismatch") return !item.status_correct;
+    if (filter === "status-mismatch") return item.status_correct === false;
     if (filter === "action") return item.predicted_status === "action";
     if (filter === "external") return item.category === "external_content";
     return true;
@@ -40,7 +40,7 @@ function renderList() {
     if (item.case_id === state.selected) button.setAttribute("aria-current", "true");
     const top = node("span", "case-item-top");
     top.append(node("span", "case-id", item.case_id));
-    top.append(node("span", `case-state ${item.reviewed ? "reviewed" : item.status_correct ? "" : "mismatch"}`, item.reviewed ? "Reviewed" : item.status_correct ? "Pending" : "Check"));
+    top.append(node("span", `case-state ${item.reviewed ? "reviewed" : item.status_correct === false ? "mismatch" : ""}`, item.reviewed ? "Reviewed" : item.status_correct === false ? "Check" : "Pending"));
     button.append(top, node("span", "case-subject", item.subject || "(No subject)"));
     button.addEventListener("click", () => loadCase(item.case_id));
     list.append(button);
@@ -48,11 +48,11 @@ function renderList() {
   $("#progress").textContent = `${state.overview.cases.filter((item) => item.reviewed).length} / ${state.overview.cases.length} reviewed`;
 }
 
-function sourceBlock(label, sourceId, content, external = false, headers = null) {
+function sourceBlock(label, sourceId, content, external = false, headers = null, readByModel = false) {
   const block = node("section", `source-block${external ? " external" : ""}`);
   const title = node("div", "source-title");
   title.append(node("span", "", label), node("span", "source-id", sourceId));
-  if (external) title.append(node("span", "external-note", "Not read by model"));
+  if (external) title.append(node("span", "external-note", readByModel ? "Read by model" : "Not read by model"));
   block.append(title);
   if (headers) {
     const metadata = node("div", "metadata thread-metadata");
@@ -79,10 +79,29 @@ function decisionBlock(title, decision) {
   block.append(heading);
   if (!decision) return block;
   const list = node("dl");
-  definition(list, "Action", decision.action);
-  definition(list, "Deadline", decision.deadline);
+  if (Array.isArray(decision.actions)) {
+    definition(list, "Action count", decision.actions.length);
+  } else {
+    definition(list, "Action", decision.action);
+    definition(list, "Deadline", decision.deadline);
+  }
   if (decision.review_reason) definition(list, "Reason", decision.review_reason);
   block.append(list);
+  if (Array.isArray(decision.actions)) {
+    for (const [index, action] of decision.actions.entries()) {
+      const actionBlock = node("div", "source-block");
+      actionBlock.append(node("strong", "", `${index + 1}. ${action.text}`));
+      actionBlock.append(metaRow("Type", action.kind), metaRow("Deadline", action.deadline));
+      const quotes = node("ul", "quote-list");
+      for (const evidence of action.evidence || []) {
+        const entry = node("li");
+        entry.append(node("strong", "", evidence.source_id), node("span", "", evidence.quote));
+        quotes.append(entry);
+      }
+      actionBlock.append(quotes);
+      block.append(actionBlock);
+    }
+  }
   if (decision.evidence && decision.evidence.length) {
     const quotes = node("ul", "quote-list");
     for (const evidence of decision.evidence) {
@@ -125,7 +144,9 @@ function renderCase(data) {
   const title = node("div");
   title.append(node("div", "muted", `${data.case_id}  /  ${data.category.replaceAll("_", " ")}`), node("h2", "", data.email.subject || "(No subject)"));
   const pills = node("div", "pill-row");
-  pills.append(node("span", `pill ${data.status_correct ? "good" : "warning"}`, data.status_correct ? "Status matches gold" : "Status differs from gold"));
+  const statusText = data.status_correct === null ? "Reference pending review" : data.status_correct ? "Status matches gold" : "Status differs from gold";
+  pills.append(node("span", `pill ${data.status_correct === false ? "warning" : "good"}`, statusText));
+  if (data.action_count_match !== null && data.action_count_match !== undefined) pills.append(node("span", `pill ${data.action_count_match ? "good" : "warning"}`, data.action_count_match ? "Action count matches" : "Action count differs"));
   if (data.validation_errors.length) pills.append(node("span", "pill warning", `${data.validation_errors.length} validation issue(s)`));
   header.append(title, pills);
   main.append(header);
@@ -143,7 +164,7 @@ function renderCase(data) {
   if (data.email.received_at) metadata.append(metaRow("Received at", data.email.received_at));
   sourceCard.append(metadata, sourceBlock("Newest message", "body", data.email.body));
   for (const thread of data.email.thread) sourceCard.append(sourceBlock("Earlier message", thread.source_id, thread.text, false, thread));
-  for (const source of data.external_sources) sourceCard.append(sourceBlock(source.name, source.source_id, source.text, true));
+  for (const source of data.external_sources) sourceCard.append(sourceBlock(source.name, source.source_id, source.text, true, null, source.read_by_model));
   grid.append(sourceCard);
 
   const right = node("div", "stack");
@@ -153,6 +174,14 @@ function renderCase(data) {
     comparison.append(node("p", "muted", `Your earlier gold review: ${data.prior_gold_review.gold_label}${data.prior_gold_review.note ? ` — ${data.prior_gold_review.note}` : ""}`));
   }
   if (data.annotation_note) comparison.append(node("p", "muted", `Annotation note: ${data.annotation_note}`));
+  if (data.multi_action_draft) {
+    const draft = data.multi_action_draft;
+    comparison.append(node("p", "muted", "Proposed v2 reference — pending your review. It is not included in correctness scores."));
+    comparison.append(decisionBlock("Draft multi-action reference", {
+      status: draft.proposed_status, actions: draft.candidate_actions, review_reason: draft.review_reason,
+    }));
+    if (draft.annotation_note) comparison.append(node("p", "muted", draft.annotation_note));
+  }
   if (data.revised_gold) comparison.append(decisionBlock("Current revised label (not used to score this run)", data.revised_gold));
   const predictionTitle = state.overview.model === "rules-v1" ? "Rule baseline (prediction)" : "Model result (prediction)";
   comparison.append(decisionBlock(predictionTitle, data.prediction));
@@ -172,12 +201,25 @@ function renderCase(data) {
   reviewCard.append(node("h3", "", "Your assessment"));
   const review = data.review || {};
   const hasAction = data.prediction && data.prediction.status === "action";
+  const isMulti = Array.isArray(data.prediction?.actions);
   const fields = node("div", "review-grid");
   fields.append(
-    selectField("action_meaning", "Is the proposed action useful and faithful?", "Judge meaning in context, not exact wording.", review.action_meaning, !hasAction),
-    selectField("evidence_support", "Does the evidence support that action?", "An exact quote can still support the wrong recipient or obligation.", review.evidence_support, !hasAction),
-    selectField("gold_label", "Is the reference label reasonable?", "Your earlier gold judgment is shown when this run has no separate review.", review.gold_label ?? data.prior_gold_review?.gold_label, false),
+    selectField("action_meaning", "Is the proposed action useful and faithful?", "Judge meaning in context, not exact wording.", review.action_meaning, !hasAction || isMulti),
+    selectField("evidence_support", "Does the evidence support that action?", "An exact quote can still support the wrong recipient or obligation.", review.evidence_support, !hasAction || isMulti),
+    selectField("gold_label", data.multi_action_draft ? "Is the draft multi-action reference reasonable?" : "Is the reference label reasonable?", "Pending v2 drafts are not scored as gold.", review.gold_label ?? (data.multi_action_draft ? "" : data.prior_gold_review?.gold_label), false),
   );
+  if (isMulti) {
+    for (const [index, action] of data.prediction.actions.entries()) {
+      const checks = review.action_checks?.[index] || {};
+      const group = node("div", "source-block");
+      group.append(node("strong", "", `${index + 1}. ${action.text}`));
+      group.append(
+        selectField(`action_meaning_${index}`, "Action meaning", "Is this individual task faithful to the email?", checks.action_meaning, false),
+        selectField(`evidence_support_${index}`, "Evidence support", "Does the cited source support this task?", checks.evidence_support, false),
+      );
+      fields.append(group);
+    }
+  }
   const noteWrap = node("div", "review-field");
   const noteLabel = node("label", "", "Notes (optional)");
   noteLabel.htmlFor = "note";
@@ -223,6 +265,11 @@ async function saveReview() {
     gold_label: $("#gold_label").value,
     note: $("#note").value,
   };
+  const meaningChecks = [...document.querySelectorAll('[id^="action_meaning_"]')];
+  if (meaningChecks.length) review.action_checks = meaningChecks.map((field, index) => ({
+    action_meaning: field.value,
+    evidence_support: $(`#evidence_support_${index}`).value,
+  }));
   try {
     const result = await readJson(`/api/cases/${encodeURIComponent(state.selected)}/review`, {
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(review),

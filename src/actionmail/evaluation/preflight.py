@@ -8,6 +8,7 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 from actionmail.workflow.pipeline import SYSTEM_PROMPT, _user_prompt
+from actionmail.workflow.multi_pipeline import MAX_ACTIONS, V2_SYSTEM_PROMPT
 
 
 OPENROUTER_BASE = "https://openrouter.ai/api/v1"
@@ -81,9 +82,10 @@ def prior_output_average(results_root: Path, model: str) -> tuple[int, int]:
     return (round(sum(output) / len(output)), len(output)) if output else (160, 0)
 
 
-def estimate(cases, results_root: Path, model: str, input_price: float, output_price: float, request_price: float = 0, external_mode: str = "body-only") -> dict:
+def estimate(cases, results_root: Path, model: str, input_price: float, output_price: float, request_price: float = 0, external_mode: str = "body-only", schema: str = "v1") -> dict:
     # Character count is only a rough proxy for provider-tokenizer input tokens.
-    input_tokens = sum(math.ceil((len(SYSTEM_PROMPT) + len(_user_prompt(case.email)) + 16) / 4) for case in cases)
+    prompt = SYSTEM_PROMPT if schema == "v1" else V2_SYSTEM_PROMPT.format(max_actions=MAX_ACTIONS)
+    input_tokens = sum(math.ceil((len(prompt) + len(_user_prompt(case.email)) + 16) / 4) for case in cases)
     additional_calls = 0
     if external_mode != "body-only":
         for case in cases:
@@ -94,7 +96,7 @@ def estimate(cases, results_root: Path, model: str, input_price: float, output_p
                 len(source.snapshot_text) if source.snapshot_text is not None else 20_000
                 for source in case.email.external_sources[:2]
             )
-            input_tokens += math.ceil((len(SYSTEM_PROMPT) + len(_user_prompt(case.email)) + external_chars + 64) / 4)
+            input_tokens += math.ceil((len(prompt) + len(_user_prompt(case.email)) + external_chars + 64) / 4)
     output_per_case, samples = prior_output_average(results_root, model)
     model_calls = len(cases) + additional_calls
     output_tokens = model_calls * output_per_case

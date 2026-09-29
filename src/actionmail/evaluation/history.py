@@ -34,8 +34,9 @@ def print_history(root: Path) -> None:
         cost_text = f"${cost:.6f}" if isinstance(cost, (float, int)) else "unavailable"
         manifest = str(run.get("manifest_sha256") or "unknown")[:8]
         print(f"{item['directory']}  {run.get('engine', '?')}/{run.get('model', '?')}  {done}/{planned} cases  gold {manifest}")
+        status_denominator = counts.get("status_checked", done) if run.get("schema") == "v2" else done
         print(
-            f"  status correct {counts.get('status_correct', 0)}/{done}; "
+            f"  status correct {counts.get('status_correct', 0)}/{status_denominator} checked; "
             f"safe external reviews {counts.get('safe_external_abstention', 0)}; "
             f"errors {counts.get('api_or_run_errors', 0)}; estimated cost {cost_text}"
         )

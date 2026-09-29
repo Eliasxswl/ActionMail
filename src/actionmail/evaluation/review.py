@@ -128,7 +128,8 @@ class ReviewDataset:
                 ],
             },
             "external_sources": [
-                {"source_id": item["source_id"], "name": item["name"], "text": item["text"]}
+                {"source_id": item["source_id"], "name": item["name"], "text": item["text"],
+                 "read_by_model": any(record["source_id"] == item["source_id"] for record in row.get("read_sources", []))}
                 for item in external
             ],
             "gold": row["gold"],
@@ -136,6 +137,8 @@ class ReviewDataset:
             "revised_gold": self.revised_gold.get(case_id),
             "manifest_name": self.manifest_name,
             "prediction": row["prediction"],
+            "multi_action_draft": row.get("multi_action_draft"),
+            "action_count_match": row.get("action_count_match"),
             "raw_model_response": row["raw_model_response"],
             "validation_errors": row["validation_errors"],
             "error": row["error"],
@@ -147,17 +150,28 @@ class ReviewDataset:
     def save_review(self, case_id: str, review: dict) -> dict:
         if case_id not in self.rows:
             raise KeyError(case_id)
-        if set(review) != {*REVIEW_FIELDS, "note"}:
+        if not {*REVIEW_FIELDS, "note"} <= set(review) or set(review) - {*REVIEW_FIELDS, "note", "action_checks"}:
             raise ValueError("Review must contain action_meaning, evidence_support, gold_label, and note")
         if any(not isinstance(review[field], str) or review[field] not in REVIEW_VALUES for field in REVIEW_FIELDS):
             raise ValueError("Review choice is invalid")
         note = review["note"]
         if not isinstance(note, str) or len(note) > 2000:
             raise ValueError("Review note must be text of at most 2000 characters")
-        if not note.strip() and not any(review[field] for field in REVIEW_FIELDS):
+        checks = review.get("action_checks", [])
+        if not isinstance(checks, list) or len(checks) > 3:
+            raise ValueError("Action checks must contain at most three items")
+        predicted_actions = (self.rows[case_id].get("prediction") or {}).get("actions") or []
+        if checks and len(checks) != len(predicted_actions):
+            raise ValueError("Action checks must match the predicted action count")
+        if any(not isinstance(item, dict) or set(item) != {"action_meaning", "evidence_support"} or
+               any(not isinstance(item[field], str) or item[field] not in REVIEW_VALUES for field in ("action_meaning", "evidence_support")) for item in checks):
+            raise ValueError("Action check choice is invalid")
+        if not note.strip() and not any(review[field] for field in REVIEW_FIELDS) and not any(any(item.values()) for item in checks):
             raise ValueError("Choose at least one assessment or write a note")
         updated = {field: review[field] for field in REVIEW_FIELDS}
         updated["note"] = note.strip()
+        if checks:
+            updated["action_checks"] = checks
         updated["updated_at_utc"] = datetime.now(timezone.utc).isoformat()
         reviews = self.reviews()
         reviews[case_id] = updated

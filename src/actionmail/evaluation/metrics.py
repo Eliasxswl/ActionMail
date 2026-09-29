@@ -80,3 +80,45 @@ def summarize(rows: list[dict], total_cases: int) -> dict:
         "metric_scope": "Status classification only; action wording and evidence support are not automatically scored.",
         "counting_rule": "FN includes action cases predicted no_action, needs_review, or error. Safe external abstentions are separate from full-content status correctness.",
     }
+
+
+def summarize_v2(rows: list[dict], planned_cases: int) -> dict:
+    """Count only established references; pending draft labels stay unscored."""
+    counts = Counter()
+    by_category = defaultdict(lambda: {"total": 0, "status_checked": 0, "status_correct": 0})
+    input_tokens = output_tokens = 0
+    estimated_cost = 0.0
+    costed_cases = 0
+    for row in rows:
+        category = by_category[row["category"]]
+        category["total"] += 1
+        if row.get("status_correct") is not None:
+            category["status_checked"] += 1
+            counts["status_checked"] += 1
+            if row["status_correct"]:
+                category["status_correct"] += 1
+                counts["status_correct"] += 1
+        if row.get("action_count_match") is not None:
+            counts["action_count_checked"] += 1
+            if row["action_count_match"]:
+                counts["action_count_match"] += 1
+        if row.get("multi_action_draft"):
+            counts["pending_owner_reference"] += 1
+        if row.get("error"):
+            counts["api_or_run_errors"] += 1
+        if row.get("validation_errors"):
+            counts["validation_failures"] += 1
+        usage = row.get("usage") or {}
+        input_tokens += usage.get("input_tokens") or 0
+        output_tokens += usage.get("output_tokens") or 0
+        if row.get("estimated_cost_usd") is not None:
+            estimated_cost += row["estimated_cost_usd"]
+            costed_cases += 1
+    return {
+        "schema": "v2", "completed_cases": len(rows), "planned_cases": planned_cases,
+        "complete": len(rows) == planned_cases, "category_counts": dict(by_category),
+        "counts": dict(counts), "token_totals": {"input": input_tokens, "output": output_tokens},
+        "estimated_cost_usd": round(estimated_cost, 8) if costed_cases else None,
+        "costed_cases": costed_cases,
+        "metric_scope": "Established single-action references support status and action-count checks. A16/C13 draft labels are pending owner review and are not scored. Action wording and evidence meaning require human review.",
+    }
