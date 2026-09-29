@@ -327,6 +327,18 @@ class MVPFlowTests(unittest.TestCase):
         self.assertIsNone(loaded.external_sources[0].snapshot_text)
         self.assertEqual(loaded.unread_sources, (snapshot.name,))
 
+    def test_missing_pdf_dependency_requests_review_without_blocking_startup(self):
+        source = ExternalSource("attachment:1", "attachment", "report.pdf", content=b"%PDF-1.7", media_type="application/pdf")
+        email = EmailPackage(
+            case_id="missing-pdf-reader", target_recipient="alex@example.com", received_at=None,
+            sender="maya@example.com", recipients=("alex@example.com",), subject="Report",
+            body="Please review the attachment.", unread_sources=(source.name,), external_sources=(source,),
+        )
+        with patch.dict("sys.modules", {"pypdf": None}):
+            outcome = read_external_sources(email)
+        self.assertEqual(outcome.records, ())
+        self.assertIn("PDF support requires pypdf", outcome.failures[0])
+
     def test_two_independent_tasks_have_two_evidenced_actions(self):
         body = "Alex, please approve invoice INV-104. Separately, update the public website's contact page."
         email = EmailPackage(

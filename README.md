@@ -105,6 +105,8 @@ actionmail-eval --engine llm --schema v2 --model openai/gpt-6-luna --case-group 
 
 This cohort contains five attachment and five link cases. Snapshot mode reads the saved text and never fetches the example URLs. Its summary reports status and action-count checks against the existing full-content, single-action reference, along with source hashes, model calls, tokens, latency, and estimated cost. Action wording and evidence meaning still need human review.
 
+The snapshot cohort does not need the optional PDF reader at runtime. If this editable installation predates the PDF feature, reinstall the package with the same Python interpreter (`python -m pip install -e .`) before reading a local PDF attachment. Without `pypdf`, a PDF is routed to `needs_review` instead of preventing the CLI from starting.
+
 A16 and C13 have separate [draft multi-action references](evaluation/multi_action_draft.jsonl). They leave the frozen v1.5 labels unchanged. Inspect the two drafts without an API call, then preview and optionally run the v2 model on those two cases:
 
 ```powershell

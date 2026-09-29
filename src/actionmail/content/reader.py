@@ -3,7 +3,6 @@ import http.client
 import io
 from dataclasses import dataclass, replace
 from html.parser import HTMLParser
-from pypdf.errors import PyPdfError
 
 from actionmail.domain.email import EmailPackage, ExternalSource, SourceText
 
@@ -63,14 +62,20 @@ def _text_from_bytes(source: ExternalSource) -> str:
             return " ".join(parser.parts).strip()
         return decoded
     if media_type == "application/pdf":
-        from pypdf import PdfReader
-
-        reader = PdfReader(io.BytesIO(content), strict=False)
-        if reader.is_encrypted:
-            raise ValueError("Encrypted PDF requires manual review")
-        if len(reader.pages) > 20:
-            raise ValueError("PDF exceeds the 20-page limit")
-        return "\n".join(page.extract_text() or "" for page in reader.pages)
+        try:
+            from pypdf import PdfReader
+            from pypdf.errors import PyPdfError
+        except ImportError as exc:
+            raise ValueError("PDF support requires pypdf; reinstall ActionMail with python -m pip install -e .") from exc
+        try:
+            reader = PdfReader(io.BytesIO(content), strict=False)
+            if reader.is_encrypted:
+                raise ValueError("Encrypted PDF requires manual review")
+            if len(reader.pages) > 20:
+                raise ValueError("PDF exceeds the 20-page limit")
+            return "\n".join(page.extract_text() or "" for page in reader.pages)
+        except PyPdfError as exc:
+            raise ValueError(f"PDF could not be read: {exc}") from exc
     raise ValueError(f"Unsupported attachment type: {media_type or 'unknown'}")
 
 
@@ -106,7 +111,7 @@ def read_external_sources(email: EmailPackage, *, fetch_live=None) -> ReadOutcom
                 raise ValueError("Extracted text exceeds the 20,000-character limit")
             read.append(SourceText(source.source_id, text))
             records.append(ReadRecord(source.source_id, source.name, method, hashlib.sha256(content).hexdigest(), len(text)))
-        except (OSError, UnicodeError, ValueError, LookupError, PyPdfError, http.client.HTTPException) as exc:
+        except (OSError, UnicodeError, ValueError, LookupError, http.client.HTTPException) as exc:
             pending.append(source.name)
             failures.append(f"{source.source_id}: {exc}")
     return ReadOutcome(
