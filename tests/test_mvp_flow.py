@@ -344,9 +344,24 @@ class MVPFlowTests(unittest.TestCase):
         self.assertEqual(two_actions.decision.status, "action")
         self.assertEqual(two_actions.decision.action_count, 2)
         self.assertFalse(two_actions.validation_errors)
+        default_limit = process_email_multi(email, FakeModel(response))
+        self.assertEqual(default_limit.decision.action_count, 2)
         one_action_limit = process_email_multi(email, FakeModel(response), max_actions=1)
         self.assertEqual(one_action_limit.decision.status, "needs_review")
         self.assertIn("More than 1 actions", one_action_limit.decision.review_reason)
+        with self.assertRaisesRegex(ValueError, "between 1 and 3"):
+            process_email_multi(email, FakeModel(response), max_actions=4)
+
+        four_tasks = dict(response)
+        four_tasks["actions"] = response["actions"] + [
+            {"kind": "perform_task", "text": f"Complete task {index}.", "deadline": None,
+             "evidence": [{"source_id": "body", "quote": "Alex, please approve invoice INV-104."}]}
+            for index in (3, 4)
+        ]
+        overflow = process_email_multi(email, FakeModel(four_tasks))
+        self.assertEqual(overflow.decision.status, "needs_review")
+        self.assertEqual(overflow.decision.action_count, 0)
+        self.assertIn("More than 3 actions", overflow.decision.review_reason)
 
     def test_cli_runs_json_through_api_boundary_and_review(self):
         payload = {
@@ -385,6 +400,24 @@ class MVPFlowTests(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn('"status": "action"', output.getvalue())
         self.assertIn("Approved for review. No calendar or mailbox change was made.", output.getvalue())
+
+    def test_v2_cli_uses_three_action_default(self):
+        body = "Alex, please approve the invoice."
+        model = FakeModel({
+            "status": "action", "review_reason": None,
+            "actions": [{"kind": "perform_task", "text": "Approve the invoice.", "deadline": None,
+                         "evidence": [{"source_id": "body", "quote": body}]}],
+        })
+        output = io.StringIO()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "message.json"
+            path.write_text(json.dumps({"case_id": "cli-v2", "target_recipient": "alex@example.com", "body": body}), encoding="utf-8")
+            with patch.dict(os.environ, {"OPENROUTER_API_KEY": "test-secret"}), patch(
+                "actionmail.interfaces.cli.APIClient", return_value=model
+            ), patch("builtins.input", side_effect=["y", "n"]), redirect_stdout(output):
+                code = main([str(path), "--model", "fake-model", "--schema", "v2"])
+        self.assertEqual(code, 0)
+        self.assertIn('"action_count": 1', output.getvalue())
 
 
 if __name__ == "__main__":

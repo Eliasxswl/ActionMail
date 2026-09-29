@@ -20,8 +20,10 @@ Represent separate tasks as separate actions, each with its own evidence and dea
 Use no_action only when the newest message has readable content and no current task for the target. Empty newest-message bodies, unknown owners, contradictory instructions, unread decisive external content, or more tasks than the action limit require needs_review.
 Use an ISO 8601 date or timezone-aware datetime only when a deadline is explicit and resolvable. Resolve relative dates against the received timestamp and timezone, never today's processing date. Otherwise use null.
 Each action needs an exact source quote with source_id. Copy punctuation and negation exactly. Cite external content only when a SOURCE with that ID was supplied. Include evidence from the newest message if older thread context is also cited.
-Action limit: {max_actions}.
+Action limit: {max_actions}. If there are more distinct tasks, return needs_review; never silently drop or merge the extra tasks.
 """
+
+MAX_ACTIONS = 3
 
 
 @dataclass(frozen=True)
@@ -50,9 +52,9 @@ def _validate(email: EmailPackage, decision: MultiActionResult, max_actions: int
     return MultiActionResult(decision.status, tuple(normalized), decision.review_reason), ()
 
 
-def process_email_multi(email: EmailPackage, model: ModelClient, max_actions: int) -> MultiRunResult:
-    if max_actions < 1:
-        raise ValueError("max_actions must be positive")
+def process_email_multi(email: EmailPackage, model: ModelClient, max_actions: int = MAX_ACTIONS) -> MultiRunResult:
+    if not 1 <= max_actions <= MAX_ACTIONS:
+        raise ValueError(f"max_actions must be between 1 and {MAX_ACTIONS}")
     reply = model.complete(V2_SYSTEM_PROMPT.format(max_actions=max_actions), _user_prompt(email))
     try:
         decision = parse_multi_response(reply.content)
@@ -63,7 +65,7 @@ def process_email_multi(email: EmailPackage, model: ModelClient, max_actions: in
     return MultiRunResult(validated, (reply,), errors)
 
 
-def process_email_multi_with_external(email: EmailPackage, model: ModelClient, max_actions: int, *, fetch_live=None) -> MultiRunResult:
+def process_email_multi_with_external(email: EmailPackage, model: ModelClient, max_actions: int = MAX_ACTIONS, *, fetch_live=None) -> MultiRunResult:
     first = process_email_multi(email, model, max_actions)
     if not email.external_sources:
         return first

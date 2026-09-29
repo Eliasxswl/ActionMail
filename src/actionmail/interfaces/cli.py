@@ -10,7 +10,7 @@ from actionmail.ingestion.fixtures import load_json_email
 from actionmail.content.links import fetch_allowlisted_https
 from actionmail.reasoning.api_client import APIClient, ModelCallError
 from actionmail.workflow.pipeline import process_email, process_email_with_external
-from actionmail.workflow.multi_pipeline import process_email_multi, process_email_multi_with_external
+from actionmail.workflow.multi_pipeline import MAX_ACTIONS, process_email_multi, process_email_multi_with_external
 
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
@@ -26,7 +26,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--external-mode", choices=("body-only", "snapshots", "allowed-live"), default="body-only")
     parser.add_argument("--allow-domain", action="append", default=[], help="Explicitly allow a domain for live HTTPS reading")
     parser.add_argument("--schema", choices=("v1", "v2"), default="v1", help="Result contract; v2 supports multiple actions")
-    parser.add_argument("--max-actions", type=int, help="Required positive action limit for the v2 schema")
+    parser.add_argument("--max-actions", type=int, help="V2 action limit, 1-3; defaults to 3")
     return parser
 
 
@@ -45,10 +45,11 @@ def main(argv: list[str] | None = None) -> int:
             raise ValueError("--external-mode allowed-live requires --allow-domain")
         if args.allow_domain and args.external_mode != "allowed-live":
             raise ValueError("--allow-domain requires --external-mode allowed-live")
-        if args.schema == "v2" and (args.max_actions is None or args.max_actions < 1):
-            raise ValueError("--schema v2 requires a positive --max-actions")
+        if args.schema == "v2" and args.max_actions is not None and not 1 <= args.max_actions <= MAX_ACTIONS:
+            raise ValueError(f"--max-actions must be between 1 and {MAX_ACTIONS}")
         if args.schema == "v1" and args.max_actions is not None:
             raise ValueError("--max-actions requires --schema v2")
+        action_limit = args.max_actions if args.max_actions is not None else MAX_ACTIONS
 
         api_key = os.getenv(args.api_key_env)
         if not args.api_url or not args.model or not api_key:
@@ -66,7 +67,7 @@ def main(argv: list[str] | None = None) -> int:
 
         fetch_live = (lambda url: fetch_allowlisted_https(url, tuple(args.allow_domain))) if args.external_mode == "allowed-live" else None
         if args.schema == "v2":
-            run = process_email_multi(email, model, args.max_actions) if args.external_mode == "body-only" else process_email_multi_with_external(email, model, args.max_actions, fetch_live=fetch_live)
+            run = process_email_multi(email, model, action_limit) if args.external_mode == "body-only" else process_email_multi_with_external(email, model, action_limit, fetch_live=fetch_live)
             output = {**asdict(run.decision), "action_count": run.decision.action_count}
             replies = run.replies
         else:
