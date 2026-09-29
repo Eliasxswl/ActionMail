@@ -375,6 +375,38 @@ class MVPFlowTests(unittest.TestCase):
         self.assertEqual(overflow.decision.action_count, 0)
         self.assertIn("More than 3 actions", overflow.decision.review_reason)
 
+    def test_v2_recovers_unique_quote_source_and_single_evidence_object(self):
+        quote = "Alex, approve invoice INV-104 by 2026-10-01."
+        email = EmailPackage(
+            case_id="source-alias", target_recipient="alex@example.com", received_at=None,
+            sender="maya@example.com", recipients=("alex@example.com",), subject="Invoice",
+            body="Please check the attached invoice instructions for your next step.",
+            read_sources=(SourceText("attachment:1", quote),),
+        )
+        response = {"status": "action", "review_reason": None, "actions": [{
+            "kind": "perform_task", "text": "Approve invoice INV-104.", "deadline": "2026-10-01",
+            "evidence": [
+                {"source_id": "newest message body", "quote": email.body},
+                {"source_id": "attachment:1", "quote": quote},
+            ],
+        }]}
+        recovered = process_email_multi(email, FakeModel(response))
+        self.assertEqual(recovered.decision.status, "action")
+        self.assertEqual(recovered.decision.actions[0].evidence[0].source_id, "body")
+        response["actions"][0]["evidence"] = {"source_id": "attachment:1", "quote": quote}
+        singleton = process_email_multi(email, FakeModel(response))
+        self.assertEqual(singleton.decision.status, "action")
+
+        ambiguous = EmailPackage(
+            case_id="ambiguous-source", target_recipient="alex@example.com", received_at=None,
+            sender="maya@example.com", recipients=("alex@example.com",), subject=quote,
+            body=quote,
+        )
+        response["actions"][0]["evidence"] = {"source_id": "newest message", "quote": quote}
+        unresolved = process_email_multi(ambiguous, FakeModel(response))
+        self.assertEqual(unresolved.decision.status, "needs_review")
+        self.assertIn("Unknown evidence source", unresolved.decision.review_reason)
+
     def test_cli_runs_json_through_api_boundary_and_review(self):
         payload = {
             "case_id": "sample-4",

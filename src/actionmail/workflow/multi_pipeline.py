@@ -20,6 +20,7 @@ Represent separate tasks as separate actions, each with its own evidence and dea
 Use no_action only when the newest message has readable content and no current task for the target. Empty newest-message bodies, unknown owners, contradictory instructions, unread decisive external content, or more tasks than the action limit require needs_review.
 Use an ISO 8601 date or timezone-aware datetime only when a deadline is explicit and resolvable. Resolve relative dates against the received timestamp and timezone, never today's processing date. Otherwise use null.
 Each action needs an exact source quote with source_id. Copy punctuation and negation exactly. Cite external content only when a SOURCE with that ID was supplied. Include evidence from the newest message if older thread context is also cited.
+For evidence.source_id, use only the literal ID after SOURCE, such as body or attachment:1. Never write a description such as "newest message body". Always make evidence an array, even when it has one quote.
 Action limit: {max_actions}. If there are more distinct tasks, return needs_review; never silently drop or merge the extra tasks.
 """
 

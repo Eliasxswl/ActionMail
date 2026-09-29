@@ -37,10 +37,13 @@ def parse_multi_response(content: str) -> MultiActionResult:
             parsed = datetime.fromisoformat(deadline.replace("Z", "+00:00")) if "T" in deadline else date.fromisoformat(deadline)
             if isinstance(parsed, datetime) and (parsed.tzinfo is None or parsed.utcoffset() is None):
                 raise ValueError("V2 deadline datetime needs a timezone")
-        if not isinstance(item["evidence"], list) or not item["evidence"]:
+        evidence_items = item["evidence"]
+        if isinstance(evidence_items, dict):
+            evidence_items = [evidence_items]
+        if not isinstance(evidence_items, list) or not evidence_items:
             raise ValueError("Each V2 action needs evidence")
         evidence = []
-        for entry in item["evidence"]:
+        for entry in evidence_items:
             if not isinstance(entry, dict) or set(entry) != {"source_id", "quote"} or not all(isinstance(entry[key], str) for key in entry):
                 raise ValueError("V2 evidence needs source_id and quote strings")
             evidence.append(Evidence(entry["source_id"], entry["quote"]))

@@ -80,6 +80,16 @@ def _normalize_source_ids(email: EmailPackage, decision: ActionResult) -> Action
             source_id = source_id[7:]
         quote = item.quote
         source = sources.get(source_id)
+        if source is None and quote.strip():
+            matches = [
+                (candidate_id, aligned)
+                for candidate_id, candidate_text in sources.items()
+                for aligned in [align_evidence_quote(quote, candidate_text)]
+                if aligned.strip() and aligned in candidate_text
+            ]
+            if len(matches) == 1:
+                source_id, quote = matches[0]
+                source = sources[source_id]
         if source is not None and quote not in source:
             quote = align_evidence_quote(quote, source)
         evidence.append(Evidence(source_id, quote))
