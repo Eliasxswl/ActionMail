@@ -10,6 +10,7 @@ from unittest.mock import patch
 from actionmail.ingestion.eml import load_eml
 from actionmail.ingestion.fixtures import load_json_email
 from actionmail.interfaces.cli import main
+from actionmail.domain.email import EmailPackage, SourceText
 from actionmail.reasoning.model_client import ModelReply
 from actionmail.workflow.pipeline import process_email
 
@@ -63,10 +64,58 @@ class MVPFlowTests(unittest.TestCase):
         self.assertEqual(result.decision.evidence[0].source_id, "body")
         self.assertFalse(result.validation_errors)
 
+    def test_common_model_shape_variants_keep_evidence_gate(self):
+        email = load_json_email(Path(__file__).resolve().parents[1] / "examples" / "sample_email.json")
+        base = {"action": None, "deadline": None, "evidence": None, "review_reason": None}
+        no_action = process_email(email, FakeModel({"status": "no_action", **base}))
+        self.assertEqual(no_action.decision.status, "no_action")
+        self.assertFalse(no_action.validation_errors)
+
+        request = {
+            "status": "action", "action": "Send the revised proposal", "deadline": "2026-10-01",
+            "evidence": {"source_id": "body", "quote": "Alex, please send me the revised proposal by 1 October 2026."},
+            "review_reason": None,
+        }
+        action = process_email(email, FakeModel(request))
+        self.assertEqual(action.decision.status, "action")
+        self.assertFalse(action.validation_errors)
+
+        request["review_reason"] = "The sender asks for a proposal."
+        explained = process_email(email, FakeModel(request))
+        self.assertIsNone(explained.decision.review_reason)
+        request["review_reason"] = None
+
+        request["evidence"]["quote"] = "Alex, please  send me the revised proposal by 1 October 2026."
+        spacing = process_email(email, FakeModel(request))
+        self.assertEqual(spacing.decision.status, "action")
+        self.assertEqual(spacing.decision.evidence[0].quote, "Alex, please send me the revised proposal by 1 October 2026.")
+
+        request["evidence"]["quote"] = "Please send the fabricated proposal."
+        unsupported = process_email(email, FakeModel(request))
+        self.assertEqual(unsupported.decision.status, "needs_review")
+        self.assertIn("Evidence quote is absent", unsupported.decision.review_reason)
+
+    def test_old_thread_request_alone_cannot_become_current_action(self):
+        email = EmailPackage(
+            case_id="thread-example", target_recipient="alex@example.com", received_at=None,
+            sender="sender@example.com", recipients=("alex@example.com",), subject="Update",
+            body="I have sent the update to you.",
+            thread=(SourceText("thread:1", "Please send me the report."),),
+        )
+        model = FakeModel({
+            "status": "action", "action": "Send the report", "deadline": None,
+            "evidence": [{"source_id": "thread:1", "quote": "Please send me the report."}],
+            "review_reason": None,
+        })
+        result = process_email(email, model)
+        self.assertEqual(result.decision.status, "needs_review")
+        self.assertIn("prior-thread request", result.decision.review_reason)
+
     def test_eml_no_action_reaches_reviewable_result(self):
         raw = (
             "From: manager@example.com\n"
             "To: alex@example.com\n"
+            "Cc: reviewer@example.com\n"
             "Date: Mon, 28 Sep 2026 09:00:00 +0800\n"
             "Subject: Update\n"
             "MIME-Version: 1.0\n"
@@ -80,6 +129,8 @@ class MVPFlowTests(unittest.TestCase):
             result = process_email(load_eml(path, "alex@example.com"), model)
         self.assertEqual(result.decision.status, "no_action")
         self.assertFalse(result.validation_errors)
+        self.assertIn("To: alex@example.com", model.last_prompt)
+        self.assertIn("Cc: reviewer@example.com", model.last_prompt)
 
     def test_html_email_link_requires_review_before_no_action(self):
         raw = (

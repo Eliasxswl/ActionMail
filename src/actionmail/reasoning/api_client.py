@@ -37,7 +37,7 @@ class APIClient:
                 {"role": "user", "content": user_prompt},
             ],
             "temperature": 0,
-            "max_tokens": 350,
+            "max_tokens": 800,
         }
         request = Request(
             self.api_url,
@@ -65,7 +65,7 @@ class APIClient:
             if not isinstance(result, dict):
                 raise TypeError("response must be an object")
             content = result["choices"][0]["message"]["content"]
-            if not isinstance(content, str):
+            if not isinstance(content, str) or not content.strip():
                 raise TypeError("content must be text")
             usage = result.get("usage") or {}
             if not isinstance(usage, dict):
@@ -80,4 +80,10 @@ class APIClient:
                 latency_ms=latency_ms,
             )
         except (KeyError, IndexError, TypeError) as exc:
-            raise ModelCallError("Model API response has no text completion") from exc
+            choices = result.get("choices") if isinstance(result, dict) else None
+            choice = choices[0] if isinstance(choices, list) and choices else {}
+            reason = choice.get("finish_reason") if isinstance(choice, dict) else None
+            usage = result.get("usage") if isinstance(result, dict) else None
+            tokens = usage.get("completion_tokens") if isinstance(usage, dict) else None
+            details = f" (finish_reason={reason}, completion_tokens={tokens})" if reason is not None or tokens is not None else ""
+            raise ModelCallError("Model API response has no text completion" + details) from exc

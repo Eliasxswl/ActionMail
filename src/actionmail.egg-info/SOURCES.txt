@@ -9,6 +9,11 @@ src/actionmail.egg-info/top_level.txt
 src/actionmail/domain/__init__.py
 src/actionmail/domain/decision.py
 src/actionmail/domain/email.py
+src/actionmail/evaluation/__init__.py
+src/actionmail/evaluation/baseline.py
+src/actionmail/evaluation/cases.py
+src/actionmail/evaluation/cli.py
+src/actionmail/evaluation/metrics.py
 src/actionmail/guardrails/__init__.py
 src/actionmail/guardrails/evidence.py
 src/actionmail/ingestion/__init__.py
@@ -22,4 +27,5 @@ src/actionmail/reasoning/model_client.py
 src/actionmail/reasoning/response.py
 src/actionmail/workflow/__init__.py
 src/actionmail/workflow/pipeline.py
+tests/test_evaluation_flow.py
 tests/test_mvp_flow.py

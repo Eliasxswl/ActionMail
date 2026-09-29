@@ -1,0 +1,61 @@
+{
+  "completed_cases": 2,
+  "planned_cases": 50,
+  "complete": false,
+  "category_counts": {
+    "context_dependent": {
+      "total": 2,
+      "status_correct": 1
+    }
+  },
+  "planned_category_counts": {
+    "no_action": 15,
+    "explicit_action": 15,
+    "context_dependent": 10,
+    "external_content": 10
+  },
+  "planned_external_counts": {
+    "attachment": 5,
+    "link": 5
+  },
+  "status_confusion": {
+    "action": {
+      "action": 1,
+      "no_action": 0,
+      "needs_review": 0,
+      "error": 0
+    },
+    "no_action": {
+      "action": 1,
+      "no_action": 0,
+      "needs_review": 0,
+      "error": 0
+    },
+    "needs_review": {
+      "action": 0,
+      "no_action": 0,
+      "needs_review": 0,
+      "error": 0
+    }
+  },
+  "counts": {
+    "fp": 1,
+    "status_correct": 1,
+    "tp": 1,
+    "deadline_field_checked": 1,
+    "deadline_field_match": 1
+  },
+  "precision": 0.5,
+  "recall": 1.0,
+  "precision_denominator": 2,
+  "recall_denominator": 1,
+  "token_totals": {
+    "input": 1108,
+    "output": 580
+  },
+  "estimated_cost_usd": 0.0004008,
+  "costed_cases": 2,
+  "manual_action_and_evidence_review_complete": false,
+  "metric_scope": "Status classification only; action wording and evidence support are not automatically scored.",
+  "counting_rule": "FN includes action cases predicted no_action, needs_review, or error. Safe external abstentions are separate from full-content status correctness."
+}

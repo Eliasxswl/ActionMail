@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ActionMail Review</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">A</div>
+      <div>
+        <p class="eyebrow">ACTIONMAIL</p>
+        <h1>Evaluation review</h1>
+      </div>
+    </div>
+    <div class="runmeta" id="run-meta">Loading run…</div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" aria-label="Evaluation cases">
+      <div class="sidebar-heading">
+        <h2>Inbox</h2>
+        <span id="progress">0 reviewed</span>
+      </div>
+      <label class="field-label" for="filter">FILTER CASES</label>
+      <select id="filter">
+        <option value="all">All cases</option>
+        <option value="unreviewed">Not reviewed</option>
+        <option value="status-mismatch">Status mismatch</option>
+        <option value="action">Model proposed action</option>
+        <option value="external">Attachment or link</option>
+      </select>
+      <div id="case-list" class="case-list" role="list"></div>
+    </aside>
+
+    <main id="main" class="main" aria-live="polite">
+      <div class="empty-state">Select a case to begin.</div>
+    </main>
+  </div>
+</body>
+</html>

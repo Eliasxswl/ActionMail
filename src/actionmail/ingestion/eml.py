@@ -59,7 +59,9 @@ def load_eml(path: Path, target_recipient: str) -> EmailPackage:
     if not date_header:
         raise ValueError("The email has no Date header")
     received_at = parsedate_to_datetime(date_header)
-    recipients = tuple(address for _, address in getaddresses(message.get_all("To", []) + message.get_all("Cc", [])))
+    to_recipients = tuple(address for _, address in getaddresses(message.get_all("To", [])))
+    cc_recipients = tuple(address for _, address in getaddresses(message.get_all("Cc", [])))
+    recipients = tuple(dict.fromkeys((*to_recipients, *cc_recipients)))
     attachments = tuple(part.get_filename() or "unnamed attachment" for part in message.iter_attachments())
     body, links = _body_content(message)
 
@@ -69,6 +71,8 @@ def load_eml(path: Path, target_recipient: str) -> EmailPackage:
         received_at=received_at,
         sender=str(message.get("From", "")),
         recipients=recipients,
+        to_recipients=to_recipients,
+        cc_recipients=cc_recipients,
         subject=str(message.get("Subject", "")),
         body=body,
         unread_sources=tuple(dict.fromkeys((*attachments, *links))),

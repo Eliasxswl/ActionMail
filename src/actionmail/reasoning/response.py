@@ -30,6 +30,15 @@ def parse_model_response(content: str) -> ActionResult:
             raise ValueError("deadline datetime must include a timezone")
     if review_reason is not None and not isinstance(review_reason, str):
         raise ValueError("review_reason must be a string or null")
+    if status != "action":
+        evidence_payload = []
+        if status == "needs_review":
+            action = None
+            deadline = None
+    elif isinstance(evidence_payload, dict):
+        evidence_payload = [evidence_payload]
+    if status != "needs_review":
+        review_reason = None
     if not isinstance(evidence_payload, list):
         raise ValueError("evidence must be a list")
 

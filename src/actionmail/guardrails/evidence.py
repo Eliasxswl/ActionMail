@@ -10,6 +10,8 @@ def evidence_errors(email: EmailPackage, decision: ActionResult) -> list[str]:
             errors.append("An action result must include an action")
         if not decision.evidence:
             errors.append("An action result must include evidence")
+        if decision.evidence and all(item.source_id.startswith("thread:") for item in decision.evidence):
+            errors.append("A prior-thread request needs supporting evidence in the newest message")
     if decision.status == "no_action" and (decision.action is not None or decision.deadline is not None):
         errors.append("A no_action result cannot include an action or deadline")
     if decision.status != "needs_review" and email.unread_sources:
