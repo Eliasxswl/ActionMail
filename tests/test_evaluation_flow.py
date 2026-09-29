@@ -91,6 +91,31 @@ class EvaluationFlowTests(unittest.TestCase):
                 self.assertEqual(main(["--history"]), 0)
             self.assertIn("demo  rules/rules-v1  1/1 cases", output.getvalue())
 
+    def test_snapshot_evaluation_records_two_calls_and_read_source(self):
+        decisions = iter([
+            {"status": "needs_review", "action": None, "deadline": None, "evidence": [], "review_reason": "Attachment unread"},
+            {"status": "action", "action": "Approve invoice INV-104.", "deadline": "2026-10-01", "evidence": [{"source_id": "attachment:1", "quote": "Alex, please approve invoice INV-104 by 2026-10-01."}], "review_reason": None},
+        ])
+
+        def fake_urlopen(request, timeout):
+            completion = {"model": "test-model", "choices": [{"message": {"content": json.dumps(next(decisions))}}], "usage": {"prompt_tokens": 100, "completion_tokens": 20}}
+            return io.BytesIO(json.dumps(completion).encode("utf-8"))
+
+        with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {"OPENROUTER_API_KEY": "test-secret"}), patch(
+            "actionmail.reasoning.api_client.urlopen", side_effect=fake_urlopen
+        ), patch("actionmail.evaluation.cli._show_preflight", return_value=(0.1, 0.5, 0.0, "test")), redirect_stdout(io.StringIO()):
+            output = Path(directory) / "snapshot"
+            self.assertEqual(main(["--engine", "llm", "--model", "test-model", "--case-id", "E01", "--external-mode", "snapshots", "--output-dir", str(output), "--yes"]), 0)
+            row = json.loads((output / "cases.jsonl").read_text(encoding="utf-8"))
+            metadata = json.loads((output / "run.json").read_text(encoding="utf-8"))
+        self.assertEqual(row["prediction"]["status"], "action")
+        self.assertEqual(row["prediction"]["evidence"][0]["source_id"], "attachment:1")
+        self.assertEqual(row["model_calls"], 2)
+        self.assertEqual(row["usage"]["input_tokens"], 200)
+        self.assertEqual(row["read_sources"][0]["method"], "frozen_snapshot")
+        self.assertFalse(row["safe_external_abstention"])
+        self.assertEqual(metadata["external_mode"], "snapshots")
+
     def test_local_review_page_loads_case_and_saves_separate_assessment(self):
         with tempfile.TemporaryDirectory() as directory, redirect_stdout(io.StringIO()):
             output = Path(directory) / "rules"

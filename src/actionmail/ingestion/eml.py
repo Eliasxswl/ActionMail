@@ -5,7 +5,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import re
 
-from actionmail.domain.email import EmailPackage
+from actionmail.domain.email import EmailPackage, ExternalSource
 
 
 class _TextFromHtml(HTMLParser):
@@ -62,8 +62,21 @@ def load_eml(path: Path, target_recipient: str) -> EmailPackage:
     to_recipients = tuple(address for _, address in getaddresses(message.get_all("To", [])))
     cc_recipients = tuple(address for _, address in getaddresses(message.get_all("Cc", [])))
     recipients = tuple(dict.fromkeys((*to_recipients, *cc_recipients)))
-    attachments = tuple(part.get_filename() or "unnamed attachment" for part in message.iter_attachments())
+    attachments = tuple(message.iter_attachments())
     body, links = _body_content(message)
+    external_sources = []
+    for index, part in enumerate(attachments, start=1):
+        content = part.get_payload(decode=True)
+        if content is None and isinstance(part.get_content(), str):
+            content = part.get_content().encode(part.get_content_charset() or "utf-8", errors="replace")
+        external_sources.append(ExternalSource(
+            f"attachment:{index}", "attachment", part.get_filename() or "unnamed attachment",
+            content=content, media_type=part.get_content_type(), charset=part.get_content_charset(),
+        ))
+    external_sources.extend(
+        ExternalSource(f"link:{index}", "link", url)
+        for index, url in enumerate(links, start=1)
+    )
 
     return EmailPackage(
         case_id=path.stem,
@@ -75,5 +88,6 @@ def load_eml(path: Path, target_recipient: str) -> EmailPackage:
         cc_recipients=cc_recipients,
         subject=str(message.get("Subject", "")),
         body=body,
-        unread_sources=tuple(dict.fromkeys((*attachments, *links))),
+        unread_sources=tuple(item.name for item in external_sources),
+        external_sources=tuple(external_sources),
     )

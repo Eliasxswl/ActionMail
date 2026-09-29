@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from actionmail.domain.email import EmailPackage, SourceText
+from actionmail.domain.email import EmailPackage, ExternalSource, SourceText
 
 
 def load_json_email(path: Path) -> EmailPackage:
@@ -40,6 +40,19 @@ def load_json_email(path: Path) -> EmailPackage:
     unread = payload.get("unread_sources", [])
     if not isinstance(unread, list) or any(not isinstance(item, str) for item in unread):
         raise ValueError("unread_sources must be a list of strings")
+    external = payload.get("external_sources", [])
+    if not isinstance(external, list) or any(
+        not isinstance(item, dict) or
+        not all(isinstance(item.get(key), str) for key in ("source_id", "kind", "name")) or
+        ("text" in item and not isinstance(item["text"], str)) or
+        (item.get("kind") not in {"attachment", "link"})
+        for item in external
+    ):
+        raise ValueError("external_sources need source_id, kind, name, and optional text strings")
+    external_sources = tuple(
+        ExternalSource(item["source_id"], item["kind"], item["name"], snapshot_text=item.get("text"))
+        for item in external
+    )
 
     return EmailPackage(
         case_id=payload["case_id"],
@@ -52,5 +65,6 @@ def load_json_email(path: Path) -> EmailPackage:
         subject=str(payload.get("subject", "")),
         body=payload["body"],
         thread=tuple(normalized_thread),
-        unread_sources=tuple(unread),
+        unread_sources=tuple(dict.fromkeys((*unread, *(item.name for item in external_sources)))),
+        external_sources=external_sources,
     )

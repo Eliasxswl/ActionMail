@@ -81,17 +81,30 @@ def prior_output_average(results_root: Path, model: str) -> tuple[int, int]:
     return (round(sum(output) / len(output)), len(output)) if output else (160, 0)
 
 
-def estimate(cases, results_root: Path, model: str, input_price: float, output_price: float, request_price: float = 0) -> dict:
+def estimate(cases, results_root: Path, model: str, input_price: float, output_price: float, request_price: float = 0, external_mode: str = "body-only") -> dict:
     # Character count is only a rough proxy for provider-tokenizer input tokens.
     input_tokens = sum(math.ceil((len(SYSTEM_PROMPT) + len(_user_prompt(case.email)) + 16) / 4) for case in cases)
+    additional_calls = 0
+    if external_mode != "body-only":
+        for case in cases:
+            if not case.email.external_sources:
+                continue
+            additional_calls += 1
+            external_chars = sum(
+                len(source.snapshot_text) if source.snapshot_text is not None else 20_000
+                for source in case.email.external_sources[:2]
+            )
+            input_tokens += math.ceil((len(SYSTEM_PROMPT) + len(_user_prompt(case.email)) + external_chars + 64) / 4)
     output_per_case, samples = prior_output_average(results_root, model)
-    output_tokens = len(cases) * output_per_case
-    cost = (input_tokens * input_price + output_tokens * output_price) / 1_000_000 + len(cases) * request_price
-    cap_cost = (input_tokens * input_price + len(cases) * MAX_OUTPUT_TOKENS * output_price) / 1_000_000 + len(cases) * request_price
+    model_calls = len(cases) + additional_calls
+    output_tokens = model_calls * output_per_case
+    cost = (input_tokens * input_price + output_tokens * output_price) / 1_000_000 + model_calls * request_price
+    cap_cost = (input_tokens * input_price + model_calls * MAX_OUTPUT_TOKENS * output_price) / 1_000_000 + model_calls * request_price
     return {
         "input_tokens": input_tokens,
         "output_tokens": output_tokens,
         "output_per_case": output_per_case,
+        "model_calls": model_calls,
         "history_samples": samples,
         "estimated_cost_usd": cost,
         "output_cap_scenario_usd": cap_cost,

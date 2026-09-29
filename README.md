@@ -2,7 +2,8 @@
 
 | Item | Value |
 | --- | --- |
-| Current version | v1.5 (MVP and frozen evaluation baseline) |
+| Current released version | v1.5 (MVP and frozen evaluation baseline) |
+| Main branch | v2.0 development; not yet released |
 | First runnable MVP | v1.0 |
 | Project type | Individual PE6201 end-of-course project |
 
@@ -107,7 +108,7 @@ Saved assessments go to `adjudication.json` inside that run directory. The origi
 
 ## Technology decision
 
-The main extractor will use **one LLM**. A deterministic rule matcher will provide a non-AI baseline. A **bounded tool-use workflow** will read an attachment or linked page only when the initial email does not provide enough evidence. This is the limited agent capability planned for later versions; it is not an open-ended autonomous agent. A separately trained ML classifier is outside the initial scope because the available event labels do not directly match the recipient-specific action task.
+The main extractor uses **one LLM**. A deterministic rule matcher provides a non-AI baseline. An experimental **bounded tool-use workflow** on `main` reads local attachments or frozen page snapshots, and can read live HTTPS pages from explicitly allowed domains. It makes at most two model calls and reads at most two external sources per email; source selection from the first answer is still in development. A separately trained ML classifier is outside the initial scope because the available event labels do not directly match the recipient-specific action task.
 
 Python code will own the orchestration, validation, and evaluation. UiPath is not a runtime dependency. The final report will explain this change from the formative problem statement.
 
@@ -118,9 +119,11 @@ Python code will own the orchestration, validation, and evaluation. UiPath is no
 | v0.1 | Completed | Architecture and documented decisions. |
 | v1.0 | Completed MVP | One local `.eml` or JSON email input; one LLM decision; structured action/deadline/evidence output; deterministic evidence checks; user review. |
 | v1.5 | Completed baseline | Owner-adjudicated 50-case gold set, local review UI, cost preflight, run history, rule baseline, and first full model run. Model-output semantic review remains a separate evaluation task. |
-| v2.0 | Planned | Bounded attachment and link reading, improved evidence and empty-message handling, clearer question interpretation, and multiple action candidates. |
+| v2.0 | In development on `main` | Bounded attachment and link reading, improved evidence and empty-message handling, clearer question interpretation, and multiple action candidates. |
 
-These labels describe scope, not a claim that a planned version has shipped. Update the **Current version** line and this table whenever a milestone is completed or its scope changes.
+The `v1.5` branch preserves the released baseline. The experimental v2 CLI on `main` adds `--external-mode snapshots` for frozen content and `--external-mode allowed-live --allow-domain example.org` for explicitly approved HTTPS domains. `--schema v2 --max-actions N` selects the multiple-action contract; the limit is explicit while the release policy is being decided. The v2 schema has not yet been evaluated against a multiple-action gold set. See the [v2 design](docs/v2_design.md) for the reading flow, safety limits, and remaining work.
+
+These labels describe scope, not a claim that an in-development version has shipped. Update the release version and this table whenever a milestone is completed or its scope changes.
 
 ## Language convention
 
@@ -129,7 +132,7 @@ Repository documents, code comments, CLI messages, prompts, structured result fi
 ## Intended boundaries
 
 - Run locally and on demand. No inbox monitoring or browser plugin is required for the core evaluation.
-- Process one target recipient and at most one actionable item automatically. Ambiguous or multiple actions require human review.
+- Process one target recipient. The released v1.5 contract returns at most one actionable item; the experimental v2 contract can return multiple separately evidenced candidates up to an explicit limit.
 - Treat email, attachments, and linked pages as untrusted data.
 - Never send a reply, alter the mailbox, or write to a calendar without an explicit user confirmation. The MVP only previews the result.
 - Keep live Gmail OAuth and direct calendar integration outside the critical path. A future mail adapter can use the same normalized email contract.
@@ -137,6 +140,7 @@ Repository documents, code comments, CLI messages, prompts, structured result fi
 ## Documentation
 
 - [Architecture and package boundaries](docs/architecture.md)
+- [v2 development design and limits](docs/v2_design.md)
 
 ## Reproducibility status
 

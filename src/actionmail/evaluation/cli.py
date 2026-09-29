@@ -13,10 +13,11 @@ from actionmail.evaluation.cases import load_cases
 from actionmail.evaluation.history import print_history
 from actionmail.evaluation.metrics import summarize
 from actionmail.evaluation.preflight import PreflightError, account_balance, estimate, key_allowance, model_prices
+from actionmail.content.links import fetch_allowlisted_https
 from actionmail.guardrails.evidence import evidence_errors
 from actionmail.interfaces.cli import OPENROUTER_API_URL
 from actionmail.reasoning.api_client import APIClient, ModelCallError
-from actionmail.workflow.pipeline import SYSTEM_PROMPT, process_email
+from actionmail.workflow.pipeline import SYSTEM_PROMPT, process_email, process_email_with_external
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -30,6 +31,8 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--history", action="store_true", help="Summarize saved evaluation runs without a model call")
     parser.add_argument("--preflight", action="store_true", help="Show balance and expected cost, then stop before model calls")
     parser.add_argument("--engine", choices=("rules", "llm"), default="llm")
+    parser.add_argument("--external-mode", choices=("body-only", "snapshots", "allowed-live"), default="body-only")
+    parser.add_argument("--allow-domain", action="append", default=[], help="Explicitly allow a domain for live HTTPS reading")
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--mailex-root", type=Path, default=DEFAULT_MAILEX_ROOT)
     parser.add_argument("--model", default=os.getenv("ACTIONMAIL_MODEL"))
@@ -88,9 +91,10 @@ def _show_preflight(args, cases, api_key: str) -> tuple[float, float, float, str
         source = "OpenRouter model catalog at preflight"
     else:
         raise PreflightError("Cannot estimate cost; provide both token prices or restore OpenRouter pricing access")
-    preview = estimate(cases, PROJECT_ROOT / "results" / "evaluation", args.model, input_price, output_price, request_price)
+    preview = estimate(cases, PROJECT_ROOT / "results" / "evaluation", args.model, input_price, output_price, request_price, args.external_mode)
     print(f"Prices ({source}): ${input_price:.4f}/M input, ${output_price:.4f}/M output, ${request_price:.6f}/request")
     print(f"Approximate tokens: {preview['input_tokens']} input; {preview['output_tokens']} output")
+    print(f"Expected model calls: up to {preview['model_calls']}")
     basis = f"{preview['history_samples']} prior same-model results" if preview["history_samples"] else "160 output tokens/case fallback"
     print(f"Output assumption: {preview['output_per_case']} tokens/case from {basis}")
     print(f"Expected batch cost: about ${preview['estimated_cost_usd']:.6f}")
@@ -99,19 +103,24 @@ def _show_preflight(args, cases, api_key: str) -> tuple[float, float, float, str
     return input_price, output_price, request_price, source
 
 
-def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | None, float | None, float]) -> dict:
+def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | None, float | None, float], external_mode: str = "body-only", allow_domains: tuple[str, ...] = ()) -> dict:
     reply = None
     error = None
     validation_errors = []
     prediction = None
+    replies = ()
+    read_records = ()
     try:
         if engine == "rules":
             prediction = predict_rules(case.email)
             validation_errors = evidence_errors(case.email, prediction)
         else:
-            run = process_email(case.email, model)
+            fetch_live = (lambda url: fetch_allowlisted_https(url, allow_domains)) if external_mode == "allowed-live" else None
+            run = process_email(case.email, model) if external_mode == "body-only" else process_email_with_external(case.email, model, fetch_live=fetch_live)
             prediction = run.decision
             reply = run.reply
+            replies = run.replies or (run.reply,)
+            read_records = run.read_records
             validation_errors = list(run.validation_errors)
     except (ModelCallError, OSError, ValueError) as exc:
         error = str(exc)
@@ -119,9 +128,13 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
     usage = None
     cost = None
     if reply is not None:
-        usage = {"input_tokens": reply.input_tokens, "output_tokens": reply.output_tokens, "latency_ms": reply.latency_ms}
-        if None not in (*prices, reply.input_tokens, reply.output_tokens):
-            cost = (reply.input_tokens * prices[0] + reply.output_tokens * prices[1]) / 1_000_000 + prices[2]
+        usage = {
+            "input_tokens": sum(item.input_tokens or 0 for item in replies),
+            "output_tokens": sum(item.output_tokens or 0 for item in replies),
+            "latency_ms": sum(item.latency_ms or 0 for item in replies),
+        }
+        if None not in prices and all(item.input_tokens is not None and item.output_tokens is not None for item in replies):
+            cost = (usage["input_tokens"] * prices[0] + usage["output_tokens"] * prices[1]) / 1_000_000 + len(replies) * prices[2]
     return {
         "case_id": case.case_id,
         "category": case.record["category"],
@@ -133,10 +146,12 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
         "gold": case.gold,
         "prediction": asdict(prediction) if prediction else None,
         "status_correct": prediction.status == case.gold["status"] if prediction else False,
-        "safe_external_abstention": case.record["category"] == "external_content" and prediction is not None and prediction.status == "needs_review",
+        "safe_external_abstention": case.record["category"] == "external_content" and prediction is not None and prediction.status == "needs_review" and not read_records,
         "validation_errors": validation_errors,
         "error": error,
         "model": reply.model if reply else None,
+        "model_calls": len(replies),
+        "read_sources": [asdict(item) for item in read_records],
         "raw_model_response": reply.content if reply else None,
         "usage": usage,
         "estimated_cost_usd": cost,
@@ -152,6 +167,12 @@ def main(argv: list[str] | None = None) -> int:
             print_history(PROJECT_ROOT / "results" / "evaluation")
             return 0
         cases = load_cases(args.manifest, args.mailex_root)
+        if args.external_mode == "allowed-live" and not args.allow_domain:
+            raise ValueError("--external-mode allowed-live requires --allow-domain")
+        if args.allow_domain and args.external_mode != "allowed-live":
+            raise ValueError("--allow-domain requires --external-mode allowed-live")
+        if args.engine == "rules" and args.external_mode != "body-only":
+            raise ValueError("The rule baseline supports body-only mode")
         if args.validate:
             print(f"Validated {len(cases)} frozen cases: 15 no-action, 15 explicit-action, 10 context, 5 attachment, 5 link.")
             return 0
@@ -196,6 +217,8 @@ def main(argv: list[str] | None = None) -> int:
             "run_id": run_id,
             "started_at_utc": datetime.now(timezone.utc).isoformat(),
             "engine": args.engine,
+            "external_mode": args.external_mode,
+            "allowed_domains": args.allow_domain,
             "model": args.model if args.engine == "llm" else "rules-v1",
             "api_url": args.api_url if args.engine == "llm" else None,
             "manifest_sha256": manifest_hash,
@@ -210,8 +233,8 @@ def main(argv: list[str] | None = None) -> int:
         rows_path = output / "cases.jsonl"
         if args.resume:
             prior = json.loads(meta_path.read_text(encoding="utf-8"))
-            for key in ("engine", "model", "api_url", "manifest_sha256", "code_sha256", "prompt_sha256", "case_ids", "input_price_per_million_usd", "output_price_per_million_usd"):
-                if prior[key] != metadata[key]:
+            for key in ("engine", "external_mode", "allowed_domains", "model", "api_url", "manifest_sha256", "code_sha256", "prompt_sha256", "case_ids", "input_price_per_million_usd", "output_price_per_million_usd"):
+                if prior.get(key, "body-only" if key == "external_mode" else [] if key == "allowed_domains" else None) != metadata[key]:
                     raise ValueError(f"Cannot resume: {key} changed")
             metadata = prior
             rows = [json.loads(line) for line in rows_path.read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -231,6 +254,14 @@ def main(argv: list[str] | None = None) -> int:
             if answer != "y":
                 print("Cancelled before model calls.")
                 return 0
+        if args.external_mode == "allowed-live" and any(
+            source.kind == "link" and source.snapshot_text is None
+            for case in pending for source in case.email.external_sources
+        ) and not args.yes:
+            answer = input("Fetch live links from the explicitly allowed domain(s)? [y/N] ").strip().lower()
+            if answer != "y":
+                print("Cancelled before live link retrieval.")
+                return 0
         if not args.resume:
             output.mkdir(parents=True, exist_ok=False)
             _write_json(meta_path, metadata)
@@ -238,7 +269,7 @@ def main(argv: list[str] | None = None) -> int:
         elif pending:
             _write_json(meta_path, metadata)
         for index, case in enumerate(pending, start=1):
-            row = _run_one(case, args.engine, model, prices)
+            row = _run_one(case, args.engine, model, prices, args.external_mode, tuple(args.allow_domain))
             with rows_path.open("a", encoding="utf-8") as stream:
                 stream.write(json.dumps(row, ensure_ascii=False) + "\n")
             rows.append(row)

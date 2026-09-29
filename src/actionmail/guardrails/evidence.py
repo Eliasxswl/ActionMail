@@ -1,5 +1,39 @@
+import re
+
 from actionmail.domain.decision import ActionResult
 from actionmail.domain.email import EmailPackage
+
+
+_ABBREVIATION = re.compile(r"\b(?:Inc|Ltd|Corp|Co|Dr|Mr|Mrs|Ms|Jr|Sr|St)\.$", re.IGNORECASE)
+
+
+def align_evidence_quote(quote: str, source: str) -> str:
+    """Recover a unique source span after whitespace or abbreviation-dot drift."""
+    if quote in source:
+        return quote
+
+    def canonical(text: str) -> tuple[str, list[int]]:
+        characters: list[str] = []
+        offsets: list[int] = []
+        for index, character in enumerate(text):
+            if character == "." and _ABBREVIATION.search(text[:index + 1]):
+                continue
+            if character.isspace():
+                if characters and characters[-1] == " ":
+                    continue
+                character = " "
+            characters.append(character)
+            offsets.append(index)
+        return "".join(characters), offsets
+
+    normalized_quote, _ = canonical(quote.strip())
+    normalized_source, offsets = canonical(source)
+    if not normalized_quote:
+        return quote
+    start = normalized_source.find(normalized_quote)
+    if start < 0 or normalized_source.find(normalized_quote, start + 1) >= 0:
+        return quote
+    return source[offsets[start]:offsets[start + len(normalized_quote) - 1] + 1]
 
 
 def evidence_errors(email: EmailPackage, decision: ActionResult) -> list[str]:
@@ -16,8 +50,8 @@ def evidence_errors(email: EmailPackage, decision: ActionResult) -> list[str]:
         errors.append("A no_action result cannot include an action or deadline")
     if decision.status != "needs_review" and email.unread_sources:
         errors.append("Unread external content prevents a definitive result")
-    if decision.status == "no_action" and not any(text.strip() for text in sources.values()):
-        errors.append("An empty email cannot support a definitive no_action result")
+    if decision.status != "needs_review" and not email.body.strip():
+        errors.append("An empty newest-message body requires review")
     if decision.status == "needs_review" and not (decision.review_reason or "").strip():
         errors.append("A needs_review result must include a reason")
     if decision.status == "needs_review" and (decision.action is not None or decision.deadline is not None):

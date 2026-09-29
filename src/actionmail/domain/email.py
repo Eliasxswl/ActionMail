@@ -21,6 +21,17 @@ class SourceText:
 
 
 @dataclass(frozen=True)
+class ExternalSource:
+    source_id: str
+    kind: str
+    name: str
+    snapshot_text: str | None = None
+    content: bytes | None = None
+    media_type: str | None = None
+    charset: str | None = None
+
+
+@dataclass(frozen=True)
 class EmailPackage:
     case_id: str
     target_recipient: str
@@ -33,6 +44,8 @@ class EmailPackage:
     unread_sources: tuple[str, ...] = ()
     to_recipients: tuple[str, ...] = ()
     cc_recipients: tuple[str, ...] = ()
+    external_sources: tuple[ExternalSource, ...] = ()
+    read_sources: tuple[SourceText, ...] = ()
 
     def __post_init__(self) -> None:
         if not self.case_id.strip():
@@ -45,6 +58,10 @@ class EmailPackage:
     def sources(self) -> dict[str, str]:
         items = {"subject": self.subject, "body": self.body}
         for source in self.thread:
+            if source.source_id in items:
+                raise ValueError(f"Duplicate source_id: {source.source_id}")
+            items[source.source_id] = source.text
+        for source in self.read_sources:
             if source.source_id in items:
                 raise ValueError(f"Duplicate source_id: {source.source_id}")
             items[source.source_id] = source.text

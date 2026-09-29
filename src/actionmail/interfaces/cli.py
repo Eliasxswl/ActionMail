@@ -7,8 +7,10 @@ from pathlib import Path
 
 from actionmail.ingestion.eml import load_eml
 from actionmail.ingestion.fixtures import load_json_email
+from actionmail.content.links import fetch_allowlisted_https
 from actionmail.reasoning.api_client import APIClient, ModelCallError
-from actionmail.workflow.pipeline import process_email
+from actionmail.workflow.pipeline import process_email, process_email_with_external
+from actionmail.workflow.multi_pipeline import process_email_multi, process_email_multi_with_external
 
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
@@ -21,6 +23,10 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--api-url", default=os.getenv("ACTIONMAIL_API_URL", OPENROUTER_API_URL), help="Chat-completions API URL")
     parser.add_argument("--model", default=os.getenv("ACTIONMAIL_MODEL"), help="Model identifier")
     parser.add_argument("--api-key-env", default="OPENROUTER_API_KEY", help="Environment variable containing the API key")
+    parser.add_argument("--external-mode", choices=("body-only", "snapshots", "allowed-live"), default="body-only")
+    parser.add_argument("--allow-domain", action="append", default=[], help="Explicitly allow a domain for live HTTPS reading")
+    parser.add_argument("--schema", choices=("v1", "v2"), default="v1", help="Result contract; v2 supports multiple actions")
+    parser.add_argument("--max-actions", type=int, help="Required positive action limit for the v2 schema")
     return parser
 
 
@@ -35,6 +41,14 @@ def main(argv: list[str] | None = None) -> int:
             email = load_eml(args.input, args.recipient)
         else:
             raise ValueError("Input must be a .eml or .json file")
+        if args.external_mode == "allowed-live" and not args.allow_domain:
+            raise ValueError("--external-mode allowed-live requires --allow-domain")
+        if args.allow_domain and args.external_mode != "allowed-live":
+            raise ValueError("--allow-domain requires --external-mode allowed-live")
+        if args.schema == "v2" and (args.max_actions is None or args.max_actions < 1):
+            raise ValueError("--schema v2 requires a positive --max-actions")
+        if args.schema == "v1" and args.max_actions is not None:
+            raise ValueError("--max-actions requires --schema v2")
 
         api_key = os.getenv(args.api_key_env)
         if not args.api_url or not args.model or not api_key:
@@ -42,17 +56,31 @@ def main(argv: list[str] | None = None) -> int:
         model = APIClient(args.api_url, api_key, args.model)
         print(f"Email: {email.subject or email.case_id}")
         print(f"Target recipient: {email.target_recipient}")
-        if input("Send this email's content to the configured model API? [y/N] ").strip().lower() != "y":
+        if input("Send this email and selected external text to the configured model API? [y/N] ").strip().lower() != "y":
             print("Cancelled. No content was sent.")
             return 0
+        if args.external_mode == "allowed-live" and any(source.kind == "link" and source.snapshot_text is None for source in email.external_sources):
+            if input("Fetch live links from the explicitly allowed domain(s)? [y/N] ").strip().lower() != "y":
+                print("Cancelled. No live link was fetched.")
+                return 0
 
-        run = process_email(email, model)
-        print(json.dumps(asdict(run.decision), indent=2, ensure_ascii=False))
-        print(f"Model: {run.reply.model}")
-        if run.reply.input_tokens is not None and run.reply.output_tokens is not None:
-            print(f"Tokens: {run.reply.input_tokens} input, {run.reply.output_tokens} output")
-        if run.reply.latency_ms is not None:
-            print(f"Latency: {run.reply.latency_ms:.0f} ms")
+        fetch_live = (lambda url: fetch_allowlisted_https(url, tuple(args.allow_domain))) if args.external_mode == "allowed-live" else None
+        if args.schema == "v2":
+            run = process_email_multi(email, model, args.max_actions) if args.external_mode == "body-only" else process_email_multi_with_external(email, model, args.max_actions, fetch_live=fetch_live)
+            output = {**asdict(run.decision), "action_count": run.decision.action_count}
+            replies = run.replies
+        else:
+            run = process_email(email, model) if args.external_mode == "body-only" else process_email_with_external(email, model, fetch_live=fetch_live)
+            output = asdict(run.decision)
+            replies = run.replies or (run.reply,)
+        print(json.dumps(output, indent=2, ensure_ascii=False))
+        print(f"Model: {replies[-1].model}")
+        if all(reply.input_tokens is not None and reply.output_tokens is not None for reply in replies):
+            print(f"Tokens: {sum(reply.input_tokens for reply in replies)} input, {sum(reply.output_tokens for reply in replies)} output across {len(replies)} call(s)")
+        if all(reply.latency_ms is not None for reply in replies):
+            print(f"Latency: {sum(reply.latency_ms for reply in replies):.0f} ms")
+        if run.read_records:
+            print("Read sources: " + ", ".join(record.source_id for record in run.read_records))
         if input("Approve this result for your own review? [y/N] ").strip().lower() == "y":
             print("Approved for review. No calendar or mailbox change was made.")
         else:

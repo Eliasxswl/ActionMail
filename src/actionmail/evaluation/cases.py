@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-from actionmail.domain.email import EmailPackage, SourceText
+from actionmail.domain.email import EmailPackage, ExternalSource, SourceText
 
 
 EXPECTED_COUNTS = {"no_action": 15, "explicit_action": 15, "context_dependent": 10, "external_content": 10}
@@ -97,6 +97,10 @@ def _load_authored(record: dict) -> EmailPackage:
         subject=payload["subject"],
         body=payload["body"],
         unread_sources=tuple(item["name"] for item in source["external_sources"]),
+        external_sources=tuple(
+            ExternalSource(item["source_id"], item["kind"], item["name"], snapshot_text=item["text"])
+            for item in source["external_sources"]
+        ),
     )
 
 
