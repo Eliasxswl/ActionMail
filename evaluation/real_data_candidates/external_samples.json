@@ -1,0 +1,69 @@
+{
+  "mailbox_index_url": "https://huggingface.co/datasets/enronarchive/mail/resolve/main/mail/blair-l/index.json",
+  "mailbox_index_sha256": "d8e015f361eb9d767ff09d3a51342e8f0e1f172a7e7622170dcb300da2a647ca",
+  "email_count": 3779,
+  "attachment_reference_extensions": {
+    ".doc": 382,
+    ".xls": 270,
+    ".dat": 42,
+    ".pps": 7,
+    ".ppt": 35,
+    ".rtf": 5,
+    ".pdf": 22,
+    ".jpg": 27,
+    ".gif": 11,
+    ".bmp": 2,
+    ".htm": 5,
+    ".xml": 2,
+    ".css": 1,
+    ".pcx": 4
+  },
+  "samples": [
+    {
+      "local_file": "external_samples/enron_nov25.pdf",
+      "original_filename": "nov25.pdf",
+      "sha256": "a51b32b139e3b43a5864a8f0f84c1761e46cc1c9b3ba017dbee320cf0a870d00",
+      "bytes": 17901,
+      "signature_hex": "255044462d312e32",
+      "parent_id": "496fbb1c751d22557bfd74a63732c608",
+      "parent_subject": "Bushton Balance",
+      "parent_file": "external_samples/496fbb1c751d22557bfd74a63732c608.parent.json",
+      "parent_file_sha256": "f2ee6c52ea5612eef187587c727318b15eaca9f48a1ca2b7606bcd5aac4c9c76",
+      "download_url": "https://huggingface.co/datasets/enronarchive/mail/resolve/main/mail/blair-l/attachments/496fbb1c751d22557bfd74a63732c608_nov25.pdf",
+      "date_policy": "Mirror date field is preserved in parent JSON, not promoted to verified received_at.",
+      "extraction": "success",
+      "extracted_chars": 3043,
+      "location_count": 1
+    },
+    {
+      "local_file": "external_samples/enron_feedback.doc",
+      "original_filename": "Customer Feedback Action Plan 0901.doc",
+      "sha256": "e04b81a1ff43bd44945ab067c11a0b188ef85d386cc7b8560df79d294a7e5331",
+      "bytes": 27648,
+      "signature_hex": "d0cf11e0a1b11ae1",
+      "parent_id": "00a44f790251c904faa3fa72e25942cf",
+      "parent_subject": "FW: Recap of the NNG Winter Operations Meeting",
+      "parent_file": "external_samples/00a44f790251c904faa3fa72e25942cf.parent.json",
+      "parent_file_sha256": "aa16ca9ffffec7c92509da93779a6c2151a07fbbc7a476f9dd7fe57619564b62",
+      "download_url": "https://huggingface.co/datasets/enronarchive/mail/resolve/main/mail/blair-l/attachments/00a44f790251c904faa3fa72e25942cf_Customer%20Feedback%20Action%20Plan%200901.doc",
+      "date_policy": "Mirror date field is preserved in parent JSON, not promoted to verified received_at.",
+      "extraction": "unsupported_or_failed",
+      "reason": "Unsupported attachment type: unknown"
+    },
+    {
+      "local_file": "external_samples/w3c_storage_buckets.pdf",
+      "original_filename": "TPAC_2020_Storage_Buckets_API.pdf",
+      "sha256": "d1d52cf2328ac2c03d708e170b5bb043e5cbdb5ebc32c6bd5f4b7be0d6f8bd56",
+      "bytes": 190655,
+      "signature_hex": "255044462d312e34",
+      "parent_url": "https://lists.w3.org/Archives/Public/www-archive/2020Nov/0000.html",
+      "parent_file": "w3c_storage_parent.html",
+      "parent_file_sha256": "e33e0a9a2bec42d8639453d68e5a3574322692e91a912768820a502710859d16",
+      "download_url": "https://lists.w3.org/Archives/Public/www-archive/2020Nov/att-0000/TPAC_2020_Storage_Buckets_API.pdf",
+      "date_policy": "Archive explicitly distinguishes sent time and received time; preserve both.",
+      "extraction": "success",
+      "extracted_chars": 4950,
+      "location_count": 25
+    }
+  ]
+}

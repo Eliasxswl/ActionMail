@@ -1,6 +1,10 @@
 # ActionMail development handoff
 
-Updated: 2026-09-30 (Asia/Singapore).
+Updated: 2026-10-01 (Asia/Singapore).
+
+## Current owner steering: original data first
+
+Read `docs/real_data_plan.md` first. The owner accepts roughly 2,000–3,000 characters and wants existing original data prioritized, with research into genuine attachment/link datasets. The prior mostly authored 24-case batch is now a preserved synthetic regression suite, not the primary acceptance batch. Twelve hash-bound original MailEx candidates are staged without gold; three parent-matched public attachment samples have been downloaded outside Git and checked offline. Do not invent missing times or documents. Conditional consent for the old 24 references does not authorize a changed batch. The review server still shows the historical authored preview until a new real benchmark is prepared.
 
 ## Implementation continuation
 

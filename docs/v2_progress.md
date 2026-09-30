@@ -2,6 +2,8 @@
 
 Updated: 2026-09-30 (Asia/Singapore). Development on `main`; package version remains `1.5.0`.
 
+Owner steering on 1 October supersedes the acceptance plan below: prioritize original data, accept approximately 2,000–3,000 characters, and investigate real attachment/link corpora. See `docs/real_data_plan.md` and `evaluation/real_data_candidates/`. The old challenge and its conditional model consent are preserved historically; they are not approval for the replacement batch. Public data downloads and offline real-PDF extraction checks have now been performed; no new model evaluation has run.
+
 ## Implemented
 
 - Actual `.eml` attachment bytes: text/CSV/HTML/text PDF/DOCX/XLSX. PDF page, DOCX paragraph/table and XLSX sheet/cell locations retain offsets. Spreadsheet expressions are not executed; cached values and missing caches are explicit.
