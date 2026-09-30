@@ -36,6 +36,8 @@ def create_server(dataset: ReviewDataset, port: int = 0) -> ThreadingHTTPServer:
             self.send_header("Content-Length", str(len(body)))
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
+            if content_type == 'application/octet-stream':
+                self.send_header('Content-Disposition', 'attachment')
             self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'")
             self.end_headers()
             self.wfile.write(body)
@@ -60,6 +62,15 @@ def create_server(dataset: ReviewDataset, port: int = 0) -> ThreadingHTTPServer:
                     self._json(200, dataset.overview())
                 elif path.startswith("/api/cases/"):
                     case_id = unquote(path.removeprefix("/api/cases/"))
+                    if '/attachments/' in case_id:
+                        case_id, source_id = case_id.split('/attachments/', 1)
+                        try:
+                            content, media = dataset.attachment(case_id, source_id)
+                        except KeyError:
+                            self._json(404, {'error': 'Attachment not found'})
+                        else:
+                            self._send(200, content, media)
+                        return
                     if case_id not in dataset.rows:
                         self._json(404, {"error": "Case not found"})
                     else:

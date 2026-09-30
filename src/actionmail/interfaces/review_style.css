@@ -83,6 +83,11 @@ details { color: #6e6e73; font-size: 12px; }
 details summary { cursor: pointer; }
 details pre { padding: 13px; border-radius: 8px; background: #f7f7f9; color: #3a3a3c; white-space: pre-wrap; overflow-wrap: anywhere; }
 
+.beneficiary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; padding: 16px 20px; margin-bottom: 20px; border: 1px solid #b9d5f5; border-radius: 12px; background: #eef6ff; }
+.beneficiary-label { color: #42556b; font-size: 13px; }
+.beneficiary-address { color: #174b80; font-size: 18px; overflow-wrap: anywhere; }
+.beneficiary-hint { flex-basis: 100%; color: #42556b; font-size: 12px; }
+.attachment-link { display: inline-block; margin-bottom: 12px; color: #0071e3; }
 .review-grid { display: grid; gap: 16px; }
 .review-field { display: grid; gap: 7px; }
 .review-field label { font-size: 12px; font-weight: 650; }

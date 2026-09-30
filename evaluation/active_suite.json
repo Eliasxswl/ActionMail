@@ -10,9 +10,9 @@
     },
     {
       "benchmark": "supplement-v2",
-      "manifest": "supplement_v2.jsonl",
+      "manifest": "supplement_v2_revision2.jsonl",
       "cases": 10,
-      "sha256": "32ce75d1db3643feeae6d45c19dc6c2f02ce93c63ed0eefb929871c5a0dac1b5"
+      "sha256": "91ff8be2dc3c3d71a72ea1ef1b97e48ec400d54c94748f2399ae99e206cdb8e0"
     }
   ],
   "excluded": [

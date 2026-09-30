@@ -205,7 +205,7 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         challenge = args.benchmark in {'challenge-v2.1', 'supplement-v2'}
         if challenge and args.manifest == DEFAULT_MANIFEST:
-            args.manifest = PROJECT_ROOT / 'evaluation' / ('supplement_v2.jsonl' if args.benchmark == 'supplement-v2' else 'archive/challenge_v2_1_revision2.jsonl')
+            args.manifest = PROJECT_ROOT / 'evaluation' / ('supplement_v2_revision2.jsonl' if args.benchmark == 'supplement-v2' else 'archive/challenge_v2_1_revision2.jsonl')
         if challenge:
             if args.engine != 'llm' or args.case_group or args.prepare_multi:
                 raise ValueError('Challenge uses the v2 LLM workflow; frozen groups/drafts do not apply')

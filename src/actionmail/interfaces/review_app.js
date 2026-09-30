@@ -150,6 +150,9 @@ function renderCase(data) {
   if (data.validation_errors.length) pills.append(node("span", "pill warning", `${data.validation_errors.length} validation issue(s)`));
   header.append(title, pills);
   main.append(header);
+  const beneficiary = node("section", "beneficiary");
+  beneficiary.append(node("span", "beneficiary-label", "Finding tasks for"), node("strong", "beneficiary-address", data.email.target_recipient), node("span", "beneficiary-hint", "Only this person's current tasks are shown. Other recipients' tasks are excluded."));
+  main.append(beneficiary);
 
   const grid = node("div", "grid");
   const sourceCard = node("section", "card");
@@ -166,7 +169,17 @@ function renderCase(data) {
   metadata.append(metaRow(synthetic ? "Fixture received time" : "Received at", data.email.received_at || "Unknown — not provided by the source"));
   sourceCard.append(metadata, sourceBlock("Newest message", "body", data.email.body));
   for (const thread of data.email.thread) sourceCard.append(sourceBlock("Earlier message", thread.source_id, thread.text, false, thread));
-  for (const source of data.external_sources) sourceCard.append(sourceBlock(source.name, source.source_id, source.text, true, null, source.read_by_model));
+  for (const source of data.external_sources) {
+    const block = sourceBlock(source.name, source.source_id, source.text, true, null, source.read_by_model);
+    if (source.original_attachment_url) {
+      const link = node("a", "attachment-link", "Open original attachment");
+      link.href = source.original_attachment_url;
+      link.target = "_blank";
+      link.rel = "noopener";
+      block.prepend(link);
+    }
+    sourceCard.append(block);
+  }
   grid.append(sourceCard);
 
   const right = node("div", "stack");

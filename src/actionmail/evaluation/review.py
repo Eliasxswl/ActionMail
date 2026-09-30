@@ -3,6 +3,7 @@ import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 from actionmail.domain.email import addresses_in_header
 from actionmail.evaluation.cases import EvaluationCase, load_cases
@@ -138,6 +139,7 @@ class ReviewDataset:
             },
             "external_sources": [
                 {"source_id": item["source_id"], "name": item["name"], "text": item["text"],
+                 "original_attachment_url": f'/api/cases/{quote(case_id)}/attachments/{quote(item["source_id"])}' if any(s.source_id == item['source_id'] and s.kind == 'attachment' and s.content is not None for s in email.external_sources) else None,
                  "read_by_model": False if row.get('reference_extraction_only') else
                      any(c['source_id'] == item['source_id'] for c in row['coverage']) if 'coverage' in row else
                      any(record["source_id"] == item["source_id"] for record in row.get("read_sources", []))}
@@ -155,12 +157,21 @@ class ReviewDataset:
             "error": row["error"],
             "status_correct": row["status_correct"],
             "review": self.reviews().get(case_id),
-            "prior_gold_review": self.prior_gold_reviews.get(case_id),
+            "prior_gold_review": self.prior_gold_reviews.get(case_id) or case.record.get('prior_review'),
             "workflow_trace": {key: row.get(key) for key in ('source_plan', 'coverage', 'read_failures', 'evidence_locations', 'content_coverage_complete', 'raw_model_responses')},
             "reference_review_state": case.record.get('review_state'),
             "source_expectations": case.record.get('source_expectations'),
             "expected_evidence_locations": case.record.get('evidence_locations'),
         }
+
+    def attachment(self, case_id: str, source_id: str) -> tuple[bytes, str]:
+        if case_id not in self.rows:
+            raise KeyError('Case not found')
+        source = next((s for s in self.cases[case_id].email.external_sources if s.source_id == source_id and s.kind == 'attachment' and s.content is not None), None)
+        if source is None:
+            raise KeyError('Original attachment not available')
+        media = 'application/pdf' if source.name.lower().endswith('.pdf') and source.content.startswith(b'%PDF-') else 'application/octet-stream'
+        return source.content, media
 
     def save_review(self, case_id: str, review: dict) -> dict:
         if case_id not in self.rows:

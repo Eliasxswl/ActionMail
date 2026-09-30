@@ -6,6 +6,8 @@ Owner steering on 1 October supersedes the acceptance plan below: prioritize ori
 
 The owner subsequently fixed the active suite at **60 cases: the unchanged base 50 plus `evaluation/supplement_v2.jsonl` (10)**. See `docs/evaluation_60.md`. The old challenge moved under `evaluation/archive/`; its commands below are historical. All 44 integration tests pass. The current ten-reference preview labels source authorship and synthetic times explicitly; original source times remain unknown when absent.
 
+Latest revision: active supplement is `evaluation/supplement_v2_revision2.jsonl`. Body-focused selection excludes general background from model context. Task text groups same-deliverable steps and preserves optionality; S01 is no-action per owner correction. Review UI prominently names the beneficiary and exposes verified original attachment bytes. The revised S10 isolates four independent tasks without filler/budget conflation. Prior owner review is preserved, unchanged correct references carried with provenance; four revised/uncertain references still require review. All **45 tests** pass; new offline tests establish skipped PDF exclusion and required-workbook read failure, not semantic LLM accuracy.
+
 ## Implemented
 
 - Actual `.eml` attachment bytes: text/CSV/HTML/text PDF/DOCX/XLSX. PDF page, DOCX paragraph/table and XLSX sheet/cell locations retain offsets. Spreadsheet expressions are not executed; cached values and missing caches are explicit.
