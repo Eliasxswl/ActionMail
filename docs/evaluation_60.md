@@ -2,6 +2,8 @@
 
 The owner fixed the active evaluation at exactly **60 cases**. `evaluation/active_suite.json` records the counts and hashes. The frozen 50 remain unchanged, preserving prior comparisons. The active supplementary manifest is now `evaluation/supplement_v2_revision2.jsonl`. The owner reviewed the previous ten references; prior adjudication remains unchanged. Revised S01 follows the owner's explicit corrected choice (no action). Unchanged correct judgments are carried with provenance; changed source expectations, the rejected/replaced case, and an uncertain judgment require further review. No new live model consent has been given.
 
+Review completed: all ten revision-2 gold judgments are now correct. `evaluation/supplement_v2_approved.jsonl` was created through the hash-bound approval command, and `active_suite.json` now adopts that approved manifest. Earlier revisions and review files remain historical. The supplementary CLI resolves the active registry and verifies its hash. Reference approval is not a model-accuracy result or consent to run a new live batch. Unified explanations/evidence remain a pending output-design choice.
+
 | Supplement | Primary coverage | Origin |
 | --- | --- | --- |
 | S01 | Optional comments for consideration create no obligation; unknown date, original longer thread | Original MailEx |

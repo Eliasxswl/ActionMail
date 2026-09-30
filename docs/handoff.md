@@ -10,6 +10,8 @@ Latest owner feedback: optional comments "for your consideration" alone create n
 
 ## Implementation continuation
 
+Latest acceptance update: all ten revision-2 reference judgments passed. The active supplementary manifest is now `evaluation/supplement_v2_approved.jsonl`, hash-bound to the saved owner adjudication. Active suite remains 60 cases. No new model evaluation has run or been separately authorized; unified explanation implementation awaits the owner's output-design choice. Earlier pending-review notes below are historical.
+
 The authorized implementation work on 30 September adds DOCX/XLSX and provenance, inventory-bound source plans, coverage-aware segments/merge, live-response replay traces, transport tests, and a separately versioned 24-case challenge. See `docs/v2_progress.md` for current verification, limits and remaining acceptance work. The original handoff below records the starting state; its gap list and 27-test count are historical. No new live model evaluation has been made. The owner agreed to a 24-case GPT-6 Luna run **after** reference review passes; do not run before that condition is satisfied.
 
 ## Start here (original handoff)

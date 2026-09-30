@@ -14,7 +14,7 @@
       "evidence_support": "",
       "gold_label": "correct",
       "note": "Owner judgment carried from unchanged reference in supplement-v2-gold-preview.",
-      "updated_at_utc": "2026-09-30T21:20:44.100748+00:00"
+      "updated_at_utc": "2026-09-30T21:50:06.460458+00:00"
     },
     "S07": {
       "action_meaning": "",
@@ -43,6 +43,34 @@
       "gold_label": "correct",
       "note": "Owner explicitly corrected the chat choice: comments for consideration alone do not trigger an action. This supersedes the prior reference judgment.",
       "updated_at_utc": "2026-09-30T21:20:44.155145+00:00"
+    },
+    "S03": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "updated_at_utc": "2026-09-30T21:49:37.978428+00:00"
+    },
+    "S05": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "updated_at_utc": "2026-09-30T21:50:28.399715+00:00"
+    },
+    "S10": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "updated_at_utc": "2026-09-30T21:50:56.407116+00:00"
+    },
+    "S02": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "updated_at_utc": "2026-09-30T22:01:33.570934+00:00"
     }
   }
 }

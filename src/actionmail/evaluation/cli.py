@@ -205,7 +205,14 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         challenge = args.benchmark in {'challenge-v2.1', 'supplement-v2'}
         if challenge and args.manifest == DEFAULT_MANIFEST:
-            args.manifest = PROJECT_ROOT / 'evaluation' / ('supplement_v2_revision2.jsonl' if args.benchmark == 'supplement-v2' else 'archive/challenge_v2_1_revision2.jsonl')
+            if args.benchmark == 'supplement-v2':
+                suite = json.loads((PROJECT_ROOT / 'evaluation/active_suite.json').read_text(encoding='utf-8'))
+                component = next(c for c in suite['components'] if c['benchmark'] == args.benchmark)
+                args.manifest = PROJECT_ROOT / 'evaluation' / component['manifest']
+                if hashlib.sha256(args.manifest.read_bytes()).hexdigest() != component['sha256']:
+                    raise ValueError('Active supplementary manifest hash mismatch')
+            else:
+                args.manifest = PROJECT_ROOT / 'evaluation/archive/challenge_v2_1_revision2.jsonl'
         if challenge:
             if args.engine != 'llm' or args.case_group or args.prepare_multi:
                 raise ValueError('Challenge uses the v2 LLM workflow; frozen groups/drafts do not apply')
@@ -254,7 +261,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.engine == "rules" and args.schema != "v1":
             raise ValueError("The rule baseline supports only the v1 schema")
         if args.validate:
-            print(f'Validated {len(cases)} {args.benchmark} cases; references require owner approval.' if challenge else f"Validated {len(cases)} frozen cases: 15 no-action, 15 explicit-action, 10 context, 5 attachment, 5 link.")
+            approved_count = sum(c.record.get('review_state') == 'approved' for c in cases)
+            print(f'Validated {len(cases)} {args.benchmark} cases; {approved_count} approved references, {len(cases) - approved_count} pending.' if challenge else f"Validated {len(cases)} frozen cases: 15 no-action, 15 explicit-action, 10 context, 5 attachment, 5 link.")
             return 0
         if args.limit is not None and args.limit < 1:
             raise ValueError("--limit must be positive")
