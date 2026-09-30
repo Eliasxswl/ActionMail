@@ -1,0 +1,37 @@
+From: Maya <maya@example.com>
+To: Alex <alex@example.com>, Morgan <morgan@example.com>
+Date: Wed, 30 Sep 2026 09:00:00 +0800
+Subject: P04 development challenge
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="actionmail-P04"
+
+--actionmail-P04
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Alex, complete your tasks in the attached plan and at https://example.org/tas=
+ks
+
+--actionmail-P04
+Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="plan.docx"
+MIME-Version: 1.0
+
+UEsDBBQAAAAIAAAAPl33S4B1wgAAAHYBAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbH2QuQ7CMAyG
+X6XKiqgRAwOiLMAKDLyAlbptRC7FLsfbk3INCBjt//gsLw7XSFxcnPVcqU4kzgFYd+SQyxDJZ6UJ
+yaHkMbUQUR+xJZhOJjPQwQt5GcvQoZaLNTXYWyk2l7xmE3ylEllWxephHFiVwhit0ShZh5OvPyjj
+J6HMybuHOxN5lA0KvhIG5TfgmdudKCVTU7HHJFt02QXnkGqog+5dTpb/a77cGZrGaHrnh7aYgiZm
+41tny7fi0PjX/XB/9/IGUEsDBBQAAAAIAAAAPl1LHr73hwAAAPAAAAALAAAAX3JlbHMvLnJlbHON
+zzsOAiEQBuCrEA6ws1pYGKCysTV7AQLDIy6PDBj19lJYrMbCcuaffH9GXHDVPZbcQqyNPdKam+Sh
+93oEaCZg0m0qFfNIXKGk+xjJQ9Xmqj3Cfp4PQFuDK7E12dlKTjvOlmfFf+TiXDR4KuaWMPcfBV8X
+Q9bksUt+L2TBvtfTYDkoAR8PqhdQSwMEFAAAAAgAAAA+XbjjJVeTAAAAygAAABEAAAB3b3JkL2Rv
+Y3VtZW50LnhtbEXOOw7DIAwG4Ksg5ipEHTqgBKlHoeAmSDwsm4T09g3p0OWzrF9+TE374rYEuYoj
+xcy6zXKtFbVS7FZIloeCkM/sXSjZera0qFbIIxUHzCEvKar7OD5UsiFLMzX9Kv7TK3aoc23XjNbB
+LJGAgXaQ5hnhuIkNY7Fe1BUEwR4YvOBQQWC0eZjUOW26dImXvwvq/735AlBLAQIUABQAAAAIAAAA
+Pl33S4B1wgAAAHYBAAATAAAAAAAAAAAAAACAAQAAAABbQ29udGVudF9UeXBlc10ueG1sUEsBAhQA
+FAAAAAgAAAA+XUsevveHAAAA8AAAAAsAAAAAAAAAAAAAAIAB8wAAAF9yZWxzLy5yZWxzUEsBAhQA
+FAAAAAgAAAA+XbjjJVeTAAAAygAAABEAAAAAAAAAAAAAAIABowEAAHdvcmQvZG9jdW1lbnQueG1s
+UEsFBgAAAAADAAMAuQAAAGUCAAAAAA==
+
+--actionmail-P04--

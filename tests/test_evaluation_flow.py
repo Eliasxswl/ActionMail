@@ -131,7 +131,7 @@ class EvaluationFlowTests(unittest.TestCase):
 
     def test_v2_snapshot_case_checks_one_action_and_read_provenance(self):
         responses = iter([
-            {"status": "needs_review", "actions": [], "review_reason": "Attachment unread"},
+            {"sources": [{"source_id": "attachment:1", "relevance": "decisive", "reason": "Newest message refers to attached instructions"}]},
             {"status": "action", "review_reason": None, "actions": [
                 {"kind": "perform_task", "text": "Approve invoice INV-104.", "deadline": "2026-10-01",
                  "evidence": [{"source_id": "attachment:1", "quote": "Alex, please approve invoice INV-104 by 2026-10-01."}]},

@@ -1,0 +1,53 @@
+From: Maya <maya@example.com>
+To: Alex <alex@example.com>, Morgan <morgan@example.com>
+Date: Wed, 30 Sep 2026 09:00:00 +0800
+Subject: A05 development challenge
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="actionmail-A05"
+
+--actionmail-A05
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Alex, complete your tasks in estimate.txt and design.docx. Reference.csv is h=
+istorical context only.
+
+--actionmail-A05
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="estimate.txt"
+MIME-Version: 1.0
+
+QWxleCwgc2VuZCB0aGUgcHJvamVjdCBlc3RpbWF0ZS4=
+
+--actionmail-A05
+Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="design.docx"
+MIME-Version: 1.0
+
+UEsDBBQAAAAIAAAAPl33S4B1wgAAAHYBAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbH2QuQ7CMAyG
+X6XKiqgRAwOiLMAKDLyAlbptRC7FLsfbk3INCBjt//gsLw7XSFxcnPVcqU4kzgFYd+SQyxDJZ6UJ
+yaHkMbUQUR+xJZhOJjPQwQt5GcvQoZaLNTXYWyk2l7xmE3ylEllWxephHFiVwhit0ShZh5OvPyjj
+J6HMybuHOxN5lA0KvhIG5TfgmdudKCVTU7HHJFt02QXnkGqog+5dTpb/a77cGZrGaHrnh7aYgiZm
+41tny7fi0PjX/XB/9/IGUEsDBBQAAAAIAAAAPl1LHr73hwAAAPAAAAALAAAAX3JlbHMvLnJlbHON
+zzsOAiEQBuCrEA6ws1pYGKCysTV7AQLDIy6PDBj19lJYrMbCcuaffH9GXHDVPZbcQqyNPdKam+Sh
+93oEaCZg0m0qFfNIXKGk+xjJQ9Xmqj3Cfp4PQFuDK7E12dlKTjvOlmfFf+TiXDR4KuaWMPcfBV8X
+Q9bksUt+L2TBvtfTYDkoAR8PqhdQSwMEFAAAAAgAAAA+XdEEASqQAAAAxwAAABEAAAB3b3JkL2Rv
+Y3VtZW50LnhtbEWOQQrDIBBFryKuSyxddCGJ0KNYnWog6jBjY3r7arro5n2Gz3/M3LQv7p0gV3Gk
+LbNui4y1olaKXYRkeSoIuXevQsnWflJQrZBHKg6Y1xzSpm7X610lu2Zp5qafxX9G4gANnHbNaB0s
+EgkYaAdpHhscF2Gxu3YQNYLwwGvIwkWbA0yz6lMzSCfx5E+v/q+bL1BLAQIUABQAAAAIAAAAPl33
+S4B1wgAAAHYBAAATAAAAAAAAAAAAAACAAQAAAABbQ29udGVudF9UeXBlc10ueG1sUEsBAhQAFAAA
+AAgAAAA+XUsevveHAAAA8AAAAAsAAAAAAAAAAAAAAIAB8wAAAF9yZWxzLy5yZWxzUEsBAhQAFAAA
+AAgAAAA+XdEEASqQAAAAxwAAABEAAAAAAAAAAAAAAIABowEAAHdvcmQvZG9jdW1lbnQueG1sUEsF
+BgAAAAADAAMAuQAAAGICAAAAAA==
+
+--actionmail-A05
+Content-Type: text/csv
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="reference.csv"
+MIME-Version: 1.0
+
+eWVhcixjb21wbGV0ZWRfb3JkZXJzCjIwMjUsNDI=
+
+--actionmail-A05--

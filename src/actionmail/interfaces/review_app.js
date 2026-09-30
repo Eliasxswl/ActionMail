@@ -190,6 +190,15 @@ function renderCase(data) {
     for (const message of [...data.validation_errors, ...(data.error ? [data.error] : [])]) errors.append(node("li", "", message));
     comparison.append(errors);
   }
+  if (data.reference_review_state) {
+    comparison.append(node("p", "muted", `Reference: ${data.reference_review_state}. Review candidate gold before scoring.`));
+  }
+  if (data.workflow_trace || data.source_expectations) {
+    const trace = node("details");
+    trace.append(node("summary", "", "Source selection, coverage and provenance"),
+      node("pre", "", JSON.stringify({expected_sources: data.source_expectations, expected_locations: data.expected_evidence_locations, ...data.workflow_trace}, null, 2)));
+    comparison.append(trace);
+  }
   if (data.raw_model_response) {
     const details = node("details");
     details.append(node("summary", "", "Raw model response"), node("pre", "", data.raw_model_response));
@@ -208,6 +217,14 @@ function renderCase(data) {
     selectField("evidence_support", "Does the evidence support that action?", "An exact quote can still support the wrong recipient or obligation.", review.evidence_support, !hasAction || isMulti),
     selectField("gold_label", data.multi_action_draft ? "Is the draft multi-action reference reasonable?" : "Is the reference label reasonable?", "Pending v2 drafts are not scored as gold.", review.gold_label ?? (data.multi_action_draft ? "" : data.prior_gold_review?.gold_label), false),
   );
+  if (data.prediction && data.reference_review_state) {
+    fields.append(
+      selectField("action_completeness", "Are all requested tasks represented?", "Check omissions and extra tasks across the complete message.", review.action_completeness, false),
+      selectField("deadline_correct", "Are the action deadlines correct?", "Check relative dates, timezone and source conflicts.", review.deadline_correct, false),
+      selectField("source_selection", "Were the relevant sources selected?", "Compare the source plan with the email and source expectations.", review.source_selection, false),
+      selectField("content_coverage", "Was enough decisive content read?", "Check offsets, failures and budget explanations.", review.content_coverage, false),
+    );
+  }
   if (isMulti) {
     for (const [index, action] of data.prediction.actions.entries()) {
       const checks = review.action_checks?.[index] || {};
@@ -265,6 +282,9 @@ async function saveReview() {
     gold_label: $("#gold_label").value,
     note: $("#note").value,
   };
+  for (const field of ["action_completeness", "deadline_correct", "source_selection", "content_coverage"]) {
+    if ($(`#${field}`)) review[field] = $(`#${field}`).value;
+  }
   const meaningChecks = [...document.querySelectorAll('[id^="action_meaning_"]')];
   if (meaningChecks.length) review.action_checks = meaningChecks.map((field, index) => ({
     action_meaning: field.value,

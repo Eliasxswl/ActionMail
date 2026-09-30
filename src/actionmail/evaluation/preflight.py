@@ -85,24 +85,60 @@ def prior_output_average(results_root: Path, model: str) -> tuple[int, int]:
 def estimate(cases, results_root: Path, model: str, input_price: float, output_price: float, request_price: float = 0, external_mode: str = "body-only", schema: str = "v1") -> dict:
     # Character count is only a rough proxy for provider-tokenizer input tokens.
     prompt = SYSTEM_PROMPT if schema == "v1" else V2_SYSTEM_PROMPT.format(max_actions=MAX_ACTIONS)
-    input_tokens = sum(math.ceil((len(prompt) + len(_user_prompt(case.email)) + 16) / 4) for case in cases)
-    additional_calls = 0
-    if external_mode != "body-only":
+    input_tokens = 0
+    model_calls = 0
+    if schema == 'v2':
+        from actionmail.content.reader import read_external_sources, MAX_TEXT_CHARS
+        from actionmail.workflow.coverage import WorkflowLimits, PLAN_PROMPT, segments
         for case in cases:
-            if not case.email.external_sources:
-                continue
-            additional_calls += 1
-            external_chars = sum(
-                len(source.snapshot_text) if source.snapshot_text is not None else 20_000
-                for source in case.email.external_sources[:2]
-            )
-            input_tokens += math.ceil((len(prompt) + len(_user_prompt(case.email)) + external_chars + 64) / 4)
+            limits = WorkflowLimits(**case.record.get('workflow_limits', {}))
+            email = case.email
+            body_sources = {'body': email.body, **{s.source_id: s.text for s in email.thread}}
+            if external_mode != 'body-only' and email.external_sources:
+                try:
+                    plan_windows = segments(body_sources, limits)
+                except ValueError:
+                    continue  # Actual workflow stops before any call.
+                inventory_chars = sum(len(s.name) + len(s.source_id) + 128 for s in email.external_sources)
+                model_calls += len(plan_windows)
+                input_tokens += sum(math.ceil((len(PLAN_PROMPT) + len(w.text) + inventory_chars + 2048) / 4) for w in plan_windows)
+                outcome = read_external_sources(email)
+                sources = {**email.sources(), **{s.source_id: s.text for s in outcome.email.read_sources}}
+                for source in email.external_sources:
+                    if source.source_id not in sources and source.kind == 'link' and source.snapshot_text is None and external_mode == 'allowed-live':
+                        sources[source.source_id] = ' ' * MAX_TEXT_CHARS  # Unavailable live/file content upper scenario.
+            else:
+                sources = email.sources()
+            try:
+                windows = segments(sources, limits)
+            except ValueError:
+                # Unknown live sizes: budgeted worst case, not an assumed two-call path.
+                windows = None
+            total = sum(len(t) for t in sources.values())
+            if total <= limits.segment_chars:
+                model_calls += 1
+                input_tokens += math.ceil((len(prompt) + total + 2048) / 4)
+            else:
+                count = len(windows) if windows is not None else limits.max_segments
+                model_calls += count + 1
+                # Candidate/newest context can grow up to the merge budget on each segment.
+                input_tokens += count * math.ceil((len(prompt) + limits.segment_chars + limits.max_merge_chars + 2048) / 4)
+                input_tokens += math.ceil((len(prompt) + limits.max_merge_chars) / 4)
+    else:
+        input_tokens = sum(math.ceil((len(prompt) + len(_user_prompt(case.email)) + 16) / 4) for case in cases)
+        model_calls = len(cases)
+        if external_mode != 'body-only':
+            for case in cases:
+                if case.email.external_sources:
+                    model_calls += 1
+                    external_chars = sum(len(s.snapshot_text) if s.snapshot_text is not None else 200_000 for s in case.email.external_sources)
+                    input_tokens += math.ceil((len(prompt) + len(_user_prompt(case.email)) + external_chars + 64) / 4)
     output_per_case, samples = prior_output_average(results_root, model)
-    model_calls = len(cases) + additional_calls
     output_tokens = model_calls * output_per_case
     cost = (input_tokens * input_price + output_tokens * output_price) / 1_000_000 + model_calls * request_price
     cap_cost = (input_tokens * input_price + model_calls * MAX_OUTPUT_TOKENS * output_price) / 1_000_000 + model_calls * request_price
     return {
+        "estimate_scope": "Conservative all-source planning/segment/merge scenario; source selection and failures may reduce calls",
         "input_tokens": input_tokens,
         "output_tokens": output_tokens,
         "output_per_case": output_per_case,

@@ -6,10 +6,12 @@ from pathlib import Path
 
 from actionmail.domain.email import addresses_in_header
 from actionmail.evaluation.cases import EvaluationCase, load_cases
+from actionmail.evaluation.challenge import load_challenge
 
 
 REVIEW_VALUES = {"correct", "incorrect", "uncertain", ""}
 REVIEW_FIELDS = ("action_meaning", "evidence_support", "gold_label")
+OPTIONAL_REVIEW_FIELDS = ('action_completeness', 'deadline_correct', 'source_selection', 'content_coverage')
 
 
 @dataclass
@@ -37,14 +39,15 @@ class ReviewDataset:
                 manifest_hash = run["manifest_sha256"]
         if manifest_hash != run["manifest_sha256"]:
             raise ValueError("The manifest does not match this evaluation run")
-        cases = {case.case_id: case for case in load_cases(manifest, mailex_root)}
+        challenge = run.get('benchmark') == 'challenge-v2.1'
+        cases = {case.case_id: case for case in (load_challenge(manifest, mailex_root) if challenge else load_cases(manifest, mailex_root))}
         rows_list = [json.loads(line) for line in (run_dir / "cases.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
         rows = {row["case_id"]: row for row in rows_list}
         if len(rows) != len(rows_list) or set(rows) - set(run["case_ids"]) or set(rows) - set(cases):
             raise ValueError("Evaluation rows do not match the run and manifest")
         revised_gold = {}
         current_manifest = manifest.parent / "cases.jsonl"
-        if manifest != current_manifest and current_manifest.exists():
+        if not challenge and manifest != current_manifest and current_manifest.exists():
             for case in load_cases(current_manifest, mailex_root):
                 if case.case_id in rows and case.gold != rows[case.case_id]["gold"]:
                     revised_gold[case.case_id] = case.gold
@@ -104,6 +107,11 @@ class ReviewDataset:
         case = self.cases[case_id]
         email = case.email
         external = case.record["source"].get("external_sources", [])
+        if case.record.get('challenge_version'):
+            extracted = {r['source_id']: r for r in row.get('read_sources', [])}
+            external = [{'source_id': s.source_id, 'name': s.name,
+                         'text': extracted.get(s.source_id, {}).get('extracted_text') or s.snapshot_text or '(Not extracted; see read failures or source plan)'}
+                        for s in email.external_sources]
         return {
             "case_id": case_id,
             "category": row["category"],
@@ -129,7 +137,9 @@ class ReviewDataset:
             },
             "external_sources": [
                 {"source_id": item["source_id"], "name": item["name"], "text": item["text"],
-                 "read_by_model": any(record["source_id"] == item["source_id"] for record in row.get("read_sources", []))}
+                 "read_by_model": False if row.get('reference_extraction_only') else
+                     any(c['source_id'] == item['source_id'] for c in row['coverage']) if 'coverage' in row else
+                     any(record["source_id"] == item["source_id"] for record in row.get("read_sources", []))}
                 for item in external
             ],
             "gold": row["gold"],
@@ -145,15 +155,21 @@ class ReviewDataset:
             "status_correct": row["status_correct"],
             "review": self.reviews().get(case_id),
             "prior_gold_review": self.prior_gold_reviews.get(case_id),
+            "workflow_trace": {key: row.get(key) for key in ('source_plan', 'coverage', 'read_failures', 'evidence_locations', 'content_coverage_complete', 'raw_model_responses')},
+            "reference_review_state": case.record.get('review_state'),
+            "source_expectations": case.record.get('source_expectations'),
+            "expected_evidence_locations": case.record.get('evidence_locations'),
         }
 
     def save_review(self, case_id: str, review: dict) -> dict:
         if case_id not in self.rows:
             raise KeyError(case_id)
-        if not {*REVIEW_FIELDS, "note"} <= set(review) or set(review) - {*REVIEW_FIELDS, "note", "action_checks"}:
+        if not {*REVIEW_FIELDS, "note"} <= set(review) or set(review) - {*REVIEW_FIELDS, *OPTIONAL_REVIEW_FIELDS, "note", "action_checks"}:
             raise ValueError("Review must contain action_meaning, evidence_support, gold_label, and note")
         if any(not isinstance(review[field], str) or review[field] not in REVIEW_VALUES for field in REVIEW_FIELDS):
             raise ValueError("Review choice is invalid")
+        if any(not isinstance(review[field], str) or review[field] not in REVIEW_VALUES for field in OPTIONAL_REVIEW_FIELDS if field in review):
+            raise ValueError('Optional review choice is invalid')
         note = review["note"]
         if not isinstance(note, str) or len(note) > 2000:
             raise ValueError("Review note must be text of at most 2000 characters")
@@ -166,9 +182,10 @@ class ReviewDataset:
         if any(not isinstance(item, dict) or set(item) != {"action_meaning", "evidence_support"} or
                any(not isinstance(item[field], str) or item[field] not in REVIEW_VALUES for field in ("action_meaning", "evidence_support")) for item in checks):
             raise ValueError("Action check choice is invalid")
-        if not note.strip() and not any(review[field] for field in REVIEW_FIELDS) and not any(any(item.values()) for item in checks):
+        if not note.strip() and not any(review[field] for field in REVIEW_FIELDS) and not any(review.get(field) for field in OPTIONAL_REVIEW_FIELDS) and not any(any(item.values()) for item in checks):
             raise ValueError("Choose at least one assessment or write a note")
         updated = {field: review[field] for field in REVIEW_FIELDS}
+        updated.update({field: review[field] for field in OPTIONAL_REVIEW_FIELDS if field in review})
         updated["note"] = note.strip()
         if checks:
             updated["action_checks"] = checks

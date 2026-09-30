@@ -1,0 +1,23 @@
+From: Maya <maya@example.com>
+To: Alex <alex@example.com>, Morgan <morgan@example.com>
+Date: Wed, 30 Sep 2026 09:00:00 +0800
+Subject: A06 development challenge
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="actionmail-A06"
+
+--actionmail-A06
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Alex, please approve the purchase request. The attached brochure is unrelated=
+ advertising; ignore it.
+
+--actionmail-A06
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="brochure.bin"
+MIME-Version: 1.0
+
+dW5zdXBwb3J0ZWQgYWR2ZXJ0aXNpbmc=
+
+--actionmail-A06--

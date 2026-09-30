@@ -1,0 +1,36 @@
+From: Maya <maya@example.com>
+To: Alex <alex@example.com>, Morgan <morgan@example.com>
+Date: Wed, 30 Sep 2026 09:00:00 +0800
+Subject: H02 development challenge
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="actionmail-H02"
+
+--actionmail-H02
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Alex, complete the request shown in the scanned PDF.
+
+--actionmail-H02
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="scan.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjMKJeLjz9MKMSAwIG9iago8PAovUHJvZHVjZXIgKHB5cGRmKQo+PgplbmRvYmoKMiAw
+IG9iago8PAovVHlwZSAvUGFnZXMKL0NvdW50IDEKL0tpZHMgWyA0IDAgUiBdCj4+CmVuZG9iagoz
+IDAgb2JqCjw8Ci9UeXBlIC9DYXRhbG9nCi9QYWdlcyAyIDAgUgo+PgplbmRvYmoKNCAwIG9iago8
+PAovVHlwZSAvUGFnZQovUmVzb3VyY2VzIDw8Ci9Gb250IDw8Ci9GMSA8PAovVHlwZSAvRm9udAov
+U3VidHlwZSAvVHlwZTEKL0Jhc2VGb250IC9IZWx2ZXRpY2EKPj4KPj4KL1hPYmplY3QgPDwKL0lt
+MSA1IDAgUgo+Pgo+PgovTWVkaWFCb3ggWyAwLjAgMC4wIDYxMiA3OTIgXQovUGFyZW50IDIgMCBS
+Ci9Db250ZW50cyA2IDAgUgo+PgplbmRvYmoKNSAwIG9iago8PAovVHlwZSAvWE9iamVjdAovU3Vi
+dHlwZSAvSW1hZ2UKL1dpZHRoIDEKL0hlaWdodCAxCi9Db2xvclNwYWNlIC9EZXZpY2VSR0IKL0Jp
+dHNQZXJDb21wb25lbnQgOAovTGVuZ3RoIDMKPj4Kc3RyZWFtCgAAAAplbmRzdHJlYW0KZW5kb2Jq
+CjYgMCBvYmoKPDwKL0xlbmd0aCAzMgo+PgpzdHJlYW0KcSAzMDAgMCAwIDQwMCA1MCA1MCBjbSAv
+SW0xIERvIFEKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAw
+MDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA1NCAwMDAwMCBuIAowMDAwMDAwMTEzIDAwMDAwIG4g
+CjAwMDAwMDAxNjIgMDAwMDAgbiAKMDAwMDAwMDM2OSAwMDAwMCBuIAowMDAwMDAwNTE0IDAwMDAw
+IG4gCnRyYWlsZXIKPDwKL1NpemUgNwovUm9vdCAzIDAgUgovSW5mbyAxIDAgUgo+PgpzdGFydHhy
+ZWYKNTk2CiUlRU9GCg==
+
+--actionmail-H02--

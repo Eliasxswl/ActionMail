@@ -3,6 +3,8 @@ import ipaddress
 import re
 import socket
 import ssl
+from dataclasses import dataclass
+from datetime import datetime, timezone
 from urllib.parse import urljoin, urlsplit
 
 from actionmail.content.reader import MAX_SOURCE_BYTES
@@ -10,6 +12,19 @@ from actionmail.content.reader import MAX_SOURCE_BYTES
 
 REDIRECT_CODES = {301, 302, 303, 307, 308}
 SUPPORTED_MEDIA_TYPES = {"text/plain", "text/csv", "text/html", "application/pdf"}
+
+
+@dataclass(frozen=True)
+class FetchedPage:
+    content: bytes
+    media_type: str
+    charset: str | None
+    final_url: str
+    retrieved_at: str
+
+    def __iter__(self):
+        # Preserve the original fetcher unpacking contract.
+        return iter((self.content, self.media_type, self.charset))
 
 
 class _PinnedHTTPSConnection(http.client.HTTPSConnection):
@@ -57,7 +72,7 @@ def _destination(url: str, allowed_domains: set[str]) -> tuple[str, str, str]:
     return hostname, sorted(addresses)[0], path
 
 
-def fetch_allowlisted_https(url: str, allowed_domains: tuple[str, ...]) -> tuple[bytes, str, str | None]:
+def fetch_allowlisted_https(url: str, allowed_domains: tuple[str, ...]) -> FetchedPage:
     """Fetch a public HTTPS page through a DNS-pinned, allowlisted connection."""
     allowed = {domain.lower().strip() for domain in allowed_domains}
     if not allowed:
@@ -96,7 +111,7 @@ def fetch_allowlisted_https(url: str, allowed_domains: tuple[str, ...]) -> tuple
             content = response.read(MAX_SOURCE_BYTES + 1)
             if len(content) > MAX_SOURCE_BYTES:
                 raise ValueError("Link response exceeds the 2 MiB limit")
-            return content, media_type, charset
+            return FetchedPage(content, media_type, charset, current, datetime.now(timezone.utc).isoformat())
         finally:
             connection.close()
     raise ValueError("Link redirect limit exceeded")

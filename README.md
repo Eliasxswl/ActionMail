@@ -121,6 +121,33 @@ actionmail-eval --engine llm --schema v2 --model openai/gpt-6-luna --case-group 
 
 Both draft references await owner approval, so the v2 summary does not score them as correct or incorrect. A16 proposes two separately evidenced tasks. C13 names two candidate requests but remains `needs_review` because MailEx does not contain the attachment needed for the review task. The review page displays each v2 action and saves separate meaning and evidence checks for each predicted action. After a run, open its saved directory with `actionmail-review PATH_TO_RUN`; stop any existing review server on port 61933 first.
 
+### Review the separate v2.1 development challenge
+
+The 24 development cases in `evaluation/challenge_v2_1_revision2.jsonl` have pending-owner candidate gold. They include 23 authored `.eml` fixtures with actual attachment bytes and one longer authentic MailEx thread. Five authored long-body/thread cases vary task position, ownership and currentness; the attachment group includes a DOCX above 20,000 extracted characters. The manifest stores fixture hashes, authorship, feature tags, per-source relevance/read expectations, expected evidence locations and lowered budgets where applicable. It does not alter the frozen 50 cases or any historical scores. Snapshot-mode gold is fixed separately from mocked live transport verification.
+
+Validate and prepare a reference-only review page without making model calls:
+
+```powershell
+actionmail-eval --benchmark challenge-v2.1 --validate
+actionmail-eval --benchmark challenge-v2.1 --prepare-challenge --output-dir results/evaluation/challenge-v2.1-gold-preview-r2
+actionmail-review results/evaluation/challenge-v2.1-gold-preview-r2 --manifest evaluation/challenge_v2_1_revision2.jsonl --port 61933 --no-browser
+```
+
+Reuse the running review server on port 61933 or stop only the existing project review server before replacing it. A second listener is rejected by updated server code. The prepared page contains extracted reference material and **no model prediction**; extraction is not labeled as model reading. Save a gold judgment for every case. Corrections require a new manifest/review revision, never changes to historical runs. Once every reference is reviewed correct, write a separate approved manifest:
+
+```powershell
+actionmail-eval --benchmark challenge-v2.1 --approve-challenge-gold results/evaluation/challenge-v2.1-gold-preview-r2 --approved-manifest evaluation/challenge_v2_1_approved.jsonl
+```
+
+The command checks the matching manifest/run hashes and all gold judgments. After separate owner consent to a new live batch and local key setup, preview current provider prices and run:
+
+```powershell
+actionmail-eval --benchmark challenge-v2.1 --manifest evaluation/challenge_v2_1_approved.jsonl --model openai/gpt-6-luna --preflight
+actionmail-eval --benchmark challenge-v2.1 --manifest evaluation/challenge_v2_1_approved.jsonl --model openai/gpt-6-luna
+```
+
+Preflight covers planning, all content segments and merging, with conservative all-source input and output scenarios. Character-based token estimates are approximate, not a guaranteed spending cap. Live model results still need separate owner checks for action completeness, meaning, evidence, deadlines, source selection and coverage. Unsupported-source review counts are reported separately from successful long-content extraction. This is a development benchmark; tuning against it must be disclosed. Version `1.5.0` remains unchanged until v2 acceptance gates pass.
+
 ### Review cases in a local browser
 
 Install the updated package with `python -m pip install -e .`, then open the current gold v1.5 model run to review its proposed actions and evidence:
@@ -135,7 +162,7 @@ Saved assessments go to `adjudication.json` inside that run directory. The origi
 
 ## Technology decision
 
-The main extractor uses **one LLM**. A deterministic rule matcher provides a non-AI baseline. An experimental **bounded tool-use workflow** on `main` reads local attachments or frozen page snapshots, and can read live HTTPS pages from explicitly allowed domains. It makes at most two model calls and reads at most two external sources per email; source selection from the first answer is still in development. A separately trained ML classifier is outside the initial scope because the available event labels do not directly match the recipient-specific action task.
+The main extractor uses **one LLM**. A deterministic rule matcher provides a non-AI baseline. An experimental **bounded tool-use workflow** on `main` reads local attachments or frozen page snapshots, and can read live HTTPS pages from explicitly allowed domains. The v2 path validates a source-reading plan, reads up to 12 selected external sources by default, and covers long input with overlapping segments and a candidate merge. All budgets are explicit; call counts depend on covered content. DOCX/XLSX and PDF page/cell provenance are implemented. Acceptance remains pending owner-reviewed challenge results. A separately trained ML classifier is outside the initial scope because the available event labels do not directly match the recipient-specific action task.
 
 Python code will own the orchestration, validation, and evaluation. UiPath is not a runtime dependency. The final report will explain this change from the formative problem statement.
 

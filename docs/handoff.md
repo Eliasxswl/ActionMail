@@ -2,7 +2,11 @@
 
 Updated: 2026-09-30 (Asia/Singapore).
 
-## Start here
+## Implementation continuation
+
+The authorized implementation work on 30 September adds DOCX/XLSX and provenance, inventory-bound source plans, coverage-aware segments/merge, live-response replay traces, transport tests, and a separately versioned 24-case challenge. See `docs/v2_progress.md` for current verification, limits and remaining acceptance work. The original handoff below records the starting state; its gap list and 27-test count are historical. No new live model evaluation has been made. The owner agreed to a 24-case GPT-6 Luna run **after** reference review passes; do not run before that condition is satisfied.
+
+## Start here (original handoff)
 
 Continue v2 development from `main` in `E:\NTU Learn\PE6201\End_Course_project\ActionMail`. Read this file, `docs/v2_design.md`, and the current code before changing anything. The owner rejected the idea of deferring realistic attachment/link handling beyond v2. The next work is implementation and meaningful evaluation, not another visual redesign.
 

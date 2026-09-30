@@ -1,0 +1,40 @@
+From: Maya <maya@example.com>
+To: Alex <alex@example.com>, Morgan <morgan@example.com>
+Date: Wed, 30 Sep 2026 09:00:00 +0800
+Subject: A01 development challenge
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="actionmail-A01"
+
+--actionmail-A01
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Alex, please carry out your request on page 2 of the attached equipment brief.
+
+--actionmail-A01
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="equipment.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjMKJeLjz9MKMSAwIG9iago8PAovUHJvZHVjZXIgKHB5cGRmKQo+PgplbmRvYmoKMiAw
+IG9iago8PAovVHlwZSAvUGFnZXMKL0NvdW50IDIKL0tpZHMgWyA0IDAgUiA2IDAgUiBdCj4+CmVu
+ZG9iagozIDAgb2JqCjw8Ci9UeXBlIC9DYXRhbG9nCi9QYWdlcyAyIDAgUgo+PgplbmRvYmoKNCAw
+IG9iago8PAovVHlwZSAvUGFnZQovUmVzb3VyY2VzIDw8Ci9Gb250IDw8Ci9GMSA8PAovVHlwZSAv
+Rm9udAovU3VidHlwZSAvVHlwZTEKL0Jhc2VGb250IC9IZWx2ZXRpY2EKPj4KPj4KPj4KL01lZGlh
+Qm94IFsgMC4wIDAuMCA2MTIgNzkyIF0KL1BhcmVudCAyIDAgUgovQ29udGVudHMgNSAwIFIKPj4K
+ZW5kb2JqCjUgMCBvYmoKPDwKL0xlbmd0aCA5MAo+PgpzdHJlYW0KQlQgL0YxIDExIFRmIDUwIDcz
+MCBUZCAoRXF1aXBtZW50IHN0dWR5OiB0aGUgZW5naW5lZXJpbmcgdGVhbSBjb21wbGV0ZWQgaXRz
+IHN1cnZleS4pIFRqIEVUCmVuZHN0cmVhbQplbmRvYmoKNiAwIG9iago8PAovVHlwZSAvUGFnZQov
+UmVzb3VyY2VzIDw8Ci9Gb250IDw8Ci9GMSA8PAovVHlwZSAvRm9udAovU3VidHlwZSAvVHlwZTEK
+L0Jhc2VGb250IC9IZWx2ZXRpY2EKPj4KPj4KPj4KL01lZGlhQm94IFsgMC4wIDAuMCA2MTIgNzky
+IF0KL1BhcmVudCAyIDAgUgovQ29udGVudHMgNyAwIFIKPj4KZW5kb2JqCjcgMCBvYmoKPDwKL0xl
+bmd0aCA4Ngo+PgpzdHJlYW0KQlQgL0YxIDExIFRmIDUwIDczMCBUZCAoQWxleCwgcGxlYXNlIGFw
+cHJvdmUgdGhlIGVxdWlwbWVudCBvcmRlciBieSAyMDI2LTEwLTAyLikgVGogRVQKZW5kc3RyZWFt
+CmVuZG9iagp4cmVmCjAgOAowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAK
+MDAwMDAwMDA1NCAwMDAwMCBuIAowMDAwMDAwMTE5IDAwMDAwIG4gCjAwMDAwMDAxNjggMDAwMDAg
+biAKMDAwMDAwMDM0OSAwMDAwMCBuIAowMDAwMDAwNDg5IDAwMDAwIG4gCjAwMDAwMDA2NzAgMDAw
+MDAgbiAKdHJhaWxlcgo8PAovU2l6ZSA4Ci9Sb290IDMgMCBSCi9JbmZvIDEgMCBSCj4+CnN0YXJ0
+eHJlZgo4MDYKJSVFT0YK
+
+--actionmail-A01--

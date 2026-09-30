@@ -1,0 +1,45 @@
+From: Maya <maya@example.com>
+To: Alex <alex@example.com>, Morgan <morgan@example.com>
+Date: Wed, 30 Sep 2026 09:00:00 +0800
+Subject: A07 development challenge
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="actionmail-A07"
+
+--actionmail-A07
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Alex, carry out the task in these two attached instructions. Neither version =
+takes precedence.
+
+--actionmail-A07
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="one.txt"
+MIME-Version: 1.0
+
+QWxleCwgYXBwcm92ZSBvcmRlciBRNy4=
+
+--actionmail-A07
+Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="two.docx"
+MIME-Version: 1.0
+
+UEsDBBQAAAAIAAAAPl33S4B1wgAAAHYBAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbH2QuQ7CMAyG
+X6XKiqgRAwOiLMAKDLyAlbptRC7FLsfbk3INCBjt//gsLw7XSFxcnPVcqU4kzgFYd+SQyxDJZ6UJ
+yaHkMbUQUR+xJZhOJjPQwQt5GcvQoZaLNTXYWyk2l7xmE3ylEllWxephHFiVwhit0ShZh5OvPyjj
+J6HMybuHOxN5lA0KvhIG5TfgmdudKCVTU7HHJFt02QXnkGqog+5dTpb/a77cGZrGaHrnh7aYgiZm
+41tny7fi0PjX/XB/9/IGUEsDBBQAAAAIAAAAPl1LHr73hwAAAPAAAAALAAAAX3JlbHMvLnJlbHON
+zzsOAiEQBuCrEA6ws1pYGKCysTV7AQLDIy6PDBj19lJYrMbCcuaffH9GXHDVPZbcQqyNPdKam+Sh
+93oEaCZg0m0qFfNIXKGk+xjJQ9Xmqj3Cfp4PQFuDK7E12dlKTjvOlmfFf+TiXDR4KuaWMPcfBV8X
+Q9bksUt+L2TBvtfTYDkoAR8PqhdQSwMEFAAAAAgAAAA+XbLLoYCRAAAAxQAAABEAAAB3b3JkL2Rv
+Y3VtZW50LnhtbEWOQQrDIBBFryKuSwxdtCCJ0CP0CFanSSA6w2hievtquujmfYbPf8xQtEe3BYhZ
+HGGNSZdRzjmTViq5GYJNHRLE2r2Rg8315EkVZE+MDlJa4hRWde37mwp2idIMRb/Qf1pSAzecdp3I
+OhglMSTgHaR5rHBchEcRMQtLVbmDqG5g8bx3g6pD08gn6eRPrv6Pmy9QSwECFAAUAAAACAAAAD5d
+90uAdcIAAAB2AQAAEwAAAAAAAAAAAAAAgAEAAAAAW0NvbnRlbnRfVHlwZXNdLnhtbFBLAQIUABQA
+AAAIAAAAPl1LHr73hwAAAPAAAAALAAAAAAAAAAAAAACAAfMAAABfcmVscy8ucmVsc1BLAQIUABQA
+AAAIAAAAPl2yy6GAkQAAAMUAAAARAAAAAAAAAAAAAACAAaMBAAB3b3JkL2RvY3VtZW50LnhtbFBL
+BQYAAAAAAwADALkAAABjAgAAAAA=
+
+--actionmail-A07--

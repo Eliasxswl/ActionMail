@@ -1,0 +1,22 @@
+From: Maya <maya@example.com>
+To: Alex <alex@example.com>, Morgan <morgan@example.com>
+Date: Wed, 30 Sep 2026 09:00:00 +0800
+Subject: A08 development challenge
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="actionmail-A08"
+
+--actionmail-A08
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Alex, complete the task in the attached workbook.
+
+--actionmail-A08
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="broken.xlsx"
+MIME-Version: 1.0
+
+bm90IGEgWklQIGFyY2hpdmU=
+
+--actionmail-A08--

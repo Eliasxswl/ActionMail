@@ -1,6 +1,7 @@
 import argparse
 import json
 import sys
+import socket
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -15,6 +16,16 @@ STATIC_FILES = {
     "/style.css": ("review_style.css", "text/css; charset=utf-8"),
     "/app.js": ("review_app.js", "text/javascript; charset=utf-8"),
 }
+
+
+class ReviewHTTPServer(ThreadingHTTPServer):
+    # Windows SO_REUSEADDR can allow two active listeners for the same port.
+    allow_reuse_address = False
+
+    def server_bind(self):
+        if hasattr(socket, 'SO_EXCLUSIVEADDRUSE'):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        super().server_bind()
 
 
 def create_server(dataset: ReviewDataset, port: int = 0) -> ThreadingHTTPServer:
@@ -88,7 +99,7 @@ def create_server(dataset: ReviewDataset, port: int = 0) -> ThreadingHTTPServer:
         def log_message(self, format: str, *args) -> None:
             pass
 
-    return ThreadingHTTPServer(("127.0.0.1", port), ReviewHandler)
+    return ReviewHTTPServer(("127.0.0.1", port), ReviewHandler)
 
 
 def main(argv: list[str] | None = None) -> int:

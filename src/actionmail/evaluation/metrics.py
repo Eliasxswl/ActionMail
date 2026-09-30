@@ -104,6 +104,14 @@ def summarize_v2(rows: list[dict], planned_cases: int) -> dict:
                 counts["action_count_match"] += 1
         if row.get("multi_action_draft"):
             counts["pending_owner_reference"] += 1
+        if row.get('reference_review_state') == 'pending_owner':
+            counts['pending_owner_reference'] += 1
+        for key in ('source_selection_match', 'read_expectation_match', 'content_coverage_complete'):
+            if row.get(key) is not None:
+                counts[key + '_checked'] += 1
+                counts[key] += int(row[key])
+        counts['model_calls'] += row.get('model_calls', 0)
+        counts['read_failures'] += len(row.get('read_failures', []))
         if row.get("error"):
             counts["api_or_run_errors"] += 1
         if row.get("validation_errors"):
@@ -120,5 +128,5 @@ def summarize_v2(rows: list[dict], planned_cases: int) -> dict:
         "counts": dict(counts), "token_totals": {"input": input_tokens, "output": output_tokens},
         "estimated_cost_usd": round(estimated_cost, 8) if costed_cases else None,
         "costed_cases": costed_cases,
-        "metric_scope": "Established single-action references support status and action-count checks. A16/C13 draft labels are pending owner review and are not scored. Action wording and evidence meaning require human review.",
+        "metric_scope": "Approved references support status, action-count, source-selection and read-expectation checks. Pending-owner gold is unscored. Coverage is measured separately; review cases need not have complete coverage. Action completeness, meaning, evidence and deadlines need human review.",
     }

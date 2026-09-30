@@ -57,6 +57,8 @@ def main(argv: list[str] | None = None) -> int:
         model = APIClient(args.api_url, api_key, args.model)
         print(f"Email: {email.subject or email.case_id}")
         print(f"Target recipient: {email.target_recipient}")
+        for source in email.external_sources:
+            print(f"External inventory: {source.source_id} ({source.kind}) {source.name}")
         if input("Send this email and selected external text to the configured model API? [y/N] ").strip().lower() != "y":
             print("Cancelled. No content was sent.")
             return 0
@@ -75,13 +77,16 @@ def main(argv: list[str] | None = None) -> int:
             output = asdict(run.decision)
             replies = run.replies or (run.reply,)
         print(json.dumps(output, indent=2, ensure_ascii=False))
-        print(f"Model: {replies[-1].model}")
+        print(f"Model: {replies[-1].model if replies else 'no model call (budget or input guard)'}")
         if all(reply.input_tokens is not None and reply.output_tokens is not None for reply in replies):
             print(f"Tokens: {sum(reply.input_tokens for reply in replies)} input, {sum(reply.output_tokens for reply in replies)} output across {len(replies)} call(s)")
         if all(reply.latency_ms is not None for reply in replies):
             print(f"Latency: {sum(reply.latency_ms for reply in replies):.0f} ms")
         if run.read_records:
             print("Read sources: " + ", ".join(record.source_id for record in run.read_records))
+        if args.schema == 'v2':
+            print(json.dumps({key: getattr(run, key) if key in {'coverage', 'read_failures', 'evidence_locations'} else [asdict(s) for s in run.source_plan]
+                              for key in ('source_plan', 'coverage', 'read_failures', 'evidence_locations')}, indent=2))
         if input("Approve this result for your own review? [y/N] ").strip().lower() == "y":
             print("Approved for review. No calendar or mailbox change was made.")
         else:
