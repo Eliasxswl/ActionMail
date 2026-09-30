@@ -146,11 +146,14 @@ Python code will own the orchestration, validation, and evaluation. UiPath is no
 | v0.1 | Completed | Architecture and documented decisions. |
 | v1.0 | Completed MVP | One local `.eml` or JSON email input; one LLM decision; structured action/deadline/evidence output; deterministic evidence checks; user review. |
 | v1.5 | Completed baseline | Owner-adjudicated 50-case gold set, local review UI, cost preflight, run history, rule baseline, and first full model run. Model-output semantic review remains a separate evaluation task. |
-| v2.0 | In development on `main` | Bounded attachment and link reading, improved evidence and empty-message handling, clearer question interpretation, and multiple action candidates. |
+| v2.0 | In development on `main` | Complete reading workflow for supported attachments and public HTTPS links, including DOCX/XLSX, long content, multiple sources, distractions, conflicts, provenance, and explicit read failures; improved questions, evidence, empty-message handling, and up to three actions. |
+| v3.0 | Planned | Mailbox and calendar adapters, with explicit approval before external writes. |
 
 The `v1.5` branch preserves the released baseline. The experimental v2 CLI on `main` adds `--external-mode snapshots` for frozen content and `--external-mode allowed-live --allow-domain example.org` for explicitly approved HTTPS domains. `--schema v2` selects the multiple-action contract. It returns up to three separately evidenced actions by default; more than three require review. `--max-actions 1` or `--max-actions 2` can lower the limit for a controlled run. The v2 schema has not yet been evaluated against a multiple-action gold set. See the [v2 design](docs/v2_design.md) for the reading flow, safety limits, and remaining work.
 
 These labels describe scope, not a claim that an in-development version has shipped. Update the release version and this table whenever a milestone is completed or its scope changes.
+
+The ten existing external cases are short regression fixtures, not a realistic external-content benchmark. Their snapshot contents contain only 44–79 characters. The owner reviewed all ten reference labels and all six proposed actions and supporting evidence in run `20260930T112003Z-66fd690c`. This establishes that short snapshot path only. v2 release requires a separate owner-reviewed challenge set and actual attachment parsing and live-reader checks; these are not deferred to v3. Scanned documents, login-protected pages, and JavaScript-dependent pages explicitly require manual review in v2.
 
 ## Language convention
 

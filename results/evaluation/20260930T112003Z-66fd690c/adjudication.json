@@ -1,0 +1,112 @@
+{
+  "run_id": "20260930T112003Z-66fd690c",
+  "manifest_sha256": "3113b2d774f89bc2acb2e568ffd491457dc3ec04f7743574be8d418744a66e3a",
+  "reviews": {
+    "E01": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "action_checks": [
+        {
+          "action_meaning": "correct",
+          "evidence_support": "correct"
+        }
+      ],
+      "updated_at_utc": "2026-09-30T12:01:36.753586+00:00"
+    },
+    "E02": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "action_checks": [
+        {
+          "action_meaning": "correct",
+          "evidence_support": "correct"
+        }
+      ],
+      "updated_at_utc": "2026-09-30T12:01:55.968047+00:00"
+    },
+    "E03": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "action_checks": [
+        {
+          "action_meaning": "correct",
+          "evidence_support": "correct"
+        }
+      ],
+      "updated_at_utc": "2026-09-30T12:02:15.241082+00:00"
+    },
+    "E04": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "updated_at_utc": "2026-09-30T12:02:32.716966+00:00"
+    },
+    "E05": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "updated_at_utc": "2026-09-30T12:02:39.338837+00:00"
+    },
+    "E06": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "action_checks": [
+        {
+          "action_meaning": "correct",
+          "evidence_support": "correct"
+        }
+      ],
+      "updated_at_utc": "2026-09-30T12:02:54.000314+00:00"
+    },
+    "E07": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "action_checks": [
+        {
+          "action_meaning": "correct",
+          "evidence_support": "correct"
+        }
+      ],
+      "updated_at_utc": "2026-09-30T12:03:02.580361+00:00"
+    },
+    "E08": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "action_checks": [
+        {
+          "action_meaning": "correct",
+          "evidence_support": "correct"
+        }
+      ],
+      "updated_at_utc": "2026-09-30T12:03:13.111043+00:00"
+    },
+    "E09": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "updated_at_utc": "2026-09-30T12:03:33.615096+00:00"
+    },
+    "E10": {
+      "action_meaning": "",
+      "evidence_support": "",
+      "gold_label": "correct",
+      "note": "",
+      "updated_at_utc": "2026-09-30T12:03:46.532676+00:00"
+    }
+  }
+}

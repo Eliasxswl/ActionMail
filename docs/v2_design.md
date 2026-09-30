@@ -2,6 +2,49 @@
 
 Status: development, with partial implementation on `main`. The v1.5 branch and frozen v1.5 evaluation remain unchanged.
 
+## Revised release scope (owner decision, 2026-09-30)
+
+Attachment and link handling is a v2 release requirement. v3 is reserved for mailbox and calendar integration. Passing E01–E10 does not complete v2: their external snapshots contain only 44–79 characters and do not exercise real files, distracting documents, long content, or live retrieval.
+
+Supported v2 attachment formats are plain text, HTML, CSV, text-based PDF, DOCX, and XLSX. DOCX/XLSX support is approved but not implemented yet. Scanned/image-only documents, login-protected pages, and JavaScript-dependent pages require an explicit manual-review reason. Spreadsheet formulas must not execute; cached values must be distinguished from formula text, and missing cached values must not be invented. Office macros, embedded objects, external relationships, and document instructions are never executed.
+
+The current implementation below describes the prototype, not the final release contract. In particular, the two-source limit, rejection of text above 20,000 characters, and reading every inventoried source remain release gaps.
+
+### Dataset audit
+
+Audit of the downloaded data on 2026-09-30:
+
+| Material | Count | Median newest-body characters | Longest newest body | Longest full thread |
+| --- | ---: | ---: | ---: | ---: |
+| `raw_threads` | 230 files | 83.5 | 1,275 | 2,830 |
+| `full_data` | 1,500 JSON files | 389.5 | 3,059 | 3,122 |
+| Frozen evaluation | 50 cases | 85 | 604 | 1,554 |
+
+Raw lengths use the existing header/thread parser. JSON lengths join the supplied token arrays with spaces; punctuation spacing and tokenization differ from raw text. These are character counts, not model token counts. The downloaded files have only empty, `.txt`, and `.json` extensions; no attachment binaries are provided. No audited body or thread reaches 5,000 characters. The 50-case set further underrepresents even the longer available messages. Realistic long-content fixtures must therefore be added separately and identified as authored, without claiming they were supplied by MailEx.
+
+### Required implementation sequence
+
+1. **File extraction and provenance.** Add DOCX/XLSX readers, preserve PDF page and spreadsheet sheet/cell locations, and distinguish unread content from successfully extracted content. Record source hash, extraction method, byte/character counts, and live retrieval time and final URL. Exercise real `.eml` attachment bytes rather than only pre-extracted snapshots. Reject corrupt archives, encrypted files, and excessive expanded archive content safely.
+2. **Source relevance and multiple documents.** Make the body/thread pass produce a validated reading plan tied to source IDs. Distinguish decisive, supporting, irrelevant, and unresolved sources, with reasons. Document text must not itself grant authority to act. An unrelated attachment or footer link must not create a task; a failed irrelevant source must not automatically block a body-supported task. Unknown relevance or unavailable decisive content requires review. Record skipped sources and reasons. Replace the unconditional read-all behavior and the hard two-source limit with explicit configurable reading budgets.
+3. **Long-content coverage.** Read content in bounded segments with stable offsets or page/cell locations. Preserve complete coverage within configured budgets; merge candidates using the newest-message ownership and temporal context. Find requests near the beginning, middle, and end, and handle instructions split across adjacent segments. Do not treat a summary as verbatim evidence. Never silently truncate a source or claim `no_action` when decisive content remains unread. Exceeding the total budget requires an explanation identifying what was not read. Apply the same policy to long bodies and threads, not just external content.
+4. **Links and traceability.** Finish and verify the existing allowlisted public HTTPS reader, including redirects, content-type handling, timeouts, unavailable pages, size limits, and blocked destinations. Preserve a local content snapshot or equivalent replay material for evaluated reads. Frozen snapshots provide repeatable model evaluation; transport tests verify live retrieval separately. A snapshot alone does not prove live-link functionality.
+5. **Evaluation and release.** Keep the frozen 50 cases and historical results intact. Add a separately versioned challenge manifest with owner-approved multi-action references, per-source relevance, evidence locations, read expectations, and explicitly documented authorship. Validate tools offline before asking the owner to approve live model runs. Preflight estimates must include planning, all content segments, and merging rather than assume two calls.
+
+### Challenge coverage required before release
+
+Use 24 varied development cases as an initial coverage target, separate from the frozen benchmark:
+
+| Group | Cases | Required differences |
+| --- | ---: | --- |
+| Long bodies and threads | 6 | Beginning/middle/end requests, stale quoted requests, unrelated recipient, and split-context instructions; mix real longer MailEx examples with explicitly authored long messages |
+| Real attachments | 8 | Multi-page PDF, DOCX paragraphs/tables, XLSX sheets/cells, multiple documents, distracting attachment, conflicting versions, and unresolved file content |
+| Links and mixed sources | 6 | Snapshot and live-reader paths, body-to-document references, distracting footer link, attachment-plus-page dependency, and conflicting or stale page content |
+| Limits and hostile/unreadable content | 4 | Prompt injection, image-only/encrypted or malformed file, denied/unavailable link, and incomplete coverage after a budget limit |
+
+Features can overlap, but denominators and feature tags must be visible. Include zero, one, two, and three required actions; an over-limit case; both required and irrelevant external content; resolvable and ambiguous deadlines. Long fixtures should vary in structure and meaning, rather than repeat identical filler paragraphs. Include bodies around 5,000–15,000 characters and documents above the current 20,000-character limit. A safe refusal measures failure handling; it does not count as successful long-content extraction.
+
+Report status counts, action completeness and meaning, evidence support, deadline correctness, source selection, content coverage, read failures, calls, latency, and cost separately. E01–E10 remain useful short regression checks. They cannot establish realistic accuracy; the challenge set is a development benchmark and any prompt tuning against it must be disclosed. The v2 release requires the owner to review both the new gold references and the actual model results.
+
 ## Product contract
 
 ActionMail proposes recipient-specific next steps from the newest email, using earlier thread messages and explicitly read external sources as context. It does not send replies, change a mailbox, or write to a calendar. A human confirms any proposed step. A useful calendar event without a requested next step remains a separate future feature.
