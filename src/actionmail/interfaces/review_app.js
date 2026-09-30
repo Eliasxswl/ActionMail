@@ -183,8 +183,16 @@ function renderCase(data) {
     if (draft.annotation_note) comparison.append(node("p", "muted", draft.annotation_note));
   }
   if (data.revised_gold) comparison.append(decisionBlock("Current revised label (not used to score this run)", data.revised_gold));
-  const predictionTitle = state.overview.model === "rules-v1" ? "Rule baseline (prediction)" : "Model result (prediction)";
-  comparison.append(decisionBlock(predictionTitle, data.prediction));
+  const referenceOnly = state.overview.model === "no model call" && !data.prediction && !data.error;
+  if (referenceOnly) {
+    const preview = node("section", "decision");
+    preview.append(node("h3", "", "Reference review only"));
+    preview.append(node("p", "muted", "Model evaluation has not run. Review the reference label above. Predictions will appear after reference approval and model evaluation."));
+    comparison.append(preview);
+  } else {
+    const predictionTitle = state.overview.model === "rules-v1" ? "Rule baseline (prediction)" : "Model result (prediction)";
+    comparison.append(decisionBlock(predictionTitle, data.prediction));
+  }
   if (data.validation_errors.length || data.error) {
     const errors = node("ul", "error-list");
     for (const message of [...data.validation_errors, ...(data.error ? [data.error] : [])]) errors.append(node("li", "", message));
