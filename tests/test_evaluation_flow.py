@@ -3,6 +3,7 @@ import json
 import os
 import tempfile
 import unittest
+from scripted_responses import explained
 import threading
 from contextlib import redirect_stdout
 from pathlib import Path
@@ -139,7 +140,7 @@ class EvaluationFlowTests(unittest.TestCase):
         ])
 
         def fake_urlopen(request, timeout):
-            completion = {"model": "test-model", "choices": [{"message": {"content": json.dumps(next(responses))}}], "usage": {"prompt_tokens": 100, "completion_tokens": 30}}
+            completion = {"model": "test-model", "choices": [{"message": {"content": json.dumps(explained(next(responses), json.loads(request.data)["messages"][-1]["content"]))}}], "usage": {"prompt_tokens": 100, "completion_tokens": 30}}
             return io.BytesIO(json.dumps(completion).encode("utf-8"))
 
         with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {"OPENROUTER_API_KEY": "test-secret"}), patch(
@@ -167,7 +168,7 @@ class EvaluationFlowTests(unittest.TestCase):
         ])
 
         def fake_urlopen(request, timeout):
-            completion = {"model": "test-model", "choices": [{"message": {"content": json.dumps(next(responses))}}], "usage": {"prompt_tokens": 100, "completion_tokens": 30}}
+            completion = {"model": "test-model", "choices": [{"message": {"content": json.dumps(explained(next(responses), json.loads(request.data)["messages"][-1]["content"]))}}], "usage": {"prompt_tokens": 100, "completion_tokens": 30}}
             return io.BytesIO(json.dumps(completion).encode("utf-8"))
 
         with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {"OPENROUTER_API_KEY": "test-secret"}), patch(

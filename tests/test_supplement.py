@@ -2,6 +2,7 @@ import json
 import hashlib
 import tempfile
 import unittest
+from scripted_responses import explained
 from pathlib import Path
 
 from actionmail.evaluation.cases import load_cases
@@ -53,7 +54,7 @@ class SupplementTests(unittest.TestCase):
                 self.prompts = []
             def complete(self, system, user):
                 self.prompts.append(user)
-                return ModelReply(json.dumps(next(self.values)), 'offline', 10, 10, 1)
+                return ModelReply(json.dumps(explained(next(self.values), user)), 'offline', 10, 10, 1)
         case = cases['S03']
         model = Model([{'sources': [{'source_id': 'attachment:1', 'relevance': 'irrelevant', 'reason': 'The body is an informative balance update with no task dependent on the PDF.'}]}, case.gold])
         run = process_email_multi_with_external(case.email, model)

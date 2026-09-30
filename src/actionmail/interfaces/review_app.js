@@ -86,7 +86,18 @@ function decisionBlock(title, decision) {
     definition(list, "Deadline", decision.deadline);
   }
   if (decision.review_reason) definition(list, "Reason", decision.review_reason);
+  if (decision.explanation) definition(list, "Explanation", decision.explanation.text);
   block.append(list);
+  if (decision.explanation) {
+    const quotes = node("ul", "quote-list");
+    for (const evidence of decision.explanation.evidence || []) {
+      const entry = node("li");
+      entry.append(node("strong", "", evidence.source_id), node("span", "", evidence.quote));
+      quotes.append(entry);
+    }
+    block.append(quotes);
+    if (!decision.explanation.evidence?.length) block.append(node("p", "muted", "No original quote available; see the explanation for the missing information or system failure."));
+  }
   if (Array.isArray(decision.actions)) {
     for (const [index, action] of decision.actions.entries()) {
       const actionBlock = node("div", "source-block");
@@ -183,6 +194,18 @@ function renderCase(data) {
   grid.append(sourceCard);
 
   const right = node("div", "stack");
+  if (data.workflow_trace?.source_plan?.length) {
+    const reading = node("section", "card");
+    reading.append(node("h3", "", "Why sources were selected or skipped"));
+    for (const choice of data.workflow_trace.source_plan) {
+      const entry = node("div", "source-block");
+      entry.append(node("strong", "", `${choice.source_id} — ${choice.relevance.replaceAll("_", " ")}`), node("p", "", choice.reason));
+      for (const evidence of choice.evidence || []) entry.append(sourceBlock("Original evidence", evidence.source_id, evidence.quote));
+      if (!choice.evidence?.length) entry.append(node("p", "muted", "No original evidence was stored in this historical reading plan."));
+      reading.append(entry);
+    }
+    right.append(reading);
+  }
   const comparison = node("section", "card comparison");
   comparison.append(decisionBlock(`Reference label used in this run (${data.manifest_name})`, data.gold));
   if (data.prior_gold_review?.gold_label) {

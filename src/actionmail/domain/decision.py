@@ -30,10 +30,17 @@ class ProposedAction:
 
 
 @dataclass(frozen=True)
+class Explanation:
+    text: str
+    evidence: tuple[Evidence, ...] = ()
+
+
+@dataclass(frozen=True)
 class MultiActionResult:
     status: Status
     actions: tuple[ProposedAction, ...]
     review_reason: str | None
+    explanation: Explanation | None = None
 
     @property
     def action_count(self) -> int:

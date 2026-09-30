@@ -3,6 +3,7 @@ import io
 import json
 import tempfile
 import unittest
+from scripted_responses import explained
 import zipfile
 from dataclasses import replace
 from pathlib import Path
@@ -33,7 +34,7 @@ class ScriptModel:
     def complete(self, system, user):
         self.calls.append((system, user))
         value = next(self.responses)
-        return ModelReply(json.dumps(value), 'offline-script', 100, 30, 1)
+        return ModelReply(json.dumps(explained(value, user)), 'offline-script', 100, 30, 1)
 
 class V2ChallengeTests(unittest.TestCase):
     @classmethod

@@ -3,6 +3,7 @@ import io
 import os
 import tempfile
 import unittest
+from scripted_responses import explained
 from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
@@ -24,7 +25,7 @@ class FakeModel:
 
     def complete(self, system_prompt: str, user_prompt: str) -> ModelReply:
         self.last_prompt = user_prompt
-        return ModelReply(json.dumps(self.result), "fake-model")
+        return ModelReply(json.dumps(explained(self.result, user_prompt)), "fake-model")
 
 
 class SequenceModel:
@@ -34,7 +35,7 @@ class SequenceModel:
 
     def complete(self, system_prompt: str, user_prompt: str) -> ModelReply:
         self.prompts.append(user_prompt)
-        return ModelReply(json.dumps(next(self.results)), "fake-model", 100, 20, 10.0)
+        return ModelReply(json.dumps(explained(next(self.results), user_prompt)), "fake-model", 100, 20, 10.0)
 
 
 class MVPFlowTests(unittest.TestCase):

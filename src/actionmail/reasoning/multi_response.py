@@ -1,12 +1,13 @@
 import json
 from datetime import date, datetime
 
-from actionmail.domain.decision import Evidence, MultiActionResult, ProposedAction
+from actionmail.domain.decision import Evidence, Explanation, MultiActionResult, ProposedAction
 
 
-def parse_multi_response(content: str) -> MultiActionResult:
+def parse_multi_response(content: str, *, require_explanation: bool = False) -> MultiActionResult:
     payload = json.loads(content)
-    if not isinstance(payload, dict) or set(payload) != {"status", "actions", "review_reason"}:
+    keys = {"status", "actions", "review_reason"}
+    if not isinstance(payload, dict) or set(payload) not in (keys, keys | {'explanation'}):
         raise ValueError("V2 response needs exactly status, actions, and review_reason")
     status = payload["status"]
     if status not in {"action", "no_action", "needs_review"}:
@@ -48,4 +49,19 @@ def parse_multi_response(content: str) -> MultiActionResult:
                 raise ValueError("V2 evidence needs source_id and quote strings")
             evidence.append(Evidence(entry["source_id"], entry["quote"]))
         actions.append(ProposedAction(item["kind"], item["text"], deadline, tuple(evidence)))
-    return MultiActionResult(status, tuple(actions), reason)
+    explanation = None
+    if 'explanation' in payload:
+        item = payload['explanation']
+        if not isinstance(item, dict) or set(item) != {'text', 'evidence'} or not isinstance(item['text'], str) or not item['text'].strip() or not isinstance(item['evidence'], list):
+            raise ValueError('Explanation requires text and an evidence array')
+        quotes = []
+        for entry in item['evidence']:
+            if not isinstance(entry, dict) or set(entry) != {'source_id', 'quote'} or not all(isinstance(v, str) and v.strip() for v in entry.values()):
+                raise ValueError('Explanation evidence requires nonempty source_id and quote strings')
+            quotes.append(Evidence(**entry))
+        explanation = Explanation(item['text'], tuple(quotes))
+        if status != 'needs_review' and not quotes:
+            raise ValueError('Definitive explanations require original evidence')
+    elif require_explanation:
+        raise ValueError('New V2 model responses require an explanation')
+    return MultiActionResult(status, tuple(actions), reason, explanation)

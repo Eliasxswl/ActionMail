@@ -10,6 +10,8 @@ Latest revision: active supplement is `evaluation/supplement_v2_revision2.jsonl`
 
 ## Implemented
 
+- Unified explanation for every new v2 model status, with exact supplied-source quotes; plans explain each source selection/skip with quoted email evidence. Segment/merge validation prevents using full-source text that was not submitted to the model. Failed reads retain plan evidence; system failures without quotable input explicitly say so. Legacy gold/history remain readable with no fabricated explanations. UI renders result and reading-choice explanations. All 48 offline tests pass; this validates contracts and guards, not live explanation quality.
+
 - Actual `.eml` attachment bytes: text/CSV/HTML/text PDF/DOCX/XLSX. PDF page, DOCX paragraph/table and XLSX sheet/cell locations retain offsets. Spreadsheet expressions are not executed; cached values and missing caches are explicit.
 - Office ZIP member/expanded-size/compression-ratio checks, corrupt/encrypted input handling, macro/embedded-object rejection, guarded XML and no external relationship resolution.
 - Validated source-selection plans for every inventory ID. Only explicitly irrelevant sources are skipped, with reasons; required/unresolved failures prevent definitive results. Three or more documents are supported within configurable budgets.
