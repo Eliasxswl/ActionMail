@@ -20,7 +20,7 @@ from actionmail.reasoning.api_client import ModelCallError
 from actionmail.workflow.coverage import WorkflowLimits, segments
 from actionmail.workflow.multi_pipeline import process_email_multi, process_email_multi_with_external
 
-MANIFEST = PROJECT_ROOT / 'evaluation' / 'challenge_v2_1_revision2.jsonl'
+MANIFEST = PROJECT_ROOT / 'evaluation' / 'archive' / 'challenge_v2_1_revision2.jsonl'
 
 def action(quote, sid='body', text='Approve the request.'):
     return {'status': 'action', 'actions': [{'kind': 'perform_task', 'text': text, 'deadline': None,

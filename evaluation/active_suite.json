@@ -1,0 +1,24 @@
+{
+  "suite": "v2-60",
+  "total_cases": 60,
+  "components": [
+    {
+      "benchmark": "frozen",
+      "manifest": "cases.jsonl",
+      "cases": 50,
+      "sha256": "3113b2d774f89bc2acb2e568ffd491457dc3ec04f7743574be8d418744a66e3a"
+    },
+    {
+      "benchmark": "supplement-v2",
+      "manifest": "supplement_v2.jsonl",
+      "cases": 10,
+      "sha256": "32ce75d1db3643feeae6d45c19dc6c2f02ce93c63ed0eefb929871c5a0dac1b5"
+    }
+  ],
+  "excluded": [
+    "archive/",
+    "historical results",
+    "provenance-only downloads"
+  ],
+  "supplement_review_state": "pending_owner"
+}

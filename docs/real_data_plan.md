@@ -10,9 +10,9 @@ Existing consent was conditional on reviewing the previous 24 references. It doe
 
 ## Local corpus and staged candidates
 
-`tools/audit_real_data.py` audited all 230 MailEx raw threads. Body plus thread reaches 2,830 characters; the newest body reaches 1,275. Seven files contain literal HTTP(S) URLs and 73 mention attachments. A mention is not an available binary. The raw files lack a newest-message Date header, so received time stays unknown. The 1,500 tokenized `full_data` JSON records remain secondary because token joining changes original spacing and they lack usable recipient/date headers.
+The earlier audit (preserved in Git history) inspected all 230 MailEx raw threads. Body plus thread reaches 2,830 characters; the newest body reaches 1,275. Seven files contain literal HTTP(S) URLs and 73 mention attachments. A mention is not an available binary. The raw files lack a newest-message Date header, so received time stays unknown. The 1,500 tokenized `full_data` JSON records remain secondary because token joining changes original spacing and they lack usable recipient/date headers.
 
-Twelve unlabelled original candidates are staged in `evaluation/real_data_candidates/selection.jsonl`, with source hashes, actual newest-message target recipients and selection reasons. They cover business questions, several editing requests, multiple recipients, informative replies, empty newest bodies, literal URLs and missing external material. Lengths range from 1,228 to 2,830 body/thread characters. None duplicates a source in the frozen 50-case manifest. The selection is intentionally not a scored benchmark; gold and external relevance must be reviewed before conversion to an evaluation manifest. Candidate links in the adjacent README open original files directly.
+The owner subsequently fixed the active evaluation at **50 base + 10 supplementary = 60 cases**. The 12-candidate staging list and full audit output were removed from the working tree; their earlier versions remain in Git history. See `docs/evaluation_60.md` for the ten selected cases and coverage. `evaluation/active_suite.json` identifies the two active hash-bound manifests. The former 24-case challenge is archived for offline integration tests and historical reproducibility; it is excluded from the active denominator.
 
 ## External dataset findings
 

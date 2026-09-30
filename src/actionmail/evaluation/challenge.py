@@ -9,18 +9,22 @@ from actionmail.ingestion.eml import load_eml
 from actionmail.content.reader import read_external_sources
 from actionmail.reasoning.multi_response import parse_multi_response
 from actionmail.domain.email import SourceText
+from actionmail.domain.email import ExternalSource, EmailPackage
+from actionmail.content.reader import _text_from_bytes
 
 GROUP_COUNTS = {'long_content': 6, 'real_attachments': 8, 'links_mixed': 6, 'limits_hostile': 4}
 
-def load_challenge(manifest, mailex_root):
+def load_challenge(manifest, mailex_root, *, benchmark='challenge-v2.1'):
     records = [json.loads(line) for line in manifest.read_text(encoding='utf-8').splitlines() if line.strip()]
-    if Counter(r['category'] for r in records) != GROUP_COUNTS:
-        raise ValueError('Challenge v2.1 requires 6/8/6/4 cases in its four groups')
+    expected = GROUP_COUNTS if benchmark == 'challenge-v2.1' else {'long_content': 2, 'real_attachments': 4, 'links_mixed': 2, 'limits_hostile': 2}
+    version = '2.1' if benchmark == 'challenge-v2.1' else '2.2'
+    if benchmark not in {'challenge-v2.1', 'supplement-v2'} or Counter(r['category'] for r in records) != expected:
+        raise ValueError(f'{benchmark} requires category counts {expected}')
     if len({r['case_id'] for r in records}) != len(records):
         raise ValueError('Duplicate challenge case ID')
     cases = []
     for r in records:
-        if r.get('challenge_version') != '2.1' or r.get('review_state') not in {'pending_owner', 'approved'} or not r.get('feature_tags'):
+        if r.get('challenge_version') != version or r.get('review_state') not in {'pending_owner', 'approved'} or not r.get('feature_tags'):
             raise ValueError('Challenge version, review state and feature tags are required')
         source = r['source']
         if source['kind'] == 'mailex_raw':
@@ -38,6 +42,35 @@ def load_challenge(manifest, mailex_root):
                 raise ValueError('Snapshot ID not present in link inventory')
             email = replace(email, external_sources=tuple(replace(s, snapshot_text=snapshots.get(s.source_id)) for s in email.external_sources))
             email = replace(email, thread=tuple(SourceText(**s) for s in source.get('thread', [])))
+        elif source['kind'] == 'enron_export':
+            def verified(relative, expected_hash):
+                path = (mailex_root / relative).resolve()
+                if not path.is_relative_to(mailex_root.resolve()):
+                    raise ValueError('Export source escapes data directory')
+                raw = path.read_bytes()
+                if hashlib.sha256(raw).hexdigest() != expected_hash:
+                    raise ValueError('Export source hash mismatch')
+                return raw
+            raw = verified(source['file'], source['sha256'])
+            parent = json.loads(raw)
+            target = source['target_recipient']
+            to = tuple(x['email'] for x in parent['to'])
+            cc = tuple(x['email'] for x in parent['cc'])
+            if target.lower() not in {x.lower() for x in (*to, *cc)}:
+                raise ValueError('Target absent from original export recipients')
+            attachments = []
+            for index, item in enumerate(source['attachments'], 1):
+                matches = [a for a in parent['attachments'] if a['filename'] == item['name']]
+                content = verified(item['file'], item['sha256'])
+                if len(matches) != 1 or matches[0]['size'] != len(content):
+                    raise ValueError('Attachment is not uniquely bound to exported parent')
+                attachments.append(ExternalSource(f'attachment:{index}', 'attachment', item['name'], content=content))
+            if len(attachments) != len(parent['attachments']):
+                raise ValueError('Export attachment inventory is incomplete')
+            body = _text_from_bytes(ExternalSource('body', 'attachment', 'body.html', content=parent['body'].encode('utf-8'), media_type='text/html', charset='utf-8'))
+            email = EmailPackage(r['case_id'], target, None, parent['from']['email'], tuple(dict.fromkeys((*to, *cc))),
+                                 parent['subject'], body, to_recipients=to, cc_recipients=cc, external_sources=tuple(attachments))
+            digest = source['sha256']
         else:
             raise ValueError('Unknown challenge authorship')
         ids = {s.source_id for s in email.external_sources}
@@ -63,13 +96,13 @@ def load_challenge(manifest, mailex_root):
     return cases
 
 
-def prepare_challenge(cases, manifest, output):
+def prepare_challenge(cases, manifest, output, *, benchmark='challenge-v2.1'):
     """Make a reviewable reference-only run with no model calls or scoring."""
     from datetime import datetime, timezone
     from dataclasses import asdict
     output.mkdir(parents=True, exist_ok=False)
     now = datetime.now(timezone.utc).isoformat()
-    run = {'run_id': output.name, 'engine': 'reference-preview', 'schema': 'v2', 'benchmark': 'challenge-v2.1',
+    run = {'run_id': output.name, 'engine': 'reference-preview', 'schema': 'v2', 'benchmark': benchmark,
            'model': 'no model call', 'manifest_sha256': hashlib.sha256(manifest.read_bytes()).hexdigest(),
            'started_at_utc': now, 'case_ids': [c.case_id for c in cases]}
     (output / 'run.json').write_text(json.dumps(run, indent=2) + '\n', encoding='utf-8')

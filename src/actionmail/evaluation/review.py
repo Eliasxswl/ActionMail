@@ -39,8 +39,8 @@ class ReviewDataset:
                 manifest_hash = run["manifest_sha256"]
         if manifest_hash != run["manifest_sha256"]:
             raise ValueError("The manifest does not match this evaluation run")
-        challenge = run.get('benchmark') == 'challenge-v2.1'
-        cases = {case.case_id: case for case in (load_challenge(manifest, mailex_root) if challenge else load_cases(manifest, mailex_root))}
+        challenge = run.get('benchmark') in {'challenge-v2.1', 'supplement-v2'}
+        cases = {case.case_id: case for case in (load_challenge(manifest, mailex_root, benchmark=run['benchmark']) if challenge else load_cases(manifest, mailex_root))}
         rows_list = [json.loads(line) for line in (run_dir / "cases.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
         rows = {row["case_id"]: row for row in rows_list}
         if len(rows) != len(rows_list) or set(rows) - set(run["case_ids"]) or set(rows) - set(cases):
@@ -116,6 +116,7 @@ class ReviewDataset:
             "case_id": case_id,
             "category": row["category"],
             "email": {
+                "source_kind": case.record['source']['kind'],
                 "target_recipient": email.target_recipient,
                 "received_at": email.received_at.isoformat() if email.received_at else None,
                 "sender": email.sender,

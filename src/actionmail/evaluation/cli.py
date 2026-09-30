@@ -33,7 +33,7 @@ DEFAULT_MULTI_DRAFT = PROJECT_ROOT / "evaluation" / "multi_action_draft.jsonl"
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="actionmail-eval", description="Validate or run the frozen 50-case evaluation.")
     parser.add_argument("--validate", action="store_true", help="Validate the frozen cases without making model calls")
-    parser.add_argument('--benchmark', choices=('frozen', 'challenge-v2.1'), default='frozen')
+    parser.add_argument('--benchmark', choices=('frozen', 'supplement-v2', 'challenge-v2.1'), default='frozen')
     parser.add_argument('--prepare-challenge', action='store_true', help='Create a reference-only review run without model calls')
     parser.add_argument('--approve-challenge-gold', type=Path, help='Reference-preview directory with all owner gold judgments saved correct; no model call')
     parser.add_argument('--approved-manifest', type=Path, help='New approved challenge manifest path')
@@ -203,9 +203,9 @@ def main(argv: list[str] | None = None) -> int:
         if args.history:
             print_history(PROJECT_ROOT / "results" / "evaluation")
             return 0
-        challenge = args.benchmark == 'challenge-v2.1'
+        challenge = args.benchmark in {'challenge-v2.1', 'supplement-v2'}
         if challenge and args.manifest == DEFAULT_MANIFEST:
-            args.manifest = PROJECT_ROOT / 'evaluation' / 'challenge_v2_1_revision2.jsonl'
+            args.manifest = PROJECT_ROOT / 'evaluation' / ('supplement_v2.jsonl' if args.benchmark == 'supplement-v2' else 'archive/challenge_v2_1_revision2.jsonl')
         if challenge:
             if args.engine != 'llm' or args.case_group or args.prepare_multi:
                 raise ValueError('Challenge uses the v2 LLM workflow; frozen groups/drafts do not apply')
@@ -213,10 +213,10 @@ def main(argv: list[str] | None = None) -> int:
             if args.external_mode == 'allowed-live':
                 raise ValueError('Challenge v2.1 gold is defined for snapshots mode; live transport is verified separately')
             args.external_mode = 'snapshots'
-        cases = load_challenge(args.manifest, args.mailex_root) if challenge else load_cases(args.manifest, args.mailex_root)
+        cases = load_challenge(args.manifest, args.mailex_root, benchmark=args.benchmark) if challenge else load_cases(args.manifest, args.mailex_root)
         if args.approve_challenge_gold:
             if not challenge or not args.approved_manifest:
-                raise ValueError('--approve-challenge-gold requires challenge-v2.1 and --approved-manifest')
+                raise ValueError('--approve-challenge-gold requires a supplementary/challenge benchmark and --approved-manifest')
             destination = approve_challenge_gold(args.manifest, args.approve_challenge_gold, args.approved_manifest)
             print(f'Created approved challenge reference: {destination}')
             return 0
@@ -224,9 +224,9 @@ def main(argv: list[str] | None = None) -> int:
             raise ValueError('--approved-manifest requires --approve-challenge-gold')
         if args.prepare_challenge:
             if not challenge:
-                raise ValueError('--prepare-challenge requires --benchmark challenge-v2.1')
+                raise ValueError('--prepare-challenge requires a supplementary/challenge benchmark')
             output = args.output_dir or PROJECT_ROOT / 'results' / 'evaluation' / ('challenge-gold-' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ'))
-            prepare_challenge(cases, args.manifest, output)
+            prepare_challenge(cases, args.manifest, output, benchmark=args.benchmark)
             print(f'Prepared {len(cases)} reference-only cases for owner review: {output}')
             return 0
         multi_drafts = load_multi_drafts(args.multi_draft, cases) if not challenge and (args.schema == "v2" or args.prepare_multi or args.case_group == "multi-draft") and args.multi_draft.exists() else {}
@@ -254,7 +254,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.engine == "rules" and args.schema != "v1":
             raise ValueError("The rule baseline supports only the v1 schema")
         if args.validate:
-            print(f'Validated {len(cases)} challenge-v2.1 cases; references require owner approval.' if challenge else f"Validated {len(cases)} frozen cases: 15 no-action, 15 explicit-action, 10 context, 5 attachment, 5 link.")
+            print(f'Validated {len(cases)} {args.benchmark} cases; references require owner approval.' if challenge else f"Validated {len(cases)} frozen cases: 15 no-action, 15 explicit-action, 10 context, 5 attachment, 5 link.")
             return 0
         if args.limit is not None and args.limit < 1:
             raise ValueError("--limit must be positive")

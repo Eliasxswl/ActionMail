@@ -14,9 +14,9 @@ from actionmail.content.reader import read_external_sources
 from actionmail.ingestion.eml import load_eml
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'evaluation' / 'fixtures_v2_1'
+OUT = ROOT / 'evaluation' / 'archive' / 'fixtures_v2_1'
 OUT.mkdir(exist_ok=True)
-manifest_path = ROOT / 'evaluation' / 'challenge_v2_1_revision2.jsonl'
+manifest_path = ROOT / 'evaluation' / 'archive' / 'challenge_v2_1_revision2.jsonl'
 if manifest_path.exists() and any(json.loads(line).get('review_state') == 'approved' for line in manifest_path.read_text(encoding='utf-8').splitlines() if line.strip()):
     raise SystemExit('Refusing to overwrite owner-approved challenge gold; create a new version instead')
 DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
@@ -99,7 +99,7 @@ def add(cid, category, body, actions=(), attachments=(), snapshots=None, status=
     email = load_eml(path, 'alex@example.com')
     gold_status = status or ('action' if actions else 'no_action')
     r = {'challenge_version': '2.1', 'case_id': cid, 'category': category, 'review_state': 'pending_owner',
-         'feature_tags': list(tags), 'source': {'kind': 'authored_eml', 'file': str(path.relative_to(ROOT / 'evaluation')).replace('\\', '/'), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'target_recipient': 'alex@example.com', 'snapshots': snapshots or {}},
+         'feature_tags': list(tags), 'source': {'kind': 'authored_eml', 'file': str(path.relative_to(manifest_path.parent)).replace('\\', '/'), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'target_recipient': 'alex@example.com', 'snapshots': snapshots or {}},
          'gold': {'status': gold_status, 'actions': list(actions), 'review_reason': reason},
          'source_expectations': expectations or {s.source_id: {'relevance': 'decisive', 'read': 'success'} for s in email.external_sources},
          'coverage_expectation': 'budget_review' if budgets else 'review_due_to_unread' if expectations and any(e['read'] == 'failure' for e in expectations.values()) else 'complete',

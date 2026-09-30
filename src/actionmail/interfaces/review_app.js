@@ -153,15 +153,17 @@ function renderCase(data) {
 
   const grid = node("div", "grid");
   const sourceCard = node("section", "card");
-  sourceCard.append(node("h3", "", "Original email"));
+  const synthetic = ["authored", "authored_eml"].includes(data.email.source_kind);
+  sourceCard.append(node("h3", "", synthetic ? "Synthetic test email" : "Dataset email"));
   const metadata = node("div", "metadata");
   metadata.append(
+    metaRow("Source", synthetic ? "Authored test fixture" : data.email.source_kind === "enron_export" ? "Enron dataset export; HTML rendered as text" : "Original MailEx text"),
     metaRow("Reviewing for", data.email.target_recipient),
     metaRow("From", data.email.sender || "unknown"),
     metaRow("To", data.email.to_recipients.join(", ") || "none shown"),
     metaRow("Cc", data.email.cc_recipients.join(", ") || "none shown"),
   );
-  if (data.email.received_at) metadata.append(metaRow("Received at", data.email.received_at));
+  metadata.append(metaRow(synthetic ? "Fixture received time" : "Received at", data.email.received_at || "Unknown — not provided by the source"));
   sourceCard.append(metadata, sourceBlock("Newest message", "body", data.email.body));
   for (const thread of data.email.thread) sourceCard.append(sourceBlock("Earlier message", thread.source_id, thread.text, false, thread));
   for (const source of data.external_sources) sourceCard.append(sourceBlock(source.name, source.source_id, source.text, true, null, source.read_by_model));

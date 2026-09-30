@@ -4,7 +4,7 @@ Updated: 2026-10-01 (Asia/Singapore).
 
 ## Current owner steering: original data first
 
-Read `docs/real_data_plan.md` first. The owner accepts roughly 2,000–3,000 characters and wants existing original data prioritized, with research into genuine attachment/link datasets. The prior mostly authored 24-case batch is now a preserved synthetic regression suite, not the primary acceptance batch. Twelve hash-bound original MailEx candidates are staged without gold; three parent-matched public attachment samples have been downloaded outside Git and checked offline. Do not invent missing times or documents. Conditional consent for the old 24 references does not authorize a changed batch. The review server still shows the historical authored preview until a new real benchmark is prepared.
+Read `docs/evaluation_60.md` and `docs/real_data_plan.md` first. The owner fixed the active evaluation at **50 base + 10 supplementary = 60 cases** and accepts roughly 2,000–3,000 characters, prioritizing original data. `evaluation/active_suite.json` identifies the active manifests; supplementary gold remains pending. The old 24-case challenge and fixtures moved to `evaluation/archive/` for offline tests/historical reproduction. The 12-candidate staging list was removed. Port 61933 now serves the ten-reference preview. Do not invent missing times or documents. Conditional consent for the old 24 references does not authorize a changed batch.
 
 ## Implementation continuation
 
