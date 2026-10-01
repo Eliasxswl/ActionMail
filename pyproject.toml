@@ -13,7 +13,7 @@ dependencies = ["pypdf>=6,<7", "tzdata>=2025.2; platform_system == 'Windows'"]
 google = ["google-auth>=2,<3", "google-auth-oauthlib>=1,<2"]
 
 [project.scripts]
-actionmail = "actionmail.interfaces.cli:main"
+actionmail = "actionmail.cli:main"
 actionmail-eval = "actionmail.evaluation.cli:main"
 actionmail-review = "actionmail.interfaces.review_server:main"
 actionmail-app = "actionmail.interfaces.app_server:main"

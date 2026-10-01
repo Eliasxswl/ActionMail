@@ -12,14 +12,15 @@ From the repository root, with Python 3.10 or newer:
 
 ```powershell
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -e .
-.venv/Scripts/python.exe -m actionmail.interfaces.app_server --no-browser
+.venv/Scripts/Activate.ps1
+python -m pip install -e .
+actionmail ui
 ```
 
-Open `http://127.0.0.1:61933/`. Offline mode makes no Google/model requests and needs no credentials. Default private storage is outside the repository. For an ignored local demo store:
+The app opens at `http://127.0.0.1:61933/`. Offline mode makes no Google/model requests and needs no credentials. `actionmail demo` runs the scripted end-to-end path and saves an inspectable record set without opening a browser. Default private storage is outside the repository. For an ignored local demo store:
 
 ```powershell
-.venv/Scripts/python.exe -m actionmail.interfaces.app_server --store results/private/v3-demo.sqlite3 --no-browser
+actionmail ui --store results/private/v3-demo.sqlite3 --no-browser
 ```
 
 Only one service may use port 61933. Stop an existing project server only after checking its command line; the benchmark review UI can still be launched separately using its existing command. Never run both at once.

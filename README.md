@@ -6,20 +6,30 @@ The frozen baseline is **v2.0**, on branch `v2.0`. **`main` is the v3.0 developm
 
 Start with [the v3.0 handoff](docs/handoff.md), [current architecture](docs/architecture.md), [evaluation facts](docs/evaluation.md), or [report writing guide](docs/report_guide.md). These are the authoritative current documents. Earlier plans, manifests, results and scripts live in [backup](backup/README.md).
 
-For the new application, read [the v3 demo/run guide](docs/v3_demo.md) and [Google contracts and verification boundaries](docs/google_integrations.md). Run `python -m actionmail.interfaces.app_server --no-browser` for the offline product UI on port 61933. The benchmark review UI is a separate mode on the same port.
+For the application, read [the v3 demo/run guide](docs/v3_demo.md) and [Google contracts and verification boundaries](docs/google_integrations.md). Run `actionmail ui` for the offline product UI on port 61933. `actionmail review` opens the optional saved-run review UI.
 
 ## Run CLI without account integration
 
-The CLI remains available without mailbox/calendar integration. The GUI is optional for annotation/review. UiPath integration for Gmail and Google Calendar is currently being assessed.
+The CLI remains available without mailbox/calendar integration. The GUI is optional for annotation/review. The short `actionmail` commands dispatch to the existing analysis and evaluation code. The original `actionmail INPUT ...` interface and `actionmail-eval` remain available for detailed runs.
 
 ```powershell
+python -m venv .venv
+.venv/Scripts/Activate.ps1
 python -m pip install -e .
-python -m actionmail.interfaces.workflow_cli demo --output-dir results/private/teacher-demo
-python -m unittest discover -s tests -q
-python -m actionmail.evaluation.cli --history
+actionmail start                 # small text menu in a terminal
+actionmail demo                  # offline demo; writes to a fresh private folder
+actionmail eval --estimate       # v2/60 cost and usage preflight only
+actionmail eval --validate       # validate the active v2 suite without inference
+actionmail eval                  # v2/60; shows estimate and asks before inference
+actionmail results               # latest completed saved runs
+actionmail eval --saved          # same saved results view
+actionmail results --run RUN_ID --case S02 --trace
+actionmail doctor                # local packages, data and provider readiness
+actionmail check                 # verify active manifest/hash references
+actionmail review                # review the latest complete run in a browser
 ```
 
-Use a new output directory for each demo. Included authored inputs and scripted replies exercise the real application/core without network calls, credentials or the separate corpus. The output includes source/analysis traces, persistent records, an ICS export and simulated write counts. This is engineering verification. Saved real-model experiment data can be inspected separately without repeating inference.
+The offline demo uses authored inputs and scripted replies. It makes no model or provider calls; its output is engineering evidence, not accuracy evidence. A new model evaluation displays an estimate and requests confirmation before inference. The active 60-case run also requires the original local corpus in `../data`; saved results can be inspected without it. For exact options, external-source controls and run recovery, use `actionmail-eval --help`.
 
 ## Analyze one email with a real model
 
