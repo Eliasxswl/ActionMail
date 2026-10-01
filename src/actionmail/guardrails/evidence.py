@@ -43,8 +43,8 @@ def align_evidence_quote(quote: str, source: str, *, allow_soft_wrap: bool = Fal
     return source[offsets[start]:offsets[start + len(normalized_quote) - 1] + 1]
 
 
-def evidence_errors(email: EmailPackage, decision: ActionResult) -> list[str]:
-    sources = email.sources()
+def evidence_errors(email: EmailPackage, decision: ActionResult, *, include_headers: bool = False) -> list[str]:
+    sources = email.sources(include_headers=include_headers)
     errors = []
     if decision.status == "action":
         if not decision.action or not decision.action.strip():

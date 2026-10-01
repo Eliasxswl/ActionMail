@@ -71,8 +71,8 @@ def _user_prompt(email: EmailPackage) -> str:
     return "\n\n".join(lines)
 
 
-def _normalize_source_ids(email: EmailPackage, decision: ActionResult) -> ActionResult:
-    sources = email.sources()
+def _normalize_source_ids(email: EmailPackage, decision: ActionResult, *, include_headers: bool = False) -> ActionResult:
+    sources = email.sources(include_headers=include_headers)
     evidence = []
     for item in decision.evidence:
         source_id = item.source_id
@@ -92,6 +92,9 @@ def _normalize_source_ids(email: EmailPackage, decision: ActionResult) -> Action
                 source = sources[source_id]
         if source is not None and quote not in source:
             quote = align_evidence_quote(quote, source, allow_soft_wrap=email.legacy_soft_wraps)
+            header_id = source_id + ':headers'
+            if include_headers and header_id in sources and quote.strip() and quote in sources[header_id]:
+                source_id = header_id
         evidence.append(Evidence(source_id, quote))
     return ActionResult(decision.status, decision.action, decision.deadline, tuple(evidence), decision.review_reason)
 

@@ -34,12 +34,15 @@ Short emails need one extraction call, plus planning when an external inventory 
 
 The current model result has only `status`, `actions`, `reason`, and `evidence`. Each action has its own kind, text, deadline and quotes. The maximum is three independently completable tasks. The workflow uses `reason/evidence` directly; old explanation/review-reason accessors are retained to read history and preserve compatibility.
 
+Older-message bodies retain `thread:N`; their original headers use `thread:N:headers`. V2 registers both for prompts, segmentation and exact quote validation. The API's 2048-token output cap and preflight estimate use a shared constant. This increases headroom after a response exhausted the earlier 800-token cap, without introducing an automatic retry loop.
+
 ## Reading and missing-content policy
 
 - Read external content when the newest body assigns source-dependent work or delegates its main message to that content. A brief "Project details are posted at [link]" is a primary-content pointer, even without an explicit task in the body.
 - Skip footer/signature/promotional links and unrelated background accompanying a self-contained body. Skipped content must not enter model context.
 - Pass validated reading reasons and actual availability to every extraction/merge path. Planning reasons are interpretations, not authoritative instructions or proof of unseen contents.
 - An empty inventory means no external material was supplied. The model must still recognize an explicitly referenced missing dependency, citing email text without inventing an attachment identity. A current request to review unavailable material requires review.
+- Identifying a clear requested next step does not require all business data, system access or execution approvals. Missing an explicitly referenced external document is different from a task mentioning a business object. Do not suppress a clear confirmation/run/restore request merely because its execution inputs are absent.
 - Older requests create no new obligation unless renewed by the newest body for the target. Preserve older headers rather than assuming that every historical request serves the current target.
 
 These are semantic model responsibilities. Deterministic code validates source availability, evidence, budgets and output structure; it does not force `no_action` based on keywords or silently replace a model judgment. Offline scripted tests establish context delivery and failure routing, not that a live model will always interpret the rules correctly.

@@ -19,6 +19,10 @@ class SourceText:
     cc: str = ""
     subject: str = ""
 
+    def header_text(self) -> str:
+        return '\n'.join(f'{label}: {value}' for label, value in
+                         (('From', self.sender), ('To', self.recipients), ('Cc', self.cc), ('Subject', self.subject)) if value)
+
 
 @dataclass(frozen=True)
 class ExternalSource:
@@ -56,12 +60,17 @@ class EmailPackage:
         if self.received_at is not None and (self.received_at.tzinfo is None or self.received_at.utcoffset() is None):
             raise ValueError("received_at must include a timezone")
 
-    def sources(self) -> dict[str, str]:
+    def sources(self, *, include_headers: bool = False) -> dict[str, str]:
         items = {"subject": self.subject, "body": self.body}
         for source in self.thread:
             if source.source_id in items:
                 raise ValueError(f"Duplicate source_id: {source.source_id}")
             items[source.source_id] = source.text
+            if include_headers and source.header_text():
+                header_id = source.source_id + ':headers'
+                if header_id in items:
+                    raise ValueError(f'Duplicate source_id: {header_id}')
+                items[header_id] = source.header_text()
         for source in self.read_sources:
             if source.source_id in items:
                 raise ValueError(f"Duplicate source_id: {source.source_id}")

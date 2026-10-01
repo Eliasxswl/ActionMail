@@ -21,7 +21,7 @@ from actionmail.evaluation.preflight import PreflightError, account_balance, est
 from actionmail.content.links import fetch_allowlisted_https
 from actionmail.guardrails.evidence import evidence_errors
 from actionmail.interfaces.cli import OPENROUTER_API_URL
-from actionmail.reasoning.api_client import APIClient, ModelCallError
+from actionmail.reasoning.api_client import APIClient, ModelCallError, MAX_OUTPUT_TOKENS
 from actionmail.workflow.pipeline import SYSTEM_PROMPT, process_email, process_email_with_external
 from actionmail.workflow.multi_pipeline import MAX_ACTIONS, V2_SYSTEM_PROMPT, process_email_multi, process_email_multi_with_external
 
@@ -113,7 +113,7 @@ def _show_preflight(args, cases, api_key: str) -> tuple[float, float, float, str
     basis = f"{preview['history_samples']} prior same-model results" if preview["history_samples"] else "160 output tokens/case fallback"
     print(f"Output assumption: {preview['output_per_case']} tokens/case from {basis}")
     print(f"Expected batch cost: about ${preview['estimated_cost_usd']:.6f}")
-    print(f"If every answer reaches the 800-token output cap: about ${preview['output_cap_scenario_usd']:.6f} (input still estimated)")
+    print(f"If every answer reaches the {MAX_OUTPUT_TOKENS}-token output cap: about ${preview['output_cap_scenario_usd']:.6f} (input still estimated)")
     print("This is a planning estimate; actual tokens, routing, and billed charges may differ.")
     return input_price, output_price, request_price, source
 

@@ -5,8 +5,13 @@ from actionmail.workflow.pipeline import _user_prompt
 
 
 def decision_prompt(email, source_plan=(), *, include_text=True):
-    package = email if include_text else replace(email, body='', thread=(), read_sources=(), unread_sources=())
+    package = replace(email, thread=()) if include_text else replace(email, body='', thread=(), read_sources=(), unread_sources=())
     prompt = _user_prompt(package)
+    if include_text:
+        for source in email.thread:
+            if source.header_text():
+                prompt += f'\n\nSOURCE {source.source_id}:headers (older message headers):\n{source.header_text()}'
+            prompt += f'\n\nSOURCE {source.source_id} (older message body):\n{source.text}'
     read_ids = {s.source_id for s in email.read_sources}
     choices = {s.source_id: s for s in source_plan}
     states = []

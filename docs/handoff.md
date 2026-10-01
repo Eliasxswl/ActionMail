@@ -2,6 +2,14 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Regression-contract repairs (offline verified)
+
+After owner instruction to fix the regression, the extraction contract now distinguishes identifying a task from executing it: absent business data/access/approval alone does not cancel an otherwise clear request. Missing externally referenced documents remain a dependency only when email text establishes that actual external relationship, preserving C13's attached-material case. Planning distinguishes a brief primary-content pointer (E10) from a self-contained informational balance report (S03). No case-ID branches were added.
+
+V2 older-message headers now have exact source IDs `thread:N:headers`, shared by prompt construction, validation, segmentation and provenance. V1 body IDs/text remain unchanged. A quote mistakenly labeled with its thread body ID can be reassigned only to that same thread's exact registered header span. Offline replay of C12 passes with the original quote preserved; S02's altered amount is still rejected. The prompt requests minimal sufficient quotes rather than copying irrelevant financial ranges. The API output cap is now 2048 tokens; request construction and preflight share one constant, with header sources included in v2 token/segment estimation. No automatic retry or new paid model call was added.
+
+All 60 offline tests pass. Scripted tests and replay do not prove the live semantic regressions are fixed. Next: targeted live run of N11/A06/A08/A22/C02/C12/S02/S03 plus C13/E10/S09 controls, with owner-run/consented calls, then a full regression only if these pass. Original full-run scores and owner adjudication remain preserved.
+
 ## Full regression did not pass
 
 The owner completed `results/evaluation/v2-regression-20261001`, run `20261001T020143Z-08e74de7`. Port 61933 now serves it. All 60 rows completed, but original status/count matches are 54/60 and 56/60. C13/E10 fixes hold; other failures require work. See `docs/v2_regression_review.md`: overbroad missing-material/execution-prerequisite abstention (A06/A08/A22/C02), N11 response exhausted the 800-token cap without text, S02 changed an amount in its quote, C12 quoted a supplied header outside the registered body evidence contract, and S03 unnecessarily read an informative report. Expected malformed S08 remains correct. Do not declare v2 accepted or weaken evidence validation to raise scores. No new model calls were made during inspection.

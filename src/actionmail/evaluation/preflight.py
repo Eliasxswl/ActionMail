@@ -9,10 +9,10 @@ from urllib.request import Request, urlopen
 
 from actionmail.workflow.pipeline import SYSTEM_PROMPT, _user_prompt
 from actionmail.workflow.multi_pipeline import MAX_ACTIONS, V2_SYSTEM_PROMPT
+from actionmail.reasoning.api_client import MAX_OUTPUT_TOKENS
 
 
 OPENROUTER_BASE = "https://openrouter.ai/api/v1"
-MAX_OUTPUT_TOKENS = 800  # Keep in sync with the chat request limit.
 
 
 class PreflightError(ValueError):
@@ -103,12 +103,12 @@ def estimate(cases, results_root: Path, model: str, input_price: float, output_p
                 model_calls += len(plan_windows)
                 input_tokens += sum(math.ceil((len(PLAN_PROMPT) + len(w.text) + inventory_chars + 2048) / 4) for w in plan_windows)
                 outcome = read_external_sources(email)
-                sources = {**email.sources(), **{s.source_id: s.text for s in outcome.email.read_sources}}
+                sources = {**email.sources(include_headers=True), **{s.source_id: s.text for s in outcome.email.read_sources}}
                 for source in email.external_sources:
                     if source.source_id not in sources and source.kind == 'link' and source.snapshot_text is None and external_mode == 'allowed-live':
                         sources[source.source_id] = ' ' * MAX_TEXT_CHARS  # Unavailable live/file content upper scenario.
             else:
-                sources = email.sources()
+                sources = email.sources(include_headers=True)
             try:
                 windows = segments(sources, limits)
             except ValueError:

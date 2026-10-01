@@ -79,7 +79,7 @@ class ReadingContextTests(unittest.TestCase):
         self.assertIn('not that the email cannot refer to missing material', prompt)
         for thread in c13.email.thread:
             self.assertIn(thread.recipients, prompt)
-        self.assertIn('older tasks belong only to their actual addressees', system)
+        self.assertIn('older tasks belong only to their actual addressees', system.lower())
 
     def test_reading_states_survive_segment_and_merge_paths(self):
         body = 'FYI only. Visit https://example.org for company background.'

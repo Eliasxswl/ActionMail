@@ -7,6 +7,8 @@ from urllib.request import Request, urlopen
 
 from actionmail.reasoning.model_client import ModelReply
 
+MAX_OUTPUT_TOKENS = 2048
+
 
 class ModelCallError(RuntimeError):
     pass
@@ -37,7 +39,7 @@ class APIClient:
                 {"role": "user", "content": user_prompt},
             ],
             "temperature": 0,
-            "max_tokens": 800,
+            "max_tokens": MAX_OUTPUT_TOKENS,
         }
         request = Request(
             self.api_url,
