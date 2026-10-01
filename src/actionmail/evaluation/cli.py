@@ -11,6 +11,7 @@ from uuid import uuid4
 from actionmail.evaluation.baseline import predict_rules
 from actionmail.evaluation.cases import load_cases
 from actionmail.evaluation.suite import load_suite
+from actionmail.evaluation.references import compare_reference
 from actionmail.evaluation.challenge import load_challenge, prepare_challenge, challenge_checks, approve_challenge_gold
 from actionmail.workflow.coverage import WorkflowLimits, PLAN_PROMPT
 from actionmail.evaluation.history import print_history
@@ -165,14 +166,9 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
     status_correct = (
         prediction.status == case.gold["status"] if prediction else False
     ) if schema == "v1" or established_v2_reference else None
-    expected_count = len(case.gold['actions']) if 'actions' in case.gold else 1 if case.gold["status"] == "action" else 0
-    action_count_match = (
-        prediction is not None and prediction.action_count == expected_count
-    ) if established_v2_reference else None
-    if established_v2_reference and case.record.get('accepted_outcomes'):
-        outcomes = case.record['accepted_outcomes']
-        status_correct = prediction is not None and any(o['status'] == prediction.status for o in outcomes)
-        action_count_match = prediction is not None and any(o['status'] == prediction.status and o['action_count'] == prediction.action_count for o in outcomes)
+    action_count_match = None
+    if established_v2_reference:
+        status_correct, action_count_match = compare_reference(asdict(prediction) if prediction else None, case.gold, case.record.get('accepted_outcomes', ()))
     return {
         "case_id": case.case_id,
         "category": case.record["category"],

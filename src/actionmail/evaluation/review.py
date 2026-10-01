@@ -10,6 +10,7 @@ from actionmail.domain.email import addresses_in_header
 from actionmail.evaluation.cases import EvaluationCase, load_cases
 from actionmail.evaluation.challenge import load_challenge
 from actionmail.evaluation.suite import load_suite
+from actionmail.evaluation.references import compare_reference
 
 
 REVIEW_VALUES = {"correct", "incorrect", "uncertain", ""}
@@ -116,11 +117,7 @@ class ReviewDataset:
             status_correct = row['status_correct']
             amendment = case.record.get('reference_adjudication')
             if amendment and row.get('prediction'):
-                prediction = row['prediction']
-                if 'gold' in amendment:
-                    status_correct = prediction['status'] == amendment['gold']['status']
-                elif amendment.get('accepted_outcomes'):
-                    status_correct = any(o['status'] == prediction['status'] and o['action_count'] == len(prediction.get('actions', [])) for o in amendment['accepted_outcomes'])
+                status_correct, _ = compare_reference(row['prediction'], amendment.get('gold', row['gold']), amendment.get('accepted_outcomes', ()))
             items.append({
                 "case_id": case_id,
                 "subject": case.email.subject,

@@ -2,6 +2,12 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Reading-policy fix and architecture review
+
+The owner approved reading E10-like primary-content pointers before deciding whether there are actions and requested a code/architecture review. `workflow/context.py` now builds one availability context for short, segmented and merge extraction: actual read sources, deliberately skipped sources and unsupplied sources, with validated planning reasons. Empty inventory is explicitly distinguished from proof of complete material. The prompt requires review for current requests to inspect unavailable material and preserves older-message ownership. The reading-plan prompt was rewritten to resolve the earlier contradiction between "no body task" and "primary content is in the link"; generic footer/background links remain skippable.
+
+The runtime uses canonical `reason/evidence` rather than old explanation accessors. Status/count comparison is consolidated in `evaluation/references.py` and reused by CLI and review. No case-specific C13/E10 runtime branch, automatic model retry, new model layer or output schema was added. `docs/architecture.md` now describes the implemented v2 flow rather than the original unimplemented MVP design. Offline tests cover primary-page reading, unread primary-page failure, irrelevant-source exclusion, C13 context/ownership, and availability propagation through segmentation/merge. These tests verify orchestration with scripted replies; live semantic correctness remains unverified. No model calls were made during this work. Next: separately consented C13/E10 targeted live verification, then a fresh full run after fixes pass.
+
 ## Owner adjudication of the full run
 
 The owner explicitly approved A16's two actions and requested gold alignment; C11's original review and model interpretation are both acceptable. Saved `adjudication.json` marks C13 and E10 model results incorrect. The active suite now hash-binds `v2_reference_overrides.json`, updating A16 gold and allowing C11's two ownership interpretations in status/count checks. Original `cases.jsonl` (the frozen 50), result rows and `summary.json` remain unchanged. The full run stores `manifest_snapshot.json`, `reference_adjudication.json` and a separate `adjudicated_summary.json` (58/60 adjusted statuses, 59/60 counts). This is reference-adjusted scoring, not a new run or full human semantic approval. Port 61933 serves the same full run with A16's updated reference and preserved original answer. C13/E10 remain acceptance issues; no further live run has been made.
