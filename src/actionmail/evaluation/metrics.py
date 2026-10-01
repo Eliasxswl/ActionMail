@@ -111,6 +111,9 @@ def summarize_v2(rows: list[dict], planned_cases: int) -> dict:
                 counts[key + '_checked'] += 1
                 counts[key] += int(row[key])
         counts['model_calls'] += row.get('model_calls', 0)
+        for repair in row.get('repair_attempts', []):
+            counts['validation_repairs'] += int(repair.get('attempted', False))
+            counts['validated_repairs'] += int(repair.get('outcome') == 'validated')
         counts['read_failures'] += len(row.get('read_failures', []))
         if row.get("error"):
             counts["api_or_run_errors"] += 1

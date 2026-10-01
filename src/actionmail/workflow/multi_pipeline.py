@@ -12,6 +12,7 @@ from actionmail.reasoning.api_client import ModelCallError
 from actionmail.reasoning.multi_response import parse_multi_response
 from actionmail.workflow.pipeline import _normalize_source_ids
 from actionmail.workflow.context import decision_prompt
+from actionmail.workflow.repair import RepairSession
 
 
 V2_SYSTEM_PROMPT = """You identify all current next steps directed at the target recipient in a work email.
@@ -51,6 +52,7 @@ class MultiRunResult:
     evidence_locations: tuple[dict, ...] = ()
     model_error: str | None = None
     failed_model_calls: int = 0
+    repair_attempts: tuple[dict, ...] = ()
 
 
 def _validate(email: EmailPackage, decision: MultiActionResult, max_actions: int) -> tuple[MultiActionResult, tuple[str, ...]]:
@@ -78,20 +80,28 @@ def _validate(email: EmailPackage, decision: MultiActionResult, max_actions: int
     return replace(decision, actions=tuple(normalized)), ()
 
 
-def _short_email_multi(email: EmailPackage, model: ModelClient, max_actions: int = MAX_ACTIONS, source_plan=()) -> MultiRunResult:
+def _short_email_multi(email: EmailPackage, model: ModelClient, max_actions: int = MAX_ACTIONS, source_plan=(), repair=None, limit=48_000) -> MultiRunResult:
     if not 1 <= max_actions <= MAX_ACTIONS:
         raise ValueError(f"max_actions must be between 1 and {MAX_ACTIONS}")
-    try:
-        reply = model.complete(V2_SYSTEM_PROMPT.format(max_actions=max_actions), decision_prompt(email, source_plan))
-    except ModelCallError as exc:
-        return _review(f'Model API failure: {exc}', model_error=str(exc), failed_model_calls=1)
-    try:
-        decision = parse_multi_response(reply.content, require_explanation=True)
+    repair = repair if repair is not None else RepairSession()
+    replies = []
+    def validate(content):
+        decision = parse_multi_response(content, require_explanation=True)
         validated, errors = _validate(email, decision, max_actions)
+        # Task-limit and ambiguity policies are review decisions, not repair opportunities.
+        if any('evidence' in e.lower() or 'quote' in e.lower() or 'cite available original text' in e.lower() for e in errors):
+            raise ValueError('; '.join(errors))
+        return validated, errors
+    try:
+        validated, errors = repair.call(model, V2_SYSTEM_PROMPT.format(max_actions=max_actions), decision_prompt(email, source_plan),
+                                        validate, email.sources(include_headers=True), replies, stage='extraction', limit=limit,
+                                        soft_wraps=email.legacy_soft_wraps)
+    except ModelCallError as exc:
+        return _review(f'Model API failure: {exc}', replies, model_error=str(exc), failed_model_calls=1)
     except (ValueError, TypeError) as exc:
         reason = f"Invalid V2 model response: {exc}"
-        return MultiRunResult(MultiActionResult("needs_review", (), reason), (reply,), (reason,))
-    return MultiRunResult(validated, (reply,), errors)
+        return MultiRunResult(MultiActionResult("needs_review", (), reason), tuple(replies), (reason,))
+    return MultiRunResult(validated, tuple(replies), errors)
 
 
 def _review(reason, replies=(), **trace):
@@ -125,7 +135,13 @@ def _locations(email, decision, records=()):
     return tuple(result)
 
 
-def process_email_multi(email: EmailPackage, model: ModelClient, max_actions: int = MAX_ACTIONS, *, limits=WorkflowLimits(), source_plan=()) -> MultiRunResult:
+def process_email_multi(email: EmailPackage, model: ModelClient, max_actions: int = MAX_ACTIONS, *, limits=WorkflowLimits(), source_plan=(), repair_session=None) -> MultiRunResult:
+    repair = repair_session if repair_session is not None else RepairSession()
+    result = _process_email_multi(email, model, max_actions, limits=limits, source_plan=source_plan, repair=repair)
+    return replace(result, repair_attempts=tuple(repair.events))
+
+
+def _process_email_multi(email, model, max_actions, *, limits, source_plan, repair):
     if not 1 <= max_actions <= MAX_ACTIONS:
         raise ValueError(f'max_actions must be between 1 and {MAX_ACTIONS}')
     sources = email.sources(include_headers=True)
@@ -136,7 +152,7 @@ def process_email_multi(email: EmailPackage, model: ModelClient, max_actions: in
     if sum(len(t) for t in sources.values()) <= limits.segment_chars:
         if len(decision_prompt(email, source_plan)) > limits.max_merge_chars:
             return _review('Email context exceeds the prompt budget; content was not submitted')
-        result = _short_email_multi(email, model, max_actions, source_plan)
+        result = _short_email_multi(email, model, max_actions, source_plan, repair, limits.max_merge_chars)
         return replace(result, coverage=() if result.model_error else tuple(_coverage_entry(s, 0, len(t), t) for s, t in sources.items()), evidence_locations=_locations(email, result.decision))
     replies, candidates, coverage = [], [], []
     newest_notes = []
@@ -152,37 +168,36 @@ def process_email_multi(email: EmailPackage, model: ModelClient, max_actions: in
         if len(prompt) > limits.max_merge_chars:
             remaining = ', '.join(f'{w.source_id}:{w.start}-{w.end}' for w in windows[len(coverage):])
             return _review('Segment context budget exceeded; unread ranges: ' + remaining, replies, coverage=tuple(coverage))
-        try:
-            reply = model.complete(instruction, prompt)
-        except ModelCallError as exc:
-            remaining = ', '.join(f'{w.source_id}:{w.start}-{w.end}' for w in windows[len(coverage):])
-            return _review(f'Model API failure: {exc}; unread ranges: {remaining}', replies, coverage=tuple(coverage), model_error=str(exc), failed_model_calls=1)
-        replies.append(reply)
-        try:
-            decision = parse_multi_response(reply.content, require_explanation=True)
-            # Validate evidence against this call, before any whole-source normalization.
-            supplied = {window.source_id: window.text, 'subject': email.subject}
-            if window.source_id != 'body' and len(email.body) <= limits.segment_chars:
-                supplied['body'] = email.body
-            supplied_email = replace(email, body=supplied.get('body', ''), subject=supplied['subject'], thread=(),
-                                     read_sources=tuple(SourceText(sid, text) for sid, text in supplied.items() if sid not in {'body', 'subject'}), unread_sources=())
+        supplied = {window.source_id: window.text, 'subject': email.subject}
+        if window.source_id != 'body' and len(email.body) <= limits.segment_chars:
+            supplied['body'] = email.body
+        supplied_email = replace(email, body=supplied.get('body', ''), subject=supplied['subject'], thread=(),
+                                 read_sources=tuple(SourceText(sid, text) for sid, text in supplied.items() if sid not in {'body', 'subject'}), unread_sources=())
+        def validate_segment(content):
+            decision = parse_multi_response(content, require_explanation=True)
             aligned = []
             for action in decision.actions:
                 single = _normalize_source_ids(supplied_email, ActionResult('action', action.text, action.deadline, action.evidence, None))
                 if any(e.source_id not in supplied or not e.quote.strip() or e.quote not in supplied[e.source_id] for e in single.evidence):
                     raise ValueError('Segment evidence was not supplied to this call')
                 aligned.append(replace(action, evidence=single.evidence))
-            decision = replace(decision, actions=tuple(aligned))
-            for e in decision.evidence:
-                if not e.quote.strip() or e.quote not in supplied.get(e.source_id, ''):
-                    raise ValueError('Segment explanation evidence was not supplied to this call')
-            entry = {'source_id': window.source_id, 'start': window.start, 'end': window.end, **asdict(decision)}
-            candidates.append(entry)
-            if window.source_id == 'body':
-                newest_notes.append(entry)
-            coverage.append(_coverage_entry(window.source_id, window.start, window.end, sources[window.source_id]))
+            reason = _normalize_source_ids(supplied_email, ActionResult('needs_review', None, None, decision.evidence, 'Reason evidence validation'))
+            if any(not e.quote.strip() or e.quote not in supplied.get(e.source_id, '') for e in reason.evidence):
+                raise ValueError('Segment reason evidence was not supplied to this call')
+            return replace(decision, actions=tuple(aligned), evidence=reason.evidence)
+        try:
+            decision = repair.call(model, instruction, prompt, validate_segment, supplied, replies,
+                                   stage='segment', limit=limits.max_merge_chars, soft_wraps=email.legacy_soft_wraps)
+        except ModelCallError as exc:
+            remaining = ', '.join(f'{w.source_id}:{w.start}-{w.end}' for w in windows[len(coverage):])
+            return _review(f'Model API failure: {exc}; unread ranges: {remaining}', replies, coverage=tuple(coverage), model_error=str(exc), failed_model_calls=1)
         except (ValueError, TypeError) as exc:
             return _review(f'Invalid segment result: {exc}', replies, coverage=tuple(coverage))
+        entry = {'source_id': window.source_id, 'start': window.start, 'end': window.end, **asdict(decision)}
+        candidates.append(entry)
+        if window.source_id == 'body':
+            newest_notes.append(entry)
+        coverage.append(_coverage_entry(window.source_id, window.start, window.end, sources[window.source_id]))
     payload = json.dumps(candidates, ensure_ascii=False)
     # Complete newest text is included whenever bounded. Longer newest messages use candidates;
     # unresolved segment notes must remain review unless their context is explicitly resolved.
@@ -191,33 +206,46 @@ def process_email_multi(email: EmailPackage, model: ModelClient, max_actions: in
         prompt += '\nSOURCE body (complete newest message):\n' + email.body
     if len(prompt) > limits.max_merge_chars:
         return _review('Merge budget exceeded; full candidate ledger was not submitted', replies, coverage=tuple(coverage))
+    instruction = V2_SYSTEM_PROMPT.format(max_actions=max_actions) + '\nMERGE PASS: Combine the complete coverage ledger. Resolve ownership, currentness, conflicts, deadlines and duplicate overlap candidates. All segments were read. Do not drop tasks or unresolved notes. Evidence may use only ledger quotes or the supplied newest body. Summaries are not verbatim evidence. Never combine independent tasks to satisfy the action limit.'
+    permitted = {(e['source_id'], e['quote']) for c in candidates for a in c['actions'] for e in a['evidence']}
+    permitted.update((e['source_id'], e['quote']) for c in candidates for e in c['evidence'])
+    supplied = {}
+    for sid, quote in sorted(permitted):
+        if len(quote) > len(supplied.get(sid, '')):
+            supplied[sid] = quote
+    if len(email.body) <= limits.segment_chars * 2:
+        supplied['body'] = email.body
+    def validate_merge(content):
+        decision = parse_multi_response(content, require_explanation=True)
+        quotes = [*decision.evidence, *(e for a in decision.actions for e in a.evidence)]
+        for e in quotes:
+            if (e.source_id, e.quote) not in permitted and not (e.source_id == 'body' and len(email.body) <= limits.segment_chars * 2 and e.quote.strip() and e.quote in email.body):
+                raise ValueError('Merged evidence is absent from submitted ledger')
+        validated, errors = _validate(email, decision, max_actions)
+        if any('evidence' in e.lower() or 'quote' in e.lower() or 'cite available original text' in e.lower() for e in errors):
+            raise ValueError('; '.join(errors))
+        return validated, errors
     try:
-        reply = model.complete(V2_SYSTEM_PROMPT.format(max_actions=max_actions) + '\nMERGE PASS: Combine the complete coverage ledger. Resolve ownership, currentness, conflicts, deadlines and duplicate overlap candidates. All segments were read. Do not drop tasks or unresolved notes. Evidence may use only ledger quotes or the supplied newest body. Summaries are not verbatim evidence. Never combine independent tasks to satisfy the action limit.', prompt)
+        decision, errors = repair.call(model, instruction, prompt, validate_merge, supplied, replies,
+                                      stage='merge', limit=limits.max_merge_chars, soft_wraps=email.legacy_soft_wraps)
+        return MultiRunResult(decision, tuple(replies), errors, coverage=tuple(coverage), evidence_locations=_locations(email, decision))
     except ModelCallError as exc:
         return _review(f'Model merge API failure: {exc}', replies, coverage=tuple(coverage), model_error=str(exc), failed_model_calls=1)
-    replies.append(reply)
-    try:
-        decision = parse_multi_response(reply.content, require_explanation=True)
-        permitted = {(e['source_id'], e['quote']) for c in candidates for a in c['actions'] for e in a['evidence']}
-        permitted.update((e['source_id'], e['quote']) for c in candidates for e in c['evidence'])
-        for e in decision.evidence:
-            if (e.source_id, e.quote) not in permitted and not (e.source_id == 'body' and len(email.body) <= limits.segment_chars * 2 and e.quote in email.body):
-                raise ValueError('Merged explanation evidence is absent from submitted ledger')
-        for action in decision.actions:
-            for e in action.evidence:
-                if (e.source_id, e.quote) not in permitted and not (e.source_id == 'body' and len(email.body) <= limits.segment_chars * 2 and e.quote in email.body):
-                    raise ValueError('Merged evidence is absent from submitted ledger')
-        decision, errors = _validate(email, decision, max_actions)
-        return MultiRunResult(decision, tuple(replies), errors, coverage=tuple(coverage), evidence_locations=_locations(email, decision))
     except (ValueError, TypeError) as exc:
         return _review(f'Invalid merged result: {exc}', replies, coverage=tuple(coverage))
 
 
 def process_email_multi_with_external(email: EmailPackage, model: ModelClient, max_actions: int = MAX_ACTIONS, *, fetch_live=None, limits=WorkflowLimits(), read_limits=ReadLimits()) -> MultiRunResult:
+    repair = RepairSession()
+    result = _process_email_multi_with_external(email, model, max_actions, fetch_live=fetch_live, limits=limits, read_limits=read_limits, repair=repair)
+    return replace(result, repair_attempts=tuple(repair.events))
+
+
+def _process_email_multi_with_external(email, model, max_actions, *, fetch_live, limits, read_limits, repair):
     if not 1 <= max_actions <= MAX_ACTIONS:
         raise ValueError(f'max_actions must be between 1 and {MAX_ACTIONS}')
     if not email.external_sources:
-        return process_email_multi(email, model, max_actions, limits=limits)
+        return process_email_multi(email, model, max_actions, limits=limits, repair_session=repair)
     replies = []
     try:
         if len({s.source_id for s in email.external_sources}) != len(email.external_sources):
@@ -238,12 +266,12 @@ def process_email_multi_with_external(email: EmailPackage, model: ModelClient, m
             prompt += f'\nSOURCE {window.source_id} ({role}) [{window.start},{window.end}):\n{window.text}'
             if len(prompt) > limits.max_merge_chars:
                 raise ValueError('Reading-plan context exceeds prompt budget; inventory/current window not submitted')
-            reply = model.complete(PLAN_PROMPT, prompt)
-            replies.append(reply)
             supplied = {window.source_id: window.text}
             if original and len(email.body) <= limits.segment_chars:
                 supplied['body'] = email.body
-            plans.append(parse_plan(reply.content, email.external_sources, sources=supplied))
+            plans.append(repair.call(model, PLAN_PROMPT, prompt,
+                         lambda content: parse_plan(content, email.external_sources, sources=supplied), supplied, replies,
+                         stage='planning', limit=limits.max_merge_chars, soft_wraps=email.legacy_soft_wraps))
         # Skip only when every covered window explicitly agrees the source is irrelevant.
         rank = {'irrelevant': 0, 'supporting': 1, 'decisive': 2, 'unresolved': 3}
         plan = []
@@ -265,5 +293,5 @@ def process_email_multi_with_external(email: EmailPackage, model: ModelClient, m
     # Legacy unread names that have no inventory entry must not disappear.
     unknown = tuple(name for name in email.unread_sources if name not in {s.name for s in email.external_sources})
     read_email = replace(outcome.email, unread_sources=unknown)
-    result = process_email_multi(read_email, model, max_actions, limits=limits, source_plan=plan)
+    result = process_email_multi(read_email, model, max_actions, limits=limits, source_plan=plan, repair_session=repair)
     return replace(result, replies=tuple(replies) + result.replies, read_records=outcome.records, source_plan=plan, evidence_locations=_locations(read_email, result.decision, outcome.records))

@@ -199,7 +199,7 @@ class ReviewDataset:
             "status_correct": row["status_correct"],
             "review": self.reviews().get(case_id),
             "prior_gold_review": self.prior_gold_reviews.get(case_id) or case.record.get('prior_review'),
-            "workflow_trace": {key: row.get(key) for key in ('source_plan', 'coverage', 'read_failures', 'evidence_locations', 'content_coverage_complete', 'raw_model_responses')},
+            "workflow_trace": {key: row.get(key) for key in ('source_plan', 'coverage', 'read_failures', 'evidence_locations', 'content_coverage_complete', 'raw_model_responses', 'repair_attempts')},
             "reference_review_state": case.record.get('review_state'),
             "source_expectations": case.record.get('source_expectations'),
             "expected_evidence_locations": case.record.get('evidence_locations'),

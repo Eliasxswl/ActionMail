@@ -17,7 +17,7 @@ flowchart LR
     G --> H[Human review]
 ```
 
-Short emails need one extraction call, plus planning when an external inventory exists. Long inputs use bounded overlapping segments and a merge of the complete candidate ledger. There is no open-ended agent loop, automatic correction retry or external write operation.
+Short emails need one extraction call, plus planning when an external inventory exists. Long inputs use bounded overlapping segments and a merge of the complete candidate ledger. A validation failure may trigger one correction call per email, shared across planning, extraction, segments and merge. There is no open-ended agent loop or external write operation.
 
 ## Responsibilities
 
@@ -28,13 +28,22 @@ Short emails need one extraction call, plus planning when an external inventory 
 | `content/` | Bounded file/page extraction, provenance, office/archive limits and allowlisted link transport. No action classification. |
 | `workflow/context.py` | Build extraction context from supplied text, inventory and validated reading choices. Distinguish read, deliberately skipped and not supplied. Never infer unseen contents. |
 | `workflow/multi_pipeline.py` | Coordinate planning, reading, extraction, segment merge and validation. No case-specific exceptions. |
+| `workflow/repair.py`, `guardrails/matching.py` | Bound validation correction to one call per email and locate candidate original quotes for feedback. Similarity never approves evidence. |
 | `reasoning/`, `guardrails/` | API calls, response parsing, deadline/schema checks and exact original-evidence validation. Historical response compatibility stays at the parsing boundary. |
 | `evaluation/` | Versioned cases, reference comparison, saved model traces and owner adjudication. Reference labels are never included in model prompts. |
 | `interfaces/` | CLI and local review UI. They display/save judgments and do not execute mail tasks. |
 
 The current model result has only `status`, `actions`, `reason`, and `evidence`. Each action has its own kind, text, deadline and quotes. The maximum is three independently completable tasks. The workflow uses `reason/evidence` directly; old explanation/review-reason accessors are retained to read history and preserve compatibility.
 
-Older-message bodies retain `thread:N`; their original headers use `thread:N:headers`. V2 registers both for prompts, segmentation and exact quote validation. The API's 2048-token output cap and preflight estimate use a shared constant. This increases headroom after a response exhausted the earlier 800-token cap, without introducing an automatic retry loop.
+Older-message bodies retain `thread:N`; their original headers use `thread:N:headers`. V2 registers both for prompts, segmentation and exact quote validation. The API's 2048-token output cap and preflight estimate use a shared constant. Preflight includes at most one additional validation-repair call per v2 email.
+
+## Evidence diagnostics and bounded correction
+
+The model continues selecting quotes. Accepted evidence must match supplied original text, with existing safe whitespace and known MailEx soft-wrap alignment. A bounded lexical search can suggest original excerpts when validation fails. Its similarity score measures text resemblance, not semantic confidence. Numerical/unit/date and negation markers flag potentially consequential differences; this heuristic is not exhaustive. No fuzzy candidate is automatically accepted, even above the diagnostic threshold.
+
+Schema, reading-plan and original-evidence failures can return the validation error, prior reply and candidate excerpts to the model once. The correction repeats the same contract and is strictly revalidated. Feedback uses only the sources supplied to that stage: a segment cannot access unread text, and merge feedback stays within its submitted ledger/full body. Legitimate `needs_review`, unavailable required materials, transport failures and budget failures do not trigger correction. A failed correction ends in review rather than a loop.
+
+Both replies, token usage, repair outcome and matching diagnostics are saved. The review UI's Raw reply tab exposes the complete reply sequence. A successful repair means the corrected stage passed deterministic validation, not that its semantic decision has been human-approved.
 
 ## Reading and missing-content policy
 

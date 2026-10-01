@@ -132,10 +132,11 @@ class V2ChallengeTests(unittest.TestCase):
         case = self.by_id['A08']
         for sid, relevance in [('made-up:1', 'decisive'), ('attachment:1', 'unresolved'), ('attachment:1', 'decisive')]:
             with self.subTest(sid=sid, relevance=relevance):
-                model = ScriptModel([{'sources': [{'source_id': sid, 'relevance': relevance, 'reason': 'Cannot determine assignment'}]}])
+                plan = {'sources': [{'source_id': sid, 'relevance': relevance, 'reason': 'Cannot determine assignment'}]}
+                model = ScriptModel([plan, plan] if sid == 'made-up:1' else [plan])
                 run = process_email_multi_with_external(case.email, model)
                 self.assertEqual(run.decision.status, 'needs_review')
-                self.assertEqual(len(model.calls), 1)
+                self.assertEqual(len(model.calls), 2 if sid == 'made-up:1' else 1)
         run = process_email_multi_with_external(self.by_id['A05'].email, ScriptModel([{'sources': [{'source_id': sid, 'relevance': 'decisive', 'reason': 'Required'} for sid in self.by_id['A05'].record['source_expectations']]}]), read_limits=ReadLimits(max_sources=2))
         self.assertIn('budget', run.decision.review_reason)
 
@@ -179,7 +180,7 @@ class V2ChallengeTests(unittest.TestCase):
         invented = action(case.email.body[100:150])
         strict_limits = WorkflowLimits(segment_chars=4000)
         strict_responses = [case.gold if q in w.text else {'status': 'no_action', 'actions': [], 'review_reason': None} for w in segments(case.email.sources(), strict_limits)]
-        run = process_email_multi(case.email, ScriptModel(strict_responses + [invented]), limits=strict_limits)
+        run = process_email_multi(case.email, ScriptModel(strict_responses + [invented, invented]), limits=strict_limits)
         self.assertEqual(run.decision.status, 'needs_review')
         self.assertIn('ledger', run.decision.review_reason)
         # Boundary coverage is complete, with no skipped suffix.

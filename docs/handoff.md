@@ -2,6 +2,14 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Evidence diagnostics and one validation repair (offline verified)
+
+The owner approved preserving model-selected quotes, adding matching diagnostics and returning validation failures for one correction. `guardrails/matching.py` performs a bounded lexical search within actually supplied sources. Scores are resemblance diagnostics, never semantic confidence or fuzzy acceptance. Numerical/unit/date and negation differences are flagged heuristically; every corrected quote still requires strict original-text validation. S02's altered amount yields about 98.5% similarity but remains invalid.
+
+`workflow/repair.py` owns one correction allowance per email, shared by planning, extraction, segments and merge. Correction receives the original stage prompt, failed reply, validation error and candidate original excerpts; its result is revalidated. Hidden/unread sources cannot enter feedback. Valid review decisions, missing required material, API failures and budget failures do not cause retries. Both replies and actual usage are preserved; repair records and all raw replies are exposed in the review UI. Preflight conservatively budgets one possible extra call per v2 email.
+
+All 68 offline tests pass, including saved S02 replay with a scripted exact-quote correction, repeated failure, shared allowance, prompt budget, transport failure, ambiguity/negation diagnostics and accounting for both replies. All 60 active cases and manifest hashes validate; the review JavaScript syntax check passes. No live model call was made and no historical row, score or owner judgment was rewritten. This does not prove a live correction will succeed. Next: owner-run S02 with C13/E10 controls in a fresh result directory, inspect the repair trace and exact evidence, then run the full 60 only if the check passes. Port 61933 still serves the earlier full regression.
+
 ## Eleven-case contract check: one quote failure remains
 
 The owner completed `results/evaluation/v2-contract-check-20261001`, run `20261001T023554Z-750729c0`. Original scores: 10/11 status, 11/11 action count, 3/3 supplementary source/read checks; no API or read failures. N11 returned text/no action; A06/A08/A22/C02 now retain clear actions; C12 cites `thread:1:headers` successfully; C13 stays review for explicitly referenced missing material; E10 reads its 66-character snapshot; S03 correctly skips its informational PDF; S09 reads the 133-character attachment and returns the legitimate task. All accepted top-level/action evidence was independently matched to supplied source text.

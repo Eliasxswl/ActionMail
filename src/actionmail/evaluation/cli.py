@@ -110,6 +110,8 @@ def _show_preflight(args, cases, api_key: str) -> tuple[float, float, float, str
     print(f"Prices ({source}): ${input_price:.4f}/M input, ${output_price:.4f}/M output, ${request_price:.6f}/request")
     print(f"Approximate tokens: {preview['input_tokens']} input; {preview['output_tokens']} output")
     print(f"Expected model calls: up to {preview['model_calls']}")
+    if preview['max_validation_repairs']:
+        print(f"Included validation-repair allowance: up to {preview['max_validation_repairs']} calls, at most one per email")
     basis = f"{preview['history_samples']} prior same-model results" if preview["history_samples"] else "160 output tokens/case fallback"
     print(f"Output assumption: {preview['output_per_case']} tokens/case from {basis}")
     print(f"Expected batch cost: about ${preview['estimated_cost_usd']:.6f}")
@@ -145,7 +147,7 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
             if schema == 'v2':
                 error = run.model_error
                 trace = {key: [asdict(item) if hasattr(item, '__dataclass_fields__') else item for item in getattr(run, key)]
-                         for key in ('source_plan', 'coverage', 'read_failures', 'evidence_locations')}
+                         for key in ('source_plan', 'coverage', 'read_failures', 'evidence_locations', 'repair_attempts')}
                 trace.update({'failed_model_calls': run.failed_model_calls, 'model_calls_succeeded': len(replies)})
                 if case.record.get('challenge_version'):
                     trace.update(challenge_checks(case, run))

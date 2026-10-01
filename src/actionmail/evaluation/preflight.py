@@ -87,10 +87,12 @@ def estimate(cases, results_root: Path, model: str, input_price: float, output_p
     prompt = SYSTEM_PROMPT if schema == "v1" else V2_SYSTEM_PROMPT.format(max_actions=MAX_ACTIONS)
     input_tokens = 0
     model_calls = 0
+    repair_budgets = []
     if schema == 'v2':
         from actionmail.content.reader import read_external_sources, MAX_TEXT_CHARS
         from actionmail.workflow.coverage import WorkflowLimits, PLAN_PROMPT, segments
         for case in cases:
+            calls_before = model_calls
             limits = WorkflowLimits(**case.record.get('workflow_limits', {}))
             email = case.email
             body_sources = {'body': email.body, **{s.source_id: s.text for s in email.thread}}
@@ -124,6 +126,11 @@ def estimate(cases, results_root: Path, model: str, input_price: float, output_p
                 # Candidate/newest context can grow up to the merge budget on each segment.
                 input_tokens += count * math.ceil((len(prompt) + limits.segment_chars + limits.max_merge_chars + 2048) / 4)
                 input_tokens += math.ceil((len(prompt) + limits.max_merge_chars) / 4)
+            if model_calls > calls_before:
+                repair_budgets.append(limits.max_merge_chars)
+        # One possible validation repair per email, not one per segment/stage.
+        model_calls += len(repair_budgets)
+        input_tokens += sum(math.ceil((len(prompt) + budget) / 4) for budget in repair_budgets)
     else:
         input_tokens = sum(math.ceil((len(prompt) + len(_user_prompt(case.email)) + 16) / 4) for case in cases)
         model_calls = len(cases)
@@ -138,7 +145,8 @@ def estimate(cases, results_root: Path, model: str, input_price: float, output_p
     cost = (input_tokens * input_price + output_tokens * output_price) / 1_000_000 + model_calls * request_price
     cap_cost = (input_tokens * input_price + model_calls * MAX_OUTPUT_TOKENS * output_price) / 1_000_000 + model_calls * request_price
     return {
-        "estimate_scope": "Conservative all-source planning/segment/merge scenario; source selection and failures may reduce calls",
+        "estimate_scope": "Conservative all-source planning/segment/merge scenario, including at most one validation repair per v2 email; source selection and failures may reduce calls",
+        "max_validation_repairs": len(repair_budgets),
         "input_tokens": input_tokens,
         "output_tokens": output_tokens,
         "output_per_case": output_per_case,

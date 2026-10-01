@@ -239,7 +239,20 @@ function renderCase(data) {
   addTab("Reading", readingPanel);
 
   const rawPanel = node("div");
-  rawPanel.append(node("h3", "", "Saved model replies"), node("pre", "source-text", data.raw_model_response || "No reply saved."));
+  rawPanel.append(node("h3", "", "Saved model replies"));
+  const savedReplies = data.workflow_trace?.raw_model_responses || (data.raw_model_response ? [data.raw_model_response] : []);
+  savedReplies.forEach((reply, index) => {
+    const item = node("details", "");
+    item.open = index === savedReplies.length - 1;
+    item.append(node("summary", "", `Reply ${index + 1}`), node("pre", "source-text", reply));
+    rawPanel.append(item);
+  });
+  if (!savedReplies.length) rawPanel.append(node("p", "", "No reply saved."));
+  if (data.workflow_trace?.repair_attempts?.length) {
+    const repairLog = node("details", "");
+    repairLog.append(node("summary", "", "Validation and repair record"), node("pre", "source-text", JSON.stringify(data.workflow_trace.repair_attempts, null, 2)));
+    rawPanel.append(repairLog);
+  }
   addTab("Raw reply", rawPanel);
   tabs.append(tabbar, panels);
   const notes = node("div", "review-field notes-field");
