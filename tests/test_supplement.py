@@ -14,6 +14,34 @@ MANIFEST = PROJECT_ROOT / 'evaluation/supplement_v2_revision2.jsonl'
 
 
 class SupplementTests(unittest.TestCase):
+    def test_active_suite_preview_and_full_reference_metrics(self):
+        from actionmail.evaluation.suite import load_suite
+        from actionmail.evaluation.cli import _run_one
+        registry = PROJECT_ROOT / 'evaluation/active_suite.json'
+        cases = load_suite(registry, DEFAULT_MAILEX_ROOT)
+        self.assertEqual(len(cases), 60)
+        with tempfile.TemporaryDirectory() as directory:
+            run = Path(directory) / 'suite'
+            prepare_challenge(cases, registry, run, benchmark='v2-60')
+            dataset = ReviewDataset.open(run, registry, DEFAULT_MAILEX_ROOT)
+            overview = dataset.overview()['cases']
+            self.assertEqual(len(overview), 60)
+            self.assertEqual(sum(c['group'] == 'base' for c in overview), 50)
+            self.assertTrue(all(c['predicted_status'] == 'pending' for c in overview))
+            self.assertIn('dennis_mcconaghy@transcanada.com', next(c for c in overview if c['case_id'] == 'S01')['search_text'])
+            self.assertIsNone(dataset.detail(cases[0].case_id)['prediction'])
+            self.assertEqual(dataset.detail('S09')['email']['target_recipient'], 'alex@example.com')
+        # The full suite scores established base labels rather than treating them as pending multi-action drafts.
+        from actionmail.reasoning.model_client import ModelReply
+        case = next(c for c in cases if not c.record.get('challenge_version') and c.gold['status'] == 'action')
+        class Model:
+            def complete(self, system, user):
+                result = {'status': 'action', 'actions': [{'kind': 'perform_task', 'text': case.gold['action'], 'deadline': case.gold['deadline'], 'evidence': case.gold['evidence']}], 'reason': 'The email requests this task.', 'evidence': case.gold['evidence']}
+                return ModelReply(json.dumps(result), 'offline', 10, 10, 1)
+        row = _run_one(case, 'llm', Model(), (0, 0, 0), schema='v2', score_frozen=True)
+        self.assertTrue(row['status_correct'])
+        self.assertTrue(row['action_count_match'])
+
     def test_sixty_distinct_cases_and_reviewable_real_pdf_without_invented_date(self):
         base = load_cases(PROJECT_ROOT / 'evaluation/cases.jsonl', DEFAULT_MAILEX_ROOT)
         extra = load_challenge(MANIFEST, DEFAULT_MAILEX_ROOT, benchmark='supplement-v2')

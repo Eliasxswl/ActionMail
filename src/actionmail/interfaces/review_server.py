@@ -122,6 +122,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--no-browser", action="store_true", help="Print the URL without opening a browser")
     args = parser.parse_args(argv)
     try:
+        if args.manifest == DEFAULT_MANIFEST:
+            metadata = json.loads((args.run_dir / 'run.json').read_text(encoding='utf-8'))
+            if metadata.get('benchmark') == 'v2-60':
+                args.manifest = DEFAULT_MANIFEST.parent / 'active_suite.json'
         dataset = ReviewDataset.open(args.run_dir, args.manifest, args.mailex_root)
         server = create_server(dataset, args.port)
         url = f"http://127.0.0.1:{server.server_port}/"

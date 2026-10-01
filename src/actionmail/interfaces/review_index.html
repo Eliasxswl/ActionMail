@@ -25,14 +25,23 @@
         <h2>Inbox</h2>
         <span id="progress">0 reviewed</span>
       </div>
+      <label class="field-label" for="search">SEARCH CASES</label>
+      <input type="search" id="search" placeholder="ID, subject, address or email text">
+      <label class="field-label" for="group">CASE SET</label>
+      <select id="group"><option value="all">All 60 cases</option><option value="base">Base 50</option><option value="supplement">Supplement 10</option></select>
       <label class="field-label" for="filter">FILTER CASES</label>
       <select id="filter">
         <option value="all">All cases</option>
         <option value="unreviewed">Not reviewed</option>
         <option value="status-mismatch">Status mismatch</option>
         <option value="action">Model proposed action</option>
+        <option value="no_action">Model: no action</option>
+        <option value="needs_review">Model: needs review</option>
+        <option value="error">Run error</option>
+        <option value="pending">Not run yet</option>
         <option value="external">Attachment or link</option>
       </select>
+      <span id="match-count" class="match-count"></span>
       <div id="case-list" class="case-list" role="list"></div>
     </aside>
 

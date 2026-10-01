@@ -27,13 +27,20 @@ function renderList() {
   const list = $("#case-list");
   list.replaceChildren();
   const filter = $("#filter").value;
+  const group = $("#group").value;
+  const terms = $("#search").value.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const cases = state.overview.cases.filter((item) => {
+    if (group !== "all" && item.group !== group) return false;
+    if (!terms.every(term => item.search_text.includes(term))) return false;
     if (filter === "unreviewed") return !item.reviewed;
     if (filter === "status-mismatch") return item.status_correct === false;
     if (filter === "action") return item.predicted_status === "action";
-    if (filter === "external") return item.category === "external_content";
+    if (["no_action", "needs_review", "error", "pending"].includes(filter)) return item.predicted_status === filter;
+    if (filter === "external") return item.has_external;
     return true;
   });
+  $("#match-count").textContent = `${cases.length} matching cases`;
+  if (!cases.length) list.append(node("p", "", "No matching cases."));
   for (const item of cases) {
     const button = node("button", `case-item${item.case_id === state.selected ? " active" : ""}`);
     button.type = "button";
@@ -274,6 +281,8 @@ async function start() {
     state.overview = await readJson("/api/cases");
     $("#run-meta").textContent = `${state.overview.model} · ${state.overview.run_id} · ${state.overview.manifest}`;
     $("#filter").addEventListener("change", renderList);
+    $("#group").addEventListener("change", renderList);
+    $("#search").addEventListener("input", renderList);
     renderList();
     const requested = new URLSearchParams(window.location.search).get("case");
     const first = state.overview.cases.find((item) => item.case_id === requested) || state.overview.cases[0];

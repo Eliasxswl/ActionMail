@@ -147,3 +147,7 @@ details pre { padding: 13px; border-radius: 8px; background: #f7f7f9; color: #3a
   .metadata, .thread-metadata { grid-template-columns: 1fr; }
   .source-text { padding: 16px; }
 }
+
+.sidebar input[type=search] { width:100%; padding:10px 12px; border:1px solid #dcdce1; border-radius:9px; background:white; font:inherit; }
+.sidebar .field-label { margin-top:12px; }
+.match-count { display:block; margin-top:12px; color:#6e6e73; font-size:12px; }

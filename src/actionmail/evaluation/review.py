@@ -8,6 +8,7 @@ from urllib.parse import quote
 from actionmail.domain.email import addresses_in_header
 from actionmail.evaluation.cases import EvaluationCase, load_cases
 from actionmail.evaluation.challenge import load_challenge
+from actionmail.evaluation.suite import load_suite
 
 
 REVIEW_VALUES = {"correct", "incorrect", "uncertain", ""}
@@ -41,14 +42,15 @@ class ReviewDataset:
         if manifest_hash != run["manifest_sha256"]:
             raise ValueError("The manifest does not match this evaluation run")
         challenge = run.get('benchmark') in {'challenge-v2.1', 'supplement-v2'}
-        cases = {case.case_id: case for case in (load_challenge(manifest, mailex_root, benchmark=run['benchmark']) if challenge else load_cases(manifest, mailex_root))}
+        full_suite = run.get('benchmark') == 'v2-60'
+        cases = {case.case_id: case for case in (load_suite(manifest, mailex_root) if full_suite else load_challenge(manifest, mailex_root, benchmark=run['benchmark']) if challenge else load_cases(manifest, mailex_root))}
         rows_list = [json.loads(line) for line in (run_dir / "cases.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
         rows = {row["case_id"]: row for row in rows_list}
         if len(rows) != len(rows_list) or set(rows) - set(run["case_ids"]) or set(rows) - set(cases):
             raise ValueError("Evaluation rows do not match the run and manifest")
         revised_gold = {}
         current_manifest = manifest.parent / "cases.jsonl"
-        if not challenge and manifest != current_manifest and current_manifest.exists():
+        if not challenge and not full_suite and manifest != current_manifest and current_manifest.exists():
             for case in load_cases(current_manifest, mailex_root):
                 if case.case_id in rows and case.gold != rows[case.case_id]["gold"]:
                     revised_gold[case.case_id] = case.gold
@@ -97,9 +99,12 @@ class ReviewDataset:
                 "subject": case.email.subject,
                 "category": row["category"],
                 "gold_status": row["gold"]["status"],
-                "predicted_status": row["prediction"]["status"] if row["prediction"] else "error",
+                "predicted_status": row["prediction"]["status"] if row["prediction"] else 'error' if row.get('error') else 'pending',
                 "status_correct": row["status_correct"],
                 "reviewed": case_id in reviews,
+                "has_external": bool(case.email.external_sources),
+                "group": 'supplement' if case.record.get('challenge_version') else 'base',
+                "search_text": ' '.join((case_id, case.email.subject or '', case.email.body, case.email.sender or '', case.email.target_recipient, *case.email.recipients, *(s.text for s in case.email.thread))).lower(),
             })
         return {"run_id": self.run["run_id"], "model": self.run["model"], "manifest": self.manifest_name, "cases": items}
 

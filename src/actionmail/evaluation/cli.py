@@ -10,6 +10,7 @@ from uuid import uuid4
 
 from actionmail.evaluation.baseline import predict_rules
 from actionmail.evaluation.cases import load_cases
+from actionmail.evaluation.suite import load_suite
 from actionmail.evaluation.challenge import load_challenge, prepare_challenge, challenge_checks, approve_challenge_gold
 from actionmail.workflow.coverage import WorkflowLimits, PLAN_PROMPT
 from actionmail.evaluation.history import print_history
@@ -33,7 +34,7 @@ DEFAULT_MULTI_DRAFT = PROJECT_ROOT / "evaluation" / "multi_action_draft.jsonl"
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="actionmail-eval", description="Validate or run the frozen 50-case evaluation.")
     parser.add_argument("--validate", action="store_true", help="Validate the frozen cases without making model calls")
-    parser.add_argument('--benchmark', choices=('frozen', 'supplement-v2', 'challenge-v2.1'), default='frozen')
+    parser.add_argument('--benchmark', choices=('frozen', 'supplement-v2', 'challenge-v2.1', 'v2-60'), default='frozen')
     parser.add_argument('--prepare-challenge', action='store_true', help='Create a reference-only review run without model calls')
     parser.add_argument('--approve-challenge-gold', type=Path, help='Reference-preview directory with all owner gold judgments saved correct; no model call')
     parser.add_argument('--approved-manifest', type=Path, help='New approved challenge manifest path')
@@ -116,7 +117,7 @@ def _show_preflight(args, cases, api_key: str) -> tuple[float, float, float, str
     return input_price, output_price, request_price, source
 
 
-def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | None, float | None, float], external_mode: str = "body-only", allow_domains: tuple[str, ...] = (), schema: str = "v1", multi_draft: dict | None = None) -> dict:
+def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | None, float | None, float], external_mode: str = "body-only", allow_domains: tuple[str, ...] = (), schema: str = "v1", multi_draft: dict | None = None, score_frozen: bool = False) -> dict:
     reply = None
     error = None
     validation_errors = []
@@ -160,7 +161,7 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
         }
         if not error and None not in prices and all(item.input_tokens is not None and item.output_tokens is not None for item in replies):
             cost = (usage["input_tokens"] * prices[0] + usage["output_tokens"] * prices[1]) / 1_000_000 + len(replies) * prices[2]
-    established_v2_reference = schema == "v2" and case.record["category"] == "external_content" and multi_draft is None
+    established_v2_reference = schema == "v2" and (case.record["category"] == "external_content" or score_frozen) and multi_draft is None and not case.record.get('challenge_version')
     status_correct = (
         prediction.status == case.gold["status"] if prediction else False
     ) if schema == "v1" or established_v2_reference else None
@@ -204,6 +205,14 @@ def main(argv: list[str] | None = None) -> int:
             print_history(PROJECT_ROOT / "results" / "evaluation")
             return 0
         challenge = args.benchmark in {'challenge-v2.1', 'supplement-v2'}
+        full_suite = args.benchmark == 'v2-60'
+        if full_suite:
+            if args.manifest == DEFAULT_MANIFEST:
+                args.manifest = PROJECT_ROOT / 'evaluation/active_suite.json'
+            if args.case_group or args.prepare_multi or args.approve_challenge_gold:
+                raise ValueError('Full suite does not use historical draft groups or gold approval')
+            args.schema = 'v2'
+            args.external_mode = 'snapshots'
         if challenge and args.manifest == DEFAULT_MANIFEST:
             if args.benchmark == 'supplement-v2':
                 suite = json.loads((PROJECT_ROOT / 'evaluation/active_suite.json').read_text(encoding='utf-8'))
@@ -220,7 +229,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.external_mode == 'allowed-live':
                 raise ValueError('Challenge v2.1 gold is defined for snapshots mode; live transport is verified separately')
             args.external_mode = 'snapshots'
-        cases = load_challenge(args.manifest, args.mailex_root, benchmark=args.benchmark) if challenge else load_cases(args.manifest, args.mailex_root)
+        cases = load_suite(args.manifest, args.mailex_root) if full_suite else load_challenge(args.manifest, args.mailex_root, benchmark=args.benchmark) if challenge else load_cases(args.manifest, args.mailex_root)
         if args.approve_challenge_gold:
             if not challenge or not args.approved_manifest:
                 raise ValueError('--approve-challenge-gold requires a supplementary/challenge benchmark and --approved-manifest')
@@ -230,13 +239,13 @@ def main(argv: list[str] | None = None) -> int:
         if args.approved_manifest:
             raise ValueError('--approved-manifest requires --approve-challenge-gold')
         if args.prepare_challenge:
-            if not challenge:
+            if not challenge and not full_suite:
                 raise ValueError('--prepare-challenge requires a supplementary/challenge benchmark')
             output = args.output_dir or PROJECT_ROOT / 'results' / 'evaluation' / ('challenge-gold-' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ'))
             prepare_challenge(cases, args.manifest, output, benchmark=args.benchmark)
             print(f'Prepared {len(cases)} reference-only cases for owner review: {output}')
             return 0
-        multi_drafts = load_multi_drafts(args.multi_draft, cases) if not challenge and (args.schema == "v2" or args.prepare_multi or args.case_group == "multi-draft") and args.multi_draft.exists() else {}
+        multi_drafts = load_multi_drafts(args.multi_draft, cases) if not challenge and not full_suite and (args.schema == "v2" or args.prepare_multi or args.case_group == "multi-draft") and args.multi_draft.exists() else {}
         if args.prepare_multi:
             if not multi_drafts:
                 raise ValueError(f"Multi-action draft not found: {args.multi_draft}")
@@ -261,6 +270,9 @@ def main(argv: list[str] | None = None) -> int:
         if args.engine == "rules" and args.schema != "v1":
             raise ValueError("The rule baseline supports only the v1 schema")
         if args.validate:
+            if full_suite:
+                print(f'Validated {len(cases)} active v2 cases: 50 base + 10 supplementary; component hashes verified.')
+                return 0
             approved_count = sum(c.record.get('review_state') == 'approved' for c in cases)
             print(f'Validated {len(cases)} {args.benchmark} cases; {approved_count} approved references, {len(cases) - approved_count} pending.' if challenge else f"Validated {len(cases)} frozen cases: 15 no-action, 15 explicit-action, 10 context, 5 attachment, 5 link.")
             return 0
@@ -369,7 +381,7 @@ def main(argv: list[str] | None = None) -> int:
         elif pending:
             _write_json(meta_path, metadata)
         for index, case in enumerate(pending, start=1):
-            row = _run_one(case, args.engine, model, prices, args.external_mode, tuple(args.allow_domain), args.schema, multi_drafts.get(case.case_id) if args.schema == "v2" else None)
+            row = _run_one(case, args.engine, model, prices, args.external_mode, tuple(args.allow_domain), args.schema, multi_drafts.get(case.case_id) if args.schema == "v2" else None, score_frozen=full_suite)
             with rows_path.open("a", encoding="utf-8") as stream:
                 stream.write(json.dumps(row, ensure_ascii=False) + "\n")
             rows.append(row)

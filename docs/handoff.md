@@ -2,6 +2,21 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Full v2 evaluation entry point
+
+The owner requested one full rerun of all 60 active cases and intends to use the reviewed result for v2 acceptance. `actionmail-eval --benchmark v2-60` now loads the hash-bound `evaluation/active_suite.json`, uses v2 and snapshot inputs, and excludes historical pending multi-action drafts. All 50 frozen reference statuses/action counts and the ten approved supplementary references are scored; action meaning, grouping, evidence and deadlines still need human review. A mismatch against a frozen single-action reference can require adjudication under the current grouping policy; do not silently revise gold or claim a status/count match establishes semantic quality.
+
+Port 61933 currently serves `results/evaluation/v2-60-review-preview`, a reference-only preview of all 60 cases. Earlier model runs remain separate. The UI supports combined case-set/status/review/external filters and case-insensitive word search across IDs, subjects, sender/recipient addresses, newest body and older thread text. The new full run uses a fresh result directory; do not overwrite historical results. Review server automatically recognizes the full-suite registry from run metadata. All 52 offline tests pass; browser checks confirm 60 total, ten supplementary matches and one match for S09. No model calls were made while implementing this entry point.
+
+Owner's full-run command (from the repository, with the key already configured locally):
+
+```powershell
+$env:PYTHONPATH = 'src'
+python -m actionmail.evaluation.cli --benchmark v2-60 --model openai/gpt-6-luna --output-dir results/evaluation/v2-full-20261001 --yes
+```
+
+The command checks current provider pricing and prints the batch estimate before model calls. After completion, switch the existing 61933 service to this result directory. Check all 60 completed, API/validation failures, status/action-count/source/coverage mismatches and human Pass/Notes before recording v2 acceptance; the project is not yet declared released.
+
 ## Latest review and fixes (1 October)
 
 This section supersedes the earlier continuation notes. The owner approved all ten supplementary references and ran `results/evaluation/supplement-v2-with-explanations` (run `20260930T223150Z-74fceffa`, model `openai/gpt-6-luna`). The active suite remains 50 + 10. Original status matches were 8/10 and action-count matches 9/10; these are automatic comparisons, not a complete human semantic assessment. The owner sampled other outputs without reporting problems; do not mark every output passed on their behalf.

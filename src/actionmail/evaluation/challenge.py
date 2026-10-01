@@ -110,9 +110,9 @@ def prepare_challenge(cases, manifest, output, *, benchmark='challenge-v2.1'):
     for c in cases:
         outcome = read_external_sources(c.email)
         rows.append({'case_id': c.case_id, 'category': c.record['category'], 'gold': c.gold, 'prediction': None,
-                     'status_correct': None, 'action_count_match': None, 'reference_review_state': c.record['review_state'],
+                     'status_correct': None, 'action_count_match': None, 'reference_review_state': c.record.get('review_state', 'approved'),
                      'read_sources': [asdict(r) for r in outcome.records], 'reference_extraction_only': True,
-                     'read_failures': list(outcome.failures), 'feature_tags': c.record['feature_tags'],
+                     'read_failures': list(outcome.failures), 'feature_tags': c.record.get('feature_tags', []),
                      'raw_model_response': None, 'validation_errors': [], 'error': None, 'model_calls': 0})
     (output / 'cases.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in rows), encoding='utf-8')
     return output
