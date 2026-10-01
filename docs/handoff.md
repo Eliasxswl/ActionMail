@@ -2,6 +2,12 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Eleven-case contract check: one quote failure remains
+
+The owner completed `results/evaluation/v2-contract-check-20261001`, run `20261001T023554Z-750729c0`. Original scores: 10/11 status, 11/11 action count, 3/3 supplementary source/read checks; no API or read failures. N11 returned text/no action; A06/A08/A22/C02 now retain clear actions; C12 cites `thread:1:headers` successfully; C13 stays review for explicitly referenced missing material; E10 reads its 66-character snapshot; S03 correctly skips its informational PDF; S09 reads the 133-character attachment and returns the legitimate task. All accepted top-level/action evidence was independently matched to supplied source text.
+
+S02 still fails: raw model judgment is `no_action`, but its body quote changes `$25k-$50k` to `$25k-$50` and replaces soft-wrap newlines with spaces while retaining equals signs. Do not accept the changed amount or call the check passed. This remaining issue is evidence generation, not another action-policy regression. Preserve the raw response and 10/11 score. Further full regression should wait for the quote issue to be handled. Inspection made no new model call or invented owner judgments; port 61933 still serves the earlier full regression, not these eleven rows.
+
 ## Regression-contract repairs (offline verified)
 
 After owner instruction to fix the regression, the extraction contract now distinguishes identifying a task from executing it: absent business data/access/approval alone does not cancel an otherwise clear request. Missing externally referenced documents remain a dependency only when email text establishes that actual external relationship, preserving C13's attached-material case. Planning distinguishes a brief primary-content pointer (E10) from a self-contained informational balance report (S03). No case-ID branches were added.
