@@ -33,8 +33,8 @@ DEFAULT_MULTI_DRAFT = PROJECT_ROOT / "backup" / "v2.0" / "evaluation" / "multi_a
 
 
 def _parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="actionmail-eval", description="Validate or run the frozen 50-case evaluation.")
-    parser.add_argument("--validate", action="store_true", help="Validate the frozen cases without making model calls")
+    parser = argparse.ArgumentParser(prog="actionmail-eval", description="Validate or run a selected evaluation suite (legacy default: frozen 50; short command default: v2-60).")
+    parser.add_argument("--validate", action="store_true", help="Validate the selected suite without making model calls")
     parser.add_argument('--benchmark', choices=('frozen', 'supplement-v2', 'challenge-v2.1', 'v2-60'), default='frozen')
     parser.add_argument('--prepare-challenge', action='store_true', help='Create a reference-only review run without model calls')
     parser.add_argument('--approve-challenge-gold', type=Path, help='Reference-preview directory with all owner gold judgments saved correct; no model call')
@@ -395,6 +395,9 @@ def main(argv: list[str] | None = None) -> int:
         _write_json(output / "summary.json", summarize(rows, len(selected) if args.case_group else len(cases)) if args.schema == "v1" else summarize_v2(rows, len(selected)))
         print(f"Saved {len(rows)} case result(s) in {output}")
         return 0
+    except EOFError:
+        print("Cancelled: confirmation input is unavailable. No model or live-link request was started.", file=sys.stderr)
+        return 1
     except (OSError, ValueError, KeyError, json.JSONDecodeError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1

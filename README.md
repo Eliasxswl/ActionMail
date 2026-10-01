@@ -21,7 +21,8 @@ actionmail demo                  # offline demo; writes to a fresh private folde
 actionmail eval --estimate       # v2/60 cost and usage preflight only
 actionmail eval --validate       # validate the active v2 suite without inference
 actionmail eval                  # v2/60; shows estimate and asks before inference
-actionmail results               # latest completed saved runs
+actionmail results               # latest complete saved run
+actionmail results --all         # history, including incomplete runs
 actionmail eval --saved          # same saved results view
 actionmail results --run RUN_ID --case S02 --trace
 actionmail doctor                # local packages, data and provider readiness
@@ -29,7 +30,7 @@ actionmail check                 # verify active manifest/hash references
 actionmail review                # review the latest complete run in a browser
 ```
 
-The offline demo uses authored inputs and scripted replies. It makes no model or provider calls; its output is engineering evidence, not accuracy evidence. A new model evaluation displays an estimate and requests confirmation before inference. The active 60-case run also requires the original local corpus in `../data`; saved results can be inspected without it. For exact options, external-source controls and run recovery, use `actionmail-eval --help`.
+The offline demo uses authored inputs and scripted replies. It makes no model or provider calls; its output is engineering evidence, not accuracy evidence. A new model evaluation displays an estimate and requests confirmation before inference. Missing confirmation input stops the run before inference. Cost preflight may query provider pricing and credit APIs, but does not request model inference. The active 60-case run also requires the original local corpus in `../data`; saved results can be inspected without it. For shortcuts and detailed options, use `actionmail eval --help`.
 
 ## Analyze one email with a real model
 

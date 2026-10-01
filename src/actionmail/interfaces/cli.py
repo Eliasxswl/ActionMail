@@ -92,6 +92,9 @@ def main(argv: list[str] | None = None) -> int:
         else:
             print("Result was not approved. No calendar or mailbox change was made.")
         return 0
+    except EOFError:
+        print("Stopped: confirmation input is unavailable. No further operation was started.", file=sys.stderr)
+        return 1
     except (OSError, ValueError, ModelCallError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
