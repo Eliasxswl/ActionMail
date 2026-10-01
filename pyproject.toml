@@ -7,15 +7,21 @@ name = "actionmail"
 version = "3.0.0.dev0"
 description = "Recipient-specific action review for work emails"
 requires-python = ">=3.10"
-dependencies = ["pypdf>=6,<7"]
+dependencies = ["pypdf>=6,<7", "tzdata>=2025.2; platform_system == 'Windows'"]
+
+[project.optional-dependencies]
+google = ["google-auth>=2,<3", "google-auth-oauthlib>=1,<2"]
 
 [project.scripts]
 actionmail = "actionmail.interfaces.cli:main"
 actionmail-eval = "actionmail.evaluation.cli:main"
 actionmail-review = "actionmail.interfaces.review_server:main"
+actionmail-app = "actionmail.interfaces.app_server:main"
+actionmail-google-auth = "actionmail.integrations.auth:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-"actionmail.interfaces" = ["review_index.html", "review_style.css", "review_app.js"]
+"actionmail.interfaces" = ["review_index.html", "review_style.css", "review_app.js", "app_index.html", "product_style.css", "product_app.js"]
+"actionmail.integrations" = ["demo_mail.json"]

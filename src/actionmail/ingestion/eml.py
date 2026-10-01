@@ -52,13 +52,18 @@ def _body_content(message) -> tuple[str, tuple[str, ...]]:
 
 
 def load_eml(path: Path, target_recipient: str) -> EmailPackage:
-    with path.open("rb") as stream:
-        message = BytesParser(policy=policy.default).parse(stream)
+    return load_eml_bytes(path.read_bytes(), target_recipient, case_id=path.stem)
+
+
+def load_eml_bytes(content: bytes, target_recipient: str, *, case_id: str = 'import', received_at=None) -> EmailPackage:
+    """Parse local or provider MIME bytes through the same ingestion boundary."""
+    message = BytesParser(policy=policy.default).parsebytes(content)
 
     date_header = message.get("Date")
-    if not date_header:
+    if not date_header and received_at is None:
         raise ValueError("The email has no Date header")
-    received_at = parsedate_to_datetime(date_header)
+    if received_at is None:
+        received_at = parsedate_to_datetime(date_header)
     to_recipients = tuple(address for _, address in getaddresses(message.get_all("To", [])))
     cc_recipients = tuple(address for _, address in getaddresses(message.get_all("Cc", [])))
     recipients = tuple(dict.fromkeys((*to_recipients, *cc_recipients)))
@@ -79,7 +84,7 @@ def load_eml(path: Path, target_recipient: str) -> EmailPackage:
     )
 
     return EmailPackage(
-        case_id=path.stem,
+        case_id=case_id,
         target_recipient=target_recipient,
         received_at=received_at,
         sender=str(message.get("From", "")),

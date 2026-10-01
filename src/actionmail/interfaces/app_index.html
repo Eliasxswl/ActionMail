@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ActionMail · Your next step</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body><main>
+<header><div class="brand">ActionMail <span>MAIL → YOUR NEXT STEP</span></div><h1>A clear next step,<br>backed by your email.</h1><p>Select a message, review the proposal, then decide what to keep.</p></header>
+<aside id="mode" aria-label="Connection and analysis mode"></aside>
+<div id="notice" role="status" aria-live="polite"></div>
+<nav aria-label="Workspace"><button id="mail-tab" class="active">Mail</button><button id="tasks-tab">Accepted tasks</button></nav>
+<section id="mail-view"><div class="section-title"><h2>Your mail</h2><button id="refresh">Refresh mailbox</button></div>
+<div id="connection"></div><div id="messages"></div><button id="more" hidden>Load next page</button>
+<details class="import"><summary>Import an EML file</summary><form id="import-form"><label>Target recipient<input id="recipient" type="email" required placeholder="you@example.com"></label><label>Email file<input id="eml-file" type="file" accept=".eml" required></label><button type="submit">Import locally</button></form><p>Offline mode has scripted responses only for the supplied examples. Other imports remain for review.</p></details>
+<div id="detail"></div></section>
+<section id="tasks-view" hidden><h2>Accepted tasks</h2><div id="tasks"></div></section>
+<footer>Proposals need your review. Calendar export and writing require a separate final confirmation.</footer>
+</main></body></html>
