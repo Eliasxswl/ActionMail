@@ -17,6 +17,7 @@ actionmail = "actionmail.interfaces.cli:main"
 actionmail-eval = "actionmail.evaluation.cli:main"
 actionmail-review = "actionmail.interfaces.review_server:main"
 actionmail-app = "actionmail.interfaces.app_server:main"
+actionmail-workflow = "actionmail.interfaces.workflow_cli:main"
 actionmail-google-auth = "actionmail.integrations.auth:main"
 
 [tool.setuptools.packages.find]

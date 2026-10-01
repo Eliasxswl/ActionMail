@@ -1,5 +1,13 @@
 # ActionMail v3.0 development handoff
 
+## Delivery update — 2 October 2026
+
+The owner clarified that a frontend is not required by the instructor: CLI is the necessary foundation, and GUI/TUI are optional. The existing GUI serves evaluation review. Teacher delivery must expose runnable tests, results, process traces and experiment data without requiring UiPath or Google setup. UiPath is a potential integration, not an approved migration or delivery dependency. This delivery priority supersedes the earlier UI-first portions of the roadmap below.
+
+`interfaces/workflow_cli.py` now exposes the persistent application service offline: mailbox/fetch/import, list/show/analyze, review/tasks, draft/confirm/export and simulated write. `actionmail-workflow demo --output-dir NEW_DIRECTORY` runs three authored scenarios and saves JSON traces, SQLite records, ICS and one synthetic event despite two write requests. Model responses are scripted, not accuracy evidence. Existing extraction/evaluation commands remain the real-model experiment paths; saved v2 results can be inspected without new calls. See [CLI delivery guide](cli_guide.md). No real accounts or new paid model runs were used.
+
+Verification: 96 offline tests pass, including four CLI integration checks for persisted operations, review/confirmation gates, error output and overwrite refusal. The repository integrity check passes for 60 active cases and 3,166 archive hashes. Frozen evaluation results remain unchanged.
+
 ## Implementation update — 1 October 2026
 
 The owner selected Gmail + Google Calendar, authorized interface-based implementation and deferred real-account testing. The local persistent application, read-only Gmail adapter, separate desktop OAuth code, review UI, calendar preview/confirmation, ICS export and Calendar write/reconciliation adapter are now implemented. Offline verification uses explicitly synthetic Google responses and scripted model replies through the unchanged v2 core. No real accounts, paid model calls or calendar events were used. See [v3 run/demo guide](v3_demo.md) and [integration contracts](google_integrations.md). The roadmap below remains the original handoff context; its "not implemented" sections describe the starting state, not this update. Package version remains development-only until owner acceptance.

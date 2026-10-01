@@ -1,5 +1,7 @@
 # V3 development demo and run guide
 
+The owner selected CLI-first teacher delivery on 2 October 2026. Start with [the CLI guide](cli_guide.md) for a one-command offline workflow, saved AI experiment inspection and tests without a browser. The GUI walkthrough below remains an optional review/demo path.
+
 The package remains `3.0.0.dev0`, pending owner acceptance. A local application and Google adapters now run with offline engineering verification. Real accounts have not been tested.
 
 Implementation commit: `857db1d` on `main`. The frozen `v2.0` branch and saved evaluation outputs are unchanged.

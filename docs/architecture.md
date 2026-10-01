@@ -48,6 +48,8 @@ ISO deadlines require explicit resolvable source information. Relative dates use
 
 ## V3 application boundary
 
+The owner selected CLI-first delivery on 2 October 2026. `interfaces/workflow_cli.py` is a thin offline entry point to the same persistent service, with a repeatable demo and JSON source/analysis/history output. Existing extraction and evaluation CLIs retain real-model experiments. The GUI remains an optional review interface; TUI and UiPath integration are not required. See [CLI guide](cli_guide.md).
+
 `application/store.py` persists private messages, analysis, reviewed proposals and calendar outcome history in SQLite. `application/service.py` invokes the same extraction workflow and owns explicit analyze/review/draft/confirm/write/export operations, unchanged-content deduplication, call caps and crash recovery. `integrations/mail.py` normalizes selected Gmail MIME/thread data into `EmailPackage`; `integrations/auth.py` manages separately enabled desktop OAuth features. `integrations/calendar.py` translates approved drafts into Google event payloads or ICS and reconciles stable operation IDs. `interfaces/app_server.py` serves a separate single-column mail/review/task product UI. Its default uses artificial provider responses and scripted model replies, clearly labelled in the UI. See [contracts and limits](google_integrations.md).
 
 Calendar drafts require accepted tasks and complete user-reviewed dates; confirmation belongs to one saved revision. Changes invalidate it. A write is persisted before sending; unknown outcomes are reconciled without blind retry. No provider capability is exposed to the model. Rejected tasks cannot become calendar items. Private application records are independent of frozen evaluation evidence.

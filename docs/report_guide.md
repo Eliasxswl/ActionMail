@@ -1,5 +1,7 @@
 # PE6201 report writing guide
 
+Delivery clarification, 2 October 2026: the owner selected CLI as the necessary foundation; the GUI is an optional evaluation-review aid. The [CLI guide](cli_guide.md) separates offline scripted engineering demonstrations, saved real-model experiment inspection and new authorized inference. Do not claim that the instructor requires a frontend or that UiPath integration has been implemented.
+
 Updated 1 October 2026. This is a writing guide, not the final report. Write the final analysis in the first person as an individual project. Keep implemented, measured and proposed work distinct. AI evaluation evidence remains v2.0. V3 now has a local persistent review UI, ICS export and Google interface adapters verified with synthetic responses, not real-account integration. See [v3 demonstration](v3_demo.md) for the reproducible offline path and [integration limits](google_integrations.md). Do not report the scripted demo as new model accuracy or live connectivity.
 
 ## Source authority and submission requirements
