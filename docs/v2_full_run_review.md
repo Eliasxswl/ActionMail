@@ -1,5 +1,7 @@
 # Full v2 evaluation: pending acceptance
 
+Owner adjudication on 1 October: A16's two-action model result is correct and its v2 reference is now aligned. C11's conservative review and the current model's contextual answer interpretation are both acceptable. C13 and E10 model results are incorrect according to the saved owner Pass judgments. The reference-adjusted comparison is 58/60 status and 59/60 action count; this is a separate adjudicated comparison, not a rewritten historical score or a claim that every case received human semantic review. The active suite now hash-binds `evaluation/v2_reference_overrides.json`; the frozen 50-case file remains unchanged. The run stores its original registry snapshot, owner judgments, reference amendments and `adjudicated_summary.json` separately. UI shows the amended A16 reference with the original answer available in a collapsed section.
+
 Run: `20261001T004254Z-3d2be39d`, saved under `results/evaluation/v2-full-20261001`. Model: `openai/gpt-6-luna`. All 60 active cases completed with snapshot inputs, 76 model calls and no API/run errors. Estimated cost: USD 0.0148709. Original records and automatic scores are preserved.
 
 | Check | Result |

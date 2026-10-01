@@ -20,6 +20,16 @@ class SupplementTests(unittest.TestCase):
         registry = PROJECT_ROOT / 'evaluation/active_suite.json'
         cases = load_suite(registry, DEFAULT_MAILEX_ROOT)
         self.assertEqual(len(cases), 60)
+        a16 = next(c for c in cases if c.case_id == 'A16')
+        self.assertEqual(a16.gold['status'], 'action')
+        self.assertEqual(len(a16.gold['actions']), 2)
+        self.assertEqual(next(c for c in cases if c.case_id == 'C11').record['accepted_outcomes'], [{'status': 'needs_review', 'action_count': 0}, {'status': 'action', 'action_count': 1}])
+        old_run = PROJECT_ROOT / 'results/evaluation/v2-full-20261001'
+        if old_run.exists():
+            historical = ReviewDataset.open(old_run, registry, DEFAULT_MAILEX_ROOT)
+            self.assertEqual(historical.rows['A16']['gold']['status'], 'needs_review')
+            self.assertEqual(historical.detail('A16')['gold']['status'], 'action')
+            self.assertEqual(historical.detail('A16')['original_gold']['status'], 'needs_review')
         with tempfile.TemporaryDirectory() as directory:
             run = Path(directory) / 'suite'
             prepare_challenge(cases, registry, run, benchmark='v2-60')
@@ -39,6 +49,12 @@ class SupplementTests(unittest.TestCase):
                 result = {'status': 'action', 'actions': [{'kind': 'perform_task', 'text': case.gold['action'], 'deadline': case.gold['deadline'], 'evidence': case.gold['evidence']}], 'reason': 'The email requests this task.', 'evidence': case.gold['evidence']}
                 return ModelReply(json.dumps(result), 'offline', 10, 10, 1)
         row = _run_one(case, 'llm', Model(), (0, 0, 0), schema='v2', score_frozen=True)
+        self.assertTrue(row['status_correct'])
+        self.assertTrue(row['action_count_match'])
+        class TwoActionModel:
+            def complete(self, system, user):
+                return ModelReply(json.dumps(a16.gold), 'offline', 10, 10, 1)
+        row = _run_one(a16, 'llm', TwoActionModel(), (0, 0, 0), schema='v2', score_frozen=True)
         self.assertTrue(row['status_correct'])
         self.assertTrue(row['action_count_match'])
 

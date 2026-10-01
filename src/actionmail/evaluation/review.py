@@ -1,6 +1,7 @@
 import hashlib
 import json
 from dataclasses import dataclass
+from dataclasses import replace
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
@@ -30,7 +31,15 @@ class ReviewDataset:
     def open(cls, run_dir: Path, manifest: Path, mailex_root: Path) -> "ReviewDataset":
         run_dir = run_dir.resolve()
         run = json.loads((run_dir / "run.json").read_text(encoding="utf-8"))
+        suite_snapshot = None
         manifest_hash = hashlib.sha256(manifest.read_bytes()).hexdigest()
+        if manifest_hash != run['manifest_sha256'] and run.get('benchmark') == 'v2-60':
+            snapshot = run_dir / 'manifest_snapshot.json'
+            if snapshot.exists() and hashlib.sha256(snapshot.read_bytes()).hexdigest() == run['manifest_sha256']:
+                # Resolve component paths against the evaluation directory, not the result directory.
+                suite_snapshot = json.loads(snapshot.read_text(encoding='utf-8'))
+                # The saved snapshot is validated below; components remain hash-bound.
+                manifest_hash = run['manifest_sha256']
         if manifest_hash != run["manifest_sha256"] and manifest.name == "cases.jsonl":
             snapshots = [
                 path for path in manifest.parent.glob("cases_v*.jsonl")
@@ -43,12 +52,22 @@ class ReviewDataset:
             raise ValueError("The manifest does not match this evaluation run")
         challenge = run.get('benchmark') in {'challenge-v2.1', 'supplement-v2'}
         full_suite = run.get('benchmark') == 'v2-60'
-        cases = {case.case_id: case for case in (load_suite(manifest, mailex_root) if full_suite else load_challenge(manifest, mailex_root, benchmark=run['benchmark']) if challenge else load_cases(manifest, mailex_root))}
+        cases = {case.case_id: case for case in (load_suite(manifest, mailex_root, registry_data=suite_snapshot) if full_suite else load_challenge(manifest, mailex_root, benchmark=run['benchmark']) if challenge else load_cases(manifest, mailex_root))}
         rows_list = [json.loads(line) for line in (run_dir / "cases.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
         rows = {row["case_id"]: row for row in rows_list}
         if len(rows) != len(rows_list) or set(rows) - set(run["case_ids"]) or set(rows) - set(cases):
             raise ValueError("Evaluation rows do not match the run and manifest")
         revised_gold = {}
+        approval_path = run_dir / 'reference_adjudication.json'
+        if approval_path.exists():
+            approval = json.loads(approval_path.read_text(encoding='utf-8'))
+            if approval['run_id'] != run['run_id'] or approval['original_manifest_sha256'] != run['manifest_sha256']:
+                raise ValueError('Reference adjudication belongs to another run')
+            for case_id, rule in approval['cases'].items():
+                if 'gold' in rule:
+                    revised_gold[case_id] = rule['gold']
+                case = cases[case_id]
+                cases[case_id] = replace(case, record={**case.record, 'annotation_note': rule['note'], 'reference_adjudication': rule})
         current_manifest = manifest.parent / "cases.jsonl"
         if not challenge and not full_suite and manifest != current_manifest and current_manifest.exists():
             for case in load_cases(current_manifest, mailex_root):
@@ -94,13 +113,22 @@ class ReviewDataset:
             if row is None:
                 continue
             case = self.cases[case_id]
+            status_correct = row['status_correct']
+            amendment = case.record.get('reference_adjudication')
+            if amendment and row.get('prediction'):
+                prediction = row['prediction']
+                if 'gold' in amendment:
+                    status_correct = prediction['status'] == amendment['gold']['status']
+                elif amendment.get('accepted_outcomes'):
+                    status_correct = any(o['status'] == prediction['status'] and o['action_count'] == len(prediction.get('actions', [])) for o in amendment['accepted_outcomes'])
             items.append({
                 "case_id": case_id,
                 "subject": case.email.subject,
                 "category": row["category"],
                 "gold_status": row["gold"]["status"],
                 "predicted_status": row["prediction"]["status"] if row["prediction"] else 'error' if row.get('error') else 'pending',
-                "status_correct": row["status_correct"],
+                "status_correct": status_correct,
+                "original_status_correct": row['status_correct'],
                 "reviewed": case_id in reviews,
                 "has_external": bool(case.email.external_sources),
                 "group": 'supplement' if case.record.get('challenge_version') else 'base',
@@ -158,7 +186,9 @@ class ReviewDataset:
                      any(record["source_id"] == item["source_id"] for record in row.get("read_sources", []))}
                 for item in external
             ],
-            "gold": row["gold"],
+            "gold": self.revised_gold.get(case_id, row['gold']),
+            "original_gold": row['gold'] if case_id in self.revised_gold else None,
+            "reference_adjudication": case.record.get('reference_adjudication'),
             "annotation_note": case.record.get("annotation_note"),
             "revised_gold": self.revised_gold.get(case_id),
             "manifest_name": self.manifest_name,

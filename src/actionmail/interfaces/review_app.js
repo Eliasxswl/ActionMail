@@ -213,8 +213,14 @@ function renderCase(data) {
 
   const goldPanel = node("div");
   goldPanel.append(decisionBlock("Reference answer", data.gold));
+  if (data.original_gold) {
+    const original = node("details", "");
+    original.append(node("summary", "", "Original frozen reference · preserved in historical score"), decisionBlock("Original reference", data.original_gold));
+    goldPanel.append(original);
+  }
   if (data.annotation_note) goldPanel.append(node("p", "context-note", data.annotation_note));
-  goldPanel.append(assessment("gold_label", "Reference", review.gold_label ?? (data.reference_review_state === "approved" ? "correct" : data.prior_gold_review?.gold_label ?? "")));
+  if (data.original_gold) goldPanel.append(node("p", "context-note", "Your saved reference assessment refers to the original frozen answer. The v2 answer above follows your subsequent approval."));
+  goldPanel.append(assessment("gold_label", "Reference", data.original_gold ? "correct" : review.gold_label ?? (data.reference_review_state === "approved" ? "correct" : data.prior_gold_review?.gold_label ?? "")));
   addTab("Reference", goldPanel);
 
   const readingPanel = node("div");
