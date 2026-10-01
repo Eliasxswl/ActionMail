@@ -2,6 +2,10 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Targeted live check passed
+
+The owner ran `results/evaluation/v2-fix-check-20261001`. Both C13 and E10 match status and action count, with no API, validation or read errors. Inspection confirms C13 returns `needs_review`, identifies unsupplied review material and cites the newest request exactly. E10 marks the primary link decisive, reads its 66-character frozen snapshot, returns `no_action`, and quotes both body and page. This is snapshot reading, not a live website fetch. Exact evidence and snapshot hash were independently verified. Three model calls; estimated USD 0.0006058. The inspection made no additional model call and did not invent owner Pass judgments. Next is a fresh 60-case regression run on the revised code; the earlier full run remains historical and port 61933 still serves it.
+
 ## Reading-policy fix and architecture review
 
 The owner approved reading E10-like primary-content pointers before deciding whether there are actions and requested a code/architecture review. `workflow/context.py` now builds one availability context for short, segmented and merge extraction: actual read sources, deliberately skipped sources and unsupplied sources, with validated planning reasons. Empty inventory is explicitly distinguished from proof of complete material. The prompt requires review for current requests to inspect unavailable material and preserves older-message ownership. The reading-plan prompt was rewritten to resolve the earlier contradiction between "no body task" and "primary content is in the link"; generic footer/background links remain skippable.
