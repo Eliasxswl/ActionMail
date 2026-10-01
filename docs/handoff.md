@@ -2,6 +2,14 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Full repaired regression passed automated checks; owner review pending
+
+The owner completed `results/evaluation/v2-regression-repair-20261001`, run `20261001T130907Z-23a9fe51`. All 60 cases completed: status 60/60, action count 60/60, supplementary source-selection/read checks 10/10. There are no API or unexpected validation/read failures. S08 intentionally contains a malformed Office archive; its one recorded read/validation failure and incomplete coverage correctly result in `needs_review`, without a correction call.
+
+C12 initially omitted evidence for its empty-body review decision; one correction added the supplied original historical recipient header and task quote. S02 initially altered the financial suffix again; strict validation rejected the quote and one correction used a shorter exact newest-message excerpt, preserving the no-action interpretation. Both initial and corrected replies remain saved; similarity did not approve the incorrect amount. Two repairs total, both validated.
+
+Independent inspection reproduced all selected external reads locally, verified original source hashes and every coverage hash, and matched every final quote to its registered source. All 23 single-action deadline fields with directly comparable references match. `inspection.json` binds these checks to the saved cases-file hash; action meaning, completeness and broader generalization still require human review. No owner Pass values were invented and no live call was made during inspection. 78 calls, 101,010 input and 16,566 output tokens; estimated USD 0.018384. Port 61933 now serves this full run. This is the v2 acceptance candidate; release acceptance remains pending owner review.
+
 ## Live evidence-repair check passed
 
 The owner completed `results/evaluation/v2-evidence-repair-20261001`, run `20261001T122851Z-af9a46a5`. All three cases match status and action count, with no API, final-validation or read failures. S02's first reply again changed `$25k-$50k` to `$25k-$50`; the 0.9852 diagnostic flagged a critical difference and did not accept it. One correction restored the amount and body soft-wrap newlines. The thread quote was safely aligned to the original stored span. Both replies and repair records are saved. Independent inspection confirms every final quote is an exact substring of its registered source and original MailEx hashes match.

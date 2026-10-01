@@ -1,0 +1,614 @@
+{
+  "run_id": "20261001T130907Z-23a9fe51",
+  "cases_sha256": "a9f7206d42484cd84e1a10f9baa2078048d41540754df32a231a46f03e158998",
+  "scope": "Independent source, local external replay, exact evidence and coverage verification. No live calls or owner Pass judgments.",
+  "cases": [
+    {
+      "case_id": "N01",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N02",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N03",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N04",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N05",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N06",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N07",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N08",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N09",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N10",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N11",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N12",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N13",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N14",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "N15",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A01",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A16",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A03",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A17",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A18",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A06",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A19",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A08",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A09",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A20",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A11",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A21",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A22",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A23",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "A24",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C11",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C02",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C03",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C04",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C13",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C06",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C12",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C08",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C09",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "C10",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E01",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E02",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E03",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E04",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E05",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E06",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E07",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E08",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E09",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "E10",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S01",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S02",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S03",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S04",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S05",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S06",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S07",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S08",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S09",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    },
+    {
+      "case_id": "S10",
+      "source_hash_matches": true,
+      "external_replay_matches": true,
+      "all_final_quotes_exact": true,
+      "coverage_hashes_match": true
+    }
+  ],
+  "single_action_deadline_checks": [
+    {
+      "case_id": "A01",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "A03",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "A06",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "A08",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "A09",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "A11",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "A21",
+      "gold": "2026-10-02",
+      "prediction": "2026-10-02",
+      "match": true
+    },
+    {
+      "case_id": "A22",
+      "gold": "2026-10-03T16:00:00+08:00",
+      "prediction": "2026-10-03T16:00:00+08:00",
+      "match": true
+    },
+    {
+      "case_id": "A23",
+      "gold": "2026-09-30",
+      "prediction": "2026-09-30",
+      "match": true
+    },
+    {
+      "case_id": "A24",
+      "gold": "2026-09-30T10:00:00+08:00",
+      "prediction": "2026-09-30T10:00:00+08:00",
+      "match": true
+    },
+    {
+      "case_id": "C11",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "C02",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "C03",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "C06",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "C08",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "C09",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "C10",
+      "gold": null,
+      "prediction": null,
+      "match": true
+    },
+    {
+      "case_id": "E01",
+      "gold": "2026-10-01",
+      "prediction": "2026-10-01",
+      "match": true
+    },
+    {
+      "case_id": "E02",
+      "gold": "2026-10-02",
+      "prediction": "2026-10-02",
+      "match": true
+    },
+    {
+      "case_id": "E03",
+      "gold": "2026-10-03",
+      "prediction": "2026-10-03",
+      "match": true
+    },
+    {
+      "case_id": "E06",
+      "gold": "2026-10-01",
+      "prediction": "2026-10-01",
+      "match": true
+    },
+    {
+      "case_id": "E07",
+      "gold": "2026-10-02",
+      "prediction": "2026-10-02",
+      "match": true
+    },
+    {
+      "case_id": "E08",
+      "gold": "2026-10-03",
+      "prediction": "2026-10-03",
+      "match": true
+    }
+  ],
+  "expected_failure": {
+    "case_id": "S08",
+    "reason": "Intentionally malformed Office archive; correctly returned needs_review without retry."
+  },
+  "repairs": [
+    {
+      "case_id": "C12",
+      "records": [
+        {
+          "stage": "extraction",
+          "initial_error": "Explanation must cite available original text",
+          "quote_diagnostics": [],
+          "attempted": true,
+          "outcome": "validated"
+        }
+      ]
+    },
+    {
+      "case_id": "S02",
+      "records": [
+        {
+          "stage": "extraction",
+          "initial_error": "Evidence quote is absent from source: body",
+          "quote_diagnostics": [
+            {
+              "source_id": "body",
+              "model_quote": "With the updated mutual fund NAV, the Partnership's Bank of  America LOC is= actually $112k available as of the close May 25, which was  more than the = estimated $25k-$50.",
+              "candidates": [
+                {
+                  "source_id": "body",
+                  "quote": "With the updated mutual fund NAV, the Partnership's Bank of  America LOC is=\nactually $112k available as of the close May 25, which was  more than the =\nestimated $25k-$50k.",
+                  "text_similarity": 0.9852,
+                  "high_similarity": true,
+                  "critical_difference": true,
+                  "unique_in_source": true,
+                  "auto_accepted": false
+                }
+              ]
+            }
+          ],
+          "attempted": true,
+          "outcome": "validated"
+        }
+      ]
+    }
+  ],
+  "acceptance": "Automated full regression passed; human semantic review remains pending."
+}
