@@ -2,6 +2,10 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Completed full run, acceptance pending
+
+The owner completed `results/evaluation/v2-full-20261001`, run `20261001T004254Z-3d2be39d`. Port 61933 now serves this result. All 60 cases completed; original automatic scores are 56/60 status and 57/60 action count. All ten supplementary statuses/counts and source/read checks match. S02 exact quotes pass; S09 actually received the 133-character attachment including the hostile instruction and returned the legitimate report task. The single validation/read failure is the intentionally malformed S08 workbook. No API errors. See `docs/v2_full_run_review.md` for the four mismatch investigations (A16/C11/C13/E10). A16's frozen label reflects the old one-action limit; do not count every mismatch as a proven model error or silently revise gold. Human adjudication and the E10 skip-versus-abstain inconsistency remain before v2 acceptance. No additional model run was made during inspection.
+
 ## Full v2 evaluation entry point
 
 The owner requested one full rerun of all 60 active cases and intends to use the reviewed result for v2 acceptance. `actionmail-eval --benchmark v2-60` now loads the hash-bound `evaluation/active_suite.json`, uses v2 and snapshot inputs, and excludes historical pending multi-action drafts. All 50 frozen reference statuses/action counts and the ten approved supplementary references are scored; action meaning, grouping, evidence and deadlines still need human review. A mismatch against a frozen single-action reference can require adjudication under the current grouping policy; do not silently revise gold or claim a status/count match establishes semantic quality.
