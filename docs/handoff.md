@@ -2,6 +2,10 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Full regression did not pass
+
+The owner completed `results/evaluation/v2-regression-20261001`, run `20261001T020143Z-08e74de7`. Port 61933 now serves it. All 60 rows completed, but original status/count matches are 54/60 and 56/60. C13/E10 fixes hold; other failures require work. See `docs/v2_regression_review.md`: overbroad missing-material/execution-prerequisite abstention (A06/A08/A22/C02), N11 response exhausted the 800-token cap without text, S02 changed an amount in its quote, C12 quoted a supplied header outside the registered body evidence contract, and S03 unnecessarily read an informative report. Expected malformed S08 remains correct. Do not declare v2 accepted or weaken evidence validation to raise scores. No new model calls were made during inspection.
+
 ## Targeted live check passed
 
 The owner ran `results/evaluation/v2-fix-check-20261001`. Both C13 and E10 match status and action count, with no API, validation or read errors. Inspection confirms C13 returns `needs_review`, identifies unsupplied review material and cites the newest request exactly. E10 marks the primary link decisive, reads its 66-character frozen snapshot, returns `no_action`, and quotes both body and page. This is snapshot reading, not a live website fetch. Exact evidence and snapshot hash were independently verified. Three model calls; estimated USD 0.0006058. The inspection made no additional model call and did not invent owner Pass judgments. Next is a fresh 60-case regression run on the revised code; the earlier full run remains historical and port 61933 still serves it.
