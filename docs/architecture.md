@@ -1,6 +1,6 @@
-# Current architecture: v2.0 baseline
+# Current architecture: v2.0 core with v3 application
 
-Updated 1 October 2026. This describes implemented code. v3.0 proposals are in [handoff.md](handoff.md).
+Updated 1 October 2026. The extraction core below retains the v2.0 contract. V3 adds the local application described below. Real Google account connectivity remains unverified; [handoff.md](handoff.md) records the owner-approved scope.
 
 ```mermaid
 flowchart LR
@@ -46,6 +46,12 @@ Evidence must match supplied original text. Safe whitespace alignment and known 
 
 ISO deadlines require explicit resolvable source information. Relative dates use trustworthy received time and timezone; absence of that anchor stays null. Independent semantic date resolution is not implemented. File limits, corrupt/archive checks, missing cached spreadsheet values, private-network destination controls and source coverage produce visible review reasons. Scanned PDFs, legacy DOC/XLS, login-dependent pages and JavaScript-only pages are unsupported.
 
+## V3 application boundary
+
+`application/store.py` persists private messages, analysis, reviewed proposals and calendar outcome history in SQLite. `application/service.py` invokes the same extraction workflow and owns explicit analyze/review/draft/confirm/write/export operations, unchanged-content deduplication, call caps and crash recovery. `integrations/mail.py` normalizes selected Gmail MIME/thread data into `EmailPackage`; `integrations/auth.py` manages separately enabled desktop OAuth features. `integrations/calendar.py` translates approved drafts into Google event payloads or ICS and reconciles stable operation IDs. `interfaces/app_server.py` serves a separate single-column mail/review/task product UI. Its default uses artificial provider responses and scripted model replies, clearly labelled in the UI. See [contracts and limits](google_integrations.md).
+
+Calendar drafts require accepted tasks and complete user-reviewed dates; confirmation belongs to one saved revision. Changes invalidate it. A write is persisted before sending; unknown outcomes are reconciled without blind retry. No provider capability is exposed to the model. Rejected tasks cannot become calendar items. Private application records are independent of frozen evaluation evidence.
+
 ## Deployment boundary
 
-The current UI reviews benchmark runs; it is not an inbox application. No mailbox OAuth, user database, calendar export/write or external task execution exists. V3 should add a thin adapter/service/UI around the same extraction core. Keep authentication, confirmation and external effects outside model control. Local review port is 61933. Private content, API keys and provider tokens belong outside Git and ordinary evaluation logs.
+The benchmark UI still reviews saved runs; the product UI is a separate application mode. Only one service uses port 61933 at a time. Gmail/OAuth/Calendar code is implemented against official interfaces and fake responses; real authorization and API writes are deferred. ICS export and the local product path work offline. No automated replies, external task execution or mailbox monitoring exists. Private content, API keys and provider tokens remain outside Git and ordinary evaluation logs. Default private files are local plaintext, not an encrypted vault; the service is for a single local user/process.

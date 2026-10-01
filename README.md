@@ -1,10 +1,12 @@
 # ActionMail
 
-ActionMail identifies current tasks for a named email recipient and returns actions, explicit deadlines, a reason and original source quotes. It supports local JSON/EML inputs, selected attachments and bounded external reading. It proposes tasks for human review; mailbox and calendar integration are planned for v3.0.
+ActionMail identifies current tasks for a named email recipient and returns actions, explicit deadlines, a reason and original source quotes. It supports local JSON/EML inputs, selected attachments and bounded external reading. V3 development adds a persistent mail/task UI, Gmail read-only adapter, calendar preview, ICS export and Google Calendar adapter. Integration verification currently uses synthetic offline responses; real accounts have not been tested.
 
 The frozen baseline is **v2.0**, on branch `v2.0`. **`main` is the v3.0 development line**. The owner requested this version freeze after the 60-case regression passed. This does not imply that every output received a new individual human Pass judgment.
 
 Start with [the v3.0 handoff](docs/handoff.md), [current architecture](docs/architecture.md), [evaluation facts](docs/evaluation.md), or [report writing guide](docs/report_guide.md). These are the authoritative current documents. Earlier plans, manifests, results and scripts live in [backup](backup/README.md).
+
+For the new application, read [the v3 demo/run guide](docs/v3_demo.md) and [Google contracts and verification boundaries](docs/google_integrations.md). Run `python -m actionmail.interfaces.app_server --no-browser` for the offline product UI on port 61933. The benchmark review UI is a separate mode on the same port.
 
 ## Run locally
 
@@ -53,4 +55,4 @@ Paid model runs require separate owner consent. New runs use fresh result direct
 
 The legacy-named `evaluation/archive/fixtures_v2_1/` now contains only six fixtures still used by the active approved manifest. Their paths are intentionally retained to preserve its hash. The full superseded challenge is in backup. Generated package metadata is not maintained as source.
 
-This individual PE6201 project uses public MailEx/Enron-derived emails, authored challenge inputs, Python, pypdf and a model rented through OpenRouter. Dataset provenance and AI-assisted fixture/annotation history must be disclosed in the report; selected cases were reused for prompt tuning and are not a blind held-out evaluation. No Gmail OAuth, automatic calendar write, reply sending, task execution or production mailbox monitoring is currently implemented.
+This individual PE6201 project uses public MailEx/Enron-derived emails, authored challenge inputs, Python, pypdf and a model rented through OpenRouter. Dataset provenance and AI-assisted fixture/annotation history must be disclosed in the report; selected cases were reused for prompt tuning and are not a blind held-out evaluation. V3's OAuth/provider code is implemented but live authorization and writes remain unverified. Reply sending, task execution and background mailbox monitoring are not implemented. No calendar item is written merely because a model proposes a task.

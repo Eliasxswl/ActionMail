@@ -1,5 +1,9 @@
 # ActionMail v3.0 development handoff
 
+## Implementation update — 1 October 2026
+
+The owner selected Gmail + Google Calendar, authorized interface-based implementation and deferred real-account testing. The local persistent application, read-only Gmail adapter, separate desktop OAuth code, review UI, calendar preview/confirmation, ICS export and Calendar write/reconciliation adapter are now implemented. Offline verification uses explicitly synthetic Google responses and scripted model replies through the unchanged v2 core. No real accounts, paid model calls or calendar events were used. See [v3 run/demo guide](v3_demo.md) and [integration contracts](google_integrations.md). The roadmap below remains the original handoff context; its "not implemented" sections describe the starting state, not this update. Package version remains development-only until owner acceptance.
+
 Updated 1 October 2026. Owner-approved priorities: **mail intake → end-to-end use → product UI → calendar integration**. Further model evaluation is deferred until the owner decides. Continue on `main`; `v2.0` is the frozen baseline branch. Do not develop v3 on the frozen branch.
 
 Main package version is `3.0.0.dev0`; this marks development, not implemented v3 features. The frozen branch package version is `2.0.0`. Both the project metadata and runtime version agree.

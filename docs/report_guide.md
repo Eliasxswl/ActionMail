@@ -1,6 +1,6 @@
 # PE6201 report writing guide
 
-Updated 1 October 2026. This is a writing guide, not the final report. Write the final analysis in the first person as an individual project. Keep implemented, measured and proposed work distinct. Current evidence is v2.0; update only after v3 features are actually demonstrated.
+Updated 1 October 2026. This is a writing guide, not the final report. Write the final analysis in the first person as an individual project. Keep implemented, measured and proposed work distinct. AI evaluation evidence remains v2.0. V3 now has a local persistent review UI, ICS export and Google interface adapters verified with synthetic responses, not real-account integration. See [v3 demonstration](v3_demo.md) for the reproducible offline path and [integration limits](google_integrations.md). Do not report the scripted demo as new model accuracy or live connectivity.
 
 ## Source authority and submission requirements
 
@@ -33,7 +33,7 @@ This allocation is a writing recommendation, not an instructor format. Keep a to
 
 The original proposal selected foundation-model interpretation for complete email context, not isolated sentence classification. The delivered system keeps that focus and owns normalization, bounded source selection, evidence validation, review and evaluation. It rents `openai/gpt-6-luna` through OpenRouter; pypdf and the Python standard library handle bounded parsing, with DOCX/XLSX OOXML readers. Explain why commodity services are rented and why recipient/currentness/evidence policies remain owned.
 
-Initial UiPath and Gmail/calendar plans were deferred while building a reproducible local Python core. The instructor says low-code is optional and Python API calls are code, not low-code. Explain the actual decision in terms of reproducibility, traceability and the small scope. Do not claim UiPath was tried unless there is real evidence. Gmail/calendar are v3 priorities, not existing v2 capabilities. If v3 is completed before submission, replace these future-tense statements with demonstrated functionality and the exact release/commit.
+Initial UiPath and Gmail/calendar plans were deferred while building a reproducible local Python core. The instructor says low-code is optional and Python API calls are code, not low-code. Explain the decision in terms of reproducibility, traceability and scope. Do not claim UiPath was tried without evidence. V3 now supplies a local application and Gmail/Calendar adapters using official contracts and authored fake responses; real OAuth/provider connectivity is deferred by owner decision. State the demonstrated offline behavior and exact commit, and keep live integration claims pending until a real smoke test.
 
 Reason about alternatives: a keyword rule is cheap and inspectable but misses ownership/thread/external context; one model call is sufficient for short messages; attachments/main-content pointers justify additional bounded calls; reading irrelevant content adds cost and distracts. No vector database, training or unbounded agent framework was needed for the current task. Present the bounded workflow accurately, rather than calling every API invocation an autonomous agent.
 
@@ -51,7 +51,7 @@ Reason about alternatives: a keyword rule is cheap and inspectable but misses ow
 | Repair behavior | Saved C12/S02 rows, `workflow/repair.py` | Two strict correction calls; both original and corrected responses retained |
 | Hostile/unreadable content | Saved S08/S09 rows and offline tests | Correct handling of these fixtures; not universal prompt-injection resistance |
 | Cost and latency | Saved usage/prices and `docs/evaluation.md` | USD 0.018384 estimated model spend, 78 calls, median summed model-call latency 3.48 s/email |
-| V3 plans | `docs/handoff.md` | Mail intake, everyday UI and explicit-confirmation calendar path are planned until demonstrated |
+| V3 application | `docs/v3_demo.md`, `docs/google_integrations.md` | Persistent local review/ICS and Google adapters demonstrated offline with synthetic responses; real-account connectivity unverified |
 
 The rule and v1.5 model share a frozen 50-case reference contract. An always-majority baseline on that set is 22/50 (44%). V2 uses more context, multi-action capacity and amendments, so comparisons across versions are developmental, not a controlled proof that any one change caused the improvement. Do not invent a new same-contract rule-vs-v2 experiment.
 
@@ -75,7 +75,7 @@ Use the observed batch cost divided by 60 (USD 0.0003064/email) as a measured mo
 | Unsupported or damaged required content | Explicit review, archive/size/coverage limits; S08 demonstrates refusal |
 | False deadline / timezone | Explicit resolvable anchor policy and null when unknown; independent semantic deadline validation remains future work |
 | Private mail leaving device | Public benchmark inputs and explicit submission choices currently; real-mail v3 requires clear data transmission consent, minimal scope and local private records |
-| Duplicate/unapproved calendar write | No writes in v2; v3 plan requires preview, explicit final confirmation, operation key and reconciliation before retry |
+| Duplicate/unapproved calendar write | No writes in v2; v3 implements preview, explicit final confirmation, stable operation ID and unknown-outcome reconciliation, verified offline only |
 
 Tie each risk to implemented code or an explicitly future control. Do not use a disclaimer as a substitute for a safeguard. The teacher names governance/security frameworks as possible precise references; do not claim certification or compliance merely by mentioning them. External links/licences and provider requirements should be checked at report submission when making current factual claims.
 
