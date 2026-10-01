@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "actionmail"
-version = "1.5.0"
+version = "2.0.0"
 description = "Recipient-specific action review for work emails"
 requires-python = ">=3.10"
 dependencies = ["pypdf>=6,<7"]

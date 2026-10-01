@@ -13,6 +13,7 @@ from actionmail.evaluation.suite import load_suite
 from actionmail.evaluation.references import compare_reference
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 REVIEW_VALUES = {"correct", "incorrect", "uncertain", ""}
 REVIEW_FIELDS = ("action_meaning", "evidence_support", "gold_label")
 OPTIONAL_REVIEW_FIELDS = ('action_completeness', 'deadline_correct', 'source_selection', 'content_coverage', 'model_pass')
@@ -43,7 +44,7 @@ class ReviewDataset:
                 manifest_hash = run['manifest_sha256']
         if manifest_hash != run["manifest_sha256"] and manifest.name == "cases.jsonl":
             snapshots = [
-                path for path in manifest.parent.glob("cases_v*.jsonl")
+                path for path in (*manifest.parent.glob("cases_v*.jsonl"), *PROJECT_ROOT.glob("backup/v*/evaluation/cases_v*.jsonl"))
                 if hashlib.sha256(path.read_bytes()).hexdigest() == run["manifest_sha256"]
             ]
             if len(snapshots) == 1:

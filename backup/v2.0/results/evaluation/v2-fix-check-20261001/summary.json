@@ -1,0 +1,33 @@
+{
+  "schema": "v2",
+  "completed_cases": 2,
+  "planned_cases": 2,
+  "complete": true,
+  "category_counts": {
+    "context_dependent": {
+      "total": 1,
+      "status_checked": 1,
+      "status_correct": 1
+    },
+    "external_content": {
+      "total": 1,
+      "status_checked": 1,
+      "status_correct": 1
+    }
+  },
+  "counts": {
+    "status_checked": 2,
+    "status_correct": 2,
+    "action_count_checked": 2,
+    "action_count_match": 2,
+    "model_calls": 3,
+    "read_failures": 0
+  },
+  "token_totals": {
+    "input": 3728,
+    "output": 466
+  },
+  "estimated_cost_usd": 0.0006058,
+  "costed_cases": 2,
+  "metric_scope": "Approved references support status, action-count, source-selection and read-expectation checks. Pending-owner gold is unscored. Coverage is measured separately; review cases need not have complete coverage. Action completeness, meaning, evidence and deadlines need human review."
+}

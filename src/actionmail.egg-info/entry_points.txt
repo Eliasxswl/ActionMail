@@ -1,4 +1,0 @@
-[console_scripts]
-actionmail = actionmail.interfaces.cli:main
-actionmail-eval = actionmail.evaluation.cli:main
-actionmail-review = actionmail.interfaces.review_server:main

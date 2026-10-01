@@ -29,7 +29,7 @@ from actionmail.workflow.multi_pipeline import MAX_ACTIONS, V2_SYSTEM_PROMPT, pr
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_MANIFEST = PROJECT_ROOT / "evaluation" / "cases.jsonl"
 DEFAULT_MAILEX_ROOT = PROJECT_ROOT.parent / "data"
-DEFAULT_MULTI_DRAFT = PROJECT_ROOT / "evaluation" / "multi_action_draft.jsonl"
+DEFAULT_MULTI_DRAFT = PROJECT_ROOT / "backup" / "v2.0" / "evaluation" / "multi_action_draft.jsonl"
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -223,7 +223,7 @@ def main(argv: list[str] | None = None) -> int:
                 if hashlib.sha256(args.manifest.read_bytes()).hexdigest() != component['sha256']:
                     raise ValueError('Active supplementary manifest hash mismatch')
             else:
-                args.manifest = PROJECT_ROOT / 'evaluation/archive/challenge_v2_1_revision2.jsonl'
+                args.manifest = PROJECT_ROOT / 'backup/v2.0/evaluation/archive/challenge_v2_1_revision2.jsonl'
         if challenge:
             if args.engine != 'llm' or args.case_group or args.prepare_multi:
                 raise ValueError('Challenge uses the v2 LLM workflow; frozen groups/drafts do not apply')

@@ -1,0 +1,63 @@
+# ActionMail architecture
+
+Updated 1 October 2026. This describes the current v2 implementation. V1 remains available for historical comparison. V2 acceptance is pending live validation of the latest fixes.
+
+## Processing flow
+
+```mermaid
+flowchart LR
+    A[Saved email] --> B[Email package and source inventory]
+    B --> C{External inventory?}
+    C -->|Yes| D[Plan relevant reading]
+    D --> E[Read selected sources within budgets]
+    E --> F[Extract recipient tasks]
+    C -->|No| F
+    E -->|Required source cannot be read| R[Needs review with reason and evidence]
+    F --> G[Validate contract and original quotes]
+    G --> H[Human review]
+```
+
+Short emails need one extraction call, plus planning when an external inventory exists. Long inputs use bounded overlapping segments and a merge of the complete candidate ledger. A validation failure may trigger one correction call per email, shared across planning, extraction, segments and merge. There is no open-ended agent loop or external write operation.
+
+## Responsibilities
+
+| Area | Responsibility |
+| --- | --- |
+| `ingestion/`, `domain/email.py` | Preserve newest message, older message headers, target address and available attachment/link inventory. |
+| `workflow/coverage.py` | Reading-plan schema, relevance policy, segmentation and budgets. |
+| `content/` | Bounded file/page extraction, provenance, office/archive limits and allowlisted link transport. No action classification. |
+| `workflow/context.py` | Build extraction context from supplied text, inventory and validated reading choices. Distinguish read, deliberately skipped and not supplied. Never infer unseen contents. |
+| `workflow/multi_pipeline.py` | Coordinate planning, reading, extraction, segment merge and validation. No case-specific exceptions. |
+| `workflow/repair.py`, `guardrails/matching.py` | Bound validation correction to one call per email and locate candidate original quotes for feedback. Similarity never approves evidence. |
+| `reasoning/`, `guardrails/` | API calls, response parsing, deadline/schema checks and exact original-evidence validation. Historical response compatibility stays at the parsing boundary. |
+| `evaluation/` | Versioned cases, reference comparison, saved model traces and owner adjudication. Reference labels are never included in model prompts. |
+| `interfaces/` | CLI and local review UI. They display/save judgments and do not execute mail tasks. |
+
+The current model result has only `status`, `actions`, `reason`, and `evidence`. Each action has its own kind, text, deadline and quotes. The maximum is three independently completable tasks. The workflow uses `reason/evidence` directly; old explanation/review-reason accessors are retained to read history and preserve compatibility.
+
+Older-message bodies retain `thread:N`; their original headers use `thread:N:headers`. V2 registers both for prompts, segmentation and exact quote validation. The API's 2048-token output cap and preflight estimate use a shared constant. Preflight includes at most one additional validation-repair call per v2 email.
+
+## Evidence diagnostics and bounded correction
+
+The model continues selecting quotes. Accepted evidence must match supplied original text, with existing safe whitespace and known MailEx soft-wrap alignment. A bounded lexical search can suggest original excerpts when validation fails. Its similarity score measures text resemblance, not semantic confidence. Numerical/unit/date and negation markers flag potentially consequential differences; this heuristic is not exhaustive. No fuzzy candidate is automatically accepted, even above the diagnostic threshold.
+
+Schema, reading-plan and original-evidence failures can return the validation error, prior reply and candidate excerpts to the model once. The correction repeats the same contract and is strictly revalidated. Feedback uses only the sources supplied to that stage: a segment cannot access unread text, and merge feedback stays within its submitted ledger/full body. Legitimate `needs_review`, unavailable required materials, transport failures and budget failures do not trigger correction. A failed correction ends in review rather than a loop.
+
+Both replies, token usage, repair outcome and matching diagnostics are saved. The review UI's Raw reply tab exposes the complete reply sequence. A successful repair means the corrected stage passed deterministic validation, not that its semantic decision has been human-approved.
+
+## Reading and missing-content policy
+
+- Read external content when the newest body assigns source-dependent work or delegates its main message to that content. A brief "Project details are posted at [link]" is a primary-content pointer, even without an explicit task in the body.
+- Skip footer/signature/promotional links and unrelated background accompanying a self-contained body. Skipped content must not enter model context.
+- Pass validated reading reasons and actual availability to every extraction/merge path. Planning reasons are interpretations, not authoritative instructions or proof of unseen contents.
+- An empty inventory means no external material was supplied. The model must still recognize an explicitly referenced missing dependency, citing email text without inventing an attachment identity. A current request to review unavailable material requires review.
+- Identifying a clear requested next step does not require all business data, system access or execution approvals. Missing an explicitly referenced external document is different from a task mentioning a business object. Do not suppress a clear confirmation/run/restore request merely because its execution inputs are absent.
+- Older requests create no new obligation unless renewed by the newest body for the target. Preserve older headers rather than assuming that every historical request serves the current target.
+
+These are semantic model responsibilities. Deterministic code validates source availability, evidence, budgets and output structure; it does not force `no_action` based on keywords or silently replace a model judgment. Offline scripted tests establish context delivery and failure routing, not that a live model will always interpret the rules correctly.
+
+## Evaluation boundary
+
+The active suite consists of the frozen 50 and ten approved supplementary cases, with hash-bound v2 reference amendments. Raw runs, original scores, reference amendments and owner judgments remain separate. `evaluation/references.py` owns status/count comparison for both the runner and amended review display; it does not claim semantic correctness from a count match.
+
+The suite includes snapshots and synthetic fixtures. Its results do not establish real-inbox prevalence, general prompt-injection resistance or universal live-link support. Live model validation and human acceptance remain necessary before v2 release.

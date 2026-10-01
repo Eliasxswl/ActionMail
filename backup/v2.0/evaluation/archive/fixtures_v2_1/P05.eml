@@ -1,0 +1,23 @@
+From: Maya <maya@example.com>
+To: Alex <alex@example.com>, Morgan <morgan@example.com>
+Date: Wed, 30 Sep 2026 09:00:00 +0800
+Subject: P05 development challenge
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="actionmail-P05"
+
+--actionmail-P05
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Alex, use the attached instructions and the project page together. No version=
+ is designated current. https://example.org/tasks
+
+--actionmail-P05
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="instructions.txt"
+MIME-Version: 1.0
+
+QWxleCwgc2VuZCB0aGUgcmVsZWFzZSBtZW1vIG9uIDIwMjYtMTAtMDIu
+
+--actionmail-P05--

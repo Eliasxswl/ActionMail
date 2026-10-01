@@ -1,63 +1,51 @@
-# ActionMail architecture
+# Current architecture: v2.0 baseline
 
-Updated 1 October 2026. This describes the current v2 implementation. V1 remains available for historical comparison. V2 acceptance is pending live validation of the latest fixes.
-
-## Processing flow
+Updated 1 October 2026. This describes implemented code. v3.0 proposals are in [handoff.md](handoff.md).
 
 ```mermaid
 flowchart LR
-    A[Saved email] --> B[Email package and source inventory]
-    B --> C{External inventory?}
-    C -->|Yes| D[Plan relevant reading]
+    A[Local JSON or EML] --> B[EmailPackage: target and source inventory]
+    B --> C{External sources?}
+    C -->|Yes| D[Validate reading plan]
     D --> E[Read selected sources within budgets]
-    E --> F[Extract recipient tasks]
-    C -->|No| F
-    E -->|Required source cannot be read| R[Needs review with reason and evidence]
-    F --> G[Validate contract and original quotes]
-    G --> H[Human review]
+    C -->|No| F[Extract current tasks]
+    E --> F
+    F --> G[Validate structure and original evidence]
+    G -->|Repairable failure and allowance remains| R[One correction per email]
+    R --> G
+    G --> H[Action / no action / needs review]
+    H --> I[Human review]
 ```
 
-Short emails need one extraction call, plus planning when an external inventory exists. Long inputs use bounded overlapping segments and a merge of the complete candidate ledger. A validation failure may trigger one correction call per email, shared across planning, extraction, segments and merge. There is no open-ended agent loop or external write operation.
+There is one model client and a bounded Python workflow, not an open-ended agent loop. Long inputs use overlapping segments and a complete candidate ledger for merging. Summaries are not evidence. An entire email shares one validation-repair allowance across planning, segments, merge and short extraction; transport errors, valid review decisions, unread required material and exhausted budgets do not cause retries.
 
-## Responsibilities
+## Modules and boundaries
 
-| Area | Responsibility |
+| Module | Owns |
 | --- | --- |
-| `ingestion/`, `domain/email.py` | Preserve newest message, older message headers, target address and available attachment/link inventory. |
-| `workflow/coverage.py` | Reading-plan schema, relevance policy, segmentation and budgets. |
-| `content/` | Bounded file/page extraction, provenance, office/archive limits and allowlisted link transport. No action classification. |
-| `workflow/context.py` | Build extraction context from supplied text, inventory and validated reading choices. Distinguish read, deliberately skipped and not supplied. Never infer unseen contents. |
-| `workflow/multi_pipeline.py` | Coordinate planning, reading, extraction, segment merge and validation. No case-specific exceptions. |
-| `workflow/repair.py`, `guardrails/matching.py` | Bound validation correction to one call per email and locate candidate original quotes for feedback. Similarity never approves evidence. |
-| `reasoning/`, `guardrails/` | API calls, response parsing, deadline/schema checks and exact original-evidence validation. Historical response compatibility stays at the parsing boundary. |
-| `evaluation/` | Versioned cases, reference comparison, saved model traces and owner adjudication. Reference labels are never included in model prompts. |
-| `interfaces/` | CLI and local review UI. They display/save judgments and do not execute mail tasks. |
+| `ingestion/`, `domain/email.py` | JSON/EML parsing; actual target, headers, timestamps, body, thread and attachment/link inventory |
+| `content/` | Bounded extraction for text, HTML, CSV, text-based PDF, DOCX, XLSX; source hashes/locations; allowlisted HTTPS transport |
+| `workflow/coverage.py`, `context.py` | Reading-plan contract, segment budgets and actual source availability |
+| `workflow/multi_pipeline.py` | Planning, reading, extraction, merging and deterministic validation |
+| `workflow/repair.py`, `guardrails/matching.py` | Shared repair allowance and bounded original-quote suggestions |
+| `reasoning/`, `guardrails/evidence.py` | Model API, parsing, exact quote alignment and output checks |
+| `evaluation/` | Immutable runs, cost preflight, approved reference comparison and owner reviews |
+| `interfaces/` | CLI and a local single-column benchmark review UI |
 
-The current model result has only `status`, `actions`, `reason`, and `evidence`. Each action has its own kind, text, deadline and quotes. The maximum is three independently completable tasks. The workflow uses `reason/evidence` directly; old explanation/review-reason accessors are retained to read history and preserve compatibility.
+The old `workflow/pipeline.py` and v1 parser are retained compatibility code. V2 currently shares source normalization with that module. Do not archive them without moving this shared dependency and updating callers; replacing this boundary is a later small refactor, not a reason to rewrite the application.
 
-Older-message bodies retain `thread:N`; their original headers use `thread:N:headers`. V2 registers both for prompts, segmentation and exact quote validation. The API's 2048-token output cap and preflight estimate use a shared constant. Preflight includes at most one additional validation-repair call per v2 email.
+## Public decision and policies
 
-## Evidence diagnostics and bounded correction
+V2 returns exactly `status`, `actions`, `reason`, `evidence`. Each action has `kind`, `text`, `deadline`, `evidence`. Array length is the count; at most three independently completable tasks are supported. Same-deliverable substeps normally form one action. Optional comments for consideration alone are no action; a concrete request to consider, decide or reply can be an action. Preserve the sender's level of commitment.
 
-The model continues selecting quotes. Accepted evidence must match supplied original text, with existing safe whitespace and known MailEx soft-wrap alignment. A bounded lexical search can suggest original excerpts when validation fails. Its similarity score measures text resemblance, not semantic confidence. Numerical/unit/date and negation markers flag potentially consequential differences; this heuristic is not exhaustive. No fuzzy candidate is automatically accepted, even above the diagnostic threshold.
+The target recipient is explicit. Older requests apply only when renewed by the newest message. Bodies use `thread:N`; original historical headers use `thread:N:headers`. Missing execution access or business inputs do not erase an identifiable request. Explicit missing document dependencies can require review.
 
-Schema, reading-plan and original-evidence failures can return the validation error, prior reply and candidate excerpts to the model once. The correction repeats the same contract and is strictly revalidated. Feedback uses only the sources supplied to that stage: a segment cannot access unread text, and merge feedback stays within its submitted ledger/full body. Legitimate `needs_review`, unavailable required materials, transport failures and budget failures do not trigger correction. A failed correction ends in review rather than a loop.
+Body content comes first. Read required external task details and links that carry the main message; skip unrelated reports, footer links and background. Skipped, unread and successfully read are different states. Never cite unseen content or claim it was checked.
 
-Both replies, token usage, repair outcome and matching diagnostics are saved. The review UI's Raw reply tab exposes the complete reply sequence. A successful repair means the corrected stage passed deterministic validation, not that its semantic decision has been human-approved.
+Evidence must match supplied original text. Safe whitespace alignment and known MailEx soft wraps can restore an exact original span. Similarity only locates correction candidates; even a 98.5% match cannot approve a changed amount. Numeric/unit/date/negation markers are diagnostics, not complete semantic validation. Repairs are checked against the same stage's supplied sources, never hidden full documents. Both replies, usage and repair outcome are saved. A validated quote proves provenance, not that the paraphrased task is semantically correct or complete.
 
-## Reading and missing-content policy
+ISO deadlines require explicit resolvable source information. Relative dates use trustworthy received time and timezone; absence of that anchor stays null. Independent semantic date resolution is not implemented. File limits, corrupt/archive checks, missing cached spreadsheet values, private-network destination controls and source coverage produce visible review reasons. Scanned PDFs, legacy DOC/XLS, login-dependent pages and JavaScript-only pages are unsupported.
 
-- Read external content when the newest body assigns source-dependent work or delegates its main message to that content. A brief "Project details are posted at [link]" is a primary-content pointer, even without an explicit task in the body.
-- Skip footer/signature/promotional links and unrelated background accompanying a self-contained body. Skipped content must not enter model context.
-- Pass validated reading reasons and actual availability to every extraction/merge path. Planning reasons are interpretations, not authoritative instructions or proof of unseen contents.
-- An empty inventory means no external material was supplied. The model must still recognize an explicitly referenced missing dependency, citing email text without inventing an attachment identity. A current request to review unavailable material requires review.
-- Identifying a clear requested next step does not require all business data, system access or execution approvals. Missing an explicitly referenced external document is different from a task mentioning a business object. Do not suppress a clear confirmation/run/restore request merely because its execution inputs are absent.
-- Older requests create no new obligation unless renewed by the newest body for the target. Preserve older headers rather than assuming that every historical request serves the current target.
+## Deployment boundary
 
-These are semantic model responsibilities. Deterministic code validates source availability, evidence, budgets and output structure; it does not force `no_action` based on keywords or silently replace a model judgment. Offline scripted tests establish context delivery and failure routing, not that a live model will always interpret the rules correctly.
-
-## Evaluation boundary
-
-The active suite consists of the frozen 50 and ten approved supplementary cases, with hash-bound v2 reference amendments. Raw runs, original scores, reference amendments and owner judgments remain separate. `evaluation/references.py` owns status/count comparison for both the runner and amended review display; it does not claim semantic correctness from a count match.
-
-The suite includes snapshots and synthetic fixtures. Its results do not establish real-inbox prevalence, general prompt-injection resistance or universal live-link support. Live model validation and human acceptance remain necessary before v2 release.
+The current UI reviews benchmark runs; it is not an inbox application. No mailbox OAuth, user database, calendar export/write or external task execution exists. V3 should add a thin adapter/service/UI around the same extraction core. Keep authentication, confirmation and external effects outside model control. Local review port is 61933. Private content, API keys and provider tokens belong outside Git and ordinary evaluation logs.

@@ -1,6 +1,0 @@
-Metadata-Version: 2.4
-Name: actionmail
-Version: 1.5.0
-Summary: Recipient-specific action review for work emails
-Requires-Python: >=3.10
-Requires-Dist: pypdf<7,>=6

@@ -10,3 +10,8 @@ venv/
 *.log
 results/private/
 data/private/
+*.egg-info/
+backup/*/data/
+backup/legacy/code/*.zip
+docs/course/*.pdf
+docs/course/*.docx

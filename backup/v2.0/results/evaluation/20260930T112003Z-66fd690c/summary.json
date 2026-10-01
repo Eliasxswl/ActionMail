@@ -1,0 +1,26 @@
+{
+  "schema": "v2",
+  "completed_cases": 10,
+  "planned_cases": 10,
+  "complete": true,
+  "category_counts": {
+    "external_content": {
+      "total": 10,
+      "status_checked": 10,
+      "status_correct": 10
+    }
+  },
+  "counts": {
+    "status_checked": 10,
+    "status_correct": 10,
+    "action_count_checked": 10,
+    "action_count_match": 10
+  },
+  "token_totals": {
+    "input": 12079,
+    "output": 2700
+  },
+  "estimated_cost_usd": 0.0025579,
+  "costed_cases": 10,
+  "metric_scope": "Established single-action references support status and action-count checks. A16/C13 draft labels are pending owner review and are not scored. Action wording and evidence meaning require human review."
+}

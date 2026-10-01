@@ -10,7 +10,7 @@ from actionmail.evaluation.challenge import load_challenge, prepare_challenge
 from actionmail.evaluation.cli import PROJECT_ROOT, DEFAULT_MAILEX_ROOT
 from actionmail.evaluation.review import ReviewDataset
 
-MANIFEST = PROJECT_ROOT / 'evaluation/supplement_v2_revision2.jsonl'
+MANIFEST = PROJECT_ROOT / 'backup/v2.0/evaluation/supplement_v2_revision2.jsonl'
 
 
 class SupplementTests(unittest.TestCase):
@@ -24,7 +24,7 @@ class SupplementTests(unittest.TestCase):
         self.assertEqual(a16.gold['status'], 'action')
         self.assertEqual(len(a16.gold['actions']), 2)
         self.assertEqual(next(c for c in cases if c.case_id == 'C11').record['accepted_outcomes'], [{'status': 'needs_review', 'action_count': 0}, {'status': 'action', 'action_count': 1}])
-        old_run = PROJECT_ROOT / 'results/evaluation/v2-full-20261001'
+        old_run = PROJECT_ROOT / 'backup/v2.0/results/evaluation/v2-full-20261001'
         if old_run.exists():
             historical = ReviewDataset.open(old_run, registry, DEFAULT_MAILEX_ROOT)
             self.assertEqual(historical.rows['A16']['gold']['status'], 'needs_review')
