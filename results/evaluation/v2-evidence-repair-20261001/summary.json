@@ -1,0 +1,46 @@
+{
+  "schema": "v2",
+  "completed_cases": 3,
+  "planned_cases": 3,
+  "complete": true,
+  "category_counts": {
+    "context_dependent": {
+      "total": 1,
+      "status_checked": 1,
+      "status_correct": 1
+    },
+    "external_content": {
+      "total": 1,
+      "status_checked": 1,
+      "status_correct": 1
+    },
+    "long_content": {
+      "total": 1,
+      "status_checked": 1,
+      "status_correct": 1
+    }
+  },
+  "counts": {
+    "status_checked": 3,
+    "status_correct": 3,
+    "action_count_checked": 3,
+    "action_count_match": 3,
+    "model_calls": 5,
+    "read_failures": 0,
+    "source_selection_match_checked": 1,
+    "source_selection_match": 1,
+    "read_expectation_match_checked": 1,
+    "read_expectation_match": 1,
+    "content_coverage_complete_checked": 1,
+    "content_coverage_complete": 1,
+    "validation_repairs": 1,
+    "validated_repairs": 1
+  },
+  "token_totals": {
+    "input": 8002,
+    "output": 1201
+  },
+  "estimated_cost_usd": 0.0014007,
+  "costed_cases": 3,
+  "metric_scope": "Approved references support status, action-count, source-selection and read-expectation checks. Pending-owner gold is unscored. Coverage is measured separately; review cases need not have complete coverage. Action completeness, meaning, evidence and deadlines need human review."
+}

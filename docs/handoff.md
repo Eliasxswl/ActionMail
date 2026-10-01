@@ -2,6 +2,12 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Live evidence-repair check passed
+
+The owner completed `results/evaluation/v2-evidence-repair-20261001`, run `20261001T122851Z-af9a46a5`. All three cases match status and action count, with no API, final-validation or read failures. S02's first reply again changed `$25k-$50k` to `$25k-$50`; the 0.9852 diagnostic flagged a critical difference and did not accept it. One correction restored the amount and body soft-wrap newlines. The thread quote was safely aligned to the original stored span. Both replies and repair records are saved. Independent inspection confirms every final quote is an exact substring of its registered source and original MailEx hashes match.
+
+C13 returns review for unavailable attached material with exact newest/older evidence and no retry. E10 reads the 66-character frozen page snapshot before returning no action; its text matches both the manifest and saved hash. Five calls, 8,002 input and 1,201 output tokens; estimated USD 0.0014007. These are three targeted checks, not full v2 acceptance or new owner Pass judgments. No additional model call was made during inspection. `inspection.json` records the independent checks, bound to the saved result-file hash. Port 61933 now serves this targeted run. Next: owner-run a fresh full 60-case regression and review any mismatches before v2 acceptance.
+
 ## Evidence diagnostics and one validation repair (offline verified)
 
 The owner approved preserving model-selected quotes, adding matching diagnostics and returning validation failures for one correction. `guardrails/matching.py` performs a bounded lexical search within actually supplied sources. Scores are resemblance diagnostics, never semantic confidence or fuzzy acceptance. Numerical/unit/date and negation differences are flagged heuristically; every corrected quote still requires strict original-text validation. S02's altered amount yields about 98.5% similarity but remains invalid.
