@@ -2,6 +2,8 @@
 
 Updated 1 October 2026. Owner-approved priorities: **mail intake → end-to-end use → product UI → calendar integration**. Further model evaluation is deferred until the owner decides. Continue on `main`; `v2.0` is the frozen baseline branch. Do not develop v3 on the frozen branch.
 
+Main package version is `3.0.0.dev0`; this marks development, not implemented v3 features. The frozen branch package version is `2.0.0`. Both the project metadata and runtime version agree.
+
 ## Start here
 
 Read this file, [architecture.md](architecture.md), [evaluation.md](evaluation.md), [report_guide.md](report_guide.md), then the workflow and input domain. The authoritative current documents are these four plus the root README and active annotation policy. Backup is historical evidence, not another competing roadmap.
