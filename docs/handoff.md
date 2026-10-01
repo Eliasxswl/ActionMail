@@ -2,11 +2,13 @@
 
 ## Delivery update — 2 October 2026
 
-The owner clarified that a frontend is not required by the instructor: CLI is the necessary foundation, and GUI/TUI are optional. The existing GUI serves evaluation review. Teacher delivery must expose runnable tests, results, process traces and experiment data without requiring UiPath or Google setup. UiPath is a potential integration, not an approved migration or delivery dependency. This delivery priority supersedes the earlier UI-first portions of the roadmap below.
+The owner clarified that CLI is a necessary foundation and GUI/TUI are optional. Running the core and evaluation without connecting accounts must remain possible. The current task is to assess UiPath integration for Gmail and Google Calendar, including authorization, full-path debugging, effort and a conditional build plan, before implementing it. Do not expand teacher-delivery documentation or migrate the system into UiPath. This clarification supersedes the earlier interpretation of CLI-first delivery.
 
-`interfaces/workflow_cli.py` now exposes the persistent application service offline: mailbox/fetch/import, list/show/analyze, review/tasks, draft/confirm/export and simulated write. `actionmail-workflow demo --output-dir NEW_DIRECTORY` runs three authored scenarios and saves JSON traces, SQLite records, ICS and one synthetic event despite two write requests. Model responses are scripted, not accuracy evidence. Existing extraction/evaluation commands remain the real-model experiment paths; saved v2 results can be inspected without new calls. See [CLI delivery guide](cli_guide.md). No real accounts or new paid model runs were used.
+`interfaces/workflow_cli.py` exposes the persistent application service offline: mailbox/fetch/import, list/show/analyze, review/tasks, draft/confirm/export and simulated write. `actionmail-workflow demo --output-dir NEW_DIRECTORY` runs three authored scenarios and saves JSON traces, SQLite records, ICS and one synthetic event despite two write requests. Model responses are scripted, not accuracy evidence. Existing extraction/evaluation commands remain the real-model experiment paths; saved v2 results can be inspected without new calls. No real accounts or new paid model runs were used. The owner requested removal of the separate teacher CLI guide.
 
 Verification: 96 offline tests pass, including four CLI integration checks for persisted operations, review/confirmation gates, error output and overwrite refusal. The repository integrity check passes for 60 active cases and 3,166 archive hashes. Frozen evaluation results remain unchanged.
+
+The owner confirmed access to Automation Cloud's Connections page. [UiPath integration assessment](uipath_assessment.md) recommends a 1–2 hour feasibility gate and estimates 10–18 focused hours for a thin-adapter implementation including debugging, conditional on permissions and callable schemas. No tenant discovery, SDK setup, mailbox reads, calendar writes or new inference were performed for the assessment.
 
 ## Implementation update — 1 October 2026
 

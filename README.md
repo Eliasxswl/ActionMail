@@ -8,9 +8,9 @@ Start with [the v3.0 handoff](docs/handoff.md), [current architecture](docs/arch
 
 For the new application, read [the v3 demo/run guide](docs/v3_demo.md) and [Google contracts and verification boundaries](docs/google_integrations.md). Run `python -m actionmail.interfaces.app_server --no-browser` for the offline product UI on port 61933. The benchmark review UI is a separate mode on the same port.
 
-## CLI first: run and inspect without accounts
+## Run CLI without account integration
 
-The teacher-facing entry point is CLI. The GUI remains optional for annotation/review; UiPath is not required to run the submission. See [the CLI and experiment guide](docs/cli_guide.md).
+The CLI remains available without mailbox/calendar integration. The GUI is optional for annotation/review. UiPath integration for Gmail and Google Calendar is currently being assessed.
 
 ```powershell
 python -m pip install -e .
@@ -19,7 +19,7 @@ python -m unittest discover -s tests -q
 python -m actionmail.evaluation.cli --history
 ```
 
-Use a new output directory for each demo. Included authored inputs and scripted replies exercise the real application/core without network calls, credentials or the separate corpus. The output includes source/analysis traces, persistent records, an ICS export and simulated write counts. This is engineering verification. Saved real-model experiment data can be inspected separately without repeating inference; the guide explains both paths and optional real-model commands.
+Use a new output directory for each demo. Included authored inputs and scripted replies exercise the real application/core without network calls, credentials or the separate corpus. The output includes source/analysis traces, persistent records, an ICS export and simulated write counts. This is engineering verification. Saved real-model experiment data can be inspected separately without repeating inference.
 
 ## Analyze one email with a real model
 
