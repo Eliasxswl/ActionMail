@@ -25,7 +25,7 @@ Use an exact model ID from the [OpenRouter model catalog](https://openrouter.ai/
 
 The CLI asks before sending email content to OpenRouter and asks you to review the returned result. For a local `.eml` file, run `actionmail path/to/message.eml --recipient you@example.com`. The parser preserves complete email addresses from To and Cc separately when present. The default API endpoint is OpenRouter; `--api-url` and `--model` can override it. The MVP does not write to a calendar or mailbox.
 
-The `review_reason` field explains an unresolved `needs_review` result. It is `null` for definitive `action` and `no_action` results. Earlier raw model responses sometimes supplied an explanation in this field even for an action; the parser now normalizes it to `null`. The raw response remains available in each evaluation record.
+The v1 `review_reason` field explains an unresolved `needs_review` result. New v2 responses use one `reason` for every status, with original quotes in `evidence`; they do not emit separate `review_reason` and `explanation` fields. Historical responses and reference manifests remain readable, and saved raw responses are preserved.
 
 ## Evaluate the frozen cases
 

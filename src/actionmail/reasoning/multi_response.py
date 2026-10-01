@@ -6,6 +6,10 @@ from actionmail.domain.decision import Evidence, Explanation, MultiActionResult,
 
 def parse_multi_response(content: str, *, require_explanation: bool = False) -> MultiActionResult:
     payload = json.loads(content)
+    if isinstance(payload, dict) and set(payload) == {'status', 'actions', 'reason', 'evidence'}:
+        payload = {'status': payload['status'], 'actions': payload['actions'],
+                   'review_reason': payload['reason'] if payload['status'] == 'needs_review' else None,
+                   'explanation': {'text': payload['reason'], 'evidence': payload['evidence']}}
     keys = {"status", "actions", "review_reason"}
     if not isinstance(payload, dict) or set(payload) not in (keys, keys | {'explanation'}):
         raise ValueError("V2 response needs exactly status, actions, and review_reason")
@@ -64,4 +68,4 @@ def parse_multi_response(content: str, *, require_explanation: bool = False) -> 
             raise ValueError('Definitive explanations require original evidence')
     elif require_explanation:
         raise ValueError('New V2 model responses require an explanation')
-    return MultiActionResult(status, tuple(actions), reason, explanation)
+    return MultiActionResult(status, tuple(actions), explanation.text if explanation else reason, explanation.evidence if explanation else ())

@@ -39,8 +39,17 @@ class Explanation:
 class MultiActionResult:
     status: Status
     actions: tuple[ProposedAction, ...]
-    review_reason: str | None
-    explanation: Explanation | None = None
+    reason: str | None
+    evidence: tuple[Evidence, ...] = ()
+
+    @property
+    def review_reason(self) -> str | None:
+        return self.reason if self.status == 'needs_review' else None
+
+    @property
+    def explanation(self) -> Explanation | None:
+        # Compatibility accessor; serialized new results contain only reason/evidence.
+        return Explanation(self.reason, self.evidence) if self.reason else None
 
     @property
     def action_count(self) -> int:

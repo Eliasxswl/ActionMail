@@ -39,7 +39,7 @@ textarea { min-height: 96px; padding: 12px; line-height: 1.5; resize: vertical; 
 .case-state.reviewed { color: #2c8057; }
 .case-state.mismatch { color: #b0601a; }
 
-.main { width: 100%; min-width: 0; max-width: 1550px; margin: 0 auto; padding: 40px clamp(24px, 3.4vw, 58px) 80px; }
+.main { width: 100%; min-width: 0; max-width: 1080px; margin: 0 auto; padding: 30px clamp(22px, 3vw, 44px) 70px; }
 .empty-state { padding: 100px 24px; color: #86868b; text-align: center; }
 .case-header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 25px; }
 .case-header h2 { max-width: 760px; margin: 8px 0 0; font-size: clamp(26px, 2.8vw, 38px); font-weight: 680; line-height: 1.12; }
@@ -51,7 +51,7 @@ textarea { min-height: 96px; padding: 12px; line-height: 1.5; resize: vertical; 
 .pill.status-no_action { background: #edf1f5; color: #587083; }
 .pill.status-needs_review { background: #fff3df; color: #9b6a12; }
 
-.grid { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(340px, .82fr); align-items: start; gap: 22px; }
+.grid { display: block; }
 .stack { display: grid; align-content: start; gap: 22px; min-width: 0; }
 .card { min-width: 0; padding: clamp(21px, 2.1vw, 32px); border: 1px solid #e6e6e9; border-radius: 18px; background: #fff; box-shadow: 0 6px 24px rgba(0, 0, 0, .025); }
 .card > h3 { margin: 0 0 23px; font-size: 18px; font-weight: 670; }
@@ -89,6 +89,31 @@ details pre { padding: 13px; border-radius: 8px; background: #f7f7f9; color: #3a
 .beneficiary-hint { flex-basis: 100%; color: #42556b; font-size: 12px; }
 .attachment-link { display: inline-block; margin-bottom: 12px; color: #0071e3; }
 .review-grid { display: grid; gap: 16px; }
+.email-card { margin-bottom: 24px; box-shadow: none; }
+.mail-detail { margin-top: 20px; padding-top: 16px; border-top: 1px solid #ededf0; }
+.mail-detail summary { color: #42454b; line-height: 1.6; }
+.tabbar { display: flex; gap: 24px; border-bottom: 1px solid #e5e5e7; overflow-x: auto; margin: -4px 0 24px; }
+.tab-button { flex: none; padding: 12px 2px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: #74777d; font: inherit; font-size: 14px; cursor: pointer; }
+.tab-button[aria-selected="true"] { border-bottom-color: #24558b; color: #24558b; font-weight: 650; }
+.tab-panels > [hidden] { display: none; }
+.tabs-card { box-shadow: none; }
+.decision { padding: 0; border: 0; background: transparent; }
+.decision-heading h3 { font-size: 17px; }
+.decision dl { grid-template-columns: 62px minmax(0,1fr); font-size: 14px; }
+.assessment-inline { margin-top: 28px; border-top: 1px solid #ededf0; padding-top: 20px; }
+.assessment-inline h3 { font-size: 14px; margin: 0 0 12px; }
+.assessment-inline select { max-width: 210px; }
+.notes-field { border-top: 1px solid #ededf0; margin-top: 24px; padding-top: 22px; }
+.notes-field textarea { min-height: 100px; }
+.action-row { margin-top: 20px; padding: 16px 0; border-top: 1px solid #ededf0; line-height: 1.6; }
+.action-row details { margin-top: 8px; }
+.context-note { font-size: 13px; color: #64676c; line-height: 1.7; }
+.validation-note { color: #9b5c20; font-size: 13px; line-height: 1.7; }
+.reading-choice { padding: 18px 0; border-bottom: 1px solid #ededf0; }
+.reading-choice p { font-size: 14px; line-height: 1.7; }
+.investigation { margin-top: 24px; border-left: 3px solid #5d7fa5; padding-left: 18px; }
+.investigation h3 { font-size: 14px; }
+.investigation p { font-size: 14px; line-height: 1.7; }
 .review-field { display: grid; gap: 7px; }
 .review-field label { font-size: 12px; font-weight: 650; }
 .review-hint { margin-bottom: 2px; color: #86868b; font-size: 11px; line-height: 1.45; }

@@ -84,14 +84,14 @@ def _normalize_source_ids(email: EmailPackage, decision: ActionResult) -> Action
             matches = [
                 (candidate_id, aligned)
                 for candidate_id, candidate_text in sources.items()
-                for aligned in [align_evidence_quote(quote, candidate_text)]
+                for aligned in [align_evidence_quote(quote, candidate_text, allow_soft_wrap=email.legacy_soft_wraps)]
                 if aligned.strip() and aligned in candidate_text
             ]
             if len(matches) == 1:
                 source_id, quote = matches[0]
                 source = sources[source_id]
         if source is not None and quote not in source:
-            quote = align_evidence_quote(quote, source)
+            quote = align_evidence_quote(quote, source, allow_soft_wrap=email.legacy_soft_wraps)
         evidence.append(Evidence(source_id, quote))
     return ActionResult(decision.status, decision.action, decision.deadline, tuple(evidence), decision.review_reason)
 

@@ -2,6 +2,17 @@
 
 Updated: 2026-10-01 (Asia/Singapore).
 
+## Latest review and fixes (1 October)
+
+This section supersedes the earlier continuation notes. The owner approved all ten supplementary references and ran `results/evaluation/supplement-v2-with-explanations` (run `20260930T223150Z-74fceffa`, model `openai/gpt-6-luna`). The active suite remains 50 + 10. Original status matches were 8/10 and action-count matches 9/10; these are automatic comparisons, not a complete human semantic assessment. The owner sampled other outputs without reporting problems; do not mark every output passed on their behalf.
+
+- S02: the model's `no_action` was rejected because its older-thread quote omitted MailEx quoted-printable soft wraps (`=\n`, including one inside a word). Evidence alignment now recovers a unique match only for MailEx packages and restores the exact original span. The saved reply passes an offline recheck; original raw records and historical scores remain unchanged.
+- S09: the run stopped after one planning call. That call saw the body and attachment inventory, but no attachment text. The assistant-directed attack in the fixture was never supplied, so this run does not evaluate injection resistance. Planning now treats absent content as normal before reading, and a bounded read can resolve an uncertain relevance plan. An offline scripted integration test verifies that attachment contents reach the subsequent extraction call; a new live result remains untested.
+- New v2 responses have exactly `status`, `actions`, `reason`, and `evidence`. One reason is required for every status; original evidence supports it. Legacy `review_reason`/`explanation` outputs remain readable without rewriting history. Source-reading choices retain their individual reasons and quotes.
+- Review main content is one column: email first, then Model / Reference / Reading / Raw reply tabs. Reference and model each have one Pass (Yes/No/Unsure), plus a shared optional note. Human-only attachment previews are clearly distinguished from text supplied to the model. Existing detailed review records remain preserved.
+
+All 51 offline tests pass. This investigation made zero model calls. `investigation.json` in the run directory records the S02 replay and S09 diagnosis, tied to the original row hash. Port 61933 serves this run and `evaluation/supplement_v2_approved.jsonl`. Reload an existing browser tab to receive the updated interface. Any further live evaluation requires separate owner consent.
+
 ## Current owner steering: original data first
 
 Read `docs/evaluation_60.md` and `docs/real_data_plan.md` first. The owner fixed the active evaluation at **50 base + 10 supplementary = 60 cases** and accepts roughly 2,000–3,000 characters, prioritizing original data. `evaluation/active_suite.json` identifies the active manifests; supplementary gold remains pending. The old 24-case challenge and fixtures moved to `evaluation/archive/` for offline tests/historical reproduction. The 12-candidate staging list was removed. Port 61933 now serves the ten-reference preview. Do not invent missing times or documents. Conditional consent for the old 24 references does not authorize a changed batch.

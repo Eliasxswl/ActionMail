@@ -12,7 +12,7 @@ from actionmail.evaluation.challenge import load_challenge
 
 REVIEW_VALUES = {"correct", "incorrect", "uncertain", ""}
 REVIEW_FIELDS = ("action_meaning", "evidence_support", "gold_label")
-OPTIONAL_REVIEW_FIELDS = ('action_completeness', 'deadline_correct', 'source_selection', 'content_coverage')
+OPTIONAL_REVIEW_FIELDS = ('action_completeness', 'deadline_correct', 'source_selection', 'content_coverage', 'model_pass')
 
 
 @dataclass
@@ -109,10 +109,18 @@ class ReviewDataset:
         email = case.email
         external = case.record["source"].get("external_sources", [])
         if case.record.get('challenge_version'):
+            from actionmail.content.reader import extract
+            def human_text(source):
+                try:
+                    return extract(source)[0] if source.content is not None else '(Content was not read in this run)'
+                except ValueError as exc:
+                    return f'(Preview unavailable: {exc})'
             extracted = {r['source_id']: r for r in row.get('read_sources', [])}
             external = [{'source_id': s.source_id, 'name': s.name,
-                         'text': extracted.get(s.source_id, {}).get('extracted_text') or s.snapshot_text or '(Not extracted; see read failures or source plan)'}
+                         'text': extracted.get(s.source_id, {}).get('extracted_text') or s.snapshot_text or human_text(s)}
                         for s in email.external_sources]
+        investigation_path = self.run_dir / 'investigation.json'
+        investigation = json.loads(investigation_path.read_text(encoding='utf-8')).get('cases', {}).get(case_id) if investigation_path.exists() else None
         return {
             "case_id": case_id,
             "category": row["category"],
@@ -150,6 +158,7 @@ class ReviewDataset:
             "revised_gold": self.revised_gold.get(case_id),
             "manifest_name": self.manifest_name,
             "prediction": row["prediction"],
+            "investigation": investigation,
             "multi_action_draft": row.get("multi_action_draft"),
             "action_count_match": row.get("action_count_match"),
             "raw_model_response": row["raw_model_response"],
@@ -176,6 +185,9 @@ class ReviewDataset:
     def save_review(self, case_id: str, review: dict) -> dict:
         if case_id not in self.rows:
             raise KeyError(case_id)
+        if set(review) == {'gold_label', 'model_pass', 'note'}:
+            # Single model-pass judgment must not masquerade as per-action semantic/evidence review.
+            review = {**review, 'action_meaning': '', 'evidence_support': ''}
         if not {*REVIEW_FIELDS, "note"} <= set(review) or set(review) - {*REVIEW_FIELDS, *OPTIONAL_REVIEW_FIELDS, "note", "action_checks"}:
             raise ValueError("Review must contain action_meaning, evidence_support, gold_label, and note")
         if any(not isinstance(review[field], str) or review[field] not in REVIEW_VALUES for field in REVIEW_FIELDS):

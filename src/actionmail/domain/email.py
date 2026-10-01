@@ -46,6 +46,7 @@ class EmailPackage:
     cc_recipients: tuple[str, ...] = ()
     external_sources: tuple[ExternalSource, ...] = ()
     read_sources: tuple[SourceText, ...] = ()
+    legacy_soft_wraps: bool = False
 
     def __post_init__(self) -> None:
         if not self.case_id.strip():

@@ -7,15 +7,18 @@ from actionmail.domain.email import EmailPackage
 _ABBREVIATION = re.compile(r"\b(?:Inc|Ltd|Corp|Co|Dr|Mr|Mrs|Ms|Jr|Sr|St)\.$", re.IGNORECASE)
 
 
-def align_evidence_quote(quote: str, source: str) -> str:
+def align_evidence_quote(quote: str, source: str, *, allow_soft_wrap: bool = False) -> str:
     """Recover a unique source span after whitespace or abbreviation-dot drift."""
     if quote in source:
         return quote
 
-    def canonical(text: str) -> tuple[str, list[int]]:
+    def canonical(text: str, soft_wrap=False) -> tuple[str, list[int]]:
         characters: list[str] = []
         offsets: list[int] = []
+        omitted = {i for match in re.finditer(r'=\r?\n', text) for i in range(match.start(), match.end())} if soft_wrap else set()
         for index, character in enumerate(text):
+            if index in omitted:
+                continue
             if character == "." and _ABBREVIATION.search(text[:index + 1]):
                 continue
             if character.isspace():
@@ -31,6 +34,10 @@ def align_evidence_quote(quote: str, source: str) -> str:
     if not normalized_quote:
         return quote
     start = normalized_source.find(normalized_quote)
+    if start < 0 and allow_soft_wrap:
+        normalized_quote, _ = canonical(quote.strip(), True)
+        normalized_source, offsets = canonical(source, True)
+        start = normalized_source.find(normalized_quote)
     if start < 0 or normalized_source.find(normalized_quote, start + 1) >= 0:
         return quote
     return source[offsets[start]:offsets[start + len(normalized_quote) - 1] + 1]

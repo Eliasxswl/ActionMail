@@ -75,56 +75,34 @@ function definition(list, label, value) {
 function decisionBlock(title, decision) {
   const block = node("section", "decision");
   const heading = node("div", "decision-heading");
-  heading.append(node("h3", "", title), node("span", `pill status-${decision ? decision.status : "error"}`, decision ? decision.status.replaceAll("_", " ") : "error"));
+  heading.append(node("h3", "", title), node("span", `pill status-${decision?.status || "error"}`, decision?.status?.replaceAll("_", " ") || "error"));
   block.append(heading);
   if (!decision) return block;
-  const list = node("dl");
-  if (Array.isArray(decision.actions)) {
-    definition(list, "Action count", decision.actions.length);
-  } else {
-    definition(list, "Action", decision.action);
-    definition(list, "Deadline", decision.deadline);
+  const reason = decision.reason || decision.review_reason || decision.explanation?.text;
+  if (reason) {
+    const list = node("dl"); definition(list, "Reason", reason); block.append(list);
   }
-  if (decision.review_reason) definition(list, "Reason", decision.review_reason);
-  if (decision.explanation) definition(list, "Explanation", decision.explanation.text);
-  block.append(list);
-  if (decision.explanation) {
+  const addQuotes = (evidence, parent) => {
+    if (!evidence?.length) return;
     const quotes = node("ul", "quote-list");
-    for (const evidence of decision.explanation.evidence || []) {
-      const entry = node("li");
-      entry.append(node("strong", "", evidence.source_id), node("span", "", evidence.quote));
-      quotes.append(entry);
+    for (const e of evidence) {
+      const entry = node("li"); entry.append(node("strong", "", e.source_id), node("span", "", e.quote)); quotes.append(entry);
     }
-    block.append(quotes);
-    if (!decision.explanation.evidence?.length) block.append(node("p", "muted", "No original quote available; see the explanation for the missing information or system failure."));
-  }
-  if (Array.isArray(decision.actions)) {
-    for (const [index, action] of decision.actions.entries()) {
-      const actionBlock = node("div", "source-block");
-      actionBlock.append(node("strong", "", `${index + 1}. ${action.text}`));
-      actionBlock.append(metaRow("Type", action.kind), metaRow("Deadline", action.deadline));
-      const quotes = node("ul", "quote-list");
-      for (const evidence of action.evidence || []) {
-        const entry = node("li");
-        entry.append(node("strong", "", evidence.source_id), node("span", "", evidence.quote));
-        quotes.append(entry);
-      }
-      actionBlock.append(quotes);
-      block.append(actionBlock);
+    parent.append(quotes);
+  };
+  addQuotes(decision.evidence?.length ? decision.evidence : decision.explanation?.evidence, block);
+  const actions = decision.actions || (decision.action ? [{text: decision.action, deadline: decision.deadline, evidence: []}] : []);
+  for (const [index, action] of actions.entries()) {
+    const actionBlock = node("div", "action-row");
+    actionBlock.append(node("strong", "", `${index + 1}. ${action.text}`));
+    if (action.deadline) actionBlock.append(metaRow("Deadline", action.deadline));
+    if (action.evidence?.length) {
+      const details = node("details"); details.append(node("summary", "", "Action evidence")); addQuotes(action.evidence, details); actionBlock.append(details);
     }
-  }
-  if (decision.evidence && decision.evidence.length) {
-    const quotes = node("ul", "quote-list");
-    for (const evidence of decision.evidence) {
-      const entry = node("li");
-      entry.append(node("strong", "", evidence.source_id), node("span", "", evidence.quote));
-      quotes.append(entry);
-    }
-    block.append(quotes);
+    block.append(actionBlock);
   }
   return block;
 }
-
 function selectField(key, label, hint, value, disabled) {
   const wrap = node("div", "review-field");
   const caption = node("label", "", label);
@@ -153,159 +131,113 @@ function renderCase(data) {
   main.replaceChildren();
   const header = node("div", "case-header");
   const title = node("div");
-  title.append(node("div", "muted", `${data.case_id}  /  ${data.category.replaceAll("_", " ")}`), node("h2", "", data.email.subject || "(No subject)"));
-  const pills = node("div", "pill-row");
-  const statusText = data.status_correct === null ? "Reference pending review" : data.status_correct ? "Status matches gold" : "Status differs from gold";
-  pills.append(node("span", `pill ${data.status_correct === false ? "warning" : "good"}`, statusText));
-  if (data.action_count_match !== null && data.action_count_match !== undefined) pills.append(node("span", `pill ${data.action_count_match ? "good" : "warning"}`, data.action_count_match ? "Action count matches" : "Action count differs"));
-  if (data.validation_errors.length) pills.append(node("span", "pill warning", `${data.validation_errors.length} validation issue(s)`));
-  header.append(title, pills);
+  title.append(node("div", "muted", data.case_id), node("h2", "", data.email.subject || "(No subject)"));
+  header.append(title);
   main.append(header);
   const beneficiary = node("section", "beneficiary");
-  beneficiary.append(node("span", "beneficiary-label", "Finding tasks for"), node("strong", "beneficiary-address", data.email.target_recipient), node("span", "beneficiary-hint", "Only this person's current tasks are shown. Other recipients' tasks are excluded."));
+  beneficiary.append(node("span", "beneficiary-label", "Finding tasks for"), node("strong", "beneficiary-address", data.email.target_recipient));
   main.append(beneficiary);
 
-  const grid = node("div", "grid");
-  const sourceCard = node("section", "card");
+  const emailCard = node("section", "card email-card");
   const synthetic = ["authored", "authored_eml"].includes(data.email.source_kind);
-  sourceCard.append(node("h3", "", synthetic ? "Synthetic test email" : "Dataset email"));
   const metadata = node("div", "metadata");
-  metadata.append(
-    metaRow("Source", synthetic ? "Authored test fixture" : data.email.source_kind === "enron_export" ? "Enron dataset export; HTML rendered as text" : "Original MailEx text"),
-    metaRow("Reviewing for", data.email.target_recipient),
-    metaRow("From", data.email.sender || "unknown"),
-    metaRow("To", data.email.to_recipients.join(", ") || "none shown"),
-    metaRow("Cc", data.email.cc_recipients.join(", ") || "none shown"),
-  );
-  metadata.append(metaRow(synthetic ? "Fixture received time" : "Received at", data.email.received_at || "Unknown — not provided by the source"));
-  sourceCard.append(metadata, sourceBlock("Newest message", "body", data.email.body));
-  for (const thread of data.email.thread) sourceCard.append(sourceBlock("Earlier message", thread.source_id, thread.text, false, thread));
+  metadata.append(metaRow("From", data.email.sender), metaRow("To", data.email.to_recipients.join(", ")),
+    metaRow("Cc", data.email.cc_recipients.join(", ") || "None"),
+    metaRow(synthetic ? "Test fixture time" : "Received at", data.email.received_at || "Unknown in source"));
+  emailCard.append(node("h3", "", synthetic ? "Email · synthetic test" : "Email · dataset source"), metadata,
+    sourceBlock("Newest message", "body", data.email.body));
+  for (const part of data.email.thread) {
+    const details = node("details", "mail-detail");
+    details.append(node("summary", "", `Earlier message · ${part.subject || part.source_id}`),
+      sourceBlock("Older message", part.source_id, part.text, false, part));
+    emailCard.append(details);
+  }
   for (const source of data.external_sources) {
-    const block = sourceBlock(source.name, source.source_id, source.text, true, null, source.read_by_model);
+    const details = node("details", "mail-detail");
+    details.append(node("summary", "", `${source.name} · ${source.read_by_model ? "Sent to model" : "Preview for you only — not sent to model"}`));
     if (source.original_attachment_url) {
       const link = node("a", "attachment-link", "Open original attachment");
-      link.href = source.original_attachment_url;
-      link.target = "_blank";
-      link.rel = "noopener";
-      block.prepend(link);
+      link.href = source.original_attachment_url; link.target = "_blank"; link.rel = "noopener";
+      details.append(link);
     }
-    sourceCard.append(block);
+    details.append(sourceBlock("Attachment or page content", source.source_id, source.text, true, null, source.read_by_model));
+    emailCard.append(details);
   }
-  grid.append(sourceCard);
+  main.append(emailCard);
 
-  const right = node("div", "stack");
-  if (data.workflow_trace?.source_plan?.length) {
-    const reading = node("section", "card");
-    reading.append(node("h3", "", "Why sources were selected or skipped"));
-    for (const choice of data.workflow_trace.source_plan) {
-      const entry = node("div", "source-block");
-      entry.append(node("strong", "", `${choice.source_id} — ${choice.relevance.replaceAll("_", " ")}`), node("p", "", choice.reason));
-      for (const evidence of choice.evidence || []) entry.append(sourceBlock("Original evidence", evidence.source_id, evidence.quote));
-      if (!choice.evidence?.length) entry.append(node("p", "muted", "No original evidence was stored in this historical reading plan."));
-      reading.append(entry);
-    }
-    right.append(reading);
-  }
-  const comparison = node("section", "card comparison");
-  comparison.append(decisionBlock(`Reference label used in this run (${data.manifest_name})`, data.gold));
-  if (data.prior_gold_review?.gold_label) {
-    comparison.append(node("p", "muted", `Your earlier gold review: ${data.prior_gold_review.gold_label}${data.prior_gold_review.note ? ` — ${data.prior_gold_review.note}` : ""}`));
-  }
-  if (data.annotation_note) comparison.append(node("p", "muted", `Annotation note: ${data.annotation_note}`));
-  if (data.multi_action_draft) {
-    const draft = data.multi_action_draft;
-    comparison.append(node("p", "muted", "Proposed v2 reference — pending your review. It is not included in correctness scores."));
-    comparison.append(decisionBlock("Draft multi-action reference", {
-      status: draft.proposed_status, actions: draft.candidate_actions, review_reason: draft.review_reason,
-    }));
-    if (draft.annotation_note) comparison.append(node("p", "muted", draft.annotation_note));
-  }
-  if (data.revised_gold) comparison.append(decisionBlock("Current revised label (not used to score this run)", data.revised_gold));
-  const referenceOnly = state.overview.model === "no model call" && !data.prediction && !data.error;
-  if (referenceOnly) {
-    const preview = node("section", "decision");
-    preview.append(node("h3", "", "Reference review only"));
-    preview.append(node("p", "muted", "Model evaluation has not run. Review the reference label above. Predictions will appear after reference approval and model evaluation."));
-    comparison.append(preview);
-  } else {
-    const predictionTitle = state.overview.model === "rules-v1" ? "Rule baseline (prediction)" : "Model result (prediction)";
-    comparison.append(decisionBlock(predictionTitle, data.prediction));
-  }
-  if (data.validation_errors.length || data.error) {
-    const errors = node("ul", "error-list");
-    for (const message of [...data.validation_errors, ...(data.error ? [data.error] : [])]) errors.append(node("li", "", message));
-    comparison.append(errors);
-  }
-  if (data.reference_review_state) {
-    comparison.append(node("p", "muted", `Reference: ${data.reference_review_state}. Review candidate gold before scoring.`));
-  }
-  if (data.workflow_trace || data.source_expectations) {
-    const trace = node("details");
-    trace.append(node("summary", "", "Source selection, coverage and provenance"),
-      node("pre", "", JSON.stringify({expected_sources: data.source_expectations, expected_locations: data.expected_evidence_locations, ...data.workflow_trace}, null, 2)));
-    comparison.append(trace);
-  }
-  if (data.raw_model_response) {
-    const details = node("details");
-    details.append(node("summary", "", "Raw model response"), node("pre", "", data.raw_model_response));
-    comparison.append(details);
-  }
-  right.append(comparison);
-
-  const reviewCard = node("section", "card");
-  reviewCard.append(node("h3", "", "Your assessment"));
+  const tabs = node("section", "card tabs-card");
+  const tabbar = node("div", "tabbar"); tabbar.setAttribute("role", "tablist");
+  const panels = node("div", "tab-panels");
+  const addTab = (label, panel, active=false) => {
+    const button = node("button", "tab-button", label); button.type = "button";
+    button.setAttribute("role", "tab"); button.setAttribute("aria-selected", String(active));
+    panel.hidden = !active; panel.setAttribute("role", "tabpanel");
+    button.addEventListener("click", () => {
+      for (const p of panels.children) p.hidden = true;
+      for (const b of tabbar.children) b.setAttribute("aria-selected", "false");
+      panel.hidden = false; button.setAttribute("aria-selected", "true");
+    });
+    tabbar.append(button); panels.append(panel);
+  };
   const review = data.review || {};
-  const hasAction = data.prediction && data.prediction.status === "action";
-  const isMulti = Array.isArray(data.prediction?.actions);
-  const fields = node("div", "review-grid");
-  fields.append(
-    selectField("action_meaning", "Is the proposed action useful and faithful?", "Judge meaning in context, not exact wording.", review.action_meaning, !hasAction || isMulti),
-    selectField("evidence_support", "Does the evidence support that action?", "An exact quote can still support the wrong recipient or obligation.", review.evidence_support, !hasAction || isMulti),
-    selectField("gold_label", data.multi_action_draft ? "Is the draft multi-action reference reasonable?" : "Is the reference label reasonable?", "Pending v2 drafts are not scored as gold.", review.gold_label ?? (data.multi_action_draft ? "" : data.prior_gold_review?.gold_label), false),
-  );
-  if (data.prediction && data.reference_review_state) {
-    fields.append(
-      selectField("action_completeness", "Are all requested tasks represented?", "Check omissions and extra tasks across the complete message.", review.action_completeness, false),
-      selectField("deadline_correct", "Are the action deadlines correct?", "Check relative dates, timezone and source conflicts.", review.deadline_correct, false),
-      selectField("source_selection", "Were the relevant sources selected?", "Compare the source plan with the email and source expectations.", review.source_selection, false),
-      selectField("content_coverage", "Was enough decisive content read?", "Check offsets, failures and budget explanations.", review.content_coverage, false),
-    );
-  }
-  if (isMulti) {
-    for (const [index, action] of data.prediction.actions.entries()) {
-      const checks = review.action_checks?.[index] || {};
-      const group = node("div", "source-block");
-      group.append(node("strong", "", `${index + 1}. ${action.text}`));
-      group.append(
-        selectField(`action_meaning_${index}`, "Action meaning", "Is this individual task faithful to the email?", checks.action_meaning, false),
-        selectField(`evidence_support_${index}`, "Evidence support", "Does the cited source support this task?", checks.evidence_support, false),
-      );
-      fields.append(group);
+  const assessment = (key, label, value, disabled=false) => {
+    const wrap = node("section", "assessment-inline");
+    wrap.append(node("h3", "", "Your assessment"), selectField(key, "Pass", "", value, disabled));
+    return wrap;
+  };
+  const modelPanel = node("div");
+  if (data.prediction) modelPanel.append(decisionBlock("Model result", data.prediction));
+  else modelPanel.append(node("p", "", "No model result yet."));
+  const shownReason = data.prediction?.reason || data.prediction?.review_reason || data.prediction?.explanation?.text;
+  const validationNotes = [...new Set([...data.validation_errors, ...(data.error ? [data.error] : [])])]
+    .filter(message => message !== shownReason);
+  if (validationNotes.length) modelPanel.append(node("p", "validation-note", validationNotes.join("; ")));
+  if (data.investigation) {
+    const diagnosis = node("section", "investigation");
+    diagnosis.append(node("h3", "", "Checked by ActionMail"), node("p", "", data.investigation.finding));
+    if (data.investigation.offline_recheck) {
+      diagnosis.append(node("p", "muted", "Offline recheck of the saved response · no new model call · original run unchanged"),
+        decisionBlock("After evidence alignment", data.investigation.offline_recheck));
     }
+    modelPanel.append(diagnosis);
   }
-  const noteWrap = node("div", "review-field");
-  const noteLabel = node("label", "", "Notes (optional)");
-  noteLabel.htmlFor = "note";
-  const note = node("textarea");
-  note.id = "note";
-  note.maxLength = 2000;
-  note.value = review.note || "";
-  note.addEventListener("input", markDirty);
-  noteWrap.append(noteLabel, note);
-  fields.append(noteWrap);
-  reviewCard.append(fields);
-  const saveRow = node("div", "save-row");
-  const save = node("button", "primary", "Save assessment");
-  save.type = "button";
-  save.addEventListener("click", saveReview);
-  saveRow.append(save, node("span", "", review.updated_at_utc ? "Saved previously" : data.prior_gold_review ? "Gold judgment carried over; model result not reviewed" : "Not saved"));
-  saveRow.lastChild.id = "save-status";
-  reviewCard.append(saveRow);
-  right.append(reviewCard);
-  grid.append(right);
-  main.append(grid);
-}
+  modelPanel.append(assessment("model_pass", "Model", review.model_pass || "", !data.prediction));
+  addTab("Model", modelPanel, true);
 
+  const goldPanel = node("div");
+  goldPanel.append(decisionBlock("Reference answer", data.gold));
+  if (data.annotation_note) goldPanel.append(node("p", "context-note", data.annotation_note));
+  goldPanel.append(assessment("gold_label", "Reference", review.gold_label ?? (data.reference_review_state === "approved" ? "correct" : data.prior_gold_review?.gold_label ?? "")));
+  addTab("Reference", goldPanel);
+
+  const readingPanel = node("div");
+  readingPanel.append(node("h3", "", "What the model actually received"));
+  const sent = data.external_sources.filter(s => s.read_by_model);
+  readingPanel.append(node("p", "", sent.length ? `External content sent: ${sent.map(s => s.name).join(", ")}.` : "No attachment or page content was sent to the model in this run."));
+  for (const choice of data.workflow_trace?.source_plan || []) {
+    const entry = node("section", "reading-choice");
+    entry.append(node("strong", "", `${choice.source_id} · ${choice.relevance}`), node("p", "", choice.reason));
+    for (const e of choice.evidence || []) entry.append(sourceBlock("Evidence", e.source_id, e.quote));
+    readingPanel.append(entry);
+  }
+  if (data.workflow_trace?.read_failures?.length) readingPanel.append(node("p", "validation-note", data.workflow_trace.read_failures.join("; ")));
+  const trace = node("details"); trace.append(node("summary", "", "Technical details"),
+    node("pre", "", JSON.stringify(data.workflow_trace, null, 2))); readingPanel.append(trace);
+  addTab("Reading", readingPanel);
+
+  const rawPanel = node("div");
+  rawPanel.append(node("h3", "", "Saved model replies"), node("pre", "source-text", data.raw_model_response || "No reply saved."));
+  addTab("Raw reply", rawPanel);
+  tabs.append(tabbar, panels);
+  const notes = node("div", "review-field notes-field");
+  const caption = node("label", "", "Notes (optional)"); caption.htmlFor = "note";
+  const note = node("textarea"); note.id = "note"; note.maxLength = 2000; note.value = review.note || "";
+  note.addEventListener("input", markDirty); notes.append(caption, note); tabs.append(notes);
+  const saveRow = node("div", "save-row");
+  const save = node("button", "primary", "Save assessment"); save.type = "button"; save.addEventListener("click", saveReview);
+  const status = node("span", "", review.updated_at_utc ? "Saved" : "Not saved"); status.id = "save-status";
+  saveRow.append(save, status); tabs.append(saveRow); main.append(tabs);
+}
 async function loadCase(caseId) {
   if (state.dirty && !window.confirm("Discard unsaved assessment changes?")) return;
   state.dirty = false;
@@ -322,20 +254,7 @@ async function loadCase(caseId) {
 }
 
 async function saveReview() {
-  const review = {
-    action_meaning: $("#action_meaning").value,
-    evidence_support: $("#evidence_support").value,
-    gold_label: $("#gold_label").value,
-    note: $("#note").value,
-  };
-  for (const field of ["action_completeness", "deadline_correct", "source_selection", "content_coverage"]) {
-    if ($(`#${field}`)) review[field] = $(`#${field}`).value;
-  }
-  const meaningChecks = [...document.querySelectorAll('[id^="action_meaning_"]')];
-  if (meaningChecks.length) review.action_checks = meaningChecks.map((field, index) => ({
-    action_meaning: field.value,
-    evidence_support: $(`#evidence_support_${index}`).value,
-  }));
+  const review = { gold_label: $("#gold_label").value, model_pass: $("#model_pass").value, note: $("#note").value };
   try {
     const result = await readJson(`/api/cases/${encodeURIComponent(state.selected)}/review`, {
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(review),

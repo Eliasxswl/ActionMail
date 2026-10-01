@@ -79,6 +79,7 @@ def _load_mailex(record: dict, root: Path) -> tuple[EmailPackage, str]:
         subject=subject,
         body=body,
         thread=thread,
+        legacy_soft_wraps=True,
     )
     return email, digest
 

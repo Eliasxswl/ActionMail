@@ -195,7 +195,7 @@ class V2ChallengeTests(unittest.TestCase):
         row = _run_one(case, 'llm', model, (0.1, 0.5, 0), 'snapshots', (), 'v2')
         self.assertEqual(row['prediction']['status'], 'needs_review')
         self.assertEqual(row['model_calls'], 0)
-        self.assertIn('unread', row['prediction']['review_reason'])
+        self.assertIn('unread', row['prediction']['reason'])
         self.assertFalse(row['content_coverage_complete'])
         self.assertIsNone(row['status_correct'])
         body = 'Alex, send the minutes. Alex, update the schedule. Alex, approve the budget. Alex, book the venue.'
