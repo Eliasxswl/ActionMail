@@ -1,0 +1,772 @@
+{
+  "checked_at_utc": "2026-10-03T15:57:04.137608+00:00",
+  "python": "3.12.14",
+  "scope": "Offline engineering command checks; not model accuracy or live Google integration",
+  "real_model_calls": 0,
+  "real_google_requests": 0,
+  "local_scripted_http_calls": 5,
+  "passed": 114,
+  "total": 114,
+  "complete": true,
+  "checks": [
+    {
+      "check": "actionmail --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "actionmail-eval --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.172
+    },
+    {
+      "check": "actionmail-review --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "actionmail-app --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "actionmail-workflow --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "actionmail-google-auth --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.109
+    },
+    {
+      "check": "actionmail start --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "actionmail demo --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "actionmail analyze --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "actionmail eval --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "actionmail results --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "actionmail check --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "actionmail doctor --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "actionmail ui --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "actionmail review --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "workflow demo --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.172
+    },
+    {
+      "check": "workflow mailbox --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow fetch --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "workflow import --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "workflow list --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow tasks --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "workflow show --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow analyze --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "workflow review --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "workflow draft --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow confirm --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "workflow export --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow simulate-write --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.172
+    },
+    {
+      "check": "experiment prepare --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.11
+    },
+    {
+      "check": "experiment plan --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.109
+    },
+    {
+      "check": "experiment run --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.125
+    },
+    {
+      "check": "experiment smoke-bundle --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.109
+    },
+    {
+      "check": "experiment score --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.11
+    },
+    {
+      "check": "experiment review-score --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.172
+    },
+    {
+      "check": "experiment mechanism --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.109
+    },
+    {
+      "check": "experiment inspect --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.109
+    },
+    {
+      "check": "experiment screen --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.125
+    },
+    {
+      "check": "experiment reconcile --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.11
+    },
+    {
+      "check": "experiment stage2-config --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.125
+    },
+    {
+      "check": "experiment --help",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.125
+    },
+    {
+      "check": "no-argument piped invocation",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "start without terminal",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "interactive menu: demo, results, exit",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.375
+    },
+    {
+      "check": "actionmail doctor",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "actionmail check",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "actionmail results",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "results --all",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "results --json",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "results --case S02 --trace",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "results --run v2-regression-repair-20261001 --case S02",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "eval saved",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "eval 60-case validation",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.328
+    },
+    {
+      "check": "eval frozen 50-case validation",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "eval supplementary validation",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.312
+    },
+    {
+      "check": "legacy evaluation history",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.172
+    },
+    {
+      "check": "demo custom output",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.391
+    },
+    {
+      "check": "demo refuses existing directory",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.219
+    },
+    {
+      "check": "missing model configuration",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.187
+    },
+    {
+      "check": "missing EML recipient",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.203
+    },
+    {
+      "check": "invalid action limit",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.188
+    },
+    {
+      "check": "live links require allowlist",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.187
+    },
+    {
+      "check": "offline 50-case rule evaluation",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.235
+    },
+    {
+      "check": "rule evaluation resume",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.25
+    },
+    {
+      "check": "eval missing live configuration",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.328
+    },
+    {
+      "check": "conflicting eval shortcuts",
+      "passed": true,
+      "exit_code": 2,
+      "seconds": 0.187
+    },
+    {
+      "check": "trace requires case",
+      "passed": true,
+      "exit_code": 2,
+      "seconds": 0.188
+    },
+    {
+      "check": "unknown saved case",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow mailbox",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.219
+    },
+    {
+      "check": "workflow fetch m1",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.219
+    },
+    {
+      "check": "workflow analyze",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "workflow show",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow accept",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "workflow calendar draft",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "workflow rejects stale confirmation",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.219
+    },
+    {
+      "check": "workflow confirm exact revision",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow export ICS",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.219
+    },
+    {
+      "check": "workflow refuses ICS overwrite",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow simulated write",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "workflow idempotent simulated write",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "workflow list",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "workflow tasks",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "workflow local JSON import",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "workflow local EML import",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.203
+    },
+    {
+      "check": "workflow standalone demo",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.344
+    },
+    {
+      "check": "analyze cancel before API",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.188
+    },
+    {
+      "check": "analyze missing confirmation stops",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.187
+    },
+    {
+      "check": "analyze v2 local HTTP response",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.25
+    },
+    {
+      "check": "legacy single-email local HTTP response",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.235
+    },
+    {
+      "check": "eval estimate local declared prices",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.328
+    },
+    {
+      "check": "eval cancel before API",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.344
+    },
+    {
+      "check": "eval local HTTP one case",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.375
+    },
+    {
+      "check": "product UI starts and serves assets/API",
+      "passed": true,
+      "endpoints": [
+        "/app.js",
+        "/style.css",
+        "/api/state",
+        "/api/calendars"
+      ]
+    },
+    {
+      "check": "review starts and serves 60 original cases",
+      "passed": true,
+      "endpoints": [
+        "/app.js",
+        "/style.css",
+        "/api/cases",
+        "/api/cases/S02"
+      ]
+    },
+    {
+      "check": "long product UI entry point",
+      "passed": true,
+      "endpoints": [
+        "/api/state"
+      ]
+    },
+    {
+      "check": "long review entry point",
+      "passed": true,
+      "endpoints": [
+        "/api/cases"
+      ]
+    },
+    {
+      "check": "calendar flag requires Gmail",
+      "passed": true,
+      "exit_code": 2,
+      "seconds": 0.219
+    },
+    {
+      "check": "Google gmail connect requires client file",
+      "passed": true,
+      "exit_code": 2,
+      "seconds": 0.109
+    },
+    {
+      "check": "Google gmail disconnect isolated empty store",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.11
+    },
+    {
+      "check": "Google calendar connect requires client file",
+      "passed": true,
+      "exit_code": 2,
+      "seconds": 0.109
+    },
+    {
+      "check": "Google calendar disconnect isolated empty store",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.125
+    },
+    {
+      "check": "experiment plan saved bundle",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.125
+    },
+    {
+      "check": "experiment inspect original S02",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.156
+    },
+    {
+      "check": "experiment prepare explicit source",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.719
+    },
+    {
+      "check": "experiment smoke bundle",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.469
+    },
+    {
+      "check": "experiment run scripted three cases",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.234
+    },
+    {
+      "check": "experiment score temporary results",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.125
+    },
+    {
+      "check": "experiment review-score pending worksheet",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.141
+    },
+    {
+      "check": "experiment mechanism offline",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.187
+    },
+    {
+      "check": "experiment screen saved benchmark",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.125
+    },
+    {
+      "check": "experiment stage2 config temporary output",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.11
+    },
+    {
+      "check": "experiment refuses unapproved paid run",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.14
+    },
+    {
+      "check": "experiment reconcile missing credentials stops",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.125
+    },
+    {
+      "check": "product tests",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 5.063
+    },
+    {
+      "check": "experiment tests",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 1.922
+    }
+  ],
+  "installation_walkthrough": {
+    "fresh_standard_venv": true,
+    "existing_site_packages_inherited": false,
+    "dependency_downloads_permitted": true,
+    "checks": [
+      {
+        "check": "fresh standard virtual environment",
+        "passed": true
+      },
+      {
+        "check": "README editable installation with declared dependencies",
+        "passed": true
+      },
+      {
+        "check": "fresh installed CLI help",
+        "passed": true
+      },
+      {
+        "check": "fresh installed demo",
+        "passed": true
+      },
+      {
+        "check": "fresh installed 60-case validation",
+        "passed": true
+      },
+      {
+        "check": "fresh installed saved case trace",
+        "passed": true
+      },
+      {
+        "check": "fresh installed repository integrity",
+        "passed": true
+      },
+      {
+        "check": "exact PowerShell workflow block from README",
+        "passed": true
+      }
+    ],
+    "complete": true
+  },
+  "report_walkthrough": {
+    "ran_in_copy": true,
+    "final_report_outputs_changed": false,
+    "complete": true,
+    "checks": [
+      {
+        "check": "README report figure generation",
+        "passed": true
+      },
+      {
+        "check": "README report Markdown synchronization after generation",
+        "passed": true
+      },
+      {
+        "check": "README pdflatex compilation",
+        "passed": true
+      },
+      {
+        "check": "README PowerShell PDF export",
+        "passed": true
+      }
+    ]
+  },
+  "total_with_walkthroughs": 126,
+  "all_walkthroughs_complete": true
+}

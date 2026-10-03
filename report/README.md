@@ -27,18 +27,20 @@ Asset prefixes are stable identifiers, not manuscript numbering. The PDF contain
 
 ## Regenerate
 
-From the workspace root, after changing graphic layout:
+From the workspace root, using the Python environment installed by the root README, after changing graphic layout. Report regeneration additionally needs Pillow and ReportLab; ordinary product use does not require them:
 
 ```powershell
-& './ActionMail/.venv/Scripts/python.exe' 'report/tools/build_figures.py'
-& './ActionMail/.venv/Scripts/python.exe' 'report/tools/sync_report.py'
+.venv/Scripts/python.exe -m pip install Pillow ReportLab
+.venv/Scripts/python.exe report/tools/build_figures.py
+.venv/Scripts/python.exe report/tools/sync_report.py
 ```
 
-The first script updates only the generated-panel region of the same .tex source, preserving editorial content. The second derives Markdown and counts from that content. Prose-only edits need only the second command. Generation resets visual-review status; inspect each graphic and all PDF pages before marking it complete. Citation keys, section anchors and figure/table references are also derived from the manuscript.
+The first script updates only the generated-panel region of the same .tex source, preserving editorial content. The second derives Markdown and counts from that content. Prose-only edits need only the second command. Both generation and synchronization retain a structured visual-review status and mark it pending; inspect each graphic and all PDF pages before marking it complete. Citation keys, section anchors and figure/table references are also derived from the manuscript.
 
-The built-in compiler returned `Unable to find standard directories for platform`. Installed MiKTeX successfully compiled the same source with its local logo asset. Local export from report/:
+The built-in compiler returned `Unable to find standard directories for platform`. Installed MiKTeX successfully compiled the same source with its local logo asset. Local export from `report/`, with an installed `pdflatex` on PATH. Create the intermediate directory before compiling:
 
 ```powershell
+New-Item -ItemType Directory -Force build | Out-Null
 pdflatex --disable-installer -interaction=nonstopmode -halt-on-error -output-directory=build FINAL_REPORT.tex
 Copy-Item -LiteralPath 'build/FINAL_REPORT.pdf' -Destination 'FINAL_REPORT.pdf'
 ```

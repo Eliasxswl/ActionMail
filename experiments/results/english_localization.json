@@ -102,14 +102,14 @@
       "path": "README.md",
       "original_archive_entry": "pre_english/README.md",
       "original_sha256": "709060d2f42740b3aff4f8cf57923a062e85e56588376bed44b27f62ad4fb52b",
-      "current_sha256": "5ee271cd2f7e02ee478b31dd7d9330e1edbffc197ba42d7187eb6fb4550fc9ea",
+      "current_sha256": "89007d048a0403290df03bb59d4a530ea9acfd8ad2058f19c296ce4231a7df25",
       "status": "localized_or_maintained"
     },
     {
       "path": "ActionMail/README.md",
       "original_archive_entry": "pre_english/ActionMail/README.md",
       "original_sha256": "ca0fbc4fffa687a3e0664b3f227ca6b30edd6be75ff274eb5b1d281173f3d5b3",
-      "current_sha256": "f67f2c78c1c5b28c7ef39c34ac96ba464abbf49efab5ed6cf3ac89823aeb9065",
+      "current_sha256": "8e2835820c082b73c894fee4f54487aa0b4a34018cf2e4cfd84ec1b3a0a9d572",
       "status": "localized_or_maintained"
     },
     {
@@ -1584,5 +1584,14 @@
       "source_sha256": "b5676c97fa9d5164f8c4956284a394177c4bd219165dba09642e784344111280",
       "english": "Per-output review: `results/ablation/semantic_review.csv`, 500 rows retaining reviewer identity and English reasons. Aggregation: semantic_summary.json; specificity/error types/adjudication paths/hashes: semantic_audit.json. The 500 AI reviews are complete; exhaustive 360-output benchmark semantic review, independent tests/human review and forced JSON are not. No new paid calls; total remains USD 3.224528503."
     }
-  ]
+  ],
+  "post_localization_maintenance": {
+    "date": "2026-10-03",
+    "scope": "Expanded command documentation; command checks are engineering acceptance, not additional AI measurements.",
+    "updated_hash_paths": [
+      "README.md",
+      "ActionMail/README.md"
+    ],
+    "sealed_experiment_results_changed": false
+  }
 }

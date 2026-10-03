@@ -287,7 +287,6 @@ if tex_path.exists():
     source=re.sub(r'% BEGIN GENERATED PANELS.*?% END GENERATED PANELS',lambda _: '% BEGIN GENERATED PANELS\n'+macros+'\n% END GENERATED PANELS',source,flags=re.S)
     tex_path.write_text(source,encoding='utf-8')
 result={'frozen_files_checked':len(finalization['files']),'hash_mismatches':bad,'figure_label_checks':qa,
-        'visual_review':'Pending: open each final PNG and the compiled document pages after generation.'}
+        'visual_review':{'status':'pending after regeneration', 'required':'Open each final PNG and the compiled document pages after generation.'}}
 (ROOT/'report/QA_RESULTS.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result,indent=2))
-
