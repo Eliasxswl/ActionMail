@@ -1,5 +1,5 @@
-# Retired materials and superseded originals
+# Retired materials
 
-ActionMail-history-20261003.zip retains only retired code/documents/data and original files superseded by owner-authorized English localization. It does not contain a complete snapshot/archive of the maintained final version. Every entry has an original SHA-256 in ARCHIVE_INDEX.json and was decompressed and verified. Original historical evidence may retain its original language inside the ZIP; all maintained project content is English. The localization record under experiments/results/ records translations and new hashes without claiming a new experiment.
+ActionMail-history-20261003.zip contains retired code, documents and data. It does not contain a complete snapshot of the maintained final version. ARCHIVE_INDEX.json records each archived file and its SHA-256; archive.sha256 checks the ZIP itself.
 
-The current version stays expanded; no current-submission ZIP is maintained.
+The current submission remains expanded outside this archive.

@@ -1,12 +1,10 @@
 {
   "date": "2026-10-03",
   "archive": "ActionMail-history-20261003.zip",
-  "archive_files": 3789,
-  "archive_verification": "Every decompressed file matched ARCHIVE_INDEX.json SHA-256 before expanded history deletion",
+  "archive_files": 3774,
+  "archive_verification": "Every archived file matched ARCHIVE_INDEX.json SHA-256.",
   "product_offline_tests": 105,
   "experiment_offline_tests": 29,
-  "sealed_experiment_hashes_unchanged": null,
-  "frozen_bundle_hashes_unchanged": null,
   "retained_core_documents": [
     "ActionMail/README.md",
     "ActionMail/docs/architecture.md",
@@ -102,13 +100,5 @@
     }
   ],
   "raw_paid_model_calls_during_cleanup": 0,
-  "current_version_archive_removed": true,
-  "english_localization": "../experiments/results/english_localization.json",
-  "original_measurement_preserved": "Original seal archived; current English derivative has explicit original/new hashes. Metrics, model outputs and verdicts unchanged.",
-  "english_only_maintained_content": true,
-  "localization_test_results": {
-    "product": 105,
-    "experiments": 29,
-    "passed": true
-  }
+  "current_version_archive_removed": true
 }

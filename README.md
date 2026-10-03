@@ -124,13 +124,13 @@ Open the printed local URL. The first is a synthetic product workflow; the secon
 .venv/Scripts/python.exe experiments/code/pipeline.py --help
 ```
 
-The command checker exercises installed entry points, prompts, local HTTP servers, offline evaluation and workflow transitions in isolated stores. External model/Google calls are blocked in its child Python processes. It reports each check and saves a JSON outcome; the [delivery check record](ActionMail/results/command_checks.json) is maintained separately from AI evaluation evidence. Repository validation checks data, sealed/localized hashes, links and English-only maintained text.
+The command checker exercises installed entry points, prompts, local HTTP servers, offline evaluation and workflow transitions in isolated stores. External model/Google calls are blocked in its child Python processes. It reports each check and saves a JSON outcome; the [delivery check record](ActionMail/results/command_checks.json) is maintained separately from AI evaluation evidence. Repository validation checks data, experiment hashes and maintained links.
 
 For detailed parameters, paid-run confirmation, input formats, environment configuration, long command entry points, persistent workflow examples and troubleshooting, read [the full command guide](ActionMail/README.md). In particular, short `actionmail eval` defaults to 60 v2 cases; long `actionmail-eval` defaults to the legacy 50-case suite. The product does not load `.env` files automatically. Real-account/model operations are optional and are not required to review the submission.
 
 ## Final evidence and metrics
 
-Six models were compared on 60 reused development cases (360 observations); two selected models underwent 500 ablation/repeat observations. Measured service spend was USD 3.224528503 against the authorized USD 5 cap. The fresh full-workflow ablation attained 59/60 and 60/60 semantic-delivery passes for Luna and Sonnet under recorded Codex AI review. The prior model candidate gate targeted at least 90% action precision and recall. Strict status, permitted interpretations, task semantics, latency and fees remain separate metrics. These results establish neither blind-test generalization nor independent human accuracy. One benchmark generation bill remains missing. The experiment report preserves all denominators and compatibility failures.
+Six models were compared on 60 reused development cases (360 observations); two selected models underwent 500 ablation/repeat observations.  The fresh full-workflow ablation attained 59/60 and 60/60 semantic-delivery passes for Luna and Sonnet under recorded Codex AI review. The prior model candidate gate targeted at least 90% action precision and recall. Strict status, permitted interpretations, task semantics, latency and fees remain separate metrics. These results establish neither blind-test generalization nor independent human accuracy. One benchmark generation bill remains missing. The experiment report preserves all denominators and compatibility failures.
 
 ## Layout and version boundaries
 
@@ -141,6 +141,6 @@ Six models were compared on 60 reused development cases (360 observations); two 
 | `report/` | Final PDF, editable LaTeX, generated Markdown, figures, assets and evidence map |
 | `data/` | Minimal original corpus for evaluation and negative tests, with provenance explainer |
 
-The measured runtime originated at c405d29 in `experiments/data/frozen-core/`. The original 120-file seal is archived; current English-localized hashes and original/new provenance are in experiments/results/english_localization.json. Cleanup removes retired authoring commands/history dependencies. English localization translates review explanations and analysis labels, plus one equivalent Unicode-regex spelling, without changing model responses, scores, fees or adjudications. Real Google/UiPath connectivity is not claimed. Development history is maintained as one recoverable ZIP under `archive/`, excluded from submission.
+The measured runtime originated at c405d29 in `experiments/data/frozen-core/`. Cleanup removes retired authoring commands/history dependencies. Real Google/UiPath connectivity is not claimed. Development history is maintained as one recoverable ZIP under `archive/`, excluded from submission.
 
-The final version remains expanded. Only retired material and originals superseded by English translations are compressed under archive/. No current-submission archive is maintained.
+The final version remains expanded. Only retired code, documents and data are compressed under archive/. No current-submission archive is maintained.

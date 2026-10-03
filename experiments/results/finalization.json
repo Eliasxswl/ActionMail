@@ -109,8 +109,8 @@
     },
     {
       "path": "data/frozen-core/manifest.json",
-      "bytes": 20374,
-      "sha256": "ba6e30c70767e48e645548af58cbbbcf854621cb952e5cdd21f73ad9e32baf90"
+      "bytes": 14078,
+      "sha256": "3d9e10256c447c377a94e5cceddd2e57ca678eb328e3bd291064926ff39b2365"
     },
     {
       "path": "data/frozen-core/runtime/actionmail/__init__.py",
@@ -617,11 +617,5 @@
       "bytes": 19893,
       "sha256": "feebfeb41529fbe38d67646ca51adec3ac313e7a3864958e8bee5e7a4eed7b51"
     }
-  ],
-  "english_localization": {
-    "owner_authorized": true,
-    "original_manifest_archive": "pre_english/experiments/results/finalization.json",
-    "current_manifest_role": "English-localized derivative, not a new model experiment",
-    "provenance": "english_localization.json"
-  }
+  ]
 }

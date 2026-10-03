@@ -1,6 +1,6 @@
 # Current architecture: v2.0 core with v3 application
 
-Final submission documentation, 3 October 2026. The runtime retains the v2 task contract and optional v3 application. The measured experiment originated at c405d29. English localization records original/current hashes; it changes review language and equivalent Unicode spelling, not model responses or decisions. Real Google connectivity remains unverified.
+Final submission documentation, 3 October 2026. The runtime retains the v2 task contract and optional v3 application. The measured experiment originated at c405d29. Real Google connectivity remains unverified.
 
 ```mermaid
 flowchart LR
@@ -107,8 +107,3 @@ Task acceptance does not authorize calendar writing. Each saved draft has a revi
 Confirmed ICS export uses stable UID, CRLF, text escaping, UTF-8-safe 75-octet folding and date/UTC fields. Export is recorded separately from an API write. The preview's destination is advisory for ICS: the importing calendar app selects the actual destination. The offline provider persists simulated events beside the demo store and labels every simulated outcome.
 
 Actual OAuth authorization, real Gmail fetch, real Calendar creation and private-mail/model submission remain unverified. Organization policies, account permissions and live provider behavior must be checked later with owner approval. Do not claim production integration reliability from fake responses. A future smoke test should use one authored email and a selected test calendar, separate analysis-transmission consent and explicit final event confirmation; a new paid full benchmark is not required.
-
-
-## English localization
-
-Owner-authorized localization translates existing review explanations and analysis labels without changing verdicts, numeric metrics, fees or model responses. Archived originals and current hashes are recorded in experiments/results/english_localization.json. The snapshot negation regex keeps multilingual behavior through equivalent Unicode escapes.

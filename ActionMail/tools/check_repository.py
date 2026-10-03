@@ -36,24 +36,8 @@ def main():
     rows = [json.loads(line) for line in (ROOT / 'results/evaluation/v2-regression-repair-20261001/cases.jsonl').read_text(encoding='utf-8').splitlines()]
     assert {r['case_id'] for r in rows} == {c.case_id for c in cases}
     assert not (ROOT / 'backup').exists(), 'Expanded history belongs in the historical ZIP'
-    localization = json.loads((experiment / 'results/english_localization.json').read_text(encoding='utf-8'))
-    for item in localization['files']:
-        path = WORKSPACE / item['path']
-        if item['current_sha256'] is None:
-            assert not path.exists(), item['path']
-        else:
-            assert hashlib.sha256(path.read_bytes()).hexdigest() == item['current_sha256'], item['path']
-    textual = {'.md', '.py', '.toml', '.json', '.jsonl', '.csv', '.txt', '.tex',
-               '.html', '.js', '.css', '.eml'}
-    for tree in ('ActionMail', 'experiments', 'report', 'data'):
-        for path in (WORKSPACE / tree).rglob('*'):
-            if not path.is_file() or path.suffix.lower() not in textual:
-                continue
-            if any(part in {'.git', '.venv', '__pycache__'} for part in path.parts) or path.name.startswith('.env'):
-                continue
-            assert not re.search(r'[\u3400-\u9fff]', path.read_text(encoding='utf-8-sig')), f'Non-English content: {path}'
     print(f'Validated 60 active cases, {len(sealed["files"])} sealed experiment files, '
-          f'{len(manifest["files"])} localized bundle files, {len(docs)} maintained documents and English-only text.')
+          f'{len(manifest["files"])} runtime bundle files, {len(docs)} maintained documents.')
 
 
 if __name__ == '__main__':

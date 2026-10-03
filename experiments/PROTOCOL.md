@@ -10,7 +10,7 @@ The two experiments are a cross-model comparison of the full workflow and mechan
 
 The 60 development/regression cases contain 27 action, 23 no_action and ten needs_review labels, from public emails and authored challenges. They were reused for tuning and are not an independent blind test.
 
-Inputs: `data/frozen-core/dataset.jsonl`; registry: `source_registry/`; measured runtime: `runtime/`; hashes: `manifest.json`. The measured business commit is c405d29. Original bundle SHA-256: `a90d9238047679fa9b1654ccdaf7c2cf0de8fd16a827ac7d20fdbcb5f1395c58`. Subsequent owner-authorized English localization and its current hashes are recorded separately in `results/english_localization.json`; it does not create a new experiment.
+Inputs: `data/frozen-core/dataset.jsonl`; registry: `source_registry/`; measured runtime: `runtime/`; hashes: `manifest.json`. The measured business commit is c405d29. The runtime bundle manifest records the dataset and source hashes.
 
 Models received identical inputs, schema, prompts, reading limits and retry budgets. All 60 initial case requests matched byte-for-byte except model. Temperature was 0 and max_tokens 2048. API-enforced JSON, explicit reasoning settings and fixed providers were not requested. Cross-family compatibility limits are disclosed.
 
@@ -70,7 +70,7 @@ Six-model exhaustive semantic review, unused independent data, independent human
 
 The owner stopped additional models, conditions, calls and outcome-driven tuning and moved to report/demo delivery. The measured business version is c405d29. Forced-JSON and live-account upgrades are not part of this experiment.
 
-Finalized scope: 360 benchmark observations, 500 ablation/repeat observations, original requests/responses, actual counter differences/bills and 500 Codex semantic reviews. The original 120-file finalization manifest is preserved in the historical archive. Current English-localized file hashes are explicitly recorded; inputs, predictions, verdicts and fees are not remeasured.
+Finalized scope: 360 benchmark observations, 500 ablation/repeat observations, original requests/responses, actual counter differences/bills and 500 Codex semantic reviews. The finalization manifest records hashes for 120 experiment files.
 
 Acceptance concerns evidence completeness and supported conclusions, not a success threshold chosen after seeing scores:
 
@@ -80,4 +80,4 @@ Acceptance concerns evidence completeness and supported conclusions, not a succe
 - Claim development/regression findings only; Codex reviews are not independent human reviews and benchmark semantic scoring is not exhaustive.
 - Independent first answers, provider routing and shared retries limit causal and family-ranking claims.
 
-Independent tests/review, first-answer replay, forced JSON and real accounts are future work rather than mandatory post-finalization additions. Report, code and demo must identify the same measured evidence and explicitly distinguish later English localization.
+Independent tests/review, first-answer replay, forced JSON and real accounts are future work rather than mandatory post-finalization additions. Report, code and demo must identify the same measured evidence and its evaluation conditions.

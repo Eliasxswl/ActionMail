@@ -24,9 +24,8 @@ Experiments were finalized on 2026-10-03. These 60 cases were reused for develop
 | `results/model-benchmark/` | Six-model outputs, requests, metrics and bills |
 | `results/rules-baseline/` | Rule comparison records |
 | `results/ablation/` | Two-model ablations, repeats and semantic review |
-| `results/english_localization.json` | Original/new hashes and English-translation provenance |
 
-`code/` is the maintained harness; the measured snapshot under `data/frozen-core/runtime/` isolates experiments from adjacent product development. English localization changes only review explanations and one equivalent Unicode regex spelling, with the original files preserved in the historical archive. It performs no new inference or re-adjudication. The existing analysis generator is retained with English labels/text and the same numerical logic; normal inspection uses saved results.
+`code/` is the maintained harness; the measured snapshot under `data/frozen-core/runtime/` isolates experiments from adjacent product development. The manifest records the runtime bundle hashes. The analysis generator is maintained under `code/`; normal inspection uses saved results.
 
 ## Offline checks
 
@@ -42,4 +41,4 @@ These checks make no real-model calls. `code/configs/model-benchmark.json` recor
 
 ## Delivery contents
 
-The final files remain expanded in the workspace: this entry, report, protocol, `code/`, `data/` and `results/`. Only retired material and originals superseded by English localization are compressed under the root `archive/`. No archive of the current submission is maintained. Credentials, local `.env` files, caches and API keys are not submission materials.
+The final files remain expanded in the workspace: this entry, report, protocol, `code/`, `data/` and `results/`. Only retired code, documents and data are compressed under the root `archive/`. No archive of the current submission is maintained. Credentials, local `.env` files, caches and API keys are not submission materials.

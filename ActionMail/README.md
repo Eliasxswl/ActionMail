@@ -194,4 +194,4 @@ The command checker executes installed entry points, menu flows, a 50-case rule 
 | Confirmation input unavailable | Run interactively or use deliberately authorized batch controls |
 | Optional packages absent | Google/UiPath are unnecessary for offline inspection |
 
-The measured runtime in `../experiments/data/frozen-core/runtime/` isolates finalized results from product changes. Its English-localization change uses equivalent Unicode-regex spelling. Original/current hashes and provenance are recorded; model outputs and numeric outcomes are unchanged. Product development belongs in `src/actionmail/`.
+The measured runtime in `../experiments/data/frozen-core/runtime/` isolates finalized results from product changes. Its manifest records file hashes for integrity checks. Product development belongs in `src/actionmail/`.

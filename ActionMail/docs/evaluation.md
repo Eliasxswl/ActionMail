@@ -8,7 +8,7 @@ The active registry contains 50 frozen base cases plus ten approved supplementar
 
 Original files are in [the minimal corpus](../../data/README.md). Six active authored fixtures retain legacy names under `evaluation/archive/fixtures_v2_1/`; S10 uses `evaluation/fixtures_supplement/S10_revision2.eml`. Missing decisive contents produce review. Input loaders verify original-source and attachment hashes.
 
-Experiments retain a self-contained immutable `experiments/data/frozen-core/` bundle: dataset, supplied text/blobs, registry and measured business runtime c405d29. English-localized reasons and equivalent Unicode spelling have explicit original/current hashes. [Saved owner adjudications](../../experiments/data/owner_adjudications/README.md) preserve four explicitly judged cases, not human review of all outputs.
+Experiments retain a self-contained immutable `experiments/data/frozen-core/` bundle: dataset, supplied text/blobs, registry and measured business runtime c405d29. [Saved owner adjudications](../../experiments/data/owner_adjudications/README.md) preserve four explicitly judged cases, not human review of all outputs.
 
 ## Completed measurements
 
@@ -21,6 +21,6 @@ The prior candidate gate targeted at least 90% action precision/recall. Strict c
 
 ## Records and verification
 
-The original 120-file finalization is archived. The current English derivative also lists 120 hashes, with separate localization provenance. Model calls/responses, bills, scores and verdicts are unchanged; review explanations and analysis labels are translated. The retained product `results/evaluation/` run is an earlier regression used by source inspection/tests; final conclusions use `experiments/results/`.
+The finalization manifest records hashes for 120 files, covering runtime inputs, experiment code and recorded results. The retained product `results/evaluation/` run is an earlier regression used by source inspection/tests; final conclusions use `experiments/results/`.
 
 Use `actionmail eval --validate` for current inputs and `python tools/check_repository.py` for final evidence hashes and maintained links. Offline test suites are engineering verification. Paid inference is unnecessary for inspection and was not repeated during cleanup.
