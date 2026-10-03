@@ -1,7 +1,7 @@
 """Google Calendar v3 payloads and RFC 5545 export, without model-owned effects."""
 import hashlib
 import re
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timezone
 from urllib.parse import quote
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 

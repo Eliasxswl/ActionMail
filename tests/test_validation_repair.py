@@ -115,8 +115,8 @@ class RepairTests(unittest.TestCase):
         self.assertFalse(diagnostic['unique_in_source'])
 
     def test_saved_s02_can_be_corrected_without_altering_historical_reply(self):
-        path = PROJECT_ROOT / 'backup/v2.0/results/evaluation/v2-contract-check-20261001/cases.jsonl'
-        row = next(r for r in map(json.loads, path.read_text(encoding='utf-8').splitlines()) if r['case_id'] == 'S02')
+        path = PROJECT_ROOT / 'tests/fixtures/regression_replies.json'
+        row = json.loads(path.read_text(encoding='utf-8'))['contract']['rows']['S02']
         case = next(c for c in load_suite(PROJECT_ROOT / 'evaluation/active_suite.json', DEFAULT_MAILEX_ROOT) if c.case_id == 'S02')
         fixed = json.loads(row['raw_model_response'])
         fixed['evidence'][0]['quote'] = case.email.body.split('\n- Beau')[0]

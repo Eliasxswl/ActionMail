@@ -6,7 +6,6 @@ from pathlib import Path
 from urllib.parse import urlsplit, parse_qs, unquote
 
 from actionmail.integrations.google import ProviderError
-from actionmail.integrations.calendar import event_id
 from actionmail.reasoning.model_client import ModelReply
 
 

@@ -1,9 +1,8 @@
-"""Load a separately versioned development challenge; pending gold is never scored."""
+"""Load hash-bound supplementary cases and negative-test fixtures; pending gold is never scored."""
 import hashlib
 import json
 from collections import Counter
 from dataclasses import replace
-from pathlib import Path
 from actionmail.evaluation.cases import EvaluationCase, _load_mailex
 from actionmail.ingestion.eml import load_eml
 from actionmail.content.reader import read_external_sources
@@ -96,46 +95,8 @@ def load_challenge(manifest, mailex_root, *, benchmark='challenge-v2.1'):
     return cases
 
 
-def prepare_challenge(cases, manifest, output, *, benchmark='challenge-v2.1'):
-    """Make a reviewable reference-only run with no model calls or scoring."""
-    from datetime import datetime, timezone
-    from dataclasses import asdict
-    output.mkdir(parents=True, exist_ok=False)
-    now = datetime.now(timezone.utc).isoformat()
-    run = {'run_id': output.name, 'engine': 'reference-preview', 'schema': 'v2', 'benchmark': benchmark,
-           'model': 'no model call', 'manifest_sha256': hashlib.sha256(manifest.read_bytes()).hexdigest(),
-           'started_at_utc': now, 'case_ids': [c.case_id for c in cases]}
-    (output / 'run.json').write_text(json.dumps(run, indent=2) + '\n', encoding='utf-8')
-    rows = []
-    for c in cases:
-        outcome = read_external_sources(c.email)
-        rows.append({'case_id': c.case_id, 'category': c.record['category'], 'gold': c.gold, 'prediction': None,
-                     'status_correct': None, 'action_count_match': None, 'reference_review_state': c.record.get('review_state', 'approved'),
-                     'read_sources': [asdict(r) for r in outcome.records], 'reference_extraction_only': True,
-                     'read_failures': list(outcome.failures), 'feature_tags': c.record.get('feature_tags', []),
-                     'raw_model_response': None, 'validation_errors': [], 'error': None, 'model_calls': 0})
-    (output / 'cases.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in rows), encoding='utf-8')
-    return output
 
 
-def approve_challenge_gold(manifest, review_dir, destination):
-    """Create a new manifest only after all reference judgments are explicitly correct."""
-    digest = hashlib.sha256(manifest.read_bytes()).hexdigest()
-    run = json.loads((review_dir / 'run.json').read_text(encoding='utf-8'))
-    review_path = review_dir / 'adjudication.json'
-    judgments = json.loads(review_path.read_text(encoding='utf-8'))
-    if run.get('engine') != 'reference-preview' or run.get('manifest_sha256') != digest or judgments.get('manifest_sha256') != digest or judgments.get('run_id') != run.get('run_id'):
-        raise ValueError('Gold approval requires the matching reference-preview adjudication')
-    records = [json.loads(line) for line in manifest.read_text(encoding='utf-8').splitlines() if line.strip()]
-    if any(judgments.get('reviews', {}).get(r['case_id'], {}).get('gold_label') != 'correct' for r in records):
-        raise ValueError('Every challenge reference must be explicitly reviewed correct before approval')
-    if destination.exists() or destination.resolve() == manifest.resolve():
-        raise ValueError('Approval must write a new manifest; never overwrite existing gold')
-    for r in records:
-        r['review_state'] = 'approved'
-        r['reference_approval'] = {'run_id': run['run_id'], 'adjudication_sha256': hashlib.sha256(review_path.read_bytes()).hexdigest(), 'pending_manifest_sha256': digest}
-    destination.write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in records), encoding='utf-8')
-    return destination
 
 def challenge_checks(case, run):
     approved = case.record['review_state'] == 'approved'

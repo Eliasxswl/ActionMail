@@ -156,45 +156,6 @@ class EvaluationFlowTests(unittest.TestCase):
         self.assertTrue(row["action_count_match"])
         self.assertEqual(summary["counts"]["status_checked"], 1)
 
-    def test_v2_draft_cohort_is_saved_without_scoring_pending_references(self):
-        responses = iter([
-            {"status": "action", "review_reason": None, "actions": [
-                {"kind": "perform_task", "text": "Approve invoice INV-104.", "deadline": None,
-                 "evidence": [{"source_id": "body", "quote": "Alex, please approve invoice INV-104."}]},
-                {"kind": "perform_task", "text": "Update the website contact page.", "deadline": None,
-                 "evidence": [{"source_id": "body", "quote": "Separately, update the public website's contact page."}]},
-            ]},
-            {"status": "needs_review", "review_reason": "The attachment is missing.", "actions": []},
-        ])
-
-        def fake_urlopen(request, timeout):
-            completion = {"model": "test-model", "choices": [{"message": {"content": json.dumps(explained(next(responses), json.loads(request.data)["messages"][-1]["content"]))}}], "usage": {"prompt_tokens": 100, "completion_tokens": 30}}
-            return io.BytesIO(json.dumps(completion).encode("utf-8"))
-
-        with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {"OPENROUTER_API_KEY": "test-secret"}), patch(
-            "actionmail.reasoning.api_client.urlopen", side_effect=fake_urlopen
-        ), patch("actionmail.evaluation.cli._show_preflight", return_value=(0.1, 0.5, 0.0, "test")), redirect_stdout(io.StringIO()):
-            output = Path(directory) / "multi"
-            self.assertEqual(main(["--engine", "llm", "--schema", "v2", "--model", "test-model", "--case-group", "multi-draft", "--output-dir", str(output), "--yes"]), 0)
-            rows = [json.loads(line) for line in (output / "cases.jsonl").read_text(encoding="utf-8").splitlines()]
-            summary = json.loads((output / "summary.json").read_text(encoding="utf-8"))
-            dataset = ReviewDataset.open(output, DEFAULT_MANIFEST, DEFAULT_MAILEX_ROOT)
-            detail = dataset.detail("A16")
-            saved = dataset.save_review("A16", {
-                "action_meaning": "", "evidence_support": "", "gold_label": "uncertain", "note": "Review each task.",
-                "action_checks": [
-                    {"action_meaning": "correct", "evidence_support": "correct"},
-                    {"action_meaning": "uncertain", "evidence_support": "correct"},
-                ],
-            })
-        self.assertEqual([row["case_id"] for row in rows], ["A16", "C13"])
-        self.assertEqual(rows[0]["prediction"]["actions"][1]["kind"], "perform_task")
-        self.assertIsNone(rows[0]["status_correct"])
-        self.assertEqual(summary["counts"]["pending_owner_reference"], 2)
-        self.assertEqual(summary["counts"].get("status_checked", 0), 0)
-        self.assertEqual(detail["multi_action_draft"]["review_state"], "pending_owner")
-        self.assertEqual(len(detail["multi_action_draft"]["candidate_actions"]), 2)
-        self.assertEqual(saved["action_checks"][1]["action_meaning"], "uncertain")
 
     def test_local_review_page_loads_case_and_saves_separate_assessment(self):
         with tempfile.TemporaryDirectory() as directory, redirect_stdout(io.StringIO()):

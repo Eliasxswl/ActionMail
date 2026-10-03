@@ -6,7 +6,7 @@ import re
 from dataclasses import dataclass, replace
 from html.parser import HTMLParser
 
-from actionmail.domain.email import EmailPackage, ExternalSource, SourceText
+from actionmail.domain.email import EmailPackage, SourceText
 from actionmail.content.office import office_parts
 
 MAX_SOURCES = 12

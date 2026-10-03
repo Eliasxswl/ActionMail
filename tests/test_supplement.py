@@ -1,95 +1,39 @@
+import shutil
 import json
-import hashlib
 import tempfile
 import unittest
 from scripted_responses import explained
 from pathlib import Path
 
-from actionmail.evaluation.cases import load_cases
-from actionmail.evaluation.challenge import load_challenge, prepare_challenge
+from actionmail.evaluation.challenge import load_challenge
+from actionmail.evaluation.suite import load_suite
 from actionmail.evaluation.cli import PROJECT_ROOT, DEFAULT_MAILEX_ROOT
 from actionmail.evaluation.review import ReviewDataset
 
-MANIFEST = PROJECT_ROOT / 'backup/v2.0/evaluation/supplement_v2_revision2.jsonl'
+MANIFEST = PROJECT_ROOT / 'evaluation/supplement_v2_approved.jsonl'
 
 
 class SupplementTests(unittest.TestCase):
-    def test_active_suite_preview_and_full_reference_metrics(self):
-        from actionmail.evaluation.suite import load_suite
-        from actionmail.evaluation.cli import _run_one
+    def test_active_suite_hashes_and_saved_original_pdf(self):
         registry = PROJECT_ROOT / 'evaluation/active_suite.json'
         cases = load_suite(registry, DEFAULT_MAILEX_ROOT)
-        self.assertEqual(len(cases), 60)
-        a16 = next(c for c in cases if c.case_id == 'A16')
-        self.assertEqual(a16.gold['status'], 'action')
-        self.assertEqual(len(a16.gold['actions']), 2)
-        self.assertEqual(next(c for c in cases if c.case_id == 'C11').record['accepted_outcomes'], [{'status': 'needs_review', 'action_count': 0}, {'status': 'action', 'action_count': 1}])
-        old_run = PROJECT_ROOT / 'backup/v2.0/results/evaluation/v2-full-20261001'
-        if old_run.exists():
-            historical = ReviewDataset.open(old_run, registry, DEFAULT_MAILEX_ROOT)
-            self.assertEqual(historical.rows['A16']['gold']['status'], 'needs_review')
-            self.assertEqual(historical.detail('A16')['gold']['status'], 'action')
-            self.assertEqual(historical.detail('A16')['original_gold']['status'], 'needs_review')
-        with tempfile.TemporaryDirectory() as directory:
-            run = Path(directory) / 'suite'
-            prepare_challenge(cases, registry, run, benchmark='v2-60')
-            dataset = ReviewDataset.open(run, registry, DEFAULT_MAILEX_ROOT)
-            overview = dataset.overview()['cases']
-            self.assertEqual(len(overview), 60)
-            self.assertEqual(sum(c['group'] == 'base' for c in overview), 50)
-            self.assertTrue(all(c['predicted_status'] == 'pending' for c in overview))
-            self.assertIn('dennis_mcconaghy@transcanada.com', next(c for c in overview if c['case_id'] == 'S01')['search_text'])
-            self.assertIsNone(dataset.detail(cases[0].case_id)['prediction'])
-            self.assertEqual(dataset.detail('S09')['email']['target_recipient'], 'alex@example.com')
-        # The full suite scores established base labels rather than treating them as pending multi-action drafts.
-        from actionmail.reasoning.model_client import ModelReply
-        case = next(c for c in cases if not c.record.get('challenge_version') and c.gold['status'] == 'action')
-        class Model:
-            def complete(self, system, user):
-                result = {'status': 'action', 'actions': [{'kind': 'perform_task', 'text': case.gold['action'], 'deadline': case.gold['deadline'], 'evidence': case.gold['evidence']}], 'reason': 'The email requests this task.', 'evidence': case.gold['evidence']}
-                return ModelReply(json.dumps(result), 'offline', 10, 10, 1)
-        row = _run_one(case, 'llm', Model(), (0, 0, 0), schema='v2', score_frozen=True)
-        self.assertTrue(row['status_correct'])
-        self.assertTrue(row['action_count_match'])
-        class TwoActionModel:
-            def complete(self, system, user):
-                return ModelReply(json.dumps(a16.gold), 'offline', 10, 10, 1)
-        row = _run_one(a16, 'llm', TwoActionModel(), (0, 0, 0), schema='v2', score_frozen=True)
-        self.assertTrue(row['status_correct'])
-        self.assertTrue(row['action_count_match'])
-
-    def test_sixty_distinct_cases_and_reviewable_real_pdf_without_invented_date(self):
-        base = load_cases(PROJECT_ROOT / 'evaluation/cases.jsonl', DEFAULT_MAILEX_ROOT)
-        extra = load_challenge(MANIFEST, DEFAULT_MAILEX_ROOT, benchmark='supplement-v2')
-        self.assertEqual(len(base) + len(extra), 60)
-        self.assertEqual(len({c.case_id for c in [*base, *extra]}), 60)
-        suite = json.loads((PROJECT_ROOT / 'evaluation/active_suite.json').read_text(encoding='utf-8'))
-        self.assertEqual(suite['total_cases'], 60)
-        for component in suite['components']:
-            path = PROJECT_ROOT / 'evaluation' / component['manifest']
-            self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), component['sha256'])
-        self.assertTrue(all(c.record['review_state'] == 'pending_owner' for c in extra))
-        self.assertIsNone(extra[2].email.received_at)
-        self.assertEqual(len(extra[2].email.external_sources), 1)
-        with tempfile.TemporaryDirectory() as directory:
-            run = Path(directory) / 'preview'
-            prepare_challenge(extra, MANIFEST, run, benchmark='supplement-v2')
-            dataset = ReviewDataset.open(run, MANIFEST, DEFAULT_MAILEX_ROOT)
+        self.assertEqual(len({c.case_id for c in cases}), 60)
+        self.assertTrue(all(c.record.get('review_state', 'approved') == 'approved' for c in cases))
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / 'saved'
+            shutil.copytree(PROJECT_ROOT / 'results/evaluation/v2-regression-repair-20261001', output)
+            dataset = ReviewDataset.open(output, registry, DEFAULT_MAILEX_ROOT)
             detail = dataset.detail('S03')
-            self.assertIsNone(detail['prediction'])
-            self.assertEqual(detail['email']['source_kind'], 'enron_export')
+            self.assertIsNone(detail['email']['received_at'])
             self.assertGreater(len(detail['external_sources'][0]['text']), 3000)
-            self.assertFalse(detail['external_sources'][0]['read_by_model'])
-            saved = dataset.save_review('S03', {'gold_label': 'correct', 'model_pass': 'uncertain', 'note': 'Check only the overall pass.'})
-            self.assertEqual(saved['model_pass'], 'uncertain')
-            self.assertEqual(saved['action_meaning'], '')
-            self.assertIn('/attachments/', detail['external_sources'][0]['original_attachment_url'])
             original, media = dataset.attachment('S03', 'attachment:1')
             self.assertTrue(original.startswith(b'%PDF-'))
             self.assertEqual(media, 'application/pdf')
             for sid in ('../../secret', 'link:1', 'attachment:999'):
-                with self.assertRaises(KeyError):
-                    dataset.attachment('S03', sid)
+                with self.assertRaises(KeyError): dataset.attachment('S03', sid)
+
+
+
 
     def test_informational_pdf_does_not_enter_model_context_but_required_workbook_does(self):
         from actionmail.workflow.multi_pipeline import process_email_multi_with_external

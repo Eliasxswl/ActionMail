@@ -27,8 +27,8 @@ class RegressionContractTests(unittest.TestCase):
 
     def test_saved_c12_reply_revalidates_but_changed_s02_amount_is_still_rejected(self):
         cases = {c.case_id: c for c in load_suite(PROJECT_ROOT / 'evaluation/active_suite.json', DEFAULT_MAILEX_ROOT)}
-        path = PROJECT_ROOT / 'backup/v2.0/results/evaluation/v2-regression-20261001/cases.jsonl'
-        rows = {r['case_id']: r for r in map(json.loads, path.read_text(encoding='utf-8').splitlines())}
+        path = PROJECT_ROOT / 'tests/fixtures/regression_replies.json'
+        rows = json.loads(path.read_text(encoding='utf-8'))['regression']['rows']
         decision = parse_multi_response(rows['C12']['raw_model_response'], require_explanation=True)
         aligned, errors = _validate(cases['C12'].email, decision, 3)
         self.assertFalse(errors)

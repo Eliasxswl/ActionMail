@@ -44,7 +44,7 @@ class ReviewDataset:
                 manifest_hash = run['manifest_sha256']
         if manifest_hash != run["manifest_sha256"] and manifest.name == "cases.jsonl":
             snapshots = [
-                path for path in (*manifest.parent.glob("cases_v*.jsonl"), *PROJECT_ROOT.glob("backup/v*/evaluation/cases_v*.jsonl"))
+                path for path in manifest.parent.glob("cases_v*.jsonl")
                 if hashlib.sha256(path.read_bytes()).hexdigest() == run["manifest_sha256"]
             ]
             if len(snapshots) == 1:

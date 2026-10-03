@@ -12,11 +12,10 @@ from actionmail.evaluation.baseline import predict_rules
 from actionmail.evaluation.cases import load_cases
 from actionmail.evaluation.suite import load_suite
 from actionmail.evaluation.references import compare_reference
-from actionmail.evaluation.challenge import load_challenge, prepare_challenge, challenge_checks, approve_challenge_gold
+from actionmail.evaluation.challenge import load_challenge, challenge_checks
 from actionmail.workflow.coverage import WorkflowLimits, PLAN_PROMPT
 from actionmail.evaluation.history import print_history
 from actionmail.evaluation.metrics import summarize, summarize_v2
-from actionmail.evaluation.multi_draft import load_multi_drafts
 from actionmail.evaluation.preflight import PreflightError, account_balance, estimate, key_allowance, model_prices
 from actionmail.content.links import fetch_allowlisted_https
 from actionmail.guardrails.evidence import evidence_errors
@@ -29,16 +28,12 @@ from actionmail.workflow.multi_pipeline import MAX_ACTIONS, V2_SYSTEM_PROMPT, pr
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_MANIFEST = PROJECT_ROOT / "evaluation" / "cases.jsonl"
 DEFAULT_MAILEX_ROOT = PROJECT_ROOT.parent / "data"
-DEFAULT_MULTI_DRAFT = PROJECT_ROOT / "backup" / "v2.0" / "evaluation" / "multi_action_draft.jsonl"
 
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="actionmail-eval", description="Validate or run a selected evaluation suite (legacy default: frozen 50; short command default: v2-60).")
     parser.add_argument("--validate", action="store_true", help="Validate the selected suite without making model calls")
-    parser.add_argument('--benchmark', choices=('frozen', 'supplement-v2', 'challenge-v2.1', 'v2-60'), default='frozen')
-    parser.add_argument('--prepare-challenge', action='store_true', help='Create a reference-only review run without model calls')
-    parser.add_argument('--approve-challenge-gold', type=Path, help='Reference-preview directory with all owner gold judgments saved correct; no model call')
-    parser.add_argument('--approved-manifest', type=Path, help='New approved challenge manifest path')
+    parser.add_argument('--benchmark', choices=('frozen', 'supplement-v2', 'v2-60'), default='frozen')
     parser.add_argument("--history", action="store_true", help="Summarize saved evaluation runs without a model call")
     parser.add_argument("--preflight", action="store_true", help="Show balance and expected cost, then stop before model calls")
     parser.add_argument("--engine", choices=("rules", "llm"), default="llm")
@@ -47,9 +42,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--allow-domain", action="append", default=[], help="Explicitly allow a domain for live HTTPS reading")
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--mailex-root", type=Path, default=DEFAULT_MAILEX_ROOT)
-    parser.add_argument("--multi-draft", type=Path, default=DEFAULT_MULTI_DRAFT, help="Pending-owner multi-action reference proposals")
-    parser.add_argument("--case-group", choices=("external", "multi-draft"), help="Select the 10 frozen external cases or A16/C13")
-    parser.add_argument("--prepare-multi", action="store_true", help="Validate and show draft multi-action references without API calls")
+    parser.add_argument("--case-group", choices=("external",), help="Select the 10 base external-content cases")
     parser.add_argument("--model", default=os.getenv("ACTIONMAIL_MODEL"))
     parser.add_argument("--api-url", default=os.getenv("ACTIONMAIL_API_URL", OPENROUTER_API_URL))
     parser.add_argument("--api-key-env", default="OPENROUTER_API_KEY")
@@ -120,7 +113,7 @@ def _show_preflight(args, cases, api_key: str) -> tuple[float, float, float, str
     return input_price, output_price, request_price, source
 
 
-def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | None, float | None, float], external_mode: str = "body-only", allow_domains: tuple[str, ...] = (), schema: str = "v1", multi_draft: dict | None = None, score_frozen: bool = False) -> dict:
+def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | None, float | None, float], external_mode: str = "body-only", allow_domains: tuple[str, ...] = (), schema: str = "v1", score_frozen: bool = False) -> dict:
     reply = None
     error = None
     validation_errors = []
@@ -164,7 +157,7 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
         }
         if not error and None not in prices and all(item.input_tokens is not None and item.output_tokens is not None for item in replies):
             cost = (usage["input_tokens"] * prices[0] + usage["output_tokens"] * prices[1]) / 1_000_000 + len(replies) * prices[2]
-    established_v2_reference = schema == "v2" and (case.record["category"] == "external_content" or score_frozen) and multi_draft is None and not case.record.get('challenge_version')
+    established_v2_reference = schema == "v2" and (case.record["category"] == "external_content" or score_frozen) and not case.record.get('challenge_version')
     status_correct = (
         prediction.status == case.gold["status"] if prediction else False
     ) if schema == "v1" or established_v2_reference else None
@@ -183,7 +176,7 @@ def _run_one(case, engine: str, model: APIClient | None, prices: tuple[float | N
         "prediction": asdict(prediction) if prediction else None,
         "status_correct": status_correct,
         "action_count_match": action_count_match,
-        "multi_action_draft": multi_draft,
+        "multi_action_draft": None,
         "safe_external_abstention": case.record["category"] == "external_content" and prediction is not None and prediction.status == "needs_review" and not read_records,
         "validation_errors": validation_errors,
         "error": error,
@@ -206,63 +199,29 @@ def main(argv: list[str] | None = None) -> int:
         if args.history:
             print_history(PROJECT_ROOT / "results" / "evaluation")
             return 0
-        challenge = args.benchmark in {'challenge-v2.1', 'supplement-v2'}
+        challenge = args.benchmark == 'supplement-v2'
         full_suite = args.benchmark == 'v2-60'
         if full_suite:
             if args.manifest == DEFAULT_MANIFEST:
                 args.manifest = PROJECT_ROOT / 'evaluation/active_suite.json'
-            if args.case_group or args.prepare_multi or args.approve_challenge_gold:
+            if args.case_group:
                 raise ValueError('Full suite does not use historical draft groups or gold approval')
             args.schema = 'v2'
             args.external_mode = 'snapshots'
         if challenge and args.manifest == DEFAULT_MANIFEST:
-            if args.benchmark == 'supplement-v2':
-                suite = json.loads((PROJECT_ROOT / 'evaluation/active_suite.json').read_text(encoding='utf-8'))
-                component = next(c for c in suite['components'] if c['benchmark'] == args.benchmark)
-                args.manifest = PROJECT_ROOT / 'evaluation' / component['manifest']
-                if hashlib.sha256(args.manifest.read_bytes()).hexdigest() != component['sha256']:
-                    raise ValueError('Active supplementary manifest hash mismatch')
-            else:
-                args.manifest = PROJECT_ROOT / 'backup/v2.0/evaluation/archive/challenge_v2_1_revision2.jsonl'
+            suite = json.loads((PROJECT_ROOT / 'evaluation/active_suite.json').read_text(encoding='utf-8'))
+            component = next(c for c in suite['components'] if c['benchmark'] == args.benchmark)
+            args.manifest = PROJECT_ROOT / 'evaluation' / component['manifest']
+            if hashlib.sha256(args.manifest.read_bytes()).hexdigest() != component['sha256']:
+                raise ValueError('Active supplementary manifest hash mismatch')
         if challenge:
-            if args.engine != 'llm' or args.case_group or args.prepare_multi:
+            if args.engine != 'llm' or args.case_group:
                 raise ValueError('Challenge uses the v2 LLM workflow; frozen groups/drafts do not apply')
             args.schema = 'v2'
             if args.external_mode == 'allowed-live':
                 raise ValueError('Challenge v2.1 gold is defined for snapshots mode; live transport is verified separately')
             args.external_mode = 'snapshots'
         cases = load_suite(args.manifest, args.mailex_root) if full_suite else load_challenge(args.manifest, args.mailex_root, benchmark=args.benchmark) if challenge else load_cases(args.manifest, args.mailex_root)
-        if args.approve_challenge_gold:
-            if not challenge or not args.approved_manifest:
-                raise ValueError('--approve-challenge-gold requires a supplementary/challenge benchmark and --approved-manifest')
-            destination = approve_challenge_gold(args.manifest, args.approve_challenge_gold, args.approved_manifest)
-            print(f'Created approved challenge reference: {destination}')
-            return 0
-        if args.approved_manifest:
-            raise ValueError('--approved-manifest requires --approve-challenge-gold')
-        if args.prepare_challenge:
-            if not challenge and not full_suite:
-                raise ValueError('--prepare-challenge requires a supplementary/challenge benchmark')
-            output = args.output_dir or PROJECT_ROOT / 'results' / 'evaluation' / ('challenge-gold-' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ'))
-            prepare_challenge(cases, args.manifest, output, benchmark=args.benchmark)
-            print(f'Prepared {len(cases)} reference-only cases for owner review: {output}')
-            return 0
-        multi_drafts = load_multi_drafts(args.multi_draft, cases) if not challenge and not full_suite and (args.schema == "v2" or args.prepare_multi or args.case_group == "multi-draft") and args.multi_draft.exists() else {}
-        if args.prepare_multi:
-            if not multi_drafts:
-                raise ValueError(f"Multi-action draft not found: {args.multi_draft}")
-            for case in cases:
-                draft = multi_drafts.get(case.case_id)
-                if draft is None:
-                    continue
-                print(f"{case.case_id}: {draft['proposed_status']} ({draft['review_state']}; {len(draft['candidate_actions'])} candidate tasks)")
-                print(f"  Recipient: {case.email.target_recipient}")
-                for index, action in enumerate(draft["candidate_actions"], start=1):
-                    print(f"  {index}. {action['text']} [{action['evidence'][0]['source_id']}: {action['evidence'][0]['quote']}]")
-                if draft["review_reason"]:
-                    print(f"  Review reason: {draft['review_reason']}")
-            print("These references are drafts awaiting owner review; no correctness score is assigned.")
-            return 0
         if args.external_mode == "allowed-live" and not args.allow_domain:
             raise ValueError("--external-mode allowed-live requires --allow-domain")
         if args.allow_domain and args.external_mode != "allowed-live":
@@ -293,12 +252,6 @@ def main(argv: list[str] | None = None) -> int:
                 raise ValueError("Unknown --case-id in frozen manifest")
         elif args.case_group == "external":
             selected = [case for case in cases if case.record["category"] == "external_content"]
-        elif args.case_group == "multi-draft":
-            if not multi_drafts:
-                raise ValueError("Multi-action draft is unavailable")
-            selected = [case for case in cases if case.case_id in multi_drafts]
-            if args.schema != "v2":
-                raise ValueError("--case-group multi-draft requires --schema v2")
         else:
             selected = cases[:args.limit] if args.limit else cases
         model = None
@@ -330,7 +283,6 @@ def main(argv: list[str] | None = None) -> int:
             "schema": args.schema,
             "benchmark": args.benchmark,
             "case_group": args.case_group,
-            "multi_draft_sha256": hashlib.sha256(args.multi_draft.read_bytes()).hexdigest() if args.schema == "v2" and multi_drafts else None,
             "external_mode": args.external_mode,
             "allowed_domains": args.allow_domain,
             "model": args.model if args.engine == "llm" else "rules-v1",
@@ -347,7 +299,7 @@ def main(argv: list[str] | None = None) -> int:
         rows_path = output / "cases.jsonl"
         if args.resume:
             prior = json.loads(meta_path.read_text(encoding="utf-8"))
-            for key in ("engine", "schema", "case_group", "multi_draft_sha256", "external_mode", "allowed_domains", "model", "api_url", "manifest_sha256", "code_sha256", "prompt_sha256", "case_ids", "input_price_per_million_usd", "output_price_per_million_usd"):
+            for key in ("engine", "schema", "case_group", "external_mode", "allowed_domains", "model", "api_url", "manifest_sha256", "code_sha256", "prompt_sha256", "case_ids", "input_price_per_million_usd", "output_price_per_million_usd"):
                 if prior.get(key, "body-only" if key == "external_mode" else [] if key == "allowed_domains" else None) != metadata[key]:
                     raise ValueError(f"Cannot resume: {key} changed")
             metadata = prior
@@ -385,7 +337,7 @@ def main(argv: list[str] | None = None) -> int:
         elif pending:
             _write_json(meta_path, metadata)
         for index, case in enumerate(pending, start=1):
-            row = _run_one(case, args.engine, model, prices, args.external_mode, tuple(args.allow_domain), args.schema, multi_drafts.get(case.case_id) if args.schema == "v2" else None, score_frozen=full_suite)
+            row = _run_one(case, args.engine, model, prices, args.external_mode, tuple(args.allow_domain), args.schema, score_frozen=full_suite)
             with rows_path.open("a", encoding="utf-8") as stream:
                 stream.write(json.dumps(row, ensure_ascii=False) + "\n")
             rows.append(row)

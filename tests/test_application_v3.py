@@ -1,6 +1,5 @@
 """Engineering checks using authored Google-shaped fixtures; no live API/model calls."""
 import base64
-import copy
 import json
 import threading
 import unittest
