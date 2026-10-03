@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1200" height="275" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1200 275" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1200" height="275"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-275)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1200" height="275" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="25" y="246" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,492) scale(1,-1)">Layer</text>
+			<text x="330" y="246" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,492) scale(1,-1)">Sourcing</text>
+			<text x="660" y="246" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,492) scale(1,-1)">Rationale / responsibility</text>
+			<path d="M 25,233 L 1175,233 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<text x="25" y="196" style="font-family: Helvetica; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,392) scale(1,-1)">Interface and serving</text>
+			<text x="330" y="196" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,392) scale(1,-1)">Own local CLI / review UI</text>
+			<text x="660" y="196" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,392) scale(1,-1)">Direct task review and confirmation</text>
+			<text x="25" y="153" style="font-family: Helvetica; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,306) scale(1,-1)">Orchestration and policy</text>
+			<text x="330" y="153" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,306) scale(1,-1)">Own Python workflow</text>
+			<text x="660" y="153" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,306) scale(1,-1)">Control source budgets and repair</text>
+			<text x="25" y="110" style="font-family: Helvetica; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,220) scale(1,-1)">Foundation model</text>
+			<text x="330" y="110" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,220) scale(1,-1)">Rent via OpenRouter</text>
+			<text x="660" y="110" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,220) scale(1,-1)">Avoid training; depend on API behavior</text>
+			<text x="25" y="67" style="font-family: Helvetica; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,134) scale(1,-1)">Data and parsing</text>
+			<text x="330" y="67" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,134) scale(1,-1)">Own references; reuse parsers</text>
+			<text x="660" y="67" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,134) scale(1,-1)">Traceable sources and portable inputs</text>
+			<text x="25" y="24" style="font-family: Helvetica; font-size: 21px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,48) scale(1,-1)">Evaluation and logs</text>
+			<text x="330" y="24" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,48) scale(1,-1)">Own metrics and traces</text>
+			<text x="660" y="24" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,48) scale(1,-1)">Inspect outputs, failures and spend</text>
+			<path d="M 25,8 L 1175,8 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1.5;"/>
+		</g>
+	</g>
+</svg>

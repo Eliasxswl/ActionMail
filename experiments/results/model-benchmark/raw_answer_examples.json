@@ -1,0 +1,146 @@
+[
+  {
+    "model": "Gemini 3.5 Flash Lite",
+    "case_id": "N01",
+    "call": 1,
+    "original_answer_content": "```json\n{\n  \"status\": \"no_action\",\n  \"actions\": [],\n  \"reason\": \"Steven Harris expressed approval for the filing (\\\"Looks great. I like it!\\\") but did not assign any new tasks or requests to Bill Rapp.\",\n  \"evidence\": [\n    {\n      \"source_id\": \"body\",\n      \"quote\": \"Looks great. I like it!\"\n    }\n  ]\n}\n```",
+    "api_metadata_excerpt": {
+      "provider": "Google",
+      "request_max_tokens": 2048,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "prompt_tokens": 1409,
+      "completion_tokens": 97,
+      "reasoning_tokens": 0,
+      "response_reported_cost_usd": 0.0006652,
+      "wall_ms": 1124.6195998974144,
+      "local_error": null
+    }
+  },
+  {
+    "model": "Gemini 3.5 Flash Lite",
+    "case_id": "N01",
+    "call": 2,
+    "original_answer_content": "```json\n{\n  \"status\": \"no_action\",\n  \"actions\": [],\n  \"reason\": \"Steven Harris approved the filing without assigning any tasks or requests to Bill Rapp.\",\n  \"evidence\": [\n    {\n      \"source_id\": \"body\",\n      \"quote\": \"Looks great. I like it!\"\n    }\n  ]\n}\n```",
+    "api_metadata_excerpt": {
+      "provider": "Google",
+      "request_max_tokens": 2048,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "prompt_tokens": 1628,
+      "completion_tokens": 83,
+      "reasoning_tokens": 0,
+      "response_reported_cost_usd": 0.0006959,
+      "wall_ms": 981.9823999423534,
+      "local_error": null
+    }
+  },
+  {
+    "model": "Gemini 3.8 Flash",
+    "case_id": "N01",
+    "call": 1,
+    "original_answer_content": "```json\n{\n  \"status\": \"no_action\",\n  \"actions\": [],\n  \"reason\": \"The sender is only providing positive feedback on prior material and requests no action.\",\n  \"evidence\": [\n    {\n      \"source_id\": \"body\",\n      \"quote\": \"Looks great. I like it!\"\n    }\n  ]\n}\n```",
+    "api_metadata_excerpt": {
+      "provider": "Google",
+      "request_max_tokens": 2048,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "prompt_tokens": 1409,
+      "completion_tokens": 302,
+      "reasoning_tokens": 219,
+      "response_reported_cost_usd": 0.00218925,
+      "wall_ms": 4018.7505000503734,
+      "local_error": null
+    }
+  },
+  {
+    "model": "Gemini 3.8 Flash",
+    "case_id": "N01",
+    "call": 2,
+    "original_answer_content": "{\n  \"status\": \"no_action\",\n  \"actions\": [],\n  \"reason\": \"The sender is only providing positive feedback and requests no action.\",\n  \"evidence\": [\n    {\n      \"source_id\": \"body\",\n      \"quote\": \"Looks great. I like it!\"\n    }\n  ]\n}",
+    "api_metadata_excerpt": {
+      "provider": "Google",
+      "request_max_tokens": 2048,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "prompt_tokens": 1611,
+      "completion_tokens": 409,
+      "reasoning_tokens": 334,
+      "response_reported_cost_usd": 0.002742,
+      "wall_ms": 4750.226700096391,
+      "local_error": null
+    }
+  },
+  {
+    "model": "Gemini 3.8 Flash",
+    "case_id": "E01",
+    "call": 1,
+    "original_answer_content": "```json\n{\n  \"sources\": [\n    {\n      \"source_id\": \"attachment:1\",\n      \"relevance\": \"decisive\",\n      \"reason\": \"The email directly instructs the recipient to review the attached invoice instructions to determine their next step.\",\n      \"evidence\": [\n        {\n          \"source_id\": \"body\",\n          \"quote\": \"Please check the attached invoice instructions for your next step.\"\n        }\n      ]\n    }\n  ]\n}\n```",
+    "api_metadata_excerpt": {
+      "provider": "Google",
+      "request_max_tokens": 2048,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "prompt_tokens": 775,
+      "completion_tokens": 367,
+      "reasoning_tokens": 256,
+      "response_reported_cost_usd": 0.0019575,
+      "wall_ms": 4289.634299930185,
+      "local_error": null
+    }
+  },
+  {
+    "model": "Gemini 3.8 Flash",
+    "case_id": "E01",
+    "call": 2,
+    "original_answer_content": "{\"sources\": [{\"source_id\": \"attachment:1\", \"relevance\": \"decisive\", \"reason\": \"The sender explicitly directs the recipient to check the attached instructions to determine their next step, delegating the required action/content to the attachment.\", \"evidence\": [{\"source_id\": \"body\", \"quote\": \"Please check the attached invoice instructions for your next step.\"}]}]}",
+    "api_metadata_excerpt": {
+      "provider": "Google",
+      "request_max_tokens": 2048,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "prompt_tokens": 1005,
+      "completion_tokens": 302,
+      "reasoning_tokens": 221,
+      "response_reported_cost_usd": 0.00188625,
+      "wall_ms": 4841.576800099574,
+      "local_error": null
+    }
+  },
+  {
+    "model": "Gemini 3.8 Flash",
+    "case_id": "E01",
+    "call": 3,
+    "original_answer_content": "```json\n{\n  \"status\": \"action\",\n  \"actions\": [\n    {\n      \"kind\": \"perform_task\",\n      \"text\": \"Approve invoice INV-104\",\n      \"deadline\": \"2026-10-01\",\n      \"evidence\": [\n        {\n          \"source_id\": \"attachment:1\",\n          \"quote\": \"Alex, please approve invoice INV-104 by 2026-10-01.\"\n        }\n      ]\n    }\n  ],\n  \"reason\": \"The sender directs you to the attached instructions, which ask you to approve invoice INV-104 by October 1, 2026.\",\n  \"evidence\": [\n    {\n      \"source_id\": \"body\",\n      \"quote\": \"Please check the attached invoice instructions for your next step.\"\n    },\n    {\n      \"source_id\": \"attachment:1\",\n      \"quote\": \"Alex, please approve invoice INV-104 by 2026-10-01.\"\n    }\n  ]\n}\n```",
+    "api_metadata_excerpt": {
+      "provider": "Google",
+      "request_max_tokens": 2048,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "prompt_tokens": 1477,
+      "completion_tokens": 1757,
+      "reasoning_tokens": 1502,
+      "response_reported_cost_usd": 0.0076965,
+      "wall_ms": 13597.290700068697,
+      "local_error": null
+    }
+  },
+  {
+    "model": "GLM-5.3 Flash",
+    "case_id": "C11",
+    "call": 1,
+    "original_answer_content": null,
+    "api_metadata_excerpt": {
+      "provider": "Relace",
+      "request_max_tokens": 2048,
+      "finish_reason": "length",
+      "native_finish_reason": "length",
+      "prompt_tokens": 1579,
+      "completion_tokens": 2048,
+      "reasoning_tokens": 2069,
+      "response_reported_cost_usd": 0.001079265,
+      "wall_ms": 27332.371900090948,
+      "local_error": "Model API response has no text completion (finish_reason=length, completion_tokens=2048)"
+    }
+  }
+]

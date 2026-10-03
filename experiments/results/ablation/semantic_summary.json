@@ -1,0 +1,658 @@
+{
+  "scope": "Explicitly attributed reviewer judgments; identity/independence not automatically verified",
+  "reviewed_analyses": 500,
+  "pending_analyses": 0,
+  "complete": true,
+  "arms": {
+    "full_m01": {
+      "reviewed_analyses": 60,
+      "expected_tasks": 32,
+      "proposed_tasks": 31,
+      "matched_tasks": 31,
+      "semantic_precision": 1.0,
+      "semantic_recall": 0.96875,
+      "omissions": 1,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 59,
+          "no": 0,
+          "na": 1
+        },
+        "commitment_faithful": {
+          "yes": 59,
+          "no": 0,
+          "na": 1
+        },
+        "deadline_correct": {
+          "yes": 27,
+          "no": 0,
+          "na": 33
+        },
+        "evidence_supports_meaning": {
+          "yes": 59,
+          "no": 1,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 10,
+          "no": 0,
+          "na": 50
+        }
+      },
+      "delivery_semantic_pass": 59,
+      "delivery_semantic_rate": 0.9833333333333333,
+      "specificity_flags": {
+        "complete": 60
+      },
+      "engineering_or_blockage": 1
+    },
+    "prompt_only_m01": {
+      "reviewed_analyses": 60,
+      "expected_tasks": 32,
+      "proposed_tasks": 19,
+      "matched_tasks": 19,
+      "semantic_precision": 1.0,
+      "semantic_recall": 0.59375,
+      "omissions": 13,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 56,
+          "no": 0,
+          "na": 4
+        },
+        "commitment_faithful": {
+          "yes": 56,
+          "no": 0,
+          "na": 4
+        },
+        "deadline_correct": {
+          "yes": 18,
+          "no": 0,
+          "na": 42
+        },
+        "evidence_supports_meaning": {
+          "yes": 56,
+          "no": 4,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 23,
+          "no": 1,
+          "na": 36
+        }
+      },
+      "delivery_semantic_pass": 45,
+      "delivery_semantic_rate": 0.75,
+      "specificity_flags": {
+        "complete": 60
+      },
+      "engineering_or_blockage": 4
+    },
+    "no_repair_m01": {
+      "reviewed_analyses": 60,
+      "expected_tasks": 32,
+      "proposed_tasks": 32,
+      "matched_tasks": 32,
+      "semantic_precision": 1.0,
+      "semantic_recall": 1.0,
+      "omissions": 0,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 59,
+          "no": 0,
+          "na": 1
+        },
+        "commitment_faithful": {
+          "yes": 59,
+          "no": 0,
+          "na": 1
+        },
+        "deadline_correct": {
+          "yes": 28,
+          "no": 0,
+          "na": 32
+        },
+        "evidence_supports_meaning": {
+          "yes": 59,
+          "no": 1,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 9,
+          "no": 0,
+          "na": 51
+        }
+      },
+      "delivery_semantic_pass": 59,
+      "delivery_semantic_rate": 0.9833333333333333,
+      "specificity_flags": {
+        "complete": 60
+      },
+      "engineering_or_blockage": 1
+    },
+    "stability_m01": {
+      "reviewed_analyses": 24,
+      "expected_tasks": 15,
+      "proposed_tasks": 15,
+      "matched_tasks": 15,
+      "semantic_precision": 1.0,
+      "semantic_recall": 1.0,
+      "omissions": 0,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 24,
+          "no": 0,
+          "na": 0
+        },
+        "commitment_faithful": {
+          "yes": 24,
+          "no": 0,
+          "na": 0
+        },
+        "deadline_correct": {
+          "yes": 12,
+          "no": 0,
+          "na": 12
+        },
+        "evidence_supports_meaning": {
+          "yes": 24,
+          "no": 0,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 3,
+          "no": 0,
+          "na": 21
+        }
+      },
+      "delivery_semantic_pass": 24,
+      "delivery_semantic_rate": 1.0,
+      "specificity_flags": {
+        "complete": 24
+      },
+      "engineering_or_blockage": 0
+    },
+    "full_m06": {
+      "reviewed_analyses": 60,
+      "expected_tasks": 32,
+      "proposed_tasks": 32,
+      "matched_tasks": 32,
+      "semantic_precision": 1.0,
+      "semantic_recall": 1.0,
+      "omissions": 0,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 60,
+          "no": 0,
+          "na": 0
+        },
+        "commitment_faithful": {
+          "yes": 60,
+          "no": 0,
+          "na": 0
+        },
+        "deadline_correct": {
+          "yes": 28,
+          "no": 0,
+          "na": 32
+        },
+        "evidence_supports_meaning": {
+          "yes": 60,
+          "no": 0,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 9,
+          "no": 0,
+          "na": 51
+        }
+      },
+      "delivery_semantic_pass": 60,
+      "delivery_semantic_rate": 1.0,
+      "specificity_flags": {
+        "complete": 59,
+        "minor_detail_omission": 1
+      },
+      "engineering_or_blockage": 0
+    },
+    "prompt_only_m06": {
+      "reviewed_analyses": 60,
+      "expected_tasks": 32,
+      "proposed_tasks": 18,
+      "matched_tasks": 18,
+      "semantic_precision": 1.0,
+      "semantic_recall": 0.5625,
+      "omissions": 14,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 51,
+          "no": 0,
+          "na": 9
+        },
+        "commitment_faithful": {
+          "yes": 51,
+          "no": 0,
+          "na": 9
+        },
+        "deadline_correct": {
+          "yes": 17,
+          "no": 0,
+          "na": 43
+        },
+        "evidence_supports_meaning": {
+          "yes": 51,
+          "no": 9,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 22,
+          "no": 2,
+          "na": 36
+        }
+      },
+      "delivery_semantic_pass": 42,
+      "delivery_semantic_rate": 0.7,
+      "specificity_flags": {
+        "complete": 60
+      },
+      "engineering_or_blockage": 9
+    },
+    "no_repair_m06": {
+      "reviewed_analyses": 60,
+      "expected_tasks": 32,
+      "proposed_tasks": 31,
+      "matched_tasks": 31,
+      "semantic_precision": 1.0,
+      "semantic_recall": 0.96875,
+      "omissions": 1,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 59,
+          "no": 0,
+          "na": 1
+        },
+        "commitment_faithful": {
+          "yes": 59,
+          "no": 0,
+          "na": 1
+        },
+        "deadline_correct": {
+          "yes": 27,
+          "no": 0,
+          "na": 33
+        },
+        "evidence_supports_meaning": {
+          "yes": 59,
+          "no": 1,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 9,
+          "no": 1,
+          "na": 50
+        }
+      },
+      "delivery_semantic_pass": 58,
+      "delivery_semantic_rate": 0.9666666666666667,
+      "specificity_flags": {
+        "complete": 60
+      },
+      "engineering_or_blockage": 1
+    },
+    "stability_m06": {
+      "reviewed_analyses": 24,
+      "expected_tasks": 15,
+      "proposed_tasks": 15,
+      "matched_tasks": 15,
+      "semantic_precision": 1.0,
+      "semantic_recall": 1.0,
+      "omissions": 0,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 24,
+          "no": 0,
+          "na": 0
+        },
+        "commitment_faithful": {
+          "yes": 24,
+          "no": 0,
+          "na": 0
+        },
+        "deadline_correct": {
+          "yes": 12,
+          "no": 0,
+          "na": 12
+        },
+        "evidence_supports_meaning": {
+          "yes": 24,
+          "no": 0,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 3,
+          "no": 0,
+          "na": 21
+        }
+      },
+      "delivery_semantic_pass": 24,
+      "delivery_semantic_rate": 1.0,
+      "specificity_flags": {
+        "complete": 24
+      },
+      "engineering_or_blockage": 0
+    },
+    "no_thread_m01": {
+      "reviewed_analyses": 12,
+      "expected_tasks": 7,
+      "proposed_tasks": 5,
+      "matched_tasks": 4,
+      "semantic_precision": 0.8,
+      "semantic_recall": 0.5714285714285714,
+      "omissions": 3,
+      "false_additions": 1,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 12,
+          "no": 0,
+          "na": 0
+        },
+        "commitment_faithful": {
+          "yes": 12,
+          "no": 0,
+          "na": 0
+        },
+        "deadline_correct": {
+          "yes": 5,
+          "no": 0,
+          "na": 7
+        },
+        "evidence_supports_meaning": {
+          "yes": 12,
+          "no": 0,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 4,
+          "no": 0,
+          "na": 8
+        }
+      },
+      "delivery_semantic_pass": 9,
+      "delivery_semantic_rate": 0.75,
+      "specificity_flags": {
+        "complete": 11,
+        "partial": 1
+      },
+      "engineering_or_blockage": 0
+    },
+    "no_thread_m06": {
+      "reviewed_analyses": 12,
+      "expected_tasks": 7,
+      "proposed_tasks": 8,
+      "matched_tasks": 4,
+      "semantic_precision": 0.5,
+      "semantic_recall": 0.5714285714285714,
+      "omissions": 3,
+      "false_additions": 4,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 11,
+          "no": 0,
+          "na": 1
+        },
+        "commitment_faithful": {
+          "yes": 9,
+          "no": 2,
+          "na": 1
+        },
+        "deadline_correct": {
+          "yes": 7,
+          "no": 0,
+          "na": 5
+        },
+        "evidence_supports_meaning": {
+          "yes": 9,
+          "no": 3,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 2,
+          "no": 0,
+          "na": 10
+        }
+      },
+      "delivery_semantic_pass": 6,
+      "delivery_semantic_rate": 0.5,
+      "specificity_flags": {
+        "complete": 10,
+        "partial": 2
+      },
+      "engineering_or_blockage": 1
+    },
+    "no_external_m01": {
+      "reviewed_analyses": 17,
+      "expected_tasks": 13,
+      "proposed_tasks": 0,
+      "matched_tasks": 0,
+      "semantic_precision": null,
+      "semantic_recall": 0.0,
+      "omissions": 13,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 14,
+          "no": 0,
+          "na": 3
+        },
+        "commitment_faithful": {
+          "yes": 14,
+          "no": 0,
+          "na": 3
+        },
+        "deadline_correct": {
+          "yes": 0,
+          "no": 0,
+          "na": 17
+        },
+        "evidence_supports_meaning": {
+          "yes": 14,
+          "no": 3,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 15,
+          "no": 1,
+          "na": 1
+        }
+      },
+      "delivery_semantic_pass": 3,
+      "delivery_semantic_rate": 0.17647058823529413,
+      "specificity_flags": {
+        "complete": 17
+      },
+      "engineering_or_blockage": 3
+    },
+    "read_all_m01": {
+      "reviewed_analyses": 17,
+      "expected_tasks": 13,
+      "proposed_tasks": 12,
+      "matched_tasks": 12,
+      "semantic_precision": 1.0,
+      "semantic_recall": 0.9230769230769231,
+      "omissions": 1,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 15,
+          "no": 0,
+          "na": 2
+        },
+        "commitment_faithful": {
+          "yes": 15,
+          "no": 0,
+          "na": 2
+        },
+        "deadline_correct": {
+          "yes": 9,
+          "no": 0,
+          "na": 8
+        },
+        "evidence_supports_meaning": {
+          "yes": 15,
+          "no": 2,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 2,
+          "no": 1,
+          "na": 14
+        }
+      },
+      "delivery_semantic_pass": 15,
+      "delivery_semantic_rate": 0.8823529411764706,
+      "specificity_flags": {
+        "complete": 17
+      },
+      "engineering_or_blockage": 2
+    },
+    "no_external_m06": {
+      "reviewed_analyses": 17,
+      "expected_tasks": 13,
+      "proposed_tasks": 0,
+      "matched_tasks": 0,
+      "semantic_precision": null,
+      "semantic_recall": 0.0,
+      "omissions": 13,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 13,
+          "no": 0,
+          "na": 4
+        },
+        "commitment_faithful": {
+          "yes": 13,
+          "no": 0,
+          "na": 4
+        },
+        "deadline_correct": {
+          "yes": 0,
+          "no": 0,
+          "na": 17
+        },
+        "evidence_supports_meaning": {
+          "yes": 13,
+          "no": 4,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 15,
+          "no": 1,
+          "na": 1
+        }
+      },
+      "delivery_semantic_pass": 3,
+      "delivery_semantic_rate": 0.17647058823529413,
+      "specificity_flags": {
+        "complete": 17
+      },
+      "engineering_or_blockage": 4
+    },
+    "read_all_m06": {
+      "reviewed_analyses": 17,
+      "expected_tasks": 13,
+      "proposed_tasks": 12,
+      "matched_tasks": 12,
+      "semantic_precision": 1.0,
+      "semantic_recall": 0.9230769230769231,
+      "omissions": 1,
+      "false_additions": 0,
+      "reviewers": [
+        "Codex (AI semantic review; owner decisions used as reference, not new human review)"
+      ],
+      "criteria": {
+        "ownership_currentness": {
+          "yes": 15,
+          "no": 0,
+          "na": 2
+        },
+        "commitment_faithful": {
+          "yes": 15,
+          "no": 0,
+          "na": 2
+        },
+        "deadline_correct": {
+          "yes": 9,
+          "no": 0,
+          "na": 8
+        },
+        "evidence_supports_meaning": {
+          "yes": 15,
+          "no": 2,
+          "na": 0
+        },
+        "review_appropriate": {
+          "yes": 2,
+          "no": 1,
+          "na": 14
+        }
+      },
+      "delivery_semantic_pass": 15,
+      "delivery_semantic_rate": 0.8823529411764706,
+      "specificity_flags": {
+        "complete": 17
+      },
+      "engineering_or_blockage": 2
+    }
+  },
+  "reviewer_type": "AI",
+  "independent_human_review": false,
+  "scope_note": "500 ablation observations over 60 development/regression cases; original inputs and unique output variants read by Codex; not an independent human or held-out study"
+}

@@ -1,0 +1,125 @@
+{
+  "provenance": {
+    "origins": {
+      "mailex_raw": 33,
+      "authored": 19,
+      "enron_export": 1,
+      "authored_eml": 7
+    },
+    "statuses": {
+      "no_action": 23,
+      "action": 27,
+      "needs_review": 10
+    },
+    "external_case_count": 17,
+    "external_source_entries": 20
+  },
+  "benchmark": [
+    {
+      "model": "GPT-6 Luna",
+      "strict": 59,
+      "permitted_joint": 60,
+      "p50_seconds": 3.985777249909006,
+      "p95_seconds": 8.724432584998429,
+      "verified_fees_usd": 0.012339495000000006
+    },
+    {
+      "model": "GLM-5.3 Flash",
+      "strict": 51,
+      "permitted_joint": 51,
+      "p50_seconds": 23.285210299945902,
+      "p95_seconds": 54.89211814002482,
+      "verified_fees_usd": 0.05670210799999997
+    },
+    {
+      "model": "Gemini 3.5 Flash Lite",
+      "strict": 10,
+      "permitted_joint": 10,
+      "p50_seconds": 2.732047300087288,
+      "p95_seconds": 3.4092584948521107,
+      "verified_fees_usd": 0.093015
+    },
+    {
+      "model": "Gemini 3.8 Flash",
+      "strict": 42,
+      "permitted_joint": 43,
+      "p50_seconds": 14.731975699891336,
+      "p95_seconds": 23.572764240164542,
+      "verified_fees_usd": 0.5232990000000002
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "strict": 59,
+      "permitted_joint": 60,
+      "p50_seconds": 4.042039649968501,
+      "p95_seconds": 11.608743794990003,
+      "verified_fees_usd": 0.1902891000000001
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "strict": 58,
+      "permitted_joint": 59,
+      "p50_seconds": 2.970747199957259,
+      "p95_seconds": 7.6078752948553285,
+      "verified_fees_usd": 0.4689539999999999
+    }
+  ],
+  "paired_semantic": [
+    {
+      "model": "GPT-6 Luna",
+      "condition": "Single prompt",
+      "n": 60,
+      "full": 59,
+      "comparison": 45
+    },
+    {
+      "model": "GPT-6 Luna",
+      "condition": "No thread",
+      "n": 12,
+      "full": 12,
+      "comparison": 9
+    },
+    {
+      "model": "GPT-6 Luna",
+      "condition": "No external reading",
+      "n": 17,
+      "full": 16,
+      "comparison": 3
+    },
+    {
+      "model": "GPT-6 Luna",
+      "condition": "Read all sources",
+      "n": 17,
+      "full": 16,
+      "comparison": 15
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "condition": "Single prompt",
+      "n": 60,
+      "full": 60,
+      "comparison": 42
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "condition": "No thread",
+      "n": 12,
+      "full": 12,
+      "comparison": 6
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "condition": "No external reading",
+      "n": 17,
+      "full": 17,
+      "comparison": 3
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "condition": "Read all sources",
+      "n": 17,
+      "full": 17,
+      "comparison": 15
+    }
+  ]
+}

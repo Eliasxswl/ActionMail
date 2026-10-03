@@ -1,0 +1,4 @@
+# Hash-bound inputs, saved evidence and test fixtures retain exact bytes.
+evaluation/** -text whitespace=cr-at-eol
+results/** -text whitespace=cr-at-eol
+tests/fixtures/** -text whitespace=cr-at-eol

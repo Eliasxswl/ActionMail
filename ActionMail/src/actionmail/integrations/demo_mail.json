@@ -1,0 +1,252 @@
+{
+  "provenance": "Authored synthetic Google API responses, not captured inbox data or an AI evaluation dataset.",
+  "account": "demo@example.com",
+  "messages": [
+    {
+      "id": "m1",
+      "threadId": "t1",
+      "internalDate": "1790816400000",
+      "labelIds": [
+        "INBOX"
+      ],
+      "payload": {
+        "mimeType": "multipart/mixed",
+        "headers": [
+          {
+            "name": "From",
+            "value": "Project lead <lead@example.com>"
+          },
+          {
+            "name": "To",
+            "value": "Demo user <demo@example.com>"
+          },
+          {
+            "name": "Cc",
+            "value": "observer@example.com"
+          },
+          {
+            "name": "Subject",
+            "value": "Project brief due"
+          },
+          {
+            "name": "Date",
+            "value": "Thu, 01 Oct 2026 09:00:00 +0800"
+          }
+        ],
+        "parts": [
+          {
+            "mimeType": "text/plain",
+            "headers": [],
+            "body": {
+              "size": 79,
+              "data": "UGxlYXNlIHByZXBhcmUgdGhlIHByb2plY3QgYnJpZWYgdXNpbmcgdGhlIGF0dGFjaGVkIHJlcXVpcmVtZW50cyBieSAyMDI2LTEwLTAzLg"
+            }
+          },
+          {
+            "mimeType": "text/plain",
+            "filename": "brief.txt",
+            "headers": [],
+            "body": {
+              "size": 49,
+              "attachmentId": "a1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "m2",
+      "threadId": "t2",
+      "internalDate": "1790816400000",
+      "labelIds": [
+        "INBOX"
+      ],
+      "payload": {
+        "mimeType": "text/plain",
+        "headers": [
+          {
+            "name": "From",
+            "value": "Project lead <lead@example.com>"
+          },
+          {
+            "name": "To",
+            "value": "Demo user <demo@example.com>"
+          },
+          {
+            "name": "Cc",
+            "value": "observer@example.com"
+          },
+          {
+            "name": "Subject",
+            "value": "Weekly update"
+          },
+          {
+            "name": "Date",
+            "value": "Thu, 01 Oct 2026 09:00:00 +0800"
+          }
+        ],
+        "body": {
+          "size": 68,
+          "data": "VGhlIHdlZWtseSByZXBvcnQgaXMgY29tcGxldGUuIFRoaXMgbWVzc2FnZSBpcyBmb3IgaW5mb3JtYXRpb24gb25seS4"
+        }
+      }
+    },
+    {
+      "id": "m3",
+      "threadId": "t3",
+      "internalDate": "1790816400000",
+      "labelIds": [
+        "INBOX"
+      ],
+      "payload": {
+        "mimeType": "text/plain",
+        "headers": [
+          {
+            "name": "From",
+            "value": "Project lead <lead@example.com>"
+          },
+          {
+            "name": "To",
+            "value": "Demo user <demo@example.com>"
+          },
+          {
+            "name": "Cc",
+            "value": "observer@example.com"
+          },
+          {
+            "name": "Subject",
+            "value": "Missing workbook"
+          },
+          {
+            "name": "Date",
+            "value": "Thu, 01 Oct 2026 09:00:00 +0800"
+          }
+        ],
+        "body": {
+          "size": 59,
+          "data": "UGxlYXNlIHJldmlldyB0aGUgYXR0YWNoZWQgd29ya2Jvb2suIEkgZm9yZ290IHRvIGF0dGFjaCBpdC4"
+        }
+      }
+    }
+  ],
+  "history": [
+    {
+      "id": "old1",
+      "threadId": "t1",
+      "internalDate": "1790816340000",
+      "labelIds": [
+        "INBOX"
+      ],
+      "payload": {
+        "mimeType": "text/plain",
+        "headers": [
+          {
+            "name": "From",
+            "value": "Project lead <lead@example.com>"
+          },
+          {
+            "name": "To",
+            "value": "Demo user <demo@example.com>"
+          },
+          {
+            "name": "Cc",
+            "value": "observer@example.com"
+          },
+          {
+            "name": "Subject",
+            "value": "Previous brief request"
+          },
+          {
+            "name": "Date",
+            "value": "Thu, 01 Oct 2026 09:00:00 +0800"
+          }
+        ],
+        "body": {
+          "size": 43,
+          "data": "UGxlYXNlIHByZXBhcmUgdGhlIGJyaWVmIGZvciB0aGUgZGVtbyB1c2VyLg"
+        }
+      }
+    }
+  ],
+  "attachments": {
+    "a1": {
+      "size": 49,
+      "data": "SW5jbHVkZSB0aGUgc2NvcGUsIHJpc2tzIGFuZCBkZWxpdmVyeSBtaWxlc3RvbmVzLg"
+    }
+  },
+  "scripts": [
+    {
+      "body": "Please prepare the project brief using the attached requirements by 2026-10-03.",
+      "plan": {
+        "sources": [
+          {
+            "source_id": "attachment:1",
+            "relevance": "decisive",
+            "reason": "The newest request requires the attached requirements.",
+            "evidence": [
+              {
+                "source_id": "body",
+                "quote": "Please prepare the project brief using the attached requirements by 2026-10-03."
+              }
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "status": "action",
+        "actions": [
+          {
+            "kind": "perform_task",
+            "text": "Prepare the project brief with scope, risks and delivery milestones",
+            "deadline": "2026-10-03",
+            "evidence": [
+              {
+                "source_id": "body",
+                "quote": "Please prepare the project brief using the attached requirements by 2026-10-03."
+              },
+              {
+                "source_id": "attachment:1",
+                "quote": "Include the scope, risks and delivery milestones."
+              }
+            ]
+          }
+        ],
+        "reason": "The newest message asks demo@example.com to prepare the brief by the stated date.",
+        "evidence": [
+          {
+            "source_id": "body",
+            "quote": "Please prepare the project brief using the attached requirements by 2026-10-03."
+          }
+        ]
+      }
+    },
+    {
+      "body": "The weekly report is complete. This message is for information only.",
+      "decision": {
+        "status": "no_action",
+        "actions": [],
+        "reason": "This is an informational update with no current request for demo@example.com.",
+        "evidence": [
+          {
+            "source_id": "body",
+            "quote": "The weekly report is complete. This message is for information only."
+          }
+        ]
+      }
+    },
+    {
+      "body": "Please review the attached workbook. I forgot to attach it.",
+      "decision": {
+        "status": "needs_review",
+        "actions": [],
+        "reason": "The requested workbook is missing; supply it before review.",
+        "evidence": [
+          {
+            "source_id": "body",
+            "quote": "Please review the attached workbook. I forgot to attach it."
+          }
+        ]
+      }
+    }
+  ]
+}

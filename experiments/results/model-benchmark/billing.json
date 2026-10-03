@@ -1,0 +1,26 @@
+{
+  "before": {
+    "observed_utc": "2026-10-02T13:08:15.896786+00:00",
+    "key_usage_usd": 1.935986843,
+    "key_byok_usage_usd": 0,
+    "key_error": null
+  },
+  "after": {
+    "observed_utc": "2026-10-02T15:29:30.515325+00:00",
+    "key_usage_usd": 3.280788146,
+    "key_byok_usage_usd": 0,
+    "key_error": null
+  },
+  "key_usage_delta_usd": 1.344801303,
+  "account_usage_delta_usd": null,
+  "account_balance_decrease_usd": null,
+  "credits_added_usd": null,
+  "generation_cost_known_sum_usd": 1.3448013030000001,
+  "generation_cost_calls": 595,
+  "missing_generation_cost_calls": 1,
+  "key_delta_minus_generation_sum_usd": -2.220446049250313e-16,
+  "reconciled": false,
+  "attribution": "Counter delta is observed actual consumption in this time window. Concurrent use can contaminate attribution; isolated key required for experiment-only attribution.",
+  "settlement": "A mismatch or missing record is pending, not replaced with token-price estimates. Reconcile later without new inference.",
+  "audit_wall_ms": 312889.33980092406
+}

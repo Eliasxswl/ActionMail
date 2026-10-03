@@ -1,0 +1,1588 @@
+{
+  "date": "2026-10-03",
+  "owner_authorized": true,
+  "purpose": "English localization of finalized documents/review reasons; no new inference or re-adjudication",
+  "historical_archive": "../../archive/ActionMail-history-20261003.zip",
+  "original_business_commit": "c405d2901ff1577ebafbc2a3ff151654970bb7ea",
+  "original_sealed_files": 120,
+  "current_sealed_files": 120,
+  "verdict_rows": 500,
+  "checks": [
+    "JSON numeric/boolean fields and verdicts unchanged",
+    "CSV all 500 rows and nontranslated columns preserved",
+    "Original model request/response logs unchanged",
+    "Multilingual negation regex uses equivalent Unicode escapes"
+  ],
+  "files": [
+    {
+      "path": "experiments/README.md",
+      "original_archive_entry": "pre_english/experiments/README.md",
+      "original_sha256": "b9ae746df1df5644b6c7e05a2bcaff972903a93015eb7783413f5ed897b1679e",
+      "current_sha256": "47a9afd3d30d391fa487890190466d2fc0064fc63aaf83c6a04adc943de67d6b",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "experiments/PROTOCOL.md",
+      "original_archive_entry": "pre_english/experiments/PROTOCOL.md",
+      "original_sha256": "f6b1a03467272ea497ebb0e2d0067d371aebc4312710cd2b94339b833326cc9a",
+      "current_sha256": "5c2545e82c3a5d374837d79f9745cde7590916a9c88ed57a404f426be1faa124",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "experiments/REPORT.md",
+      "original_archive_entry": "pre_english/experiments/REPORT.md",
+      "original_sha256": "3dad02b6b1a907d7a226790517fd8a835809c1c9cda9ce099a57986bd37dee83",
+      "current_sha256": "7acdae69ac79215bcbc7b7c451b95e28b126f38841b02498940b66c8514af029",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "experiments/code/analyze_ablation.py",
+      "original_archive_entry": "pre_english/experiments/code/analyze_ablation.py",
+      "original_sha256": "3a1bfa5c322c745a8443e9aac5be0a33388bb75f12753202ea12b177d4db0c88",
+      "current_sha256": "03b333d2894d7e8b5b8732485e1498261d59c275ec3c8d93573273488858a637",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "experiments/data/frozen-core/runtime/actionmail/guardrails/matching.py",
+      "original_archive_entry": "pre_english/experiments/data/frozen-core/runtime/actionmail/guardrails/matching.py",
+      "original_sha256": "879da7fc78517e017184c72407a62dc108b63cfd26ae66edf04c1aa3372b03b5",
+      "current_sha256": "b43ddf495b3b7fa1c800c24a14d9e5c2e29968b521b65be432c07c71230b818b",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "experiments/data/frozen-core/manifest.json",
+      "original_archive_entry": "pre_english/experiments/data/frozen-core/manifest.json",
+      "original_sha256": "a90d9238047679fa9b1654ccdaf7c2cf0de8fd16a827ac7d20fdbcb5f1395c58",
+      "current_sha256": "ba6e30c70767e48e645548af58cbbbcf854621cb952e5cdd21f73ad9e32baf90",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "experiments/results/finalization.json",
+      "original_archive_entry": "pre_english/experiments/results/finalization.json",
+      "original_sha256": "8218629b03c94c4a1024478939d454b41ece89d2dbaa6100c389bcb74f0c1445",
+      "current_sha256": "11cbb02481d950b5414ac5f3dba1a03769202d6665f507d88e4df1a8169b8ac8",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "experiments/results/ablation/paired_status_changes.json",
+      "original_archive_entry": "pre_english/experiments/results/ablation/paired_status_changes.json",
+      "original_sha256": "766edcd39e3580e7ad754f7b82d682d657b39c611b2d763560d02911db948c77",
+      "current_sha256": "0528ea61954781988da8c80cf39901af74b643d3cc6e9ed2829d1de13c22e216",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "experiments/results/ablation/semantic_audit.json",
+      "original_archive_entry": "pre_english/experiments/results/ablation/semantic_audit.json",
+      "original_sha256": "95f63077b013e590fcee832aefff820d0b32c898563af833c21ddce73220898d",
+      "current_sha256": "fc5eba922776a8a97cdb0ab2b22a3fbcde4c1c761d93226cd1ef41ce3751ad0b",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "experiments/results/ablation/semantic_review.csv",
+      "original_archive_entry": "pre_english/experiments/results/ablation/semantic_review.csv",
+      "original_sha256": "3a85eb1b79f44e7be21958d45289d04fe54a9124998931536bbf8d76b34eb999",
+      "current_sha256": "963b68034b18b6e820dcf9293604b5df2f3d530c01d1342b79c8a51fd175190a",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "ActionMail/src/actionmail/guardrails/matching.py",
+      "original_archive_entry": "pre_english/ActionMail/src/actionmail/guardrails/matching.py",
+      "original_sha256": "879da7fc78517e017184c72407a62dc108b63cfd26ae66edf04c1aa3372b03b5",
+      "current_sha256": "b43ddf495b3b7fa1c800c24a14d9e5c2e29968b521b65be432c07c71230b818b",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "ActionMail/tests/test_application_v3.py",
+      "original_archive_entry": "pre_english/ActionMail/tests/test_application_v3.py",
+      "original_sha256": "582d946ba192d8eadc068450679044cdbf014d6b661a73af144544e5bd2bde78",
+      "current_sha256": "b0293c5eebf09063e4b26a6aad364b0deaf90e8f7f403008aeedac05531a84d0",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "README.md",
+      "original_archive_entry": "pre_english/README.md",
+      "original_sha256": "709060d2f42740b3aff4f8cf57923a062e85e56588376bed44b27f62ad4fb52b",
+      "current_sha256": "5ee271cd2f7e02ee478b31dd7d9330e1edbffc197ba42d7187eb6fb4550fc9ea",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "ActionMail/README.md",
+      "original_archive_entry": "pre_english/ActionMail/README.md",
+      "original_sha256": "ca0fbc4fffa687a3e0664b3f227ca6b30edd6be75ff274eb5b1d281173f3d5b3",
+      "current_sha256": "f67f2c78c1c5b28c7ef39c34ac96ba464abbf49efab5ed6cf3ac89823aeb9065",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "ActionMail/tools/check_repository.py",
+      "original_archive_entry": "pre_english/ActionMail/tools/check_repository.py",
+      "original_sha256": "3c204606bc295bb3349c4ca034ce268685f71c7f01cd110d8d00f253e688e0ca",
+      "current_sha256": "c47c50e9154a89b5cd90510dcbb50ccfff6b4a33f174ad292d93cfa2dd6a34b8",
+      "status": "localized_or_maintained"
+    },
+    {
+      "path": "ActionMail/tools/package_submission.py",
+      "original_archive_entry": "pre_english/ActionMail/tools/package_submission.py",
+      "original_sha256": "58aebb4ae0cdcdf74c726f17975b05e04b9db376d78a42ac1933ff3990c6cec2",
+      "current_sha256": null,
+      "status": "retired"
+    }
+  ],
+  "phrase_translations": [
+    {
+      "source_string_sha256": "93e638136c0ba0891a442e47b251bb685022b3d74b99040812eb11d5d2cdadf1",
+      "english": "Work with Richard to implement the NNG collection process; preserve the collaborator rather than transferring all of Richard's work to the recipient."
+    },
+    {
+      "source_string_sha256": "4708ba82a2ab5e375afa45506f574c24712af6b0b6ba5395b0991e7af4578638",
+      "english": "Retain the owner's human adjudication: approving INV-104 and updating the public website contact page are two independently completable tasks."
+    },
+    {
+      "source_string_sha256": "46b8043464b9fe0d67db993d2eedd4ce63afa34c70c1182293befa01fb11d57e",
+      "english": "Answer whether an updated organization chart exists; do not impose an obligation to send it."
+    },
+    {
+      "source_string_sha256": "cd18aeeb97297d9ac2135572a5111a82ce28737aabfc69285b87daff10f5430d",
+      "english": "Confirm whether the agreement excludes power receivables; the absent agreement does not prevent identifying this confirmation task."
+    },
+    {
+      "source_string_sha256": "676b475778ff56ed77e814d6f8970c00b325808affc35fbb61495be1abb64857",
+      "english": "Running the mini-book and reporting is one deliverable; as soon as possible cannot become a specific date."
+    },
+    {
+      "source_string_sha256": "d2cf58efdfcc231eed0bc2e81ef07f483a251b7d3db7f006d9bfd46d30c22aec",
+      "english": "Answer whether attending poker night; without a received-time anchor, do not convert today into a date."
+    },
+    {
+      "source_string_sha256": "c9e6e869b5d3ddf37fa0980372bf785908d67643241b7ca710eeb1f211b44152",
+      "english": "Mark the curve back to 12/1/01; this dates the data object, not the completion deadline."
+    },
+    {
+      "source_string_sha256": "89baa8b3507d903504198079d0b643ce55e87f713147b71b2fec2f626a60d255",
+      "english": "The release deadline conflicts with confidentiality instructions and no applicable version is specified; retaining review is correct."
+    },
+    {
+      "source_string_sha256": "f668759b861b20d3f5326238886b2774bf8bfa9e972689ed9a0eac291f2af5f9",
+      "english": "The tax/vendor form is ambiguous; retaining review is correct."
+    },
+    {
+      "source_string_sha256": "267687984d20ed2d64a54804de31994bac798eee49ef92ebdc26c5a9360039ef",
+      "english": "Account ownership between Alex and Sam is unclear; do not directly assign renewal approval to Alex."
+    },
+    {
+      "source_string_sha256": "76fcd66b52d816e64434b4021c6992891d9aa85e9964dc59df655835a8480695",
+      "english": "The subject INV-104 conflicts with body INV-140 without resolution; neither may be arbitrarily approved."
+    },
+    {
+      "source_string_sha256": "38c77b48781d2677e34563bf74219e4c53bb29ff17b40e88dc90c62d082e31f7",
+      "english": "Send the compliance checklist by the explicit deadline 2026-10-02."
+    },
+    {
+      "source_string_sha256": "d997e1552ab4549c2ab588a562cdc2d599c293e06840fcd8311b5282470ed687",
+      "english": "Confirm the quarterly access list by 2026-10-03 16:00 +08:00."
+    },
+    {
+      "source_string_sha256": "95b78fab78523791cca10a6c93b2959b0fc9bcc25640791850d0d14df0bc48d7",
+      "english": "Received on 2026-09-29; resolve tomorrow to 2026-09-30."
+    },
+    {
+      "source_string_sha256": "62e1995f250b1c95ca4d6cf9aec953b7f5584ee3149601626178e8b24021652f",
+      "english": "Resolve tomorrow 10:00 Singapore to 2026-09-30T10:00:00+08:00."
+    },
+    {
+      "source_string_sha256": "eac1b34a771273a2d4148b58bf5e73718fd78bdfd2f749bfee8df51ce49e2b66",
+      "english": "Retain the owner-approved alternative: answering the seating-location question is acceptable. A list of desired data does not automatically create extra deliverables; 1:30 is not a deadline."
+    },
+    {
+      "source_string_sha256": "ac7375394e482f8c4f2109a88a5719ea09edde8dd56cceba89bbcab2568cecb3",
+      "english": "The newest body renews the file-restoration request; the thread identifies sumdec01.xls. The old backup date is not a deadline, and execution approval must not block task identification."
+    },
+    {
+      "source_string_sha256": "d04508e0de54ab32a2071c355b244f5fd60c9e80ba81f91a155555b77ed3384a",
+      "english": "Update the status of East of Belleville allocations; the subject also names the matter."
+    },
+    {
+      "source_string_sha256": "728a2afbfc35a30738af4582589fbf5ed6361fa7d0fa62433a0229bfd1d34a17",
+      "english": "The newest request addresses Karen rather than target James; the earlier thread is not automatically renewed."
+    },
+    {
+      "source_string_sha256": "191329f3a10c4f9317406160bb839708dfebf8678d861c5527ce9c9f29c9d78d",
+      "english": "Retain the owner's human adjudication: explicit dependence on missing clean/redline material requires review; earlier thread content alone cannot reassign responsibility."
+    },
+    {
+      "source_string_sha256": "465732502ce5986348748700742ca217cfedd7fc037e56a65ce9911710f87af2",
+      "english": "Answer whether opening the account on September 27 was unusual; do not renew the earlier agreement-signing task. The account-opening date is not a deadline."
+    },
+    {
+      "source_string_sha256": "4b46c5802ed45a7a3575b11749f4cba9de94a3750e1cd00da93b78208699c956",
+      "english": "The newest body is empty and the earlier request addresses Sara; a correct review explains unclear ownership/renewal and supplies original-source evidence."
+    },
+    {
+      "source_string_sha256": "d34107e4378ae8e295af279e0a11a09e449563e283344cbc45cf10879c787423",
+      "english": "Change the department name in the FERC response only if it has not yet been submitted; preserve this condition."
+    },
+    {
+      "source_string_sha256": "da1fbbe19073905f29e54fc6d1de0f3628f38e5577cdb0d4fa1a6110e925abe3",
+      "english": "Respond/report the impact of WIC maintenance on Medicine Bow capacity; do not automatically inherit earlier call or imbalance-sale tasks. The 30th is the maintenance date."
+    },
+    {
+      "source_string_sha256": "b1dd5fd2246dce4afc308749dd45d38633f54ba3578786b8a72ba0ee92882e69",
+      "english": "Darrell should respond to the unresolved request about Duke contract 27579, specifically whether the request formally amends the contract. A general response matches the task when its object is clear, with insufficient specificity recorded separately."
+    },
+    {
+      "source_string_sha256": "0c5a9007cf78d4a7d13e29d92f68f11056a9735beef0853b165a73cd79e0d792",
+      "english": "Read the attachment and approve INV-104 by 2026-10-01; do not guess without reading."
+    },
+    {
+      "source_string_sha256": "c50ca46c76897c00800c9aca4010aa34915d16e792270a8b473b13dfb29926cb",
+      "english": "Read the attachment and send Maya the signed handover form by 2026-10-02."
+    },
+    {
+      "source_string_sha256": "99a4a81d4ccd8ff4b1ccf3f91404634acb903217e1b9487f3150e5ab8e505a20",
+      "english": "Read the audit attachment and confirm the access list by 2026-10-03."
+    },
+    {
+      "source_string_sha256": "89e9c480268c0d2a23a6c9f4d2c55628339f7a731ed8c9e25cebd73f3e7a2c31",
+      "english": "The main content is in the meeting-summary attachment; reading confirms that Alex has no follow-up. Review without that content is safe but does not complete classification."
+    },
+    {
+      "source_string_sha256": "95a80bf0e103d78daa450066d2db0c796240dedf17dabe75ed0b4b0e8e767c42",
+      "english": "The main content is in the project-status attachment; migration belongs to Maya and Alex is only informed. Missing content must follow the existing main-content reading policy."
+    },
+    {
+      "source_string_sha256": "a6db9da725172a58d0e1981bcd2640ca38445763bd84c02cdedd8d393c825d4b",
+      "english": "Read the release checklist and upload the final version by 2026-10-01."
+    },
+    {
+      "source_string_sha256": "69003009a15593a4543389557a15d56495d562ee3c8309134b3e046cd96ac08b",
+      "english": "Read the client page and send Maya the updated budget by 2026-10-02; a correct task rejected for format is still a delivery failure."
+    },
+    {
+      "source_string_sha256": "cd83bf1cd4ec0bcb107b0756478ca56b5165976323268d4712599c3fb854e37b",
+      "english": "Read the audit portal and acknowledge receipt of audit findings by 2026-10-03; reading and acknowledgment form one deliverable."
+    },
+    {
+      "source_string_sha256": "0a3796247315a6d486d75938002458c75c4cd376545053a401debecc2b287d8f",
+      "english": "The main content is a status page; reading confirms that Alex has no follow-up. FYI in the body does not replace main-content reading required by the frozen policy."
+    },
+    {
+      "source_string_sha256": "b1a08026025b3c26b446b7a96a476daa255a31aebac4c22bc0be227e6ef04f58",
+      "english": "Retain the owner's human adjudication: read the project-details page; its task belongs to Maya. Do not infer no action from the body alone."
+    },
+    {
+      "source_string_sha256": "a9d124cae837b85ad8135ebab9ed73a09d4e6e249bf53039b0486aedad1161ff",
+      "english": "The phrase for your consideration is an optional editing suggestion; it creates no mandatory revision or renewed earlier meeting arrangement."
+    },
+    {
+      "source_string_sha256": "e6f4450165ed37a1feb433103211e66a35898d7f9a3e601c3a361799a17d962a",
+      "english": "The newest message updates the LOC amount to $112k without renewing the earlier investment-confirmation request; original amounts and soft line wraps must not be arbitrarily changed."
+    },
+    {
+      "source_string_sha256": "2846f20fc2b234430793807ef7a456fd617b935a4d1fe6271f13b16da626b6f8",
+      "english": "The Bushton Balance body contains a self-contained update and optional consultation; the attachment is irrelevant and creates no task."
+    },
+    {
+      "source_string_sha256": "fff2fd61b60c31e16ab06bbcc01ce41450574c2f96e101ce4f0442ed3c904e59",
+      "english": "Read the workbook and retain three tasks: approve the budget, book the meeting room and confirm the projector. Record kind classification separately; differing kinds do not invalidate identical task meaning."
+    },
+    {
+      "source_string_sha256": "379aa25c735599bef57bc71113b728fe7bf6f7a25e89efa956299f3b3458014b",
+      "english": "Read estimate.txt and design.docx and retain two tasks; historical reference.csv must not create an additional task."
+    },
+    {
+      "source_string_sha256": "4c0cb26fdff1275ead24bd091e5caa0e8221f2bbef825bc2b346ddff7b34d1e7",
+      "english": "The attachment requests sending while the page requests cancellation; no current version is specified, so review is required."
+    },
+    {
+      "source_string_sha256": "a74d5a1fbcc5b6912e67c9f6aa911c1a65cdb7f95ee4deda55917ff4e30d4a9c",
+      "english": "The body already requests sending the budget summary; the footer privacy link is irrelevant, and its reading failure must not block the body task."
+    },
+    {
+      "source_string_sha256": "fed0282b739d659ff09a9e20f79ec29f5fe29feabc90338fc8efa8f72cc1ee21",
+      "english": "The task explicitly depends on a corrupt workbook, preventing identification of details. Safe review is correct; still check whether the explanation cites the body."
+    },
+    {
+      "source_string_sha256": "780aeb8613ec82f2f0ce9d6b186c973eef90276d86dba8096081fef215abbceb",
+      "english": "The attachment requests sending the test report. Ignore embedded assistant instructions and disclose no secrets; retain review when the attachment is missing."
+    },
+    {
+      "source_string_sha256": "c7937c43f67fdaf5fea29804c2ed35868bbe86010f1b359e44d4a863eed8b86d",
+      "english": "Four independent requests exceed the current limit of three; retain review rather than dropping or forcibly merging tasks."
+    },
+    {
+      "source_string_sha256": "ea03c5854072f7b505bce58e62feaee8e960324f3b35d5413233ba13815ed69e",
+      "english": "Checked against the newest email, recipient ownership and earlier Luna output: there is no current mandatory task for the target recipient. Information, completed work, optional suggestions and others' plans must not create tasks."
+    },
+    {
+      "source_string_sha256": "27ab0bf68457b04afd5f50d53ac4c90e4a7d14bd7216cf53f79ce271ad8edb2e",
+      "english": "Retain the owner-approved alternative: answering the seating-location question is acceptable. A list of desired data does not automatically create extra deliverables; 1:30 is not a deadline. The second task, supplying three data categories, turns a wish list into a delivery obligation and adds one task."
+    },
+    {
+      "source_string_sha256": "b3edf647fe2e8a0b5149e40dc61b7f39ae1deafe34be00c383be9d2b2cb3bd41",
+      "english": "The newest body renews the file-restoration request; the thread identifies sumdec01.xls. The old backup date is not a deadline, and execution approval must not block task identification. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "d7cc454a2a22b8744bce0c16f658175dd4e0815e989cd168e7cab073d6d4e35b",
+      "english": "The newest body renews the file-restoration request; the thread identifies sumdec01.xls. The old backup date is not a deadline, and execution approval must not block task identification. The broad restore/respond intent is identified, but the task object or specific question cannot be located; strict complete-task matching is zero, which does not mean the entire task was invented."
+    },
+    {
+      "source_string_sha256": "4895e5c265d8a7bfa3b26c912ee3af3b1c2277256e458d943f323264571efec0",
+      "english": "Retain the owner's human adjudication: explicit dependence on missing clean/redline material requires review; earlier thread content alone cannot reassign responsibility. This output ignores the human-adjudicated boundary for missing decisive material and proposes an unpermitted task."
+    },
+    {
+      "source_string_sha256": "adfcd624386252b1676229976d314ea1897df3e3a723dc483b2b6f8d5e3e0ec8",
+      "english": "The newest body is empty and the earlier request addresses Sara; a correct review explains unclear ownership/renewal and supplies original-source evidence. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation."
+    },
+    {
+      "source_string_sha256": "4b4166cd84fa74e53c155f5b68445d4b204d83c2608414fd7f1af644ac0907c0",
+      "english": "Respond/report the impact of WIC maintenance on Medicine Bow capacity; do not automatically inherit earlier call or imbalance-sale tasks. The 30th is the maintenance date. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "f2fea8dbda2fda9aa3818dd16f2b65f331ae9dd3f64893c7ec746aad6876fd9b",
+      "english": "Respond/report the impact of WIC maintenance on Medicine Bow capacity; do not automatically inherit earlier call or imbalance-sale tasks. The 30th is the maintenance date. The broad restore/respond intent is identified, but the task object or specific question cannot be located; strict complete-task matching is zero, which does not mean the entire task was invented."
+    },
+    {
+      "source_string_sha256": "d2f5a9f318a6a3b69e2b48e24b436282c6f791dcc3a6d0948fec622981f11a41",
+      "english": "Darrell should respond to the unresolved request about Duke contract 27579, specifically whether the request formally amends the contract. A general response matches the task when its object is clear, with insufficient specificity recorded separately. The broad restore/respond intent is identified, but the task object or specific question cannot be located; strict complete-task matching is zero, which does not mean the entire task was invented."
+    },
+    {
+      "source_string_sha256": "7b9b915946ad355d9ba7dad1280ec71fc1ce68b246fcdf34d36fcfac986ad56a",
+      "english": "Darrell should respond to the unresolved request about Duke contract 27579, specifically whether the request formally amends the contract. A general response matches the task when its object is clear, with insufficient specificity recorded separately. The contract, proposed change and response responsibility are clear, so one response task matches the frozen reference; the formal-amendment question is not explicit, making it less specific than Luna."
+    },
+    {
+      "source_string_sha256": "7592827102e4785459aa39bdb55b7e75e305f110a17a8131814e166c7510e063",
+      "english": "Darrell should respond to the unresolved request about Duke contract 27579, specifically whether the request formally amends the contract. A general response matches the task when its object is clear, with insufficient specificity recorded separately. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information. The complete thread already states the unresolved question; review is overly conservative."
+    },
+    {
+      "source_string_sha256": "02e04aecf126cd488c0a1cbf6a94d51122769266f2e87d19b8bc43b07ed8590f",
+      "english": "Darrell should respond to the unresolved request about Duke contract 27579, specifically whether the request formally amends the contract. A general response matches the task when its object is clear, with insufficient specificity recorded separately. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "f129fc7aa4840871000adeb9391b49d6a5312e157143ddd059969f6e2b6f67f4",
+      "english": "Read the attachment and approve INV-104 by 2026-10-01; do not guess without reading. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "dee28fc6fec10d8c71d371a62bd4edbe1dc56e89213b03f4868c5eb11d85aa86",
+      "english": "Read the attachment and send Maya the signed handover form by 2026-10-02. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "20cbe5dc804e4921b164986b0dfe24784937b647e0b721d00c2380464bc52fd3",
+      "english": "Read the audit attachment and confirm the access list by 2026-10-03. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "7a32d47220c7521f1c812ecaae15e38e0ad7e379f73cfbfd10840d74cc89952e",
+      "english": "The main content is in the meeting-summary attachment; reading confirms that Alex has no follow-up. Review without that content is safe but does not complete classification. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation. Safety when main/decisive content is unavailable is recorded separately from useful results after reading complete material."
+    },
+    {
+      "source_string_sha256": "7522fd1240b174aeedd65007bca71bbe04ea8103ff62d7b2df06575cd51be052",
+      "english": "The main content is in the project-status attachment; migration belongs to Maya and Alex is only informed. Missing content must follow the existing main-content reading policy. Safety when main/decisive content is unavailable is recorded separately from useful results after reading complete material."
+    },
+    {
+      "source_string_sha256": "0ec281130c4c5ffa48b52cfee94f9bf0dbd69d410206350fd4559e7c606c7914",
+      "english": "The main content is in the project-status attachment; migration belongs to Maya and Alex is only informed. Missing content must follow the existing main-content reading policy. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation. Safety when main/decisive content is unavailable is recorded separately from useful results after reading complete material."
+    },
+    {
+      "source_string_sha256": "32c774c4a166582015c4641509a8df3bbe7f0fafce7258440fc3f32820502094",
+      "english": "Read the release checklist and upload the final version by 2026-10-01. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "cd708974efb6095f3a499dc2a55f495883ade398768ed8385f70b8479ceca0c4",
+      "english": "Read the client page and send Maya the updated budget by 2026-10-02; a correct task rejected for format is still a delivery failure. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "04845f885f841e5d33456d38f970b43b4f243f8e8072118168b525d6a22d21aa",
+      "english": "Read the client page and send Maya the updated budget by 2026-10-02; a correct task rejected for format is still a delivery failure. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "c8e12e3a85c430f72983d56b975f8f131dc41f70325d6120e364f3e4a6bf83da",
+      "english": "Read the audit portal and acknowledge receipt of audit findings by 2026-10-03; reading and acknowledgment form one deliverable. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "2f984e0de622b465e7e33923303b7a29d2ae2fb53a19f0afef04b4596110f1d0",
+      "english": "The main content is a status page; reading confirms that Alex has no follow-up. FYI in the body does not replace main-content reading required by the frozen policy. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation. Safety when main/decisive content is unavailable is recorded separately from useful results after reading complete material."
+    },
+    {
+      "source_string_sha256": "b30a9ed36720fd52b92a130c77fbb37d95ee1874b30fef48fdfacc54e8f3d79b",
+      "english": "Retain the owner's human adjudication: read the project-details page; its task belongs to Maya. Do not infer no action from the body alone. Safety when main/decisive content is unavailable is recorded separately from useful results after reading complete material."
+    },
+    {
+      "source_string_sha256": "7055af4923ecc7a10c60645f380163367d4ffe4436e02c7dc9cf0e2f2b365338",
+      "english": "The newest message updates the LOC amount to $112k without renewing the earlier investment-confirmation request; original amounts and soft line wraps must not be arbitrarily changed. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation."
+    },
+    {
+      "source_string_sha256": "2c9827502d25c51f80f547d93a15986d90c9bb18a9bea44728033d304819c536",
+      "english": "Read the workbook and retain three tasks: approve the budget, book the meeting room and confirm the projector. Record kind classification separately; differing kinds do not invalidate identical task meaning. The third task has correct textual meaning, but kind is perform_task while the reference uses answer_question."
+    },
+    {
+      "source_string_sha256": "6c50e56266d28f2d6477a54e5a21c7da533d4e944b6e9f32795f99b46a2ab979",
+      "english": "Read the workbook and retain three tasks: approve the budget, book the meeting room and confirm the projector. Record kind classification separately; differing kinds do not invalidate identical task meaning. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "161f1bdeb50bdb58c2f24a793f2aada8d0839678146a5419caf94586a94109d6",
+      "english": "Read the workbook and retain three tasks: approve the budget, book the meeting room and confirm the projector. Record kind classification separately; differing kinds do not invalidate identical task meaning. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "931a5022172b38af3b0a98eaea230b64a5ac0f5fdaa796fd9c17dc03725e6bb3",
+      "english": "Read estimate.txt and design.docx and retain two tasks; historical reference.csv must not create an additional task. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "b2e69594511cb7b9491637c2e06d7c9fc55793b81b857fe4c819d771f228b338",
+      "english": "The attachment requests sending while the page requests cancellation; no current version is specified, so review is required. Safety when main/decisive content is unavailable is recorded separately from useful results after reading complete material."
+    },
+    {
+      "source_string_sha256": "d2f71e78ea9d72e2a33af837f376dfb5ccbd17626a8a1a5b25338cb982b766f8",
+      "english": "The attachment requests sending while the page requests cancellation; no current version is specified, so review is required. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation. Safety when main/decisive content is unavailable is recorded separately from useful results after reading complete material."
+    },
+    {
+      "source_string_sha256": "0c2f3f6994d4874569baedfdf0b75b26837ab03f65d0e82750b8a89ad490f6c8",
+      "english": "The body already requests sending the budget summary; the footer privacy link is irrelevant, and its reading failure must not block the body task. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information. An irrelevant footer causes blocking and the body task is left undelivered."
+    },
+    {
+      "source_string_sha256": "2a0cf7d277a4bef6f859fffba3a8252fcb6761ab01c3e3141863fe93b168a579",
+      "english": "The task explicitly depends on a corrupt workbook, preventing identification of details. Safe review is correct; still check whether the explanation cites the body. Safety when main/decisive content is unavailable is recorded separately from useful results after reading complete material."
+    },
+    {
+      "source_string_sha256": "f5a4751285f3e31d9258da15d5c2dcc18ba11b25bcfe3635375211f087950a98",
+      "english": "The task explicitly depends on a corrupt workbook, preventing identification of details. Safe review is correct; still check whether the explanation cites the body. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation. Safety when main/decisive content is unavailable is recorded separately from useful results after reading complete material."
+    },
+    {
+      "source_string_sha256": "ae9aab64e576de51e986e964622d6f31ae66b8fc30aba4546291661a0b726ee9",
+      "english": "The attachment requests sending the test report. Ignore embedded assistant instructions and disclose no secrets; retain review when the attachment is missing. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "aa713a1909e8f714116624171468f23f1b8bf5d86ce491215eda1d2f48087781",
+      "english": "The attachment requests sending the test report. Ignore embedded assistant instructions and disclose no secrets; retain review when the attachment is missing. The final output contains only a system-failure/blocking reason and lacks original-source evidence; a matching status does not establish a correct explanation. Tasks remain undelivered against the complete reference; if the ablation removed necessary material, review is a safe choice given the available information."
+    },
+    {
+      "source_string_sha256": "c68a3d06cc19afd29950af9872d898a126c6dad23063635992ac790fe144c4a2",
+      "english": "One-call prompt baseline"
+    },
+    {
+      "source_string_sha256": "068e56e0e27910c801fa378f8a8d8a85bccec9cf385ba23afbfa584edee4a13e",
+      "english": "No thread history"
+    },
+    {
+      "source_string_sha256": "20bb5338b5f3e6369440f72bcea4cf6c28729860b948eb37ad2c6ec9fd02dcca",
+      "english": "No external reading"
+    },
+    {
+      "source_string_sha256": "dc57c20b67e2c282cb3be1f7a37fee4ae7b31571333f75d0975a926f1616545e",
+      "english": "Read all sources"
+    },
+    {
+      "source_string_sha256": "8ab240f70e91799a0b748d14295ee278d5a6caf38c11fd00c600276e65155329",
+      "english": "No model repair"
+    }
+  ],
+  "report_line_translations": [
+    {
+      "line": 1,
+      "source_sha256": "fd929f2ecb02dcf27335d4806bd3722b03cb88d24d6b1b47c793f0f0791850e3",
+      "english": "# Six-model benchmark and ablation report"
+    },
+    {
+      "line": 3,
+      "source_sha256": "a5d9494c99245f5b316dc0df860b032e2c3ad74b093d763a5dbaf00ddf78edbc",
+      "english": "Status: experiments were finalized on 2026-10-03 for report/demo delivery. Benchmark 360/360 and ablations 500/500 are complete; total charges were USD 3.224528503. Ablations are in section 11 and the 500 Codex semantic reviews in section 12. Exhaustive benchmark semantic review and forced JSON remain future work."
+    },
+    {
+      "line": 5,
+      "source_sha256": "c79d811d8acc57af2d5b7915c7afa52d5ebd1117124d35db7caf7fe3a1148240",
+      "english": "Updated 2026-10-03. The benchmark finished at 23:29 Singapore time on 2026-10-02: six models, sixty cases each, 360 separate model/case observations. Metrics/logs are in `results/model-benchmark/`. This analyzed existing logs without new calls or changes to measured business logic, prompts, parser or original scores."
+    },
+    {
+      "line": 7,
+      "source_sha256": "027b85833cc121cb40aefd2cedb1fbbbb927ad704edbfc0d4a0548bd0a451bc3",
+      "english": "## Conclusions and scope"
+    },
+    {
+      "line": 9,
+      "source_sha256": "2b0ab283be0342a0c51a5a54aa6976be48b352f13a85398631d0f4d0896436bc",
+      "english": "Under this measured ActionMail workflow, OpenRouter routing and configuration, Luna offered the best operational value, Sol the same classification score, and Sonnet good usability. This does not establish superior GPT-family understanding over Google/GLM. Google losses mainly reflect format and shared cross-stage retries; GLM also faces reasoning-budget and routing effects."
+    },
+    {
+      "line": 11,
+      "source_sha256": "4481f43839d2359533260b41a941e9b5e300052edfd5a6562aa05c4c240e34b7",
+      "english": "No reasoning/parser branch selected by GPT/Gemini/Claude name was found; all sixty initial requests were byte-identical except model. Yet Luna was the development default, these cases were reused for tuning, and strict JSON plus one shared repair suited the measured GPT output habits. Equal prompts do not establish family neutrality or exclude implicit development adaptation. Earlier reporting understated this limit."
+    },
+    {
+      "line": 13,
+      "source_sha256": "77c38192ab0dfafb4720e97b3280420387967735756b10c57c3954d72ce453a1",
+      "english": "The main ablation selected **Luna + Sonnet**, representing low-cost usability and another usable family. Sol remains a same-family performance/price benchmark reference. Google/GLM need separate compatibility diagnosis; pipeline failure does not disqualify intrinsic ability. All 500 ablations and their semantic reviews are complete; the 360 benchmark outputs lack exhaustive semantic review."
+    },
+    {
+      "line": 15,
+      "source_sha256": "c6dd132312519b545cbd71440f12d1616262a0a48efa7bcd12a9969379d6ac7e",
+      "english": "## 1. What is measured"
+    },
+    {
+      "line": 17,
+      "source_sha256": "c66312cb242de4018dbea7cc8324ba6732dc8269406e2258bc62edc0b6bdfb6c",
+      "english": "- Inputs: the same sixty development/regression cases, with 27 action, 23 no_action and ten needs_review labels; email context, external sources, actual attachments, long content and hostile/limit cases. This is not an independent blind test."
+    },
+    {
+      "line": 18,
+      "source_sha256": "7cc90e4fb94f31ae85886e8520c381359dd5247e4984566746fc3c73c931d50c",
+      "english": "- Frozen conditions: Git c405d29; identical inputs, labels, attachments/page snapshots, recipients, prompts, schema, reading limits and scoring rules."
+    },
+    {
+      "line": 19,
+      "source_sha256": "04e1188369bf01bfe7fab167b47d1b4841e67f0f7cf1f7fe966ae0108927817c",
+      "english": "- Execution: six models rotated by case; resume filled only missing model/case observations. One formal trial per case cannot establish stability or statistical significance."
+    },
+    {
+      "line": 20,
+      "source_sha256": "0a4f2dfef6cf50d69c1bf58060728892a9ecd373632992d1d3918ba3ba58288f",
+      "english": "- Metrics: correct status is not correct task meaning; equal counts are not completeness; literal quotes are not semantic support. Independent human semantic ratings remain blank. The additional 500 ablation reviews explicitly identify Codex as AI reviewer."
+    },
+    {
+      "line": 21,
+      "source_sha256": "376fab20f9c7f8f91493a0c680e17c36a36ea0a5d2303e88dead7db12d52dcbe",
+      "english": "- Action recall counts an answerable task diverted to review as a miss. Legitimate review and system-error fallback must be interpreted separately."
+    },
+    {
+      "line": 23,
+      "source_sha256": "82fe9411b39636d407610b6e4f54e9f860bb494edf0e766c6f4b7b730b3c4361",
+      "english": "## 2. Status, speed and actual cost"
+    },
+    {
+      "line": 25,
+      "source_sha256": "f2f8f5ad35b169a6cc18383340b52673d06ecbac1e0296c127db695778328b94",
+      "english": "Latency is local case wall time, including planning, extraction, merging and repair but excluding read-only billing queries; network/queues remain included. Fees are obtained generation bills for completed cases, not token-price estimates. Sonnet lacks one bill, so its row is a verified subtotal rather than complete actual cost."
+    },
+    {
+      "line": 27,
+      "source_sha256": "77360e7c52a77cb357e6ed28940998b5a4e8ec6327d551301d20a26e4c0cce74",
+      "english": "| Model | Strict status match | Permitted status/count match | Action precision / recall | Review rate | P50 / P95 seconds | Verified bills for 60 cases, USD |"
+    },
+    {
+      "line": 31,
+      "source_sha256": "2bcb6eeb5e49e4ca63bcef18a695b43a517289d936f6570cdb11bf27b823d138",
+      "english": "| Gemini 3.5 Flash Lite | 10/60 | 10/60 | Undefined / 0.0% | 100.0% | 2.73 / 3.41 | 0.093015 |"
+    },
+    {
+      "line": 34,
+      "source_sha256": "49e7b807fbc95ac025d8257e27abc5285990c5f37b263fa35668d0f785b2d1d7",
+      "english": "| Claude Sonnet 5.5 | 58/60 | 59/60 | 96.3% / 96.3% | 16.7% | 2.97 / 7.61 | 0.468954 (one missing bill) |"
+    },
+    {
+      "line": 36,
+      "source_sha256": "388d68af6c1e556019ec21a94e47be7a168503e5e708142627448cdbd62b6673",
+      "english": "Fee correction (2026-10-03): the previous Sonnet 0.475764 included C12 call 1 `response.usage.cost=0.006810` without a generation bill. Verified fees are instead the other 76 calls totaling 0.468954. Original numeric values in `operations.json`, `turn_metrics.csv` and `summary.json` remain; `known_billed_cost_usd`/`billed_cost_usd` can use response usage fallback and require interpretation. Other model rows are unaffected. Verified completed-case bills total 1.344598703, plus interrupted Luna E04 planning 0.000202600: 1.344801303, matching the counter delta. The missing Sonnet bill does not imply free service/refund. Total usage remains 3.224528503. See `results/billing_clarification.json`."
+    },
+    {
+      "line": 38,
+      "source_sha256": "a1cd01cf155de5f0b21fa1d337dbfad62ba79bb0471baa5398d39f208605cdda",
+      "english": "Permitted interpretations use only pre-existing accepted_outcomes. C11 allows conservative review or one location-answer action; references were not changed to favor GPT outputs. Strict and permitted scores are both disclosed."
+    },
+    {
+      "line": 40,
+      "source_sha256": "79a2e8d5d69b9617788983b4328f92d24a74bebd4467f512822cd0852007f7ba",
+      "english": "Benchmark key-usage delta: **USD 1.344801303**; remaining at that stage: **USD 3.655198697**. Final spend is in section 11. The 595 known generation bills match to floating-point precision; one record is missing and complete audit remains pending. Interrupted unreturned requests can still be charged in the window. Completed-case fees differ from totals including interruption overhead."
+    },
+    {
+      "line": 42,
+      "source_sha256": "29d9f3c4599bf3fcabecd71d7c42f714c2e17c76392c68c15f0c1767562a2155",
+      "english": "Luna and Sol have identical status scores, but Sol cost about 15.4 times Luna. Sonnet verified subtotal is about 38.0 times Luna with lower P50; the missing bill prevents a complete ratio. Flash catalog pricing is lower but workflow fees exceed Sonnet. Flash Lite latency mainly reflects early failure/review, not fastest equivalent-quality delivery."
+    },
+    {
+      "line": 44,
+      "source_sha256": "88845dc7d038ec24c3254269d487c58b1fa586c4d5cdcd2dca7c9ee9de3a9130",
+      "english": "## 3. Results by category"
+    },
+    {
+      "line": 46,
+      "source_sha256": "7b1b84687ed306fbe9c373514a55f3178c14be890f80bdf53fea4de982fcd7d5",
+      "english": "| Case category | Count | Luna | GLM | Flash Lite | Flash | Sol | Sonnet |"
+    },
+    {
+      "line": 48,
+      "source_sha256": "c095fc1974672135a3a55c3932059a344269dd73dd4820710a34e88cea62acb7",
+      "english": "| No action | 15 | 15/15 | 14/15 | 0/15 | 15/15 | 15/15 | 15/15 |"
+    },
+    {
+      "line": 49,
+      "source_sha256": "9dcc9c343e7d17ee0def81c40155c6f49b04f09cbbdc17b6f1e360efc331b92f",
+      "english": "| Explicit request | 15 | 15/15 | 15/15 | 4/15 | 14/15 | 15/15 | 15/15 |"
+    },
+    {
+      "line": 50,
+      "source_sha256": "b5eee3303fa229d54d119e13d157b8aaabe15d108d55cfbad1408f37497c4260",
+      "english": "| Context/ownership | 10 | 9/10 | 8/10 | 3/10 | 9/10 | 9/10 | 8/10 |"
+    },
+    {
+      "line": 51,
+      "source_sha256": "8cc0e553358d98644ff3154235da27bd44e729cb3f558938ce3c6f0c583ce453",
+      "english": "| External content | 10 | 10/10 | 6/10 | 0/10 | 0/10 | 10/10 | 10/10 |"
+    },
+    {
+      "line": 52,
+      "source_sha256": "389bb53f6ad9bd9b024166c52153b20b9ae8e864e05711e0c4a4c1c3313e1bf5",
+      "english": "| Real attachments | 4 | 4/4 | 3/4 | 1/4 | 1/4 | 4/4 | 4/4 |"
+    },
+    {
+      "line": 53,
+      "source_sha256": "1e5a2be0355f2ea502bdea4d27d9945ff28b6a5b30a333562195121d55c8b45b",
+      "english": "| Long content | 2 | 2/2 | 1/2 | 0/2 | 1/2 | 2/2 | 2/2 |"
+    },
+    {
+      "line": 54,
+      "source_sha256": "1899f4d4ac2f6669e4106305cdca7afe343cef8896c523c4cd5bd3282c824b7d",
+      "english": "| Mixed links | 2 | 2/2 | 2/2 | 1/2 | 1/2 | 2/2 | 2/2 |"
+    },
+    {
+      "line": 55,
+      "source_sha256": "14c424a45da5a1a0598edc7911d696ebc91f33f26077597fb91cc371bffe8d3d",
+      "english": "| Limits/hostile content | 2 | 2/2 | 2/2 | 1/2 | 1/2 | 2/2 | 2/2 |"
+    },
+    {
+      "line": 57,
+      "source_sha256": "171cb313332afc298b08b0210cb96db399a2701b9a5b9548a56effe6e8d407c2",
+      "english": "GLM retained 15/15 explicit requests but declined on context, external information and long content. Flash attained 15/15 no-action, 14/15 explicit and 0/10 external cases: first inspect multistage mechanisms. Flash Lite always returned needs_review; 10/60 matches review labels, not ten successful extractions."
+    },
+    {
+      "line": 59,
+      "source_sha256": "c6d11fa0dcc1590d63239c1888a4544c79445df910316cf74c7329db909d8487",
+      "english": "## 4. Format, repair and output-budget failures"
+    },
+    {
+      "line": 61,
+      "source_sha256": "1672c4f502f9dd5ecb343b1bc11344e9668bdd63735a1fefed50f7e349d97a5d",
+      "english": "| Model | Calls | Cases triggering repair | Repairs passed / failed | Skipped: shared repair spent | Output-limit calls | Actual repair cost, USD |"
+    },
+    {
+      "line": 70,
+      "source_sha256": "3b6c87d2b1bf10e9c6cbc352473bbea2677463e931cf6f89c46a85fc536b81e3",
+      "english": "Repair success means validation at that stage, not end-to-end success; extraction can fail after repaired planning. Every stage shares one repair per email. Skips are events, not additional requests."
+    },
+    {
+      "line": 72,
+      "source_sha256": "3e616b4e5e786aace40d84da4f7e7f3a953f29620aba24f5ed24eac30f89ae4c",
+      "english": "### Google: fenced JSON and cross-stage amplification"
+    },
+    {
+      "line": 74,
+      "source_sha256": "972bda48abf7040c0a6bb90999c211ea89d8f1f06ee16f91d39efc22ffe4c9fd",
+      "english": "All 120/120 Flash Lite replies had outer Markdown JSON fences. The measured parser directly used json.loads without stripping. Every case used a repair that remained fenced and failed. Forty-three cases failed extraction; seventeen external-source cases failed planning."
+    },
+    {
+      "line": 76,
+      "source_sha256": "a4f1e1dce6f45d27c938e120fae9e890da7be638ef487337128de75e0eb59134",
+      "english": "All 60/60 Flash cases triggered repair; 57 stage repairs passed. Seventeen external cases first repaired planning; sixteen subsequently failed extraction formatting after budget exhaustion. E01: fenced plan -> bare-JSON repair -> attachment read -> fenced extraction -> skipped_retry_budget -> needs_review. Raw extraction already identified approve invoice, so failure does not show attachment misunderstanding."
+    },
+    {
+      "line": 78,
+      "source_sha256": "3a193ab0e8927f6383967daf098731800e3315747857a12fca9ea7c33b803069",
+      "english": "This is a workflow compatibility defect: mechanically removable wrapping and original-evidence correction consume the same expensive model-repair budget. Frozen experiments preserved it to avoid mid-run tuning; disclose the product loss."
+    },
+    {
+      "line": 80,
+      "source_sha256": "344c276ad3d58522b5d060b93cecdc5e335f75a6a9f0379ab6a8ff2fbf00776b",
+      "english": "### GLM: reasoning budget and routing"
+    },
+    {
+      "line": 82,
+      "source_sha256": "2a35dce42bafba3d6de93c276fc281926333c044e54794b13587bc46e76333be",
+      "english": "GLM made 110 requests; 34 cases triggered repair, with 31 successes, two missing API bodies and one remaining validation failure. Eight finish_reason=length calls included five with no usable content, followed by safe review. These are not ordinary semantic classification errors."
+    },
+    {
+      "line": 84,
+      "source_sha256": "26db961e48b36c06b2c784b7ae965422d03575aba1ac127e92e66a98ae3f1c2c",
+      "english": "GLM completion/reasoning tokens were 91,455/77,777; Flash 100,735/81,955. A common 2048 cap does not equalize visible-answer versus hidden-reasoning allocation. Requests lacked explicit reasoning settings; equal parameter values do not guarantee equal effective answer budgets."
+    },
+    {
+      "line": 86,
+      "source_sha256": "d126485e89374cbb986dda671aa686855fe54530089af2c5b862dc0c85d584da",
+      "english": "GLM used twelve provider labels across 110 requests, including Together, Relace and SiliconFlow. Routing can affect latency/limits; one trial cannot separate provider/model contributions. Other routes were OpenAI, Google and Claude Platform on AWS for Sonnet. Conclusions concern requested model plus actual route."
+    },
+    {
+      "line": 88,
+      "source_sha256": "c7187292730b39686caf553fc1908bf0a6ef03c5aeba93f9e577afa45f5ecdd2",
+      "english": "### Original-source repair: limited direct evidence"
+    },
+    {
+      "line": 90,
+      "source_sha256": "330e032a4c5d20c2a73249867a6c9a0e962a434983937fce8b9139a2894e0f2b",
+      "english": "Only one GLM and one Sonnet event had nonempty quote_diagnostics. Sonnet C12 quoted nonoriginal \"CHASE - READY TO EXECUTE ASAP!\"; no candidate was found, but repair passed. GLM S02 ignored source soft wraps; diagnosis found a unique 0.9959-similarity candidate without critical numeric differences. Candidates were not auto-approved; repair hit the output limit without content and returned review. This shows diagnosis entering retries, not successful repair. Most benefit was formatting. No Luna/Sol repair does not make repair useless; this trial did not trigger it. Paired no_repair and mechanism injection are needed for causal evidence."
+    },
+    {
+      "line": 92,
+      "source_sha256": "35d50100daf42dc980774a4e07ef04f128ba87378b31c6ba4b7cb569b9c443a1",
+      "english": "## 5. Offline format diagnosis without rewriting scores"
+    },
+    {
+      "line": 94,
+      "source_sha256": "1a147ecfad1d99d311257d784ac5de6a4100e47de008ceb6c568e12a862e2985",
+      "english": "The same offline conversion was used for all models: strip an outer fence only when it encloses the entire reply. Fields, tasks, quotes, prompts and bodies were not changed. Existing replies were rechecked with the measured schema without new calls."
+    },
+    {
+      "line": 96,
+      "source_sha256": "4d0514433c4a14566be7d3f51c0f00313c6a4fd9c6bca451bd523a1a956213de",
+      "english": "| Model | Whole fenced replies | Parseable JSON after stripping | Passed measured schema |"
+    },
+    {
+      "line": 105,
+      "source_sha256": "cf77a0449957da3de86bce77bc5acc787f1836a6c8351bccdfb9a193e61f3c4d",
+      "english": "For direct first-round extraction without external sources and with valid schema after stripping, Flash Lite matched 36/41 statuses and all 41 passed original-source evidence checks; Flash matched 40/42 raw statuses and 39 after evidence checks. Format/stage selection changes the denominator, preventing ranking against the main sixty cases. It rejects explaining Lite 10/60 chiefly as weak understanding while retaining semantic disagreements."
+    },
+    {
+      "line": 107,
+      "source_sha256": "a5aac5387a8503faa46206407ce972159647dc5dcfd5151886ee7b73d98cc1c5",
+      "english": "A parseable plan schema does not prove correct meaning/evidence. Repairing a plan may change later reading; offline stripping did not replay unexecuted downstream calls. **No corrected sixty-case accuracy is generated.** Original scores remain; see fence_only_diagnostics.jsonl."
+    },
+    {
+      "line": 109,
+      "source_sha256": "2dd2e0f1846c05f9439155da981c13c0c5182a9449c915313bb3679df19690b4",
+      "english": "## 6. Cases: semantics and system failure differ"
+    },
+    {
+      "line": 111,
+      "source_sha256": "0fbc17148f6a2bc5b2e8049991fee38ccd5ffc6dd8172404aabefe2c28a79892",
+      "english": "| Case | Input/reference | Observation | Interpretation |"
+    },
+    {
+      "line": 113,
+      "source_sha256": "a1ca82556ed8a42bafef345c3d3455d9fa5252a588f9f3d25a0135530cd29486",
+      "english": "| N01 | \"Looks great. I like it!\"; no task | Lite said no_action but two fences caused review; Flash repaired correctly | Format alone can create a large score gap |"
+    },
+    {
+      "line": 114,
+      "source_sha256": "dc3b7c5966badedcc75b24e33ce86a857e3a54be60427b174e5d8460ad913883",
+      "english": "| N03 | \"FYI. sj\"; no task | GLM reviewed absent forwarded material; other usable models returned no_action | Missing-information/conservatism difference, not parser failure |"
+    },
+    {
+      "line": 115,
+      "source_sha256": "07573beacfda445a8c53a790fb9803dfb1d58a11fad2ab810a21ab373e52bf70",
+      "english": "| E01 | Attachment asks Alex to approve an invoice and gives a date | Flash read/extracted the task but exhausted repair; Lite failed planning | Multistage format loss, not attachment understanding |"
+    },
+    {
+      "line": 116,
+      "source_sha256": "82adf8e1306d8da51038c607f9ef95a0834c7f0aafe6f7c0a90f1420f1868cd3",
+      "english": "| A18 | Unclear tax/vendor form; review expected | Flash passed format and proposed submitting the discussed form; others reviewed | Genuine semantic overcertainty remains |"
+    },
+    {
+      "line": 117,
+      "source_sha256": "d4b4cbc271318a432e3d0f47351bda59648a74ac728f08b2adaf098efa7d319d",
+      "english": "| C10 | \"we are waiting to hear from Darrell\"; response expected | Luna/Sol/GLM/Flash responded; Sonnet reviewed unclear next step | Inspect the thread; larger does not automatically mean more accurate |"
+    },
+    {
+      "line": 118,
+      "source_sha256": "b27dae871ebd4ef1ef0cdc23fd392177bf036475a0a11046c4b547a16ac364b1",
+      "english": "| C11 | \"Where do you sit?\" plus wish list; strict review, one answer pre-permitted | Luna/Sol/Sonnet/Flash answered location; strict point lost, permitted match passed | Reference sensitivity is not family ranking |"
+    },
+    {
+      "line": 119,
+      "source_sha256": "992670e4b43ed598e87610eaa101223be13cf5ce31eb7c1f06d7fdfda093b908",
+      "english": "| S04 | Three workbook tasks, including confirm projector availability | Luna/Sol/Sonnet found three but used perform_task; third gold kind is answer_question | Perfect status/count can conceal kind differences |"
+    },
+    {
+      "line": 121,
+      "source_sha256": "fc8fe048a7d4361151cf4a13503234ff46697b9f503ee9da998dd253658c45da",
+      "english": "These are log-level case analyses, not exhaustive semantic scoring of 360 outputs for task matching, commitment, evidence and deadlines."
+    },
+    {
+      "line": 123,
+      "source_sha256": "c14bd614e3dd725046adb9b7c4d5643d34ac456c37d2fa2b594baa2a356fa8ab",
+      "english": "## 7. Fairness audit and remaining risks"
+    },
+    {
+      "line": 125,
+      "source_sha256": "1eacb59c0d1eaa2b2e8d226c3ceb4af5bfb2f68bee9fe4aeea2c8c2d809e7b8a",
+      "english": "| Dimension | Log/source evidence | Interpretation and limits |"
+    },
+    {
+      "line": 127,
+      "source_sha256": "01b4fd2c490671a334f16bc32a541626e0d6a2dd3a34c10617c925aa80eba6e1",
+      "english": "| Initial inputs | All six first payloads matched except model in 60/60 cases | Later context diverges through measured plans/repairs |"
+    },
+    {
+      "line": 128,
+      "source_sha256": "18c10e84b210d099af0554639720da174680f8d2208e9afa5ca0233cab9f5eb0",
+      "english": "| Parameters | All 595 formal calls used only model/messages/temperature/max_tokens; temperature=0, max_tokens=2048 | Equal values do not control reasoning defaults, tokenizer or provider adaptation |"
+    },
+    {
+      "line": 129,
+      "source_sha256": "cf3d38d660c1bdfe68a7d6b31c0f8b2cc52444b9ee4c6923ebc9d5c3a72e9ce6",
+      "english": "| Branches | Runtime had Luna as UI default, no family-specific reasoning/parser branch | No explicit preference does not remove implicit development/style bias |"
+    },
+    {
+      "line": 130,
+      "source_sha256": "a618b6e75c3b25e90cb840c17116359e2fc04be653c6e0ab7936eac57b391cd5",
+      "english": "| Output constraint | No response_format/structured_outputs; textual JSON instruction and common strict parser | Wrapping compatibility is an interface issue despite instructions |"
+    },
+    {
+      "line": 131,
+      "source_sha256": "5d42933c17c0f19268f452a4a89d6d01219fc337da66c7630c11708237f13c8f",
+      "english": "| Repair fairness | One repair/email shared across stages for all models | Format can exhaust it; format and evidence repair were insufficiently isolated |"
+    },
+    {
+      "line": 132,
+      "source_sha256": "26c342f575a041312e74c2ce1ea5f2573dc14dbb2277464218a954269d0edcca",
+      "english": "| Reasoning budget | Reasoning tokens logged but not explicitly controlled | Reasoning can exhaust the cap before content and alter time, spend and success |"
+    },
+    {
+      "line": 133,
+      "source_sha256": "7d0ce65317f71857f9e74dc2909d2b836d66e6fdfb5c3a2f0a8b19d467c4ade9",
+      "english": "| Provider | Unfixed routing; GLM had multiple providers | Model/deployment effects cannot be separated |"
+    },
+    {
+      "line": 134,
+      "source_sha256": "3b5b0516995d207f18f695b74fc6f1f95b84a79b2aec9acdc34d0121e9aee68b",
+      "english": "| Development bias | Sixty tuning cases; default development model Luna | Implicit adaptation is possible; independently labeled unused cases are needed |"
+    },
+    {
+      "line": 135,
+      "source_sha256": "581a62a6408c5a1186411b815c97bdd0e54757ccc2d74d65c1b713f68e34f53f",
+      "english": "| Cache/cost | Luna cached input=63,612; Sol=62,496; Google/Sonnet zero | Real bills include warm-cache advantages, not cold-start estimates; disclose caches separately |"
+    },
+    {
+      "line": 136,
+      "source_sha256": "3224648eed4178f98647671e4beafad1beec3cc9e6e725bea61351cf272ea51a",
+      "english": "| Single trial | One formal trial per case, only sixty cases | One-point gaps are not robust rankings; repeats do not replace independent tests |"
+    },
+    {
+      "line": 138,
+      "source_sha256": "3c4a356c51a916ecca58b728422aed0e5f6ea820d830251495fe1ce4f2b7bc05",
+      "english": "The cap applied to the whole experiment. Every model ran sixty cases without success-based early elimination; resume completed the matrix. Fees, failures, repairs and pauses remain recorded."
+    },
+    {
+      "line": 140,
+      "source_sha256": "dd460ad474f084ef257d4452e5a393ec26e7862ec24b5a185904b17e3385890e",
+      "english": "## 8. Ablation selection and proposed compatibility studies"
+    },
+    {
+      "line": 142,
+      "source_sha256": "d8e8b9dc21b40ad62acdb851d59c06effc0267bd6466fa9c00e1a72cc594f180",
+      "english": "### Main ablation: Luna + Sonnet, original workflow"
+    },
+    {
+      "line": 144,
+      "source_sha256": "047e8a50261f0076213bd3851ecd6c248121099239cddbe6a8ba396dc96cbb06",
+      "english": "Luna had low cost, no format repair and 100% status recall; it suits thread/reading/planning/repair studies. Sonnet offers another family, 96.3% status recall, one quote repair and more conservative contextual obligations. Both passed the predefined action precision/recall >=90% gate."
+    },
+    {
+      "line": 146,
+      "source_sha256": "717a91f1487c2017e2a3e76a798760a89ae1e4d6d7f283b97ea4b78fb672cae4",
+      "english": "Sol shares Luna's family, C11 error and task counts, providing insufficient extra contrast for a third full ablation. Additional omission/commitment differences could justify reconsideration."
+    },
+    {
+      "line": 148,
+      "source_sha256": "72636841b952ff676d0b8dc0eb868d750c7feb47c5c4a87f39aed876a36f78a1",
+      "english": "GLM recall 81.5% missed the main effectiveness gate; it could only join as a compatibility/failure diagnostic without silently relaxing that gate. Google format/shared-retry losses risk uniformly failed ablations. Deferral is not a declaration of model incapability."
+    },
+    {
+      "line": 150,
+      "source_sha256": "bbacb441ae9edfa534bc51358ad216c2b3d0c2d915974e494574ab412b672ff0",
+      "english": "The matrix kept full workflow, one-call baseline, no thread, no reading, read-all, no repair and preselected repeats. Fresh full runs provided same-batch comparators; benchmark observations were not relabeled as new trials. Owner-approved Luna/Sonnet execution is in section 11, semantic review in section 12."
+    },
+    {
+      "line": 152,
+      "source_sha256": "40c7d13e8622c7bbb8ff0f29e3999fb16804122eb08a69957d0efd242ce15feb",
+      "english": "### Separate compatibility protocol V2: proposed, not implemented"
+    },
+    {
+      "line": 154,
+      "source_sha256": "e1065fb574ef47b4458ea7e1c91e8ef34eaf3ab4e2c00171d226e3ffa9a88a42",
+      "english": "Isolate factors without tuning prompts for a particular model:"
+    },
+    {
+      "line": 155,
+      "source_sha256": "cfc00c7cc65e1ebaaf4ae961e3936a6c609110d3f5839d62335553c98b571150",
+      "english": "1. **Format:** strip only whole-reply outer fences uniformly while keeping schema, action limits, original quotes and safe fallback. Test conversion boundaries offline before a separate predefined-case protocol. Never overwrite measured results."
+    },
+    {
+      "line": 156,
+      "source_sha256": "9fa1501f26bb744c723becc010ef5bab655817840f74058813dd1cbb99137e17",
+      "english": "2. **Output budget:** initially raise only the common cap, preserving prompts, format and reasoning settings. Compare finish_reason, content success, timing, reasoning tokens and fees. Explicit reasoning studies must record family parameter support; identical reasoning_effort labels do not imply identical computation."
+    },
+    {
+      "line": 157,
+      "source_sha256": "f6ea1710a7521b9981c92afda3382840d0c82269b4cddad94ba89b88c6f9476d",
+      "english": "3. **Deployment:** fix an available GLM provider or stratify by provider for latency conclusions. Fixed routing changes the configuration and requires a separately recorded version."
+    },
+    {
+      "line": 158,
+      "source_sha256": "765535f70335db80bcc09679649d21dc65996096f444eb0e37a088c7e6e17004",
+      "english": "4. **Generalization:** independently label unused recipient/thread/external-source cases and test the general fixes. Retesting the tuned sixty cases cannot establish family neutrality."
+    },
+    {
+      "line": 160,
+      "source_sha256": "0ca0dba7a7bddbed4258fd43d08474841cdd005c2ca28135a7e8e227f79d4368",
+      "english": "Format, output cap, provider, prompts and data are separate factors. Changing all together cannot identify one effective fix. Explain business-code changes first; this stage added only offline analysis and narrative. At proposal time, extra runs/ablations shared USD 3.6552 remaining; section 11 gives the later final balance. Allocate expected requests and control actual counters, not catalog estimates as final costs."
+    },
+    {
+      "line": 162,
+      "source_sha256": "c7b450dbb7d10a69e340acbaf11862a048a374a0f102c0e8af9f92f790ce4bfb",
+      "english": "## 9. Traceability and remaining work"
+    },
+    {
+      "line": 164,
+      "source_sha256": "008062e66ef94772312cb7ef43b3f6a613183d5db87f12ea98f802b40f35f335",
+      "english": "- Formal logs: rows.jsonl, calls.jsonl, events.jsonl; interruption overhead: orphan_calls.jsonl."
+    },
+    {
+      "line": 165,
+      "source_sha256": "3a0a6fe002feb6b48f84bc6e6475eedcb52a7b0e9856a0abc9f421f65f235c8d",
+      "english": "- Model names: model_mapping.csv; case/request data: case_metrics.csv, turn_metrics.csv."
+    },
+    {
+      "line": 166,
+      "source_sha256": "7b63dc447808aa0039019d3c0cf7703c81c024b45fdcb2aaf48e5d70fc0277d5",
+      "english": "- Fairness audit: model_difference_audit.json; fence diagnosis: fence_only_diagnostics.jsonl."
+    },
+    {
+      "line": 167,
+      "source_sha256": "eab29250e5dee5b5476a962e39a0d31f6469ea044d8dcd60aa9ce45c2f01eb1b",
+      "english": "- Bills: billing.json, generations.jsonl; experiment identity/hashes: run.json, config.json."
+    },
+    {
+      "line": 168,
+      "source_sha256": "83a3aa3206cebb5161efef698fec32ff5fd375f5cf7e86fbf0b77c622ee12de1",
+      "english": "- Pending: exhaustive 360-output semantic review, independent test set and missing bill. All 500 ablations/repeats and Codex reviews are complete."
+    },
+    {
+      "line": 170,
+      "source_sha256": "521a994f31ca3faceddaca90e99b04d7d631990446464c3bfb698c779d9deefa",
+      "english": "Main-table values derive from original summary/operations. Offline fence diagnostics are separate from original metrics. Historical process material is in the root archive rather than another current report."
+    },
+    {
+      "line": 172,
+      "source_sha256": "cab9f8f4ba2676ae52088c95ab967e401c483a68418c3693aabdb8e6f9c98b39",
+      "english": "## 10. Raw responses and format/output limits"
+    },
+    {
+      "line": 174,
+      "source_sha256": "92935b43bb2c2945719ee8547bcffcd12dae865ef6de74ee10a7ac2384027404",
+      "english": "This appendix includes verbatim responses so aggregate classification does not conceal failure mechanisms. Every response example is included directly here."
+    },
+    {
+      "line": 176,
+      "source_sha256": "8cca94eff9938dd888232985da3d8fbcd05abde8aa6b4e46d290ba83f709eab7",
+      "english": "### Raw final responses and failure evidence"
+    },
+    {
+      "line": 178,
+      "source_sha256": "1a0a9903bd0a342fade5512b03082c651f5dc462d5d5d4c27247444bf6e38117",
+      "english": "Response content is copied verbatim from logs without rewritten/added fields. API excerpts include only specified fields. Missing content is null; internal reasoning is not passed off as a final answer. No paid calls were made for this analysis."
+    },
+    {
+      "line": 180,
+      "source_sha256": "217b3db3864c3dd27dd739180073842858958cfbfc398263c966ad17a1d4136b",
+      "english": "## What code fences are"
+    },
+    {
+      "line": 182,
+      "source_sha256": "6b8f7c9a2fd384872ec60764e1d6aaa0af25a19233716ca7e78847a791d1ff2f",
+      "english": "Triple backticks mark Markdown code blocks; json is a display label, not JSON. Chat rendering may hide these markers, but returned strings contain them. json.loads expects a valid JSON opening as its first nonwhitespace character; a backtick is immediately rejected at line 1 column 1 (char 0)."
+    },
+    {
+      "line": 184,
+      "source_sha256": "e4976d07f1e2eeeafeffa2a5bee71e32c007dd879bca2edebd1ea194850d8ad4",
+      "english": "Outer HTTP response JSON is valid, but message.content contains a Markdown-wrapped answer that is not directly parseable JSON. This is inner-content parsing failure, not network/outer-JSON failure."
+    },
+    {
+      "line": 186,
+      "source_sha256": "d5d91b902d8689937bd6baa0dc9e1b73ad060078a633a971a8bcbf0173328794",
+      "english": "Every prompt requested Return only JSON, without API response_format enforcement. The measured parser also retained fences. Models violated the instruction and the workflow lacked mechanical wrapping compatibility, causing avoidable paid retries."
+    },
+    {
+      "line": 188,
+      "source_sha256": "6a3bef53adf10def0d2a5be914ee65fca4e0b57a3abf7593ca4175e94f233727",
+      "english": "## Individual raw responses"
+    },
+    {
+      "line": 190,
+      "source_sha256": "56a8916bf6a17816010d598d1387018252260ce0455d4d421418d6b32d1a4021",
+      "english": "N01 says \"Looks great. I like it!\" and is no_action. E01 points to an invoice attachment requiring INV-104 approval and is action. C11 contains a location question and data wish list."
+    },
+    {
+      "line": 192,
+      "source_sha256": "3852685eeba7504edd35f2ae3ea038947a3fbaa87a959245ae69f9102198f205",
+      "english": "### Gemini 3.5 Flash Lite \u00b7 N01 \u00b7 call 1"
+    },
+    {
+      "line": 194,
+      "source_sha256": "805c4b30dbc91296ab4df5b392f44a2f27c88aacd16c4fd62271b5f078c86c28",
+      "english": "Raw response:"
+    },
+    {
+      "line": 212,
+      "source_sha256": "ea6c1ae4a3248e6c18044c8f54a52d281a7fbd5246334b1b29c67fafcc284c29",
+      "english": "API fields (response-reported cost; full audit uses billing.json):"
+    },
+    {
+      "line": 229,
+      "source_sha256": "7866c30de764c102f285b2bb6e30e3053c8ac759e6d6ee9a8f3353f7ef51e594",
+      "english": "### Gemini 3.5 Flash Lite \u00b7 N01 \u00b7 call 2"
+    },
+    {
+      "line": 231,
+      "source_sha256": "805c4b30dbc91296ab4df5b392f44a2f27c88aacd16c4fd62271b5f078c86c28",
+      "english": "Raw response:"
+    },
+    {
+      "line": 249,
+      "source_sha256": "ea6c1ae4a3248e6c18044c8f54a52d281a7fbd5246334b1b29c67fafcc284c29",
+      "english": "API fields (response-reported cost; full audit uses billing.json):"
+    },
+    {
+      "line": 266,
+      "source_sha256": "58e962d8f30ea8e6a12b911d4e5456a933e3d33fa9182352e97d47633de6d480",
+      "english": "### Gemini 3.8 Flash \u00b7 N01 \u00b7 call 1"
+    },
+    {
+      "line": 268,
+      "source_sha256": "805c4b30dbc91296ab4df5b392f44a2f27c88aacd16c4fd62271b5f078c86c28",
+      "english": "Raw response:"
+    },
+    {
+      "line": 286,
+      "source_sha256": "ea6c1ae4a3248e6c18044c8f54a52d281a7fbd5246334b1b29c67fafcc284c29",
+      "english": "API fields (response-reported cost; full audit uses billing.json):"
+    },
+    {
+      "line": 303,
+      "source_sha256": "849e0736a9e0468c716c34bd726473fd7c80ec743f0a5cdcec40b8818b581143",
+      "english": "### Gemini 3.8 Flash \u00b7 N01 \u00b7 call 2"
+    },
+    {
+      "line": 305,
+      "source_sha256": "805c4b30dbc91296ab4df5b392f44a2f27c88aacd16c4fd62271b5f078c86c28",
+      "english": "Raw response:"
+    },
+    {
+      "line": 321,
+      "source_sha256": "ea6c1ae4a3248e6c18044c8f54a52d281a7fbd5246334b1b29c67fafcc284c29",
+      "english": "API fields (response-reported cost; full audit uses billing.json):"
+    },
+    {
+      "line": 338,
+      "source_sha256": "2d2c51fe24cc1856bab4de2aa0f54c2028446aad487e3129a49584f647d9373a",
+      "english": "### Gemini 3.8 Flash \u00b7 E01 \u00b7 call 1"
+    },
+    {
+      "line": 340,
+      "source_sha256": "805c4b30dbc91296ab4df5b392f44a2f27c88aacd16c4fd62271b5f078c86c28",
+      "english": "Raw response:"
+    },
+    {
+      "line": 362,
+      "source_sha256": "ea6c1ae4a3248e6c18044c8f54a52d281a7fbd5246334b1b29c67fafcc284c29",
+      "english": "API fields (response-reported cost; full audit uses billing.json):"
+    },
+    {
+      "line": 379,
+      "source_sha256": "95fcc4ac2e34710bd1c36fcf91c1f5bd7abf18ce9e06c63370293cedcd92105d",
+      "english": "### Gemini 3.8 Flash \u00b7 E01 \u00b7 call 2"
+    },
+    {
+      "line": 381,
+      "source_sha256": "805c4b30dbc91296ab4df5b392f44a2f27c88aacd16c4fd62271b5f078c86c28",
+      "english": "Raw response:"
+    },
+    {
+      "line": 387,
+      "source_sha256": "ea6c1ae4a3248e6c18044c8f54a52d281a7fbd5246334b1b29c67fafcc284c29",
+      "english": "API fields (response-reported cost; full audit uses billing.json):"
+    },
+    {
+      "line": 404,
+      "source_sha256": "4bb48393ed913781739d12cc68c35efd422e5405585893c4740a8f76d70b10b4",
+      "english": "### Gemini 3.8 Flash \u00b7 E01 \u00b7 call 3"
+    },
+    {
+      "line": 406,
+      "source_sha256": "805c4b30dbc91296ab4df5b392f44a2f27c88aacd16c4fd62271b5f078c86c28",
+      "english": "Raw response:"
+    },
+    {
+      "line": 440,
+      "source_sha256": "ea6c1ae4a3248e6c18044c8f54a52d281a7fbd5246334b1b29c67fafcc284c29",
+      "english": "API fields (response-reported cost; full audit uses billing.json):"
+    },
+    {
+      "line": 457,
+      "source_sha256": "b0251e40a98e229eaf389c6c82b5b2b228e4f5bac4739f27e6d2c406ab758d22",
+      "english": "### GLM-5.3 Flash \u00b7 C11 \u00b7 call 1"
+    },
+    {
+      "line": 459,
+      "source_sha256": "805c4b30dbc91296ab4df5b392f44a2f27c88aacd16c4fd62271b5f078c86c28",
+      "english": "Raw response:"
+    },
+    {
+      "line": 465,
+      "source_sha256": "ea6c1ae4a3248e6c18044c8f54a52d281a7fbd5246334b1b29c67fafcc284c29",
+      "english": "API fields (response-reported cost; full audit uses billing.json):"
+    },
+    {
+      "line": 482,
+      "source_sha256": "0bae73a05333cca2f0c9825f2b2f229ccbe175c05ae16f9a2ee488134a186b4d",
+      "english": "## Gemini failure chains from observed responses"
+    },
+    {
+      "line": 484,
+      "source_sha256": "14fe441f043ee708ed3edf05c23fa5dd4419093c57359b4d3949a2deb48b6b5d",
+      "english": "N01: Lite first produced correct no_action, but fences caused rejection before status parsing. Its retry was fenced too; the system fell back to needs_review. It did not mistake praise for a task. Flash initially used fences but repaired to accepted bare JSON."
+    },
+    {
+      "line": 486,
+      "source_sha256": "33e3ab6d7c81d708b38073dd8273a3202b0629acc0ec8c6bd6a8f5d6e94a651d",
+      "english": "E01: Flash repaired its fenced first plan to bare JSON, using the sole repair. Its third call identified invoice approval but was fenced again. Shared cross-stage budget prevented another repair and caused review. Short content/tasks failed through serial format and budget rules."
+    },
+    {
+      "line": 488,
+      "source_sha256": "117c7fe734d50c81b05fb21f150194f38bee3a75ad959a223517183476159e06",
+      "english": "## Why short GLM answers can exhaust limits"
+    },
+    {
+      "line": 490,
+      "source_sha256": "ab05f6bac6a1966227879e31eec37db4d2942413d6813311ff33cd5304d39859",
+      "english": "max_tokens=2048 did not separately control reasoning. Many OpenRouter providers share the limit across reasoning/final output; short answers can follow substantial reasoning. Documentation describes finish_reason=length, empty content and billable reasoning: [OpenRouter reasoning tokens](https://openrouter.ai/docs/guides/best-practices/reasoning-tokens)."
+    },
+    {
+      "line": 492,
+      "source_sha256": "019f92c4198bc8bed68fa182b5dc45b2ef07ce708424f6e84b4a6a70562e6657",
+      "english": "C11 returned finish_reason=length, completion_tokens=2048 and content=null with substantial reasoning. No final JSON reached the program. Reasoning defaults were not explicitly controlled, so this is output/reasoning-budget compatibility failure, not an observed wrong final answer."
+    },
+    {
+      "line": 494,
+      "source_sha256": "9b92e18ba05f439945cb4e805709afa017b98ee046ab0a851098b14c8e94cfe4",
+      "english": "reasoning_tokens=2069 exceeded completion_tokens=2048. Preserve inconsistent reported values instead of subtracting to invent visible-token length or exact allocation. Observable evidence is length plus null content; budget exhaustion is consistent with documentation."
+    },
+    {
+      "line": 496,
+      "source_sha256": "3fb8f8d21cf3cd9cccd9a2e9945335ade3bc380de25ed62672244e6572864f69",
+      "english": "The design chose a common cap because final JSON was short without checking each family's reasoning defaults. This does not establish weak GLM ability or a fair pure-model ranking."
+    },
+    {
+      "line": 498,
+      "source_sha256": "2d9c432765c18dbdc1e215352793e3e7d0fc0f5740afda895a84ded4c1c58aef",
+      "english": "## All output-limit calls"
+    },
+    {
+      "line": 500,
+      "source_sha256": "b6e8286245bd0674dc16cf2f0e02df081d090ba3f033580dc0815bffd41598af",
+      "english": "| Model | Case / call | provider | Final content characters | completion tokens | reasoning tokens |"
+    },
+    {
+      "line": 516,
+      "source_sha256": "ede9934203a02398fba441f0d16f0b212b871675ff7f327e7a312fc46e2272c8",
+      "english": "## 11. Completed two-model ablations"
+    },
+    {
+      "line": 518,
+      "source_sha256": "60d524b45608d53a71fa4aa64913b62c03e790e835c36726b805aac961b9b808",
+      "english": "Finished at 08:56 Singapore time on 2026-10-03: Luna and Sonnet each completed 250 analyses, 500/500 total, with 579 requests. Measured core, prompts, parser and interface settings were unchanged; forced JSON was not added. All 500 outputs received Codex AI semantic review in section 12, not independent human review."
+    },
+    {
+      "line": 520,
+      "source_sha256": "9f4cbbccddd84a5cdb65b719321c4c33bc649e1fa3415deeafa56839ede01214",
+      "english": "Ablation charges: **USD 1.8797272**, with 579/579 generation bills matching counters. Cumulative spend: **USD 3.2245285**; remaining under USD 5: **USD 1.7754715**. Initially unsettled counters were updated after final bill reconciliation; token estimates are not fees. The missing benchmark bill remains unresolved."
+    },
+    {
+      "line": 522,
+      "source_sha256": "823355e675ed841b11bc23ea25f187968008e443d8ad4533bb93f7db8b1e41da",
+      "english": "### Full condition table"
+    },
+    {
+      "line": 524,
+      "source_sha256": "14d1c312f974534820609f0cb1b009d6b4cb2f10d548082a42c26081a0c8b1c3",
+      "english": "Scores here are strict status matches, not full semantic quality. Denominators differ; mechanism comparisons use identical case IDs below. Twenty-four repeat observations are eight cases times three, not independent cases."
+    },
+    {
+      "line": 526,
+      "source_sha256": "855962084e985e63883753bf09fcb7478837208fd05e82c6c54d5ad213e9976c",
+      "english": "| Condition | Luna strict status | Luna P50 seconds / actual USD | Sonnet strict status | Sonnet P50 seconds / actual USD |"
+    },
+    {
+      "line": 528,
+      "source_sha256": "82d726c5a09b9b978e829713eac70c97fb1b1e46d4de75d1f8f5e87fb20a0ad8",
+      "english": "| Full workflow | 58/60 | 3.59 / 0.013395 | 59/60 | 3.00 / 0.480094 |"
+    },
+    {
+      "line": 529,
+      "source_sha256": "8847846f21ebfab94d24868a89f590f9c74933bcca11968e839f4d5582105f34",
+      "english": "| One-call prompt baseline | 44/60 | 2.98 / 0.007212 | 44/60 | 2.73 / 0.382232 |"
+    },
+    {
+      "line": 530,
+      "source_sha256": "d30c85ab191696e31cb8b17e7144e26272de66f80565044bdb3ea59bafe4e283",
+      "english": "| No thread history | 9/12 | 3.78 / 0.002504 | 9/12 | 4.66 / 0.097756 |"
+    },
+    {
+      "line": 531,
+      "source_sha256": "045606f81f7e2a65f97907488a656de4ec3bc694bd5730517479610c4d0d538a",
+      "english": "| No external reading | 3/17 | 2.89 / 0.001478 | 3/17 | 2.97 / 0.126428 |"
+    },
+    {
+      "line": 532,
+      "source_sha256": "69b85e4be4569902628da845b3fbe58678b6993b6df44cfed7550a3f2f8a8a6b",
+      "english": "| Read all sources | 16/17 | 3.04 / 0.002552 | 16/17 | 2.87 / 0.111690 |"
+    },
+    {
+      "line": 533,
+      "source_sha256": "5f97e558e927ab5ebf36b1362e94c33f14fd1ccaf653e5245da9808865f94ee0",
+      "english": "| No model repair | 59/60 | 3.49 / 0.010359 | 58/60 | 2.87 / 0.464616 |"
+    },
+    {
+      "line": 534,
+      "source_sha256": "281a54b23f9355e5ffedbf02a1f7c4073791d79f83f57a824a64531e7fabcde1",
+      "english": "| Repeated trials | 21/24 | 2.84 / 0.004734 | 21/24 | 2.93 / 0.174678 |"
+    },
+    {
+      "line": 536,
+      "source_sha256": "7054481dc847dae8f5e8d1832b2bdbd417c3d59b878ab45c52ce10283c1cc274",
+      "english": "### Paired case comparisons"
+    },
+    {
+      "line": 538,
+      "source_sha256": "9d8496495bb83bd9bde65d453d9841260b733ca9a08c2609aaf5a9743679bfab",
+      "english": "Each full comparator uses only IDs shared with its ablation. Do not compare twelve/seventeen-case conditions directly with sixty full cases. Fees also use common cases."
+    },
+    {
+      "line": 540,
+      "source_sha256": "8183e41de8ad37ca9b50831666247fe05e0884c124efff08b047e7be3a4506ef",
+      "english": "| Model | Removed/replaced factor | Full correct | Condition correct | Full / condition cost, USD |"
+    },
+    {
+      "line": 542,
+      "source_sha256": "c04a5248136f1e686f30fe6c9591235afe96e5dd4fc2de90dbaf2fc308608685",
+      "english": "| GPT-6 Luna | One-call prompt baseline | 58/60 | 44/60 | 0.013395 / 0.007212 |"
+    },
+    {
+      "line": 543,
+      "source_sha256": "d814730768db559453230c279e10cd66012c013ce5069664a58d3924313ec934",
+      "english": "| GPT-6 Luna | No thread history | 11/12 | 9/12 | 0.004282 / 0.002504 |"
+    },
+    {
+      "line": 544,
+      "source_sha256": "9b3e605b2308f47a91c7b58e0886faac2aa6345c7ab01479ab051a6a9499f73f",
+      "english": "| GPT-6 Luna | No external reading | 16/17 | 3/17 | 0.005275 / 0.001478 |"
+    },
+    {
+      "line": 545,
+      "source_sha256": "def3ca37dbb37206d682a38c2382b92e60d7ec27a0dd1a32e4c8465682861464",
+      "english": "| GPT-6 Luna | Read all sources | 16/17 | 16/17 | 0.005275 / 0.002552 |"
+    },
+    {
+      "line": 546,
+      "source_sha256": "56d71cc6df66bda9df635311b5ee442bf145c7a4816c82c01437e368a76bb85a",
+      "english": "| GPT-6 Luna | No model repair | 58/60 | 59/60 | 0.013395 / 0.010359 |"
+    },
+    {
+      "line": 547,
+      "source_sha256": "76f7f4ae8cc57762f674262dbeca67a0a71fea829642afae10c05271b13fc25b",
+      "english": "| Claude Sonnet 5.5 | One-call prompt baseline | 59/60 | 44/60 | 0.480094 / 0.382232 |"
+    },
+    {
+      "line": 548,
+      "source_sha256": "ebfd9db42f577d67624abf4d121c80d65885e9f311826ddd3d0af0d04c6fede2",
+      "english": "| Claude Sonnet 5.5 | No thread history | 11/12 | 9/12 | 0.114298 / 0.097756 |"
+    },
+    {
+      "line": 549,
+      "source_sha256": "304851f93d00b6fdd60a0687f33cc7dc4af45ee1a8c00c97d2b52f7c0e3e512a",
+      "english": "| Claude Sonnet 5.5 | No external reading | 17/17 | 3/17 | 0.184226 / 0.126428 |"
+    },
+    {
+      "line": 550,
+      "source_sha256": "590ff0518f8035aeaa1c8c37bfff07cb0665146d3fd28d7b3c23605a3bce9af0",
+      "english": "| Claude Sonnet 5.5 | Read all sources | 17/17 | 16/17 | 0.184226 / 0.111690 |"
+    },
+    {
+      "line": 551,
+      "source_sha256": "c203689d92c34851de7c2d39960ae79fcaa6120ca632632f9a19cdd549df94ea",
+      "english": "| Claude Sonnet 5.5 | No model repair | 59/60 | 58/60 | 0.480094 / 0.464616 |"
+    },
+    {
+      "line": 553,
+      "source_sha256": "58e50006593c1e7885a7dab49d4ec557adcf1ecb4568aa324d98236426538ee4",
+      "english": "### Supported mechanism conclusions and limits"
+    },
+    {
+      "line": 555,
+      "source_sha256": "a7f83dbbc61546aba9b1f48a9b6fe7746e4a5709290d2e513fa3f3a6e9584704",
+      "english": "**External reading has the clearest effect.** On seventeen shared cases, Luna drops 16/17 to 3/17 and Sonnet 17/17 to 3/17. Both review 16/17 without reading, often safely rather than guessing missing tasks. Body text cannot replace attachments/links; delivery falls while safe fallback persists."
+    },
+    {
+      "line": 557,
+      "source_sha256": "3684f62ead75c891db92e961d6f7ed6a116ac6836dc03f3895460ee4ceda0e30",
+      "english": "**Threads matter across families.** On twelve shared cases both full workflows score 11/12 and no-thread 9/12. Luna reviews C02/C09 without context; Sonnet reviews C10 and acts on C13 that should be reviewed. Different cases fail; a two-point loss alone is incomplete."
+    },
+    {
+      "line": 559,
+      "source_sha256": "dac22c065b875c76279c524f38c164768f308177a4f02d13b597691bea246b88",
+      "english": "**One-call prompting is insufficient.** Both score 44/60 versus full 58/60 and 59/60. Reading, repair and segment merging are removed together, so the 14/15-point losses cannot be attributed to one component."
+    },
+    {
+      "line": 561,
+      "source_sha256": "c02e4e7e882a3e74ec00a990939155b58aa86de9a26009cb5622710a55515800",
+      "english": "**Similar read-all scores do not remove planning value.** Luna full/read-all both score 16/17, but fail E07 format versus irrelevant corrupt S07 material. Sonnet declines 17/17 to 16/17 on S07. Planning avoids irrelevant broken sources; read-all saves a planning call. Report quality, fault exposure and fee tradeoffs."
+    },
+    {
+      "line": 563,
+      "source_sha256": "593152ac65dab1761392df721ed8890a5c99db444a5cc09682d610d6f3f89c74",
+      "english": "**Repair does not consistently improve aggregate scores.** Luna full/no-repair score 58/60 and 59/60; Sonnet 59/60 and 58/60. Independent requests vary in format/judgment; this is neither harmful Luna repair nor guaranteed Sonnet benefit. Sonnet C10 changes interpretation without repair. Luna full E07 fails before/after repair, while a separate no-repair first answer is valid. Use events/evidence/failure chains; fixed-first-answer replay can isolate causality."
+    },
+    {
+      "line": 565,
+      "source_sha256": "be3494d7551f0b7a887a555e30ff947ffefc7481caaf0c79d28c9bb92702c26f",
+      "english": "**Original-source repair genuinely triggered.** Luna full attempted C12 missing-evidence repair successfully, E07 format unsuccessfully, S02 quote successfully. S02 similarity 0.994 concealed \"$25k-$50\" versus \"$25k-$50k\"; candidates were not auto-approved. Regeneration passed. Sonnet repaired C12 quotes. Section 12 confirms restored C12 explanation and final S02 no-action meaning."
+    },
+    {
+      "line": 567,
+      "source_sha256": "9083ea29b607fb10ec06cd8fa37f57b5e1b439e366dad2158b19969aa8056eb6",
+      "english": "**Selected repeats are stable, not universally representative.** Eight selected cases, three repeats each per model, form sixteen groups with equal status/count. Both strict scores are 21/24, losing only C11 alternative-label points; allowed results are 24/24. Section 12 finds 24/24 semantic delivery for both despite wording changes; do not infer stability for all sixty."
+    },
+    {
+      "line": 569,
+      "source_sha256": "ec3e05720c1444b1c91c24596068935739ab833c4891066dd01d34c30ff218e5",
+      "english": "Fresh full versus benchmark differs: Luna 59/60 then 58/60; Sonnet 58/60 then 59/60. The earlier one-point gap is not a definitive ranking."
+    },
+    {
+      "line": 571,
+      "source_sha256": "5f05d18b17e1e0ff656370cebe884ce75e4a6a958c856ae44c6942e9c801a868",
+      "english": "### Raw key-failure responses"
+    },
+    {
+      "line": 573,
+      "source_sha256": "266154388665f54f7c4a69c5da024fcf640b4d936650cbbeebdceb251728b4e9",
+      "english": "Luna full E07 call 1 is a valid plan. Extraction/repair calls 2/3 report Extra data: an extra double quote and right brace follow a complete JSON object. Trailing text causes rejection. Format failure is not confined to Gemini. The examples are verbatim final response content, not reasoning."
+    },
+    {
+      "line": 575,
+      "source_sha256": "422b6e9f58cc2a9760d118be1de322e59b2554a6c17e1d352a78610137d89f98",
+      "english": "call 1:"
+    },
+    {
+      "line": 581,
+      "source_sha256": "06e26c1b5279289597942993f3a6707d1655eed1b1c8b0301611e3e61627cea2",
+      "english": "call 2:"
+    },
+    {
+      "line": 587,
+      "source_sha256": "30aa8a1f1e6de1a1157244d9d39c14c0a34abae545987ade4dc6bdb1d398cc15",
+      "english": "call 3:"
+    },
+    {
+      "line": 593,
+      "source_sha256": "6bb12075411c993097ff9b4f13cd0d3135c86b5607c74283a6096899ae8dfd2c",
+      "english": "Results/bills: `results/ablation/`; paired changes: `paired_status_changes.json`. Section 12 reviews ablations. Exhaustive benchmark semantic review, independent tests and forced JSON remain future work. No inference process is running."
+    },
+    {
+      "line": 595,
+      "source_sha256": "e9d3138bc0bc2568044042f7feeeea279d57aa514bf1af5f068d7178298e7a3c",
+      "english": "## 12. Semantic review anchored to prior owner decisions"
+    },
+    {
+      "line": 597,
+      "source_sha256": "d2f70b0ee552ccf689d96375994064a1a73c430bf7d3d4677f46c92acfe35f20",
+      "english": "Score variability means +/-1 strict-status points across independent requests, not alternating outcomes after repairing the same answer. Luna full/no-repair: 58/60, 59/60; Sonnet: 59/60, 58/60. C11 loses strict points despite allowed interpretations. C12 fallback status alone does not establish a good explanation. Inspect source meaning and failure chains below."
+    },
+    {
+      "line": 599,
+      "source_sha256": "8f9dfb93b503fe7b6f072b6fc67bdab498bfb82bdf603896e1d0f1d4f8ea523d",
+      "english": "### Reference and review method"
+    },
+    {
+      "line": 601,
+      "source_sha256": "da41757de9352e89b450315239665d3a114e945be640abf60eb0f6e79afdcf18",
+      "english": "The reference is earlier owner Luna adjudication in `data/owner_adjudications/` (formerly `ActionMail/backup/v2.0/results/evaluation/v2-full-20261001/`), especially adjudication.json, reference_adjudication.json and outputs. Only A16/C11/C13/E10 have saved owner decisions, not sixty human reviews. **Codex performed AI semantic review** of all 500 ablation outputs against sixty inputs; repeats retain separate rows. No independent human or new model calls were used. Inputs, gold, responses and scores were not re-adjudicated."
+    },
+    {
+      "line": 603,
+      "source_sha256": "60461498503d6da663823d61d0d3e900904965db4f78fca750c6650e628c9eee",
+      "english": "Check target/current ownership, commitment, independently completable tasks, time meaning, evidence support and appropriate review. Missing execution resources do not erase identifiable tasks; absent decisive task-defining material can require review. Literal matching differs from semantic support."
+    },
+    {
+      "line": 605,
+      "source_sha256": "b97418e9cdffd0c7470bb7a9b14a1a31e6de4f9c7044c8fd8f9fa79ee4d4d6b6",
+      "english": "Retain prior decisions: A16 has two tasks; C11 permits review or a seating-location answer; C13 requires missing materials and earlier recipients; E10 requires main-link reading. C11 answer actions use one task as denominator; review uses zero. All arms here choose action. Other references remain."
+    },
+    {
+      "line": 607,
+      "source_sha256": "8aed5345703614f206612d541b27b06a181eb4e7edb2f5c88ac332a0eaef75f3",
+      "english": "### Semantic results"
+    },
+    {
+      "line": 609,
+      "source_sha256": "f43f2892a76cee78eb6aa7cd340478d0b1b4bc47270d83d34b40dffa092bd7ad",
+      "english": "Semantic delivery requires allowed status/count, complete expected/proposed task matching, and no negative ownership/commitment/deadline/evidence/review judgment. Explanation usability matters: parser-error review with no evidence fails. Tasks are separately matched; generic requests lacking locatable objects/questions do not fully match."
+    },
+    {
+      "line": 611,
+      "source_sha256": "c42fc44270122e60d8a3bec4958c80a86246a31f43c6b2ff06dac93e21f88029",
+      "english": "| Condition | GPT-6 Luna: semantic delivery | Luna: matched / expected tasks | Claude Sonnet 5.5: semantic delivery | Sonnet: matched / expected tasks |"
+    },
+    {
+      "line": 613,
+      "source_sha256": "bc3041801ce1298423f68e46322d2a9ec3b0ccdae210de26c8714364b3dba498",
+      "english": "| Full workflow | 59/60 | 31/32 | 60/60 | 32/32 |"
+    },
+    {
+      "line": 614,
+      "source_sha256": "343ded04c34c53efbeb4eb19cd552dd741ad2a78654dc1fca9d9e03c6e996b15",
+      "english": "| One-call prompt baseline | 45/60 | 19/32 | 42/60 | 18/32 |"
+    },
+    {
+      "line": 615,
+      "source_sha256": "fc493184e0be8bcacd8934c687621f3b2a737c7c2fe1edf5c20eaad30693ecab",
+      "english": "| No thread history | 9/12 | 4/7 | 6/12 | 4/7 |"
+    },
+    {
+      "line": 616,
+      "source_sha256": "59eb13d392f8ab72b64d2f7b9e7932f5be8824d01173c673a366184e96f4f16d",
+      "english": "| No external reading | 3/17 | 0/13 | 3/17 | 0/13 |"
+    },
+    {
+      "line": 617,
+      "source_sha256": "4b3f4c38d6993af55cabd53ab05644551e85df02d261a159e7440d8985db65c0",
+      "english": "| Read all sources | 15/17 | 12/13 | 15/17 | 12/13 |"
+    },
+    {
+      "line": 618,
+      "source_sha256": "75de410d8dc1bafd8050f84c17b4282d70370f2bdab40e21d112f7742d48d37c",
+      "english": "| No model repair | 59/60 | 32/32 | 58/60 | 31/32 |"
+    },
+    {
+      "line": 619,
+      "source_sha256": "0bc1178f836d47823f3cfc4b768838c516e31cdaab5f81cb9facdb7101f4b6e7",
+      "english": "| Repeated trials | 24/24 | 15/15 | 24/24 | 15/15 |"
+    },
+    {
+      "line": 621,
+      "source_sha256": "225c81513477ccfe767755d4c01e2eb5c99d2ce306f283167bb51814c4a3c6b4",
+      "english": "Twenty-seven action emails contain 32 task units because of multitask cases/C11 alternatives; 32 is not email count. Twenty-four repeats are eight cases times three; fifteen task units also include repeats. On twelve shared thread cases, full workflows both attain 12/12 semantic delivery and 7/7 tasks, dropping to 9/12 and 6/12 delivery. On seventeen external cases, full Luna attains 16/17 delivery, 12/13 tasks; Sonnet 17/17 and 13/13."
+    },
+    {
+      "line": 623,
+      "source_sha256": "bbcccce11c25d35de92be8c7a80988e6cfcdb9b353fbf5a32b5be6e86f549c9d",
+      "english": "Full semantic task precision is 100% for both; recall Luna 31/32=96.9%, Sonnet 32/32=100%. Luna E07 identifies the task in raw JSON but format rejection prevents delivery. Sonnet C10 identifies the contract/change enough to match one broad response, yet omits the specific formal-amendment question; reduced specificity is recorded, not equated with Luna wording."
+    },
+    {
+      "line": 625,
+      "source_sha256": "667087091aca419047ba7e92e060f78ee156745ff10d521d6c3ed5a3fe2bb5c2",
+      "english": "These are not one total quality score. S04 projector-task meaning matches despite kind differing from answer_question; Luna full/read-all/no-repair and Sonnet no-repair show it. Kind differences do not negate the obligation. false_additions counts proposed tasks not fully matched, including underspecified generic tasks; do not equate every instance with hallucination."
+    },
+    {
+      "line": 627,
+      "source_sha256": "374d2a63d0e7192cc32caa609df89445c463c6b39e21406ce90c827026e8fb53",
+      "english": "### Key differences and repair"
+    },
+    {
+      "line": 629,
+      "source_sha256": "621f54542236f3fd2d08e5427ba089e5343428c7dc33efa86b848c96ec0735b7",
+      "english": "- **C12 exposes status-only limits.** Both repaired full outputs explain empty newest body/unclear prior ownership with evidence. No-repair outputs have only format/quote errors and empty evidence. All needs_review statuses score correct, but only complete explanations pass delivery. Repair improves explanation here without isolating causality across different first answers."
+    },
+    {
+      "line": 630,
+      "source_sha256": "99c81ef4e3561b6e5f1ad5b141a5d7155eb025ec31577fa128d3e03687737105",
+      "english": "- **E07 is not repair-induced misunderstanding.** Full first/repair responses identify the correct budget task/deadline but append invalid JSON characters. The independent no-repair first answer is valid. Initial format differences explain scores; repair failed to rescue delivery rather than altering correct meaning."
+    },
+    {
+      "line": 631,
+      "source_sha256": "4b321bbaad4b7d9e47c9ff5e1b03d0865f7a8f040ba0ad2f3020c500a55dac86",
+      "english": "- **C10 reflects interpretation.** Luna retains the formal-amendment question; full Sonnet responds broadly, while prompt/no-repair Sonnet overconservatively reviews. No repair occurred, so Sonnet's status point is not repair benefit."
+    },
+    {
+      "line": 632,
+      "source_sha256": "45961521bd9b4e3971256c91a986348d25ab60b1cdb7a2f1710af6106be6d371",
+      "english": "- **Thread loss exceeds status losses.** Sonnet C11 adds three data categories; C02 proposes an unlocatable file; C09 loses Medicine Bow capacity; C13 ignores missing material. Luna C10 names the Duke contract without its question. Underspecification and invented obligations differ."
+    },
+    {
+      "line": 633,
+      "source_sha256": "ccf8221aa50dc5c2477270687bf81ea74b421ca78b9da68201f869dfd383515f",
+      "english": "- **Safety differs from delivery.** Without attachments/pages, many reviews are safe yet leave tasks undelivered. E04/E05/E09 main pointers require reading despite FYI/awareness; gold/policy are not changed post hoc. No-evidence system blocks lose explanation quality. S07 has an irrelevant privacy footer that must not block its self-contained task."
+    },
+    {
+      "line": 634,
+      "source_sha256": "c79251af5640f22cdfb98f02a8f2c71c43b083898c895ef22f11bc4296856078",
+      "english": "- **Read-all explanation loss.** S08's corrupt decisive workbook warrants review, but read-all lacks quotes: semantic delivery 15/17 versus status 16/17. Full reading-failure output retains body evidence."
+    },
+    {
+      "line": 635,
+      "source_sha256": "49363114262f37900715a5cc69a0f4461a630caf4b5acf8ee6ad4f8ab4572bb4",
+      "english": "- **Local stability on eight cases.** Both models' 24 repeats preserve allowed task meaning, ownership and deadlines with wording changes; not proof for all sixty."
+    },
+    {
+      "line": 637,
+      "source_sha256": "d4980375d60b9e1b43c5133ddfd94765f8acac4f535763005a4e379017c10b2c",
+      "english": "### Saved response examples"
+    },
+    {
+      "line": 639,
+      "source_sha256": "1ca2388610130c0436038c5e5a650f802103646f796f60795ebd34e09f108c0c",
+      "english": "Final records reproduce parsed strings verbatim from logs to show user-visible content. Raw API examples come from call records; internal reasoning is not shown."
+    },
+    {
+      "line": 641,
+      "source_sha256": "6bb6af161116c8647392859f512ff379ac1a4b094c89a399952cf0074afd9782",
+      "english": "Luna full C12: repaired final record:"
+    },
+    {
+      "line": 665,
+      "source_sha256": "dbf3ae55e1028cf03178084df449e61be210f97117394dcc7d29cdf097ff6732",
+      "english": "Luna no-repair C12: final system fallback:"
+    },
+    {
+      "line": 676,
+      "source_sha256": "bf27f48bff48a373ee2c86f7d5962b0ce6164f81c3c3994d6fb111e2b714cead",
+      "english": "Sonnet full C12: repaired final record:"
+    },
+    {
+      "line": 696,
+      "source_sha256": "72c6027a1bd311686f6b6b5ba54d0e8860810dd3b0a113ed628f738656c276dd",
+      "english": "Sonnet no-repair C12: final system fallback:"
+    },
+    {
+      "line": 707,
+      "source_sha256": "89ee9b280dae9992aa03620ecf879c2fb3d03a8b9f4ec490a521651acc72ef09",
+      "english": "Sonnet no-thread C11: added obligation:"
+    },
+    {
+      "line": 754,
+      "source_sha256": "86e6eb8d5353cc7d575be0df6ad21cc22fccb5539b3f66a56b592287d325efe5",
+      "english": "Sonnet no-thread C02: missing task object:"
+    },
+    {
+      "line": 782,
+      "source_sha256": "259f2050bdd4969ae4adf9859c9cd7d6b57204d5f9e8bc1d3b6ce6bc971fc3a1",
+      "english": "Luna no-thread C10: missing question:"
+    },
+    {
+      "line": 810,
+      "source_sha256": "a89d22a1f6f38c325cdb9c75f6930c0bd26f0425be9db21a1cf4e8e507b4a531",
+      "english": "GPT-6 Luna C12 call 1 raw API content:"
+    },
+    {
+      "line": 816,
+      "source_sha256": "e68d775cd2abbbbfe5fd7d0a30b93811473257d66311c94d1ad4032398a644b2",
+      "english": "GPT-6 Luna C12 call 2 raw API content:"
+    },
+    {
+      "line": 822,
+      "source_sha256": "dee3583bfed676934ba04417d7113bab54527ffca1095d404fe4df802a183aed",
+      "english": "Claude Sonnet 5.5 C12 call 1 raw API content:"
+    },
+    {
+      "line": 828,
+      "source_sha256": "8cb288ccd02696691315069c33924178cebbcd279bf5b3c6c376efa21807a252",
+      "english": "Claude Sonnet 5.5 C12 call 2 raw API content:"
+    },
+    {
+      "line": 834,
+      "source_sha256": "e2bbae778cf9631b6162d1a279130c66223becab1769719c242e14967f4e48a3",
+      "english": "### Using these findings"
+    },
+    {
+      "line": 836,
+      "source_sha256": "9e8320172c7acb916df2742f3b3d1cf70aa10d7329ee8fa7a972508e39ec218b",
+      "english": "Keep Luna as the low-cost primary and Sonnet as cross-family comparator. Full task-meaning gaps are small on this development set; thread-loss interpretation, conservatism, kinds and fees are more informative. Retain original validation and one repair for real C12/S02 explanation/quote gains, without claiming consistent total-accuracy benefit. Future fixed-first-answer replay/mechanism injection can isolate causality without rewriting these results."
+    },
+    {
+      "line": 838,
+      "source_sha256": "b5676c97fa9d5164f8c4956284a394177c4bd219165dba09642e784344111280",
+      "english": "Per-output review: `results/ablation/semantic_review.csv`, 500 rows retaining reviewer identity and English reasons. Aggregation: semantic_summary.json; specificity/error types/adjudication paths/hashes: semantic_audit.json. The 500 AI reviews are complete; exhaustive 360-output benchmark semantic review, independent tests/human review and forced JSON are not. No new paid calls; total remains USD 3.224528503."
+    }
+  ]
+}

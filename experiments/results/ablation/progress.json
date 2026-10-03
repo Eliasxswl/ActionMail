@@ -1,0 +1,14 @@
+{
+  "updated_utc": "2026-10-03T00:52:35.728287+00:00",
+  "completed": 500,
+  "expected": 500,
+  "actual_counter_spend_usd_before_case": 3.1550612979999997,
+  "known_response_cost_stage_two_usd": 1.879727199999999,
+  "unknown_held_usd": 0.0025667,
+  "global_total_cap_usd": 5.0,
+  "last_completed": {
+    "arm": "no_repair_m06",
+    "case_id": "S10",
+    "trial": 1
+  }
+}

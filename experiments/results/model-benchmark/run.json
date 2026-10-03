@@ -1,0 +1,50 @@
+{
+  "mode": "live composite of disjoint completed observations",
+  "complete": true,
+  "planned_analyses": 360,
+  "bundle": "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\core-final-c405d29-20261002",
+  "bundle_sha256": "a90d9238047679fa9b1654ccdaf7c2cf0de8fd16a827ac7d20fdbcb5f1395c58",
+  "experiment_code": {
+    "billing.py": "a08c169b7665f78ef7e68aa1a27cec645acba499dfd2a4f7bf5c2c2d2e1bbd60",
+    "design.py": "73c42fe010100dcedcd45425d2eebe27cda531f52cdb4f0cbbef76420741752d",
+    "engine.py": "e3c783023ef04d1b98e8a5f3ddf87cc5ea741016e8e6503383f33983e45c411d",
+    "operations.py": "e9fb37b33a36c7d16b29b7370d13fd09bebae323d02cfb8221732e206c21f901",
+    "pipeline.py": "e394406985b4930729856a44c2544a2d72ebe1306d14484072829f6ac27fae0f",
+    "scoring.py": "81db2704d9f7a9dac064676dc84305e7f80c854c02327a4ae9143d7066d933b8",
+    "telemetry.py": "72c23b6998f209b35f92a6f77b9cf702ee45797dd9b42b58bb57c6bbb35ac717"
+  },
+  "started_utc": "2026-10-02T13:08:15.550155+00:00",
+  "ended_utc": "2026-10-02T15:29:30.517336+00:00",
+  "paid_calls": 596,
+  "measured_usd": 1.47020915,
+  "reserved_usd": 11.9094188,
+  "budget_usd": 5.0,
+  "source_runs": [
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-20261002-a",
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-remaining-1-20261002",
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-remaining-2-20261002",
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-remaining-3-20261002",
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-remaining-4-20261002"
+  ],
+  "controller_sha256": "ebddd1755dd31295a0626d6ae4e36df6bcd26027353679644b73011a31c93dde",
+  "source_rows_sha256": {
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-20261002-a": "c77b86f88ad9480ccf75a342916b549422bb12250b1ba912a2be9d598833d32e",
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-remaining-1-20261002": "0f32f259c158312cba242765c3379c6dca9128a2c82154cd15199e6d63b4fb5e",
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-remaining-2-20261002": "69a42c932fde6a3c9d624b2ed161e4948ccfc279ff275c4a72f0039b9780557a",
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-remaining-3-20261002": "112ad4dba5003a7dff1cde3be29dabd29c5c7f5ac74017215fc0de5881835510",
+    "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\runs\\stage1-remaining-4-20261002": "7ef7d8e5a72f5acbb1db33316c98935eac28be133d2f0afa96c3cbbf78c0fa7a"
+  },
+  "budget_interruption_calls_without_completed_analysis": 1,
+  "pause_checkpoint": "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\stage1-paused-checkpoint-20261002.json",
+  "unlogged_interrupted_requests": [
+    {
+      "arm": "full_m01",
+      "case_id": "E04",
+      "trial": 1,
+      "turn_id": "full_m01/E04/trial-1/call-2",
+      "started_utc": "2026-10-02T13:58:56.645673+00:00"
+    }
+  ],
+  "cost_policy": "Comparison tables use completed-analysis bills; global actual consumption includes any budget-interrupted orphan calls.",
+  "note": "Preserved incomplete source runs. Composite coverage means all 360 distinct frozen case/model/trial observations exist; no observation copied as a fresh trial."
+}

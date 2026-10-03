@@ -1,0 +1,62 @@
+{
+  "version": "v2-owner-adjudicated-20261001",
+  "owner_review_run": "20261001T004254Z-3d2be39d",
+  "cases": {
+    "A16": {
+      "gold": {
+        "status": "action",
+        "actions": [
+          {
+            "kind": "perform_task",
+            "text": "Approve invoice INV-104.",
+            "deadline": null,
+            "evidence": [
+              {
+                "source_id": "body",
+                "quote": "Alex, please approve invoice INV-104."
+              }
+            ]
+          },
+          {
+            "kind": "perform_task",
+            "text": "Update the public website's contact page.",
+            "deadline": null,
+            "evidence": [
+              {
+                "source_id": "body",
+                "quote": "Separately, update the public website's contact page."
+              }
+            ]
+          }
+        ],
+        "reason": "The newest message assigns Alex two independently completable tasks.",
+        "evidence": [
+          {
+            "source_id": "body",
+            "quote": "Alex, please approve invoice INV-104."
+          },
+          {
+            "source_id": "body",
+            "quote": "Separately, update the public website's contact page."
+          }
+        ]
+      },
+      "note": "Owner approved the two-action v2 reference in chat and marked the model correct. The frozen v1.5 reference remains needs_review."
+    },
+    "C11": {
+      "accepted_outcomes": [
+        {
+          "status": "needs_review",
+          "action_count": 0
+        },
+        {
+          "status": "action",
+          "action_count": 1
+        }
+      ],
+      "note": "Owner accepts either the conservative ownership review or this run's answer-question interpretation: tell Mike where Susan sits. Acceptance does not establish arbitrary alternative action wording as correct."
+    }
+  },
+  "run_id": "20261001T004254Z-3d2be39d",
+  "original_manifest_sha256": "41a0c45842b5c7c7bb0f02351dade057634d15641dd19c96f8e4050f4dc35f51"
+}

@@ -1,0 +1,96 @@
+{
+  "frozen_files_checked": 120,
+  "hash_mismatches": [],
+  "figure_label_checks": [
+    {
+      "figure": "01_architecture",
+      "clipped_labels": [],
+      "overlapping_labels": []
+    },
+    {
+      "figure": "06_scope_and_ownership",
+      "clipped_labels": [],
+      "overlapping_labels": []
+    },
+    {
+      "figure": "05_data_provenance",
+      "clipped_labels": [],
+      "overlapping_labels": []
+    },
+    {
+      "figure": "02_model_comparison",
+      "clipped_labels": [],
+      "overlapping_labels": []
+    },
+    {
+      "figure": "03_paired_context",
+      "clipped_labels": [],
+      "overlapping_labels": []
+    },
+    {
+      "figure": "04_metrics_and_cost",
+      "clipped_labels": [],
+      "overlapping_labels": []
+    }
+  ],
+  "visual_review": {
+    "status": "passed",
+    "graphics_inspected": 6,
+    "final_pdf_pages_inspected": 4,
+    "findings": "All final pages inspected: original NTU logo remains proportional and sharp; sufficient logo clearance; no graphic-label overlaps, clipped labels or caption collisions; no single-line paragraph break.",
+    "corrections": [
+      "NTU title treatment, Times-style body and running headers",
+      "Table captions above tables",
+      "Paragraph widow/orphan control",
+      "Graphic links now target the top of the full graphic"
+    ],
+    "reviewer": "Codex visual review"
+  },
+  "word_counts": {
+    "whitespace_including_title_headings_references": 1021,
+    "conservative_lexical_including_title_headings_references": 1053,
+    "figure_and_table_captions_excluded": "Owner-confirmed graphics exclusion; references, title metadata and template attribution included."
+  },
+  "source": "FINAL_REPORT.tex is the editable source; FINAL_REPORT.md is its generated review rendering.",
+  "compilation": {
+    "built_in": "Environment error: Unable to find standard directories for platform",
+    "local": "MiKTeX pdflatex: success; 4 pages; all references resolved; no warnings or overfull/underfull boxes",
+    "output": "FINAL_REPORT.pdf"
+  },
+  "presentation": {
+    "editable_source": "FINAL_REPORT.tex",
+    "derived_review_rendering": "FINAL_REPORT.md",
+    "figures": 4,
+    "tables": 2,
+    "separate_figures_section": false,
+    "freeze_and_review_statement": "Evaluation design",
+    "integration_statement": "System design and boundaries",
+    "style": "NTU-inspired article, Times-style body, 55 mm original template logo with 10 mm clearance; running headers and native citation/cross-reference links"
+  },
+  "references": {
+    "count": 11,
+    "keys": [
+      "gmail",
+      "evals",
+      "architecture",
+      "ownrent",
+      "mailex",
+      "experiment",
+      "routing",
+      "costs",
+      "structured",
+      "template",
+      "brand"
+    ],
+    "all_cited": true
+  },
+  "hyperlinks": {
+    "internal_pdf_links": 19,
+    "external_pdf_links": 7,
+    "unresolved_pdf_destinations": [],
+    "markdown_internal_links": 19,
+    "unresolved_markdown_anchors": [],
+    "figure_link_position": "Top of figure minipage; table links at caption",
+    "pdf_bookmarks": 6
+  }
+}

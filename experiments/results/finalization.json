@@ -1,0 +1,627 @@
+{
+  "status": "finalized",
+  "finalized_utc": "2026-10-03T01:40:36.190889+00:00",
+  "business_commit": "c405d2901ff1577ebafbc2a3ff151654970bb7ea",
+  "benchmark_observations": 360,
+  "ablation_observations": 500,
+  "ablation_semantic_reviews": 500,
+  "semantic_reviewer_type": "Codex AI, anchored to saved owner adjudications; not independent human review",
+  "actual_total_usd": 3.224528503,
+  "cap_usd": 5,
+  "limits": [
+    "60-case development/regression suite, not held out",
+    "Benchmark 360 outputs not exhaustively semantically adjudicated",
+    "Benchmark one missing generation bill; actual run cost measured by counter delta",
+    "Independent model calls do not isolate repair causality",
+    "No real Gmail/Google Calendar integration or forced-JSON upgrade in frozen experiment"
+  ],
+  "hashed_scope": "Experiment code, frozen inputs and saved results; excludes credentials, caches, archive and editable narrative documents",
+  "files": [
+    {
+      "path": "code/analyze_ablation.py",
+      "bytes": 10739,
+      "sha256": "03b333d2894d7e8b5b8732485e1498261d59c275ec3c8d93573273488858a637"
+    },
+    {
+      "path": "code/billing.py",
+      "bytes": 5541,
+      "sha256": "a08c169b7665f78ef7e68aa1a27cec645acba499dfd2a4f7bf5c2c2d2e1bbd60"
+    },
+    {
+      "path": "code/configs/ablation.json",
+      "bytes": 6238,
+      "sha256": "e5548dab70deb889dcafc41a0da2ec12a6a638c897e72b81af06b615cbe2d88b"
+    },
+    {
+      "path": "code/configs/core.json",
+      "bytes": 1727,
+      "sha256": "41740cfa7efffbfeda943afe5dcc27f8e4f8bb90e422f8ff9efaeb4d73e08c57"
+    },
+    {
+      "path": "code/configs/final-c405d29-proposed.json",
+      "bytes": 3697,
+      "sha256": "b4d7b808654127097fdc135e59b355df7b2e7a60151b858014f27a22184192a2"
+    },
+    {
+      "path": "code/configs/model-benchmark.json",
+      "bytes": 7506,
+      "sha256": "67e69831469d5850d5e0f0527c96f8ecce0873ab9bc924aeef41bf0b24c8950b"
+    },
+    {
+      "path": "code/configs/stage1-model-benchmark-proposed.json",
+      "bytes": 7334,
+      "sha256": "68d47a03e23ec694d0320f97748f5a41cc3a9bd33a18a03f551ffe92c39cbd29"
+    },
+    {
+      "path": "code/design.py",
+      "bytes": 7378,
+      "sha256": "73c42fe010100dcedcd45425d2eebe27cda531f52cdb4f0cbbef76420741752d"
+    },
+    {
+      "path": "code/engine.py",
+      "bytes": 12792,
+      "sha256": "e3c783023ef04d1b98e8a5f3ddf87cc5ea741016e8e6503383f33983e45c411d"
+    },
+    {
+      "path": "code/operations.py",
+      "bytes": 14712,
+      "sha256": "e9fb37b33a36c7d16b29b7370d13fd09bebae323d02cfb8221732e206c21f901"
+    },
+    {
+      "path": "code/pipeline.py",
+      "bytes": 23557,
+      "sha256": "e394406985b4930729856a44c2544a2d72ebe1306d14484072829f6ac27fae0f"
+    },
+    {
+      "path": "code/run_ablation.py",
+      "bytes": 9619,
+      "sha256": "d8e8b75780022c9cc2e257eea56c4da534bf5840bd78835e36fb7d936bd26fe4"
+    },
+    {
+      "path": "code/scoring.py",
+      "bytes": 15997,
+      "sha256": "575cbc506d6d9e72ebafe981191dc76d5c24b3759482233889fc36e4ace73c34"
+    },
+    {
+      "path": "code/telemetry.py",
+      "bytes": 4870,
+      "sha256": "72c23b6998f209b35f92a6f77b9cf702ee45797dd9b42b58bb57c6bbb35ac717"
+    },
+    {
+      "path": "code/tests/fixtures/smoke.jsonl",
+      "bytes": 3191,
+      "sha256": "68d0a538495eef2ca824ae9da4f9693d12fe17adad20df85f4cfc86dc264c4cd"
+    },
+    {
+      "path": "code/tests/test_observability.py",
+      "bytes": 11825,
+      "sha256": "c55d341a858e8c26292665e6d696ec235f5f03eb1f82117257551e0e114e108d"
+    },
+    {
+      "path": "code/tests/test_pipeline.py",
+      "bytes": 17201,
+      "sha256": "d64a40e0b629b48dbb48dc3254ca090a076a89eb2a0a5fabab7f11435f3e9127"
+    },
+    {
+      "path": "data/frozen-core/dataset.jsonl",
+      "bytes": 110525,
+      "sha256": "2f0e30e27bbc4faa39fe887c8c40b5bb4e6fefcc747618323f0f4355d6b1bfb2"
+    },
+    {
+      "path": "data/frozen-core/manifest.json",
+      "bytes": 20374,
+      "sha256": "ba6e30c70767e48e645548af58cbbbcf854621cb952e5cdd21f73ad9e32baf90"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/__init__.py",
+      "bytes": 27,
+      "sha256": "8477998a44746b431c378e7cc2889e3191aa894414aca6ff754922ff1f7f7315"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/__main__.py",
+      "bytes": 161,
+      "sha256": "6611e6938abdc9e1e54c9a84cc4ca769106df87f305fb14c10826de888e85588"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/application/__init__.py",
+      "bytes": 81,
+      "sha256": "85dd96694013558659d11333f377b4420010b69090dee0164644851df3a16751"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/application/service.py",
+      "bytes": 12512,
+      "sha256": "449c7eebeddb3d60f3f93dcf1b0f634abe807edf3f4d94d159941e59da567236"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/application/store.py",
+      "bytes": 2804,
+      "sha256": "a483cc19225259e350b56b6f9bfc421b5c780f9a9aa0f65f826b18fd715b0a8a"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/cli.py",
+      "bytes": 15563,
+      "sha256": "7d2d1dcbc2d2484f7955bde12e52190f19f02d44c2fbb10e8fd50f34c75f3875"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/content/__init__.py",
+      "bytes": 60,
+      "sha256": "b03683653d599af12968a364c67106403ce35580eb9a224b2f28b149dbc8fe6c"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/content/links.py",
+      "bytes": 5030,
+      "sha256": "82be0cdaeb24d609c08f90d23238888b8c42b4a764869d50fe49b586f0956e58"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/content/office.py",
+      "bytes": 5607,
+      "sha256": "04342e473bd27b4ba288b5e5a82f1aa560c9df0c83e73fe6a9c944f494bcfbdc"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/content/reader.py",
+      "bytes": 8967,
+      "sha256": "52bc2221f41658425c6244a7c9511fb9699c181caf396c8e3a60bf67a62c1f5e"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/domain/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/domain/decision.py",
+      "bytes": 1299,
+      "sha256": "40af07eb96f3e26e8b5b2bf15c7b2804c0a2ada8fc23ad2fa28d390346886592"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/domain/email.py",
+      "bytes": 2696,
+      "sha256": "411d6710ee8f3c046480b87280c61ddf7fd5f9bb12fef2992695d8e057077b0d"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/__init__.py",
+      "bytes": 45,
+      "sha256": "78957f81fd12a27af31ab208beaa22cc28b60b69aba1537cd1073de555e29344"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/baseline.py",
+      "bytes": 883,
+      "sha256": "edf06dfef510058de3e7447b48f034a3200dd785bf7ad81120d68f4aa88e9346"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/cases.py",
+      "bytes": 6676,
+      "sha256": "28cd227fe4ae33213f8cba90ba24db516ef66989fbd1091a3097d59571406171"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/challenge.py",
+      "bytes": 11150,
+      "sha256": "9ad6cf9ebf062e5640979cc732073178964186a85dfaee3957ab0e35dfe709f4"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/cli.py",
+      "bytes": 26886,
+      "sha256": "0ff4dff4b506da8bee71b3c87274cd63eb7eb495b17db0b464c839d1289f5a0f"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/history.py",
+      "bytes": 1942,
+      "sha256": "495c00dec26210ab78456abe1a30add130d01ed0e4eb2274b2634ccf94125714"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/metrics.py",
+      "bytes": 6904,
+      "sha256": "5b10d2a1600c49f90f352a5612462c40f6d18a07b9652bc620a2aee35d49d825"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/multi_draft.py",
+      "bytes": 2069,
+      "sha256": "537121a6856821c063c726a13e302258188a6576164c2e368834f95b6de2bc50"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/preflight.py",
+      "bytes": 8252,
+      "sha256": "b2ff8e8fb1ee8318e9566c6797a62c7854a69562a1bacea0cd1456dbb5816076"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/references.py",
+      "bytes": 636,
+      "sha256": "d3bb178705273017c81c9c347389c5730ce66b91b4d1b347ff72e2db89e0ee9d"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/review.py",
+      "bytes": 15824,
+      "sha256": "44d7c448fccdfce27fe29c6e4403305019d608477245a1d2705f5cc9ee1b39a2"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/evaluation/suite.py",
+      "bytes": 3169,
+      "sha256": "bafcad6f0191d24b80b6f6d4bcd9d0dc6d5f501efe7d830477d8ec6b618c8a05"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/guardrails/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/guardrails/evidence.py",
+      "bytes": 3627,
+      "sha256": "8918fec9b1c10e99c1ef7d0f47ce2d8b3c653218db46ccdc5e94ac97613c5ca3"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/guardrails/matching.py",
+      "bytes": 3706,
+      "sha256": "b43ddf495b3b7fa1c800c24a14d9e5c2e29968b521b65be432c07c71230b818b"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/ingestion/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/ingestion/eml.py",
+      "bytes": 4048,
+      "sha256": "e261922dc81958960c3eb70cfef6b2805d2173b99c88f03e26c7d61d117cd319"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/ingestion/fixtures.py",
+      "bytes": 3435,
+      "sha256": "abef57bfce0222ea7fde7c6f560ad721c3eb20faabb760c7b6966497cf3b150e"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/integrations/__init__.py",
+      "bytes": 77,
+      "sha256": "dee3a3cd55c354675bc6980da387ba4605f349e18943d997c8cd29e5100d5eb0"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/integrations/auth.py",
+      "bytes": 3853,
+      "sha256": "7f137b00818b4e761ccce70b90031f57aae0df4ab14715029a13a2fb484b45b4"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/integrations/calendar.py",
+      "bytes": 6581,
+      "sha256": "d4eff032b3774c9a9d1593363e7032d55a4b7e1059a991641c8d6bbd2bcbfb65"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/integrations/demo.py",
+      "bytes": 4694,
+      "sha256": "37826be6d799eb5e6852f192711736812e600ed328eb6a19b5ed9ebb00129e10"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/integrations/google.py",
+      "bytes": 2456,
+      "sha256": "0871fb251a59af09c45d0d8e515d22f268ab51c8e2b266a1d30ebcc913a36d07"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/integrations/mail.py",
+      "bytes": 6707,
+      "sha256": "ac7d170e2c3e7da06ea10df99dd969f2e80b887790d245df4f644c347862e416"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/interfaces/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/interfaces/app_server.py",
+      "bytes": 11055,
+      "sha256": "410625396fecdd9ea2d84d3933bba0ca29b3b35fde1b6c4d217a3915dfdb51d6"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/interfaces/cli.py",
+      "bytes": 6501,
+      "sha256": "0de5965d22d35499afaa2eb97809921354a756b5cc0129eea378f059ab837fec"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/interfaces/review_server.py",
+      "bytes": 6931,
+      "sha256": "672bbc55269064e80160201f13fc39bcab7d4a777704fa6f7d7b523115b64ea0"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/interfaces/workflow_cli.py",
+      "bytes": 10406,
+      "sha256": "ea6da0074b03c6ac091ea2ffac23781a600529b7aac5b89dc43c3ecf3b783c61"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/reasoning/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/reasoning/api_client.py",
+      "bytes": 3912,
+      "sha256": "352db8551797782275bb95957796547f221e11531f2183e242f4e06270ca518a"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/reasoning/model_client.py",
+      "bytes": 358,
+      "sha256": "f96319a0e66bded18f98407b08430165d7808bc77da6676a4736dfa7f6ab9a29"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/reasoning/multi_response.py",
+      "bytes": 4434,
+      "sha256": "ef448e2af410ef7af41b0a95a75e8af088c1107d2edbf5381dd9eff696f160bc"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/reasoning/response.py",
+      "bytes": 2337,
+      "sha256": "719523e89257f0a0f86e054f64925b502512a28243d53695ed97c5284aea7c8e"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/workflow/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/workflow/context.py",
+      "bytes": 1909,
+      "sha256": "e8ddd9d9330eebccc33c7d7c31992867dab4a904cb25696cf4ec6ca018a44dd8"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/workflow/coverage.py",
+      "bytes": 6110,
+      "sha256": "b2b99fde76a797954c2e34f5f4794e5eb8b9523051b5768e766326b4a046faf4"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/workflow/multi_pipeline.py",
+      "bytes": 25696,
+      "sha256": "d7afddb9d7337e73633ec037e91631ffb64db278224c335a2c347ae9efbe14d5"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/workflow/pipeline.py",
+      "bytes": 8461,
+      "sha256": "9569b5026124342d642b6f5c6f4ff551e0d5d30411bbdfec89e75f149f57f742"
+    },
+    {
+      "path": "data/frozen-core/runtime/actionmail/workflow/repair.py",
+      "bytes": 2564,
+      "sha256": "34780ec6bb9bcdf375055f0ec9bc396bf142975269f2b5e9fbe7ca7de1eed87c"
+    },
+    {
+      "path": "data/frozen-core/source_registry/active_suite.json",
+      "bytes": 764,
+      "sha256": "ba35ae3661652627d9add022cf4336b2c38db0ee4c33a0c7fad68c11ff51922c"
+    },
+    {
+      "path": "data/frozen-core/source_registry/cases.jsonl",
+      "bytes": 26902,
+      "sha256": "3113b2d774f89bc2acb2e568ffd491457dc3ec04f7743574be8d418744a66e3a"
+    },
+    {
+      "path": "data/frozen-core/source_registry/supplement_v2_approved.jsonl",
+      "bytes": 16689,
+      "sha256": "fa55e843472de075e6d13ec497621627e6968195abe50479bd0aa433f307212d"
+    },
+    {
+      "path": "data/frozen-core/source_registry/v2_reference_overrides.json",
+      "bytes": 1387,
+      "sha256": "ba6c8ff25cd51aa6490b43fbcb408048b3fbbe6e5c85b252d004fe03ab6cfa6d"
+    },
+    {
+      "path": "results/ablation/billing-baseline.json",
+      "bytes": 143,
+      "sha256": "9d11a4e91752f609f44ab2ea04e03e5f086300e89c4b1af9e50772890e2646c2"
+    },
+    {
+      "path": "results/ablation/billing.json",
+      "bytes": 1061,
+      "sha256": "cc02499b7ced76d0d5d498e84c16d5b8ca906f95c84761296229b97e15fd701f"
+    },
+    {
+      "path": "results/ablation/calls.jsonl",
+      "bytes": 12745369,
+      "sha256": "12da064a69c18fd2bd5bc13be4c08b930458afe20412a8ad7662a4e99038f6d0"
+    },
+    {
+      "path": "results/ablation/case_metrics.csv",
+      "bytes": 166419,
+      "sha256": "4940be1e5e1abb37cacc6f606d193967afa57a9cd675020a7bb3b0ad4821543d"
+    },
+    {
+      "path": "results/ablation/config.json",
+      "bytes": 6238,
+      "sha256": "e5548dab70deb889dcafc41a0da2ec12a6a638c897e72b81af06b615cbe2d88b"
+    },
+    {
+      "path": "results/ablation/cross_model_cases.csv",
+      "bytes": 20,
+      "sha256": "2cdf8bddc45aefc3aeffc3aa83bc8498a14396ae003079d35621dc45d4756b1a"
+    },
+    {
+      "path": "results/ablation/events.jsonl",
+      "bytes": 4317958,
+      "sha256": "6b95935ed0a044e642e7c8e70bab464de2668a1d66b88e4be4cb803abef47fb2"
+    },
+    {
+      "path": "results/ablation/generations.jsonl",
+      "bytes": 1037682,
+      "sha256": "486e2f9a4764d89203e0b32a84e1b45b8df1632c076dea5d000a85f9b4c3e57b"
+    },
+    {
+      "path": "results/ablation/global-billing-baseline.json",
+      "bytes": 143,
+      "sha256": "3e8bcf01f97ea1d0f4f124b36e40dac763ed09f3f6ce664dce9f3a925a778024"
+    },
+    {
+      "path": "results/ablation/global-billing.json",
+      "bytes": 737,
+      "sha256": "3e0e70d705e63af15aab3d1670476e5daba42fe272bc7cdfc18f080e6ec0a215"
+    },
+    {
+      "path": "results/ablation/operations.json",
+      "bytes": 38877,
+      "sha256": "017a91c28301a92430c3fd7ae93f31bae1609c99ea700b330c2ef66006836e46"
+    },
+    {
+      "path": "results/ablation/paired_status_changes.json",
+      "bytes": 32131,
+      "sha256": "0528ea61954781988da8c80cf39901af74b643d3cc6e9ed2829d1de13c22e216"
+    },
+    {
+      "path": "results/ablation/progress.json",
+      "bytes": 385,
+      "sha256": "2c699b76e0e195b155ca027a8895b8f73a6ba19369eff66441faa83b11519490"
+    },
+    {
+      "path": "results/ablation/rows.jsonl",
+      "bytes": 1284776,
+      "sha256": "260ed2ab92799ae4793d456dc5cb78465759a74b08f374b0ed22b63ffd2bfb90"
+    },
+    {
+      "path": "results/ablation/run.json",
+      "bytes": 1868,
+      "sha256": "224434fc4f32ef4d9d8e98023b438051d13d586509229cb76ed40e1dce4a8c50"
+    },
+    {
+      "path": "results/ablation/semantic_audit.json",
+      "bytes": 264622,
+      "sha256": "fc5eba922776a8a97cdb0ab2b22a3fbcde4c1c761d93226cd1ef41ce3751ad0b"
+    },
+    {
+      "path": "results/ablation/semantic_review.csv",
+      "bytes": 508420,
+      "sha256": "963b68034b18b6e820dcf9293604b5df2f3d530c01d1342b79c8a51fd175190a"
+    },
+    {
+      "path": "results/ablation/semantic_summary.json",
+      "bytes": 16645,
+      "sha256": "e836c57cc78e5423451f3653fb034ff70b213c9103ac0cd192ea7ae9a28fcdeb"
+    },
+    {
+      "path": "results/ablation/summary.json",
+      "bytes": 246159,
+      "sha256": "5ecb2d988d7634dffa0431a63401facd99aba43596e089daa4ed509fd3d5a062"
+    },
+    {
+      "path": "results/ablation/turn_metrics.csv",
+      "bytes": 525270,
+      "sha256": "d6c9c3f2246fb5c5fa67596c8b3979b3890497a2e7c24264092b464d9bcd855b"
+    },
+    {
+      "path": "results/model-benchmark/billing-baseline.json",
+      "bytes": 143,
+      "sha256": "3e8bcf01f97ea1d0f4f124b36e40dac763ed09f3f6ce664dce9f3a925a778024"
+    },
+    {
+      "path": "results/model-benchmark/billing.json",
+      "bytes": 1066,
+      "sha256": "76688fb077dc4fb8ae151fb791839ce037085043c2a87ba783b911ce05d1da30"
+    },
+    {
+      "path": "results/model-benchmark/calls.jsonl",
+      "bytes": 13753884,
+      "sha256": "ecf484caf6920eff81c33c09ad5e2d7aef009d87e51b398e1c34b0caf1da60ad"
+    },
+    {
+      "path": "results/model-benchmark/case_metrics.csv",
+      "bytes": 155631,
+      "sha256": "5a1d3d16a013fd3e0c2c95277bcc2c364c5bddf250e8c3747894b87069b17ed7"
+    },
+    {
+      "path": "results/model-benchmark/config.json",
+      "bytes": 7506,
+      "sha256": "67e69831469d5850d5e0f0527c96f8ecce0873ab9bc924aeef41bf0b24c8950b"
+    },
+    {
+      "path": "results/model-benchmark/cross_model_cases.csv",
+      "bytes": 62745,
+      "sha256": "d939522df4d54335db2466be3822b3d001aea6107ac2151f649ee0be5967963e"
+    },
+    {
+      "path": "results/model-benchmark/events.jsonl",
+      "bytes": 4587313,
+      "sha256": "9ecd4dc9e45fa674fb2d606ebe9591b0bfb21673326ec865c4c49ec0234512c9"
+    },
+    {
+      "path": "results/model-benchmark/fence_only_diagnostics.jsonl",
+      "bytes": 79941,
+      "sha256": "ecd7a220a4c5cb6b9f0af33e2f87084acc98484756306180eae55aaddc533ea6"
+    },
+    {
+      "path": "results/model-benchmark/generations.jsonl",
+      "bytes": 1043408,
+      "sha256": "d7353ecaf2d0f59221b49e3c2af145120a3bcb693202d349dbad369b5fdec0bb"
+    },
+    {
+      "path": "results/model-benchmark/model_difference_audit.json",
+      "bytes": 73856,
+      "sha256": "ca4d891cfff98717ba6cb125b535dd1c8b844458b6b277791c17d55f2eb84b29"
+    },
+    {
+      "path": "results/model-benchmark/model_mapping.csv",
+      "bytes": 374,
+      "sha256": "fe9ea4c68b16df1f33806326be687b8b40671bc0d66c986e98fc12811e6d34e8"
+    },
+    {
+      "path": "results/model-benchmark/operations.json",
+      "bytes": 97353,
+      "sha256": "c1fee3d18c285fd023a9bbee072ad4358c2d1b20169b90fa36467d52bfbc5daa"
+    },
+    {
+      "path": "results/model-benchmark/orphan_calls.jsonl",
+      "bytes": 18018,
+      "sha256": "a495af46412cb328d530f9bf3f8975fc66f61fc85c261a3b7d45aa25bb99bedd"
+    },
+    {
+      "path": "results/model-benchmark/raw_answer_examples.json",
+      "bytes": 6942,
+      "sha256": "ef412718361157554fc262f2811ef5f8d191cceaba7c84462039344fda190ed9"
+    },
+    {
+      "path": "results/model-benchmark/rows.jsonl",
+      "bytes": 1160217,
+      "sha256": "723f7e862816bf8187df57f09be1a04e6917ed586908d76f478e40b6f31eb095"
+    },
+    {
+      "path": "results/model-benchmark/run.json",
+      "bytes": 3473,
+      "sha256": "b1212b73fed62a20d826c421518a755166bc85aabd05322f3739a45755d65af2"
+    },
+    {
+      "path": "results/model-benchmark/semantic_review.csv",
+      "bytes": 239470,
+      "sha256": "ea7320c9eadbfbff5e26704d67c40ef9b99b684ac357da2ebbac46b2fd94c1c6"
+    },
+    {
+      "path": "results/model-benchmark/summary.json",
+      "bytes": 117134,
+      "sha256": "a5cd282d84d26c0aa4227f733ecfe1645a71263b1b9d8f89351e454ba3781cdc"
+    },
+    {
+      "path": "results/model-benchmark/turn_metrics.csv",
+      "bytes": 638406,
+      "sha256": "a73d15bd2ec3698d539ea8e712cdd84e6d106055fe4698311a6a59b89701f718"
+    },
+    {
+      "path": "results/rules-baseline/config.json",
+      "bytes": 3697,
+      "sha256": "b4d7b808654127097fdc135e59b355df7b2e7a60151b858014f27a22184192a2"
+    },
+    {
+      "path": "results/rules-baseline/rows.jsonl",
+      "bytes": 50215,
+      "sha256": "d4fab155f3c6d5905580a0d2035329d18ee9277ed14a54b26efbb7c6fc87795b"
+    },
+    {
+      "path": "results/rules-baseline/run.json",
+      "bytes": 1078,
+      "sha256": "d8315509f00284b09e5e94454f629df19c4ce59a04a837cb06532685571da4f6"
+    },
+    {
+      "path": "results/rules-baseline/semantic_review.csv",
+      "bytes": 28705,
+      "sha256": "249d429e7bd0785b95138f7c3bafac2b9c9aef6504950c757e4cbb0411973e63"
+    },
+    {
+      "path": "results/rules-baseline/summary.json",
+      "bytes": 19893,
+      "sha256": "feebfeb41529fbe38d67646ca51adec3ac313e7a3864958e8bee5e7a4eed7b51"
+    }
+  ],
+  "english_localization": {
+    "owner_authorized": true,
+    "original_manifest_archive": "pre_english/experiments/results/finalization.json",
+    "current_manifest_role": "English-localized derivative, not a new model experiment",
+    "provenance": "english_localization.json"
+  }
+}

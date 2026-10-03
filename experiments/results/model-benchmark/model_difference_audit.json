@@ -1,0 +1,2348 @@
+{
+  "scope": "Offline descriptive audit of the frozen 360-case/model run. No inference, no model-specific edits, no replacement of original scores.",
+  "request_keys": {
+    "max_tokens,messages,model,temperature": 595
+  },
+  "parameter_pairs": {
+    "(0, 2048)": 595
+  },
+  "first_call_context_parity": [
+    {
+      "case_id": "N01",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N02",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N03",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N04",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N05",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N06",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N07",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N08",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N09",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N10",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N11",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N12",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N13",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N14",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "N15",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A01",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A16",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A03",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A17",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A18",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A06",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A19",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A08",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A09",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A20",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A11",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A21",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A22",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A23",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "A24",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C11",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C02",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C03",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C04",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C13",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C06",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C12",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C08",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C09",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "C10",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E01",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E02",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E03",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E04",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E05",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E06",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E07",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E08",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E09",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "E10",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S01",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S02",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S03",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S04",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S05",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S06",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S07",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S08",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S09",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    },
+    {
+      "case_id": "S10",
+      "models": 6,
+      "distinct_payloads_without_model": 1
+    }
+  ],
+  "models": {
+    "full_m01": {
+      "model_id": "openai/gpt-6-luna",
+      "metrics": {
+        "analyses": 60,
+        "strict_status_match": 59,
+        "strict_status_rate": 0.9833333333333333,
+        "accepted_joint_status_count_match": 60,
+        "action_count_match": 60,
+        "matrix": {
+          "action": {
+            "action": 27,
+            "no_action": 0,
+            "needs_review": 0,
+            "error": 0
+          },
+          "no_action": {
+            "action": 0,
+            "no_action": 23,
+            "needs_review": 0,
+            "error": 0
+          },
+          "needs_review": {
+            "action": 1,
+            "no_action": 0,
+            "needs_review": 9,
+            "error": 0
+          }
+        },
+        "action_tp": 27,
+        "action_fp": 1,
+        "action_fn": 0,
+        "action_precision": 0.9642857142857143,
+        "action_recall": 1.0,
+        "action_f1": 0.9818181818181818,
+        "review_count": 9,
+        "review_rate": 0.15,
+        "review_precision": 1.0,
+        "review_recall": 0.9,
+        "unnecessary_reviews": 0,
+        "quote_count": 128,
+        "quote_exact_cases": 60,
+        "deadlines": {
+          "non_null_checked": 10,
+          "non_null_match": 10,
+          "null_checked": 12,
+          "null_match": 12
+        },
+        "wall_ms_median": 3985.777249909006,
+        "model_errors": 0,
+        "semantic_review_complete": false
+      },
+      "operations": {
+        "completed_cases": 60,
+        "calls": 76,
+        "calls_without_completed_case": 0,
+        "case_wall_ms": {
+          "observations": 60,
+          "mean": 4564.319203328341,
+          "p50": 3985.777249909006,
+          "p95": 8724.432584998429,
+          "max": 10762.485399958678
+        },
+        "call_wall_ms": {
+          "observations": 76,
+          "mean": 3601.893789467316,
+          "p50": 3316.1406000726856,
+          "p95": 6678.210000129184,
+          "max": 9064.905800041743
+        },
+        "openrouter_latency_ms": {
+          "observations": 76,
+          "mean": 2796.4605263157896,
+          "p50": 2438.5,
+          "p95": 5258.25,
+          "max": 8842
+        },
+        "openrouter_generation_time_ms": {
+          "observations": 76,
+          "mean": 3407.8289473684213,
+          "p50": 3167.5,
+          "p95": 6587.0,
+          "max": 8986
+        },
+        "known_billed_cost_usd": 0.012339495,
+        "unknown_billed_cost_calls": 0,
+        "billed_cost_complete": true,
+        "complete_case_billed_cost_usd": {
+          "observations": 60,
+          "mean": 0.00020565825,
+          "p50": 0.0001625225,
+          "p95": 0.00037853374999999995,
+          "max": 0.0004829
+        },
+        "repair_calls": 0,
+        "repair_wall_ms_total": 0,
+        "known_repair_billed_cost_usd": 0,
+        "unknown_repair_billed_cost_calls": 0,
+        "repair_validated_events": 0,
+        "repair_failed_events": 0,
+        "repair_skipped_events": 0,
+        "calls_per_case": {
+          "observations": 60,
+          "mean": 1.2666666666666666,
+          "p50": 1.0,
+          "p95": 2.0,
+          "max": 2
+        },
+        "end_to_end_output_tokens_per_second": {
+          "observations": 76,
+          "mean": 58.13316642238247,
+          "p50": 55.65985875974519,
+          "p95": 93.50270141238484,
+          "max": 102.46723077269584
+        },
+        "input_tokens_known_sum": 97073,
+        "output_tokens_known_sum": 15665,
+        "unknown_input_token_calls": 0,
+        "unknown_output_token_calls": 0,
+        "known_estimated_cost_usd": 0.017539799999999998,
+        "unknown_cost_calls": 0,
+        "cost_complete": true,
+        "complete_case_cost_usd": {
+          "observations": 60,
+          "mean": 0.00029233,
+          "p50": 0.00025085,
+          "p95": 0.00046106,
+          "max": 0.0005076
+        },
+        "provider_reported_cost_known_sum_usd": 0.012339495,
+        "provider_reported_cost_calls": 76,
+        "repair_cases": 0,
+        "model_error_cases": 0,
+        "resolved_models": [
+          "openai/gpt-6-luna"
+        ],
+        "finish_reasons": {
+          "stop": 76
+        }
+      },
+      "providers": {
+        "OpenAI": 76
+      },
+      "finish_reasons": {
+        "stop": 76
+      },
+      "tokens": {
+        "input_tokens": 97073,
+        "output_tokens": 15665,
+        "reasoning_tokens": 7821,
+        "cached_input_tokens": 63612
+      },
+      "repair_attempted_cases": 0,
+      "repair_outcomes": {},
+      "repair_initial_errors": {},
+      "repair_stages": {},
+      "quote_diagnostic_events": 0,
+      "repair_calls_detected_from_prompt": 0,
+      "repair_calls_legacy_flag": 0,
+      "repair_billed_cost_usd": 0,
+      "repair_wall_ms": 0,
+      "api_errors": {},
+      "final_engineering_errors": {
+        "attachment:1: Malformed or encrypted Office archive": 1
+      },
+      "wrong_status_cases": [
+        {
+          "case_id": "C11",
+          "gold": "needs_review",
+          "prediction": "action",
+          "reason": "Michael asks where you sit; the rest of the message confirms the information being sought.",
+          "errors": []
+        }
+      ],
+      "fence_only_diagnostic": {},
+      "direct_first_extraction_fence_probe": {},
+      "categories": {
+        "context_dependent": {
+          "matched": 9,
+          "n": 10
+        },
+        "explicit_action": {
+          "matched": 15,
+          "n": 15
+        },
+        "external_content": {
+          "matched": 10,
+          "n": 10
+        },
+        "limits_hostile": {
+          "matched": 2,
+          "n": 2
+        },
+        "links_mixed": {
+          "matched": 2,
+          "n": 2
+        },
+        "long_content": {
+          "matched": 2,
+          "n": 2
+        },
+        "no_action": {
+          "matched": 15,
+          "n": 15
+        },
+        "real_attachments": {
+          "matched": 4,
+          "n": 4
+        }
+      }
+    },
+    "full_m02": {
+      "model_id": "z-ai/glm-5.3-flash",
+      "metrics": {
+        "analyses": 60,
+        "strict_status_match": 51,
+        "strict_status_rate": 0.85,
+        "accepted_joint_status_count_match": 51,
+        "action_count_match": 55,
+        "matrix": {
+          "action": {
+            "action": 22,
+            "no_action": 0,
+            "needs_review": 5,
+            "error": 0
+          },
+          "no_action": {
+            "action": 0,
+            "no_action": 19,
+            "needs_review": 4,
+            "error": 0
+          },
+          "needs_review": {
+            "action": 0,
+            "no_action": 0,
+            "needs_review": 10,
+            "error": 0
+          }
+        },
+        "action_tp": 22,
+        "action_fp": 0,
+        "action_fn": 5,
+        "action_precision": 1.0,
+        "action_recall": 0.8148148148148148,
+        "action_f1": 0.8979591836734694,
+        "review_count": 19,
+        "review_rate": 0.31666666666666665,
+        "review_precision": 0.5263157894736842,
+        "review_recall": 1.0,
+        "unnecessary_reviews": 9,
+        "quote_count": 119,
+        "quote_exact_cases": 60,
+        "deadlines": {
+          "non_null_checked": 8,
+          "non_null_match": 8,
+          "null_checked": 10,
+          "null_match": 10
+        },
+        "wall_ms_median": 23285.210299945902,
+        "model_errors": 5,
+        "semantic_review_complete": false
+      },
+      "operations": {
+        "completed_cases": 60,
+        "calls": 110,
+        "calls_without_completed_case": 0,
+        "case_wall_ms": {
+          "observations": 60,
+          "mean": 25782.348879999092,
+          "p50": 23285.210299945902,
+          "p95": 54892.11814002482,
+          "max": 68116.22630024794
+        },
+        "call_wall_ms": {
+          "observations": 110,
+          "mean": 14061.555308177643,
+          "p50": 10853.643500013277,
+          "p95": 37523.96640497608,
+          "max": 44483.35489991587
+        },
+        "openrouter_latency_ms": {
+          "observations": 110,
+          "mean": 1461.5181818181818,
+          "p50": 957.0,
+          "p95": 5345.649999999999,
+          "max": 10575
+        },
+        "openrouter_generation_time_ms": {
+          "observations": 110,
+          "mean": 13347.736363636364,
+          "p50": 10319.5,
+          "p95": 37359.049999999996,
+          "max": 43987
+        },
+        "known_billed_cost_usd": 0.056702108,
+        "unknown_billed_cost_calls": 0,
+        "billed_cost_complete": true,
+        "complete_case_billed_cost_usd": {
+          "observations": 60,
+          "mean": 0.0009450351333333333,
+          "p50": 0.000870766,
+          "p95": 0.0019390286499999998,
+          "max": 0.00222265
+        },
+        "repair_calls": 34,
+        "repair_wall_ms_total": 379230.52229965106,
+        "known_repair_billed_cost_usd": 0.016110275,
+        "unknown_repair_billed_cost_calls": 0,
+        "repair_validated_events": 31,
+        "repair_failed_events": 3,
+        "repair_skipped_events": 4,
+        "calls_per_case": {
+          "observations": 60,
+          "mean": 1.8333333333333333,
+          "p50": 2.0,
+          "p95": 3.0,
+          "max": 3
+        },
+        "end_to_end_output_tokens_per_second": {
+          "observations": 105,
+          "mean": 68.65815537904358,
+          "p50": 59.61215180247674,
+          "p95": 124.44329556806385,
+          "max": 183.6167619008796
+        },
+        "input_tokens_known_sum": 150180,
+        "output_tokens_known_sum": 91455,
+        "unknown_input_token_calls": 0,
+        "unknown_output_token_calls": 0,
+        "known_estimated_cost_usd": 0.06180475,
+        "unknown_cost_calls": 5,
+        "cost_complete": false,
+        "complete_case_cost_usd": {
+          "observations": 55,
+          "mean": 0.001082960909090909,
+          "p50": 0.0010597999999999998,
+          "p95": 0.0019785349999999996,
+          "max": 0.00222265
+        },
+        "provider_reported_cost_known_sum_usd": 0.05670211101,
+        "provider_reported_cost_calls": 110,
+        "repair_cases": 34,
+        "model_error_cases": 5,
+        "resolved_models": [
+          "z-ai/glm-5.3-flash"
+        ],
+        "finish_reasons": {
+          "length": 8,
+          "stop": 102
+        }
+      },
+      "providers": {
+        "Relace": 29,
+        "Together": 37,
+        "StreamLake": 11,
+        "Novita": 4,
+        "Parasail": 6,
+        "SiliconFlow": 14,
+        "Sail Research": 2,
+        "Wafer": 1,
+        "Modal": 1,
+        "InferenceNet": 1,
+        "Z.AI": 2,
+        "OpenInference": 2
+      },
+      "finish_reasons": {
+        "stop": 102,
+        "length": 8
+      },
+      "tokens": {
+        "input_tokens": 150180,
+        "output_tokens": 91455,
+        "reasoning_tokens": 77777,
+        "cached_input_tokens": 27809
+      },
+      "repair_attempted_cases": 34,
+      "repair_outcomes": {
+        "validated": 31,
+        "api_failure": 2,
+        "validation_failure": 1,
+        "skipped_retry_budget": 4
+      },
+      "repair_initial_errors": {
+        "Expecting value: line 1 column 1 (char 0)": 36,
+        "Expecting property name enclosed in double quotes: line 8 column 6 (char 461)": 1,
+        "Evidence quote is absent from source: body": 1
+      },
+      "repair_stages": {
+        "extraction": 28,
+        "planning": 10
+      },
+      "quote_diagnostic_events": 1,
+      "repair_calls_detected_from_prompt": 34,
+      "repair_calls_legacy_flag": 34,
+      "repair_billed_cost_usd": 0.016110275,
+      "repair_wall_ms": 379230.52229965106,
+      "api_errors": {
+        "Model API response has no text completion (finish_reason=length, completion_tokens=2048)": 5
+      },
+      "final_engineering_errors": {
+        "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)": 5,
+        "attachment:1: Malformed or encrypted Office archive": 1
+      },
+      "wrong_status_cases": [
+        {
+          "case_id": "N03",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "The forwarded 'Meas. Meeting' message content was not supplied, so it cannot be determined whether it contains any request or task for Lynn Blair; the visible body is only the informational note 'FYI. sj'.",
+          "errors": []
+        },
+        {
+          "case_id": "C02",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Model API failure: Model API response has no text completion (finish_reason=length, completion_tokens=2048) No original quote is attached to this system-level failure.",
+          "errors": []
+        },
+        {
+          "case_id": "C03",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Model API failure: Model API response has no text completion (finish_reason=length, completion_tokens=2048) No original quote is attached to this system-level failure.",
+          "errors": []
+        },
+        {
+          "case_id": "E04",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E06",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E08",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E09",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S02",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Model API failure: Model API response has no text completion (finish_reason=length, completion_tokens=2048) No original quote is attached to this system-level failure.",
+          "errors": []
+        },
+        {
+          "case_id": "S04",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Model API failure: Model API response has no text completion (finish_reason=length, completion_tokens=2048) No original quote is attached to this system-level failure.",
+          "errors": []
+        }
+      ],
+      "fence_only_diagnostic": {
+        "fenced_calls": 36,
+        "json_parses": 36,
+        "schema_passes": 35
+      },
+      "direct_first_extraction_fence_probe": {
+        "direct_first_extraction": 17,
+        "raw_status_matches": 17,
+        "source_validated_status_matches": 17,
+        "source_validation_passes": 17
+      },
+      "categories": {
+        "context_dependent": {
+          "matched": 8,
+          "n": 10
+        },
+        "explicit_action": {
+          "matched": 15,
+          "n": 15
+        },
+        "external_content": {
+          "matched": 6,
+          "n": 10
+        },
+        "limits_hostile": {
+          "matched": 2,
+          "n": 2
+        },
+        "links_mixed": {
+          "matched": 2,
+          "n": 2
+        },
+        "long_content": {
+          "matched": 1,
+          "n": 2
+        },
+        "no_action": {
+          "matched": 14,
+          "n": 15
+        },
+        "real_attachments": {
+          "matched": 3,
+          "n": 4
+        }
+      }
+    },
+    "full_m03": {
+      "model_id": "google/gemini-3.5-flash-lite",
+      "metrics": {
+        "analyses": 60,
+        "strict_status_match": 10,
+        "strict_status_rate": 0.16666666666666666,
+        "accepted_joint_status_count_match": 10,
+        "action_count_match": 33,
+        "matrix": {
+          "action": {
+            "action": 0,
+            "no_action": 0,
+            "needs_review": 27,
+            "error": 0
+          },
+          "no_action": {
+            "action": 0,
+            "no_action": 0,
+            "needs_review": 23,
+            "error": 0
+          },
+          "needs_review": {
+            "action": 0,
+            "no_action": 0,
+            "needs_review": 10,
+            "error": 0
+          }
+        },
+        "action_tp": 0,
+        "action_fp": 0,
+        "action_fn": 27,
+        "action_precision": null,
+        "action_recall": 0.0,
+        "action_f1": 0.0,
+        "review_count": 60,
+        "review_rate": 1.0,
+        "review_precision": 0.16666666666666666,
+        "review_recall": 1.0,
+        "unnecessary_reviews": 50,
+        "quote_count": 0,
+        "quote_exact_cases": 60,
+        "deadlines": {
+          "non_null_checked": 0,
+          "non_null_match": 0,
+          "null_checked": 0,
+          "null_match": 0
+        },
+        "wall_ms_median": 2732.047300087288,
+        "model_errors": 0,
+        "semantic_review_complete": false
+      },
+      "operations": {
+        "completed_cases": 60,
+        "calls": 120,
+        "calls_without_completed_case": 0,
+        "case_wall_ms": {
+          "observations": 60,
+          "mean": 2727.818064967869,
+          "p50": 2732.047300087288,
+          "p95": 3409.2584948521107,
+          "max": 3774.037699913606
+        },
+        "call_wall_ms": {
+          "observations": 120,
+          "mean": 1362.7183533205728,
+          "p50": 1356.2319000484422,
+          "p95": 1691.2725348374806,
+          "max": 1953.8559999782592
+        },
+        "openrouter_latency_ms": {
+          "observations": 120,
+          "mean": 752.6583333333333,
+          "p50": 757.5,
+          "p95": 906.15,
+          "max": 1128
+        },
+        "openrouter_generation_time_ms": {
+          "observations": 120,
+          "mean": 1212.7083333333333,
+          "p50": 1199.0,
+          "p95": 1545.35,
+          "max": 1819
+        },
+        "known_billed_cost_usd": 0.093015,
+        "unknown_billed_cost_calls": 0,
+        "billed_cost_complete": true,
+        "complete_case_billed_cost_usd": {
+          "observations": 60,
+          "mean": 0.00155025,
+          "p50": 0.0015234,
+          "p95": 0.0021848249999999996,
+          "max": 0.0022618
+        },
+        "repair_calls": 60,
+        "repair_wall_ms_total": 80486.63799930364,
+        "known_repair_billed_cost_usd": 0.048971,
+        "unknown_repair_billed_cost_calls": 0,
+        "repair_validated_events": 0,
+        "repair_failed_events": 60,
+        "repair_skipped_events": 0,
+        "calls_per_case": {
+          "observations": 60,
+          "mean": 2,
+          "p50": 2.0,
+          "p95": 2.0,
+          "max": 2
+        },
+        "end_to_end_output_tokens_per_second": {
+          "observations": 120,
+          "mean": 101.35538516210815,
+          "p50": 95.93081891224529,
+          "p95": 155.640205025645,
+          "max": 182.800318090432
+        },
+        "input_tokens_known_sum": 169775,
+        "output_tokens_known_sum": 16833,
+        "unknown_input_token_calls": 0,
+        "unknown_output_token_calls": 0,
+        "known_estimated_cost_usd": 0.093015,
+        "unknown_cost_calls": 0,
+        "cost_complete": true,
+        "complete_case_cost_usd": {
+          "observations": 60,
+          "mean": 0.00155025,
+          "p50": 0.0015233999999999998,
+          "p95": 0.0021848249999999996,
+          "max": 0.0022617999999999996
+        },
+        "provider_reported_cost_known_sum_usd": 0.093015,
+        "provider_reported_cost_calls": 120,
+        "repair_cases": 60,
+        "model_error_cases": 0,
+        "resolved_models": [
+          "google/gemini-3.5-flash-lite"
+        ],
+        "finish_reasons": {
+          "stop": 120
+        }
+      },
+      "providers": {
+        "Google": 120
+      },
+      "finish_reasons": {
+        "stop": 120
+      },
+      "tokens": {
+        "input_tokens": 169775,
+        "output_tokens": 16833,
+        "reasoning_tokens": 0,
+        "cached_input_tokens": 0
+      },
+      "repair_attempted_cases": 60,
+      "repair_outcomes": {
+        "validation_failure": 60
+      },
+      "repair_initial_errors": {
+        "Expecting value: line 1 column 1 (char 0)": 60
+      },
+      "repair_stages": {
+        "extraction": 43,
+        "planning": 17
+      },
+      "quote_diagnostic_events": 0,
+      "repair_calls_detected_from_prompt": 60,
+      "repair_calls_legacy_flag": 60,
+      "repair_billed_cost_usd": 0.048971,
+      "repair_wall_ms": 80486.63799930364,
+      "api_errors": {},
+      "final_engineering_errors": {
+        "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)": 43,
+        "Invalid reading plan: Expecting value: line 1 column 1 (char 0)": 17
+      },
+      "wrong_status_cases": [
+        {
+          "case_id": "N01",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N02",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N03",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N04",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N05",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N06",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N07",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N08",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N09",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N10",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N11",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N12",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N13",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N14",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "N15",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A01",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A16",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A03",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A06",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A08",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A09",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A11",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A21",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A22",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A23",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "A24",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "C02",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "C03",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "C04",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "C06",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "C08",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "C09",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "C10",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E01",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E02",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E03",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E04",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E05",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E06",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E07",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E08",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E09",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E10",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S01",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S02",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S03",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S04",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S05",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S07",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S09",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid reading plan: Expecting value: line 1 column 1 (char 0) No original quote is attached to this system-level failure.",
+          "errors": [
+            "Invalid reading plan: Expecting value: line 1 column 1 (char 0)"
+          ]
+        }
+      ],
+      "fence_only_diagnostic": {
+        "fenced_calls": 120,
+        "json_parses": 120,
+        "schema_passes": 118
+      },
+      "direct_first_extraction_fence_probe": {
+        "direct_first_extraction": 41,
+        "raw_status_matches": 36,
+        "source_validated_status_matches": 36,
+        "source_validation_passes": 41
+      },
+      "categories": {
+        "context_dependent": {
+          "matched": 3,
+          "n": 10
+        },
+        "explicit_action": {
+          "matched": 4,
+          "n": 15
+        },
+        "external_content": {
+          "matched": 0,
+          "n": 10
+        },
+        "limits_hostile": {
+          "matched": 1,
+          "n": 2
+        },
+        "links_mixed": {
+          "matched": 1,
+          "n": 2
+        },
+        "long_content": {
+          "matched": 0,
+          "n": 2
+        },
+        "no_action": {
+          "matched": 0,
+          "n": 15
+        },
+        "real_attachments": {
+          "matched": 1,
+          "n": 4
+        }
+      }
+    },
+    "full_m04": {
+      "model_id": "google/gemini-3.8-flash",
+      "metrics": {
+        "analyses": 60,
+        "strict_status_match": 42,
+        "strict_status_rate": 0.7,
+        "accepted_joint_status_count_match": 43,
+        "action_count_match": 49,
+        "matrix": {
+          "action": {
+            "action": 17,
+            "no_action": 0,
+            "needs_review": 10,
+            "error": 0
+          },
+          "no_action": {
+            "action": 0,
+            "no_action": 17,
+            "needs_review": 6,
+            "error": 0
+          },
+          "needs_review": {
+            "action": 2,
+            "no_action": 0,
+            "needs_review": 8,
+            "error": 0
+          }
+        },
+        "action_tp": 17,
+        "action_fp": 2,
+        "action_fn": 10,
+        "action_precision": 0.8947368421052632,
+        "action_recall": 0.6296296296296297,
+        "action_f1": 0.7391304347826086,
+        "review_count": 24,
+        "review_rate": 0.4,
+        "review_precision": 0.3333333333333333,
+        "review_recall": 0.8,
+        "unnecessary_reviews": 16,
+        "quote_count": 64,
+        "quote_exact_cases": 60,
+        "deadlines": {
+          "non_null_checked": 4,
+          "non_null_match": 4,
+          "null_checked": 12,
+          "null_match": 12
+        },
+        "wall_ms_median": 14731.975699891336,
+        "model_errors": 0,
+        "semantic_review_complete": false
+      },
+      "operations": {
+        "completed_cases": 60,
+        "calls": 136,
+        "calls_without_completed_case": 0,
+        "case_wall_ms": {
+          "observations": 60,
+          "mean": 15441.632271686103,
+          "p50": 14731.975699891336,
+          "p95": 23572.764240164543,
+          "max": 31383.259400026873
+        },
+        "call_wall_ms": {
+          "observations": 136,
+          "mean": 6811.235130887807,
+          "p50": 6021.600050036795,
+          "p95": 13656.442075036466,
+          "max": 15987.253400031477
+        },
+        "openrouter_latency_ms": {
+          "observations": 136,
+          "mean": 2421.580882352941,
+          "p50": 2383.0,
+          "p95": 2961.5,
+          "max": 3735
+        },
+        "openrouter_generation_time_ms": {
+          "observations": 136,
+          "mean": 6361.125,
+          "p50": 5604.0,
+          "p95": 13283.75,
+          "max": 15663
+        },
+        "known_billed_cost_usd": 0.523299,
+        "unknown_billed_cost_calls": 0,
+        "billed_cost_complete": true,
+        "complete_case_billed_cost_usd": {
+          "observations": 60,
+          "mean": 0.00872165,
+          "p50": 0.008359125,
+          "p95": 0.0129721875,
+          "max": 0.01753875
+        },
+        "repair_calls": 60,
+        "repair_wall_ms_total": 380062.495801365,
+        "known_repair_billed_cost_usd": 0.218346,
+        "unknown_repair_billed_cost_calls": 0,
+        "repair_validated_events": 57,
+        "repair_failed_events": 3,
+        "repair_skipped_events": 16,
+        "calls_per_case": {
+          "observations": 60,
+          "mean": 2.2666666666666666,
+          "p50": 2.0,
+          "p95": 3.0,
+          "max": 3
+        },
+        "end_to_end_output_tokens_per_second": {
+          "observations": 136,
+          "mean": 101.92880518846012,
+          "p50": 102.96802805661684,
+          "p95": 136.38926026171254,
+          "max": 150.46377334104963
+        },
+        "input_tokens_known_sum": 194057,
+        "output_tokens_known_sum": 100735,
+        "unknown_input_token_calls": 0,
+        "unknown_output_token_calls": 0,
+        "known_estimated_cost_usd": 0.523299,
+        "unknown_cost_calls": 0,
+        "cost_complete": true,
+        "complete_case_cost_usd": {
+          "observations": 60,
+          "mean": 0.00872165,
+          "p50": 0.008359125,
+          "p95": 0.0129721875,
+          "max": 0.01753875
+        },
+        "provider_reported_cost_known_sum_usd": 0.523299,
+        "provider_reported_cost_calls": 136,
+        "repair_cases": 60,
+        "model_error_cases": 0,
+        "resolved_models": [
+          "google/gemini-3.8-flash"
+        ],
+        "finish_reasons": {
+          "length": 5,
+          "stop": 131
+        }
+      },
+      "providers": {
+        "Google": 136
+      },
+      "finish_reasons": {
+        "stop": 131,
+        "length": 5
+      },
+      "tokens": {
+        "input_tokens": 194057,
+        "output_tokens": 100735,
+        "reasoning_tokens": 81955,
+        "cached_input_tokens": 0
+      },
+      "repair_attempted_cases": 60,
+      "repair_outcomes": {
+        "validated": 57,
+        "validation_failure": 3,
+        "skipped_retry_budget": 16
+      },
+      "repair_initial_errors": {
+        "Expecting value: line 1 column 1 (char 0)": 76
+      },
+      "repair_stages": {
+        "extraction": 59,
+        "planning": 17
+      },
+      "quote_diagnostic_events": 0,
+      "repair_calls_detected_from_prompt": 60,
+      "repair_calls_legacy_flag": 60,
+      "repair_billed_cost_usd": 0.218346,
+      "repair_wall_ms": 380062.495801365,
+      "api_errors": {},
+      "final_engineering_errors": {
+        "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)": 17,
+        "Invalid V2 model response: Explanation must cite available original text": 1,
+        "Invalid V2 model response: Unterminated string starting at: line 8 column 16 (char 233)": 1,
+        "attachment:1: Malformed or encrypted Office archive": 1
+      },
+      "wrong_status_cases": [
+        {
+          "case_id": "A18",
+          "gold": "needs_review",
+          "prediction": "action",
+          "reason": "Maya requested that you file the form previously discussed.",
+          "errors": []
+        },
+        {
+          "case_id": "C11",
+          "gold": "needs_review",
+          "prediction": "action",
+          "reason": "Mike agreed to meet at 1:30pm and asked where you sit.",
+          "errors": []
+        },
+        {
+          "case_id": "E01",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E02",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E03",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E04",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E05",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E06",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E07",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E08",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E09",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "E10",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S02",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Unterminated string starting at: line 8 column 16 (char 233)",
+          "errors": [
+            "Invalid V2 model response: Unterminated string starting at: line 8 column 16 (char 233)"
+          ]
+        },
+        {
+          "case_id": "S03",
+          "gold": "no_action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S04",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S05",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S07",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        },
+        {
+          "case_id": "S09",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)",
+          "errors": [
+            "Invalid V2 model response: Expecting value: line 1 column 1 (char 0)"
+          ]
+        }
+      ],
+      "fence_only_diagnostic": {
+        "fenced_calls": 73,
+        "json_parses": 73,
+        "schema_passes": 73
+      },
+      "direct_first_extraction_fence_probe": {
+        "direct_first_extraction": 42,
+        "raw_status_matches": 40,
+        "source_validated_status_matches": 39,
+        "source_validation_passes": 40
+      },
+      "categories": {
+        "context_dependent": {
+          "matched": 9,
+          "n": 10
+        },
+        "explicit_action": {
+          "matched": 14,
+          "n": 15
+        },
+        "external_content": {
+          "matched": 0,
+          "n": 10
+        },
+        "limits_hostile": {
+          "matched": 1,
+          "n": 2
+        },
+        "links_mixed": {
+          "matched": 1,
+          "n": 2
+        },
+        "long_content": {
+          "matched": 1,
+          "n": 2
+        },
+        "no_action": {
+          "matched": 15,
+          "n": 15
+        },
+        "real_attachments": {
+          "matched": 1,
+          "n": 4
+        }
+      }
+    },
+    "full_m05": {
+      "model_id": "openai/gpt-6.1-sol",
+      "metrics": {
+        "analyses": 60,
+        "strict_status_match": 59,
+        "strict_status_rate": 0.9833333333333333,
+        "accepted_joint_status_count_match": 60,
+        "action_count_match": 60,
+        "matrix": {
+          "action": {
+            "action": 27,
+            "no_action": 0,
+            "needs_review": 0,
+            "error": 0
+          },
+          "no_action": {
+            "action": 0,
+            "no_action": 23,
+            "needs_review": 0,
+            "error": 0
+          },
+          "needs_review": {
+            "action": 1,
+            "no_action": 0,
+            "needs_review": 9,
+            "error": 0
+          }
+        },
+        "action_tp": 27,
+        "action_fp": 1,
+        "action_fn": 0,
+        "action_precision": 0.9642857142857143,
+        "action_recall": 1.0,
+        "action_f1": 0.9818181818181818,
+        "review_count": 9,
+        "review_rate": 0.15,
+        "review_precision": 1.0,
+        "review_recall": 0.9,
+        "unnecessary_reviews": 0,
+        "quote_count": 133,
+        "quote_exact_cases": 60,
+        "deadlines": {
+          "non_null_checked": 10,
+          "non_null_match": 10,
+          "null_checked": 12,
+          "null_match": 12
+        },
+        "wall_ms_median": 4042.039649968501,
+        "model_errors": 0,
+        "semantic_review_complete": false
+      },
+      "operations": {
+        "completed_cases": 60,
+        "calls": 76,
+        "calls_without_completed_case": 0,
+        "case_wall_ms": {
+          "observations": 60,
+          "mean": 5565.0671283423435,
+          "p50": 4042.039649968501,
+          "p95": 11608.743794990003,
+          "max": 17104.293899959885
+        },
+        "call_wall_ms": {
+          "observations": 76,
+          "mean": 4392.124653936327,
+          "p50": 3788.7202000711113,
+          "p95": 8010.785524937091,
+          "max": 12082.788199884817
+        },
+        "openrouter_latency_ms": {
+          "observations": 76,
+          "mean": 3075.565789473684,
+          "p50": 2670.0,
+          "p95": 5320.25,
+          "max": 8396
+        },
+        "openrouter_generation_time_ms": {
+          "observations": 76,
+          "mean": 4184.0921052631575,
+          "p50": 3636.0,
+          "p95": 7354.5,
+          "max": 11662
+        },
+        "known_billed_cost_usd": 0.1902891,
+        "unknown_billed_cost_calls": 0,
+        "billed_cost_complete": true,
+        "complete_case_billed_cost_usd": {
+          "observations": 60,
+          "mean": 0.003171485,
+          "p50": 0.0027101,
+          "p95": 0.006589845,
+          "max": 0.0082451
+        },
+        "repair_calls": 0,
+        "repair_wall_ms_total": 0,
+        "known_repair_billed_cost_usd": 0,
+        "unknown_repair_billed_cost_calls": 0,
+        "repair_validated_events": 0,
+        "repair_failed_events": 0,
+        "repair_skipped_events": 0,
+        "calls_per_case": {
+          "observations": 60,
+          "mean": 1.2666666666666666,
+          "p50": 1.0,
+          "p95": 2.0,
+          "max": 2
+        },
+        "end_to_end_output_tokens_per_second": {
+          "observations": 76,
+          "mean": 30.676618544964537,
+          "p50": 27.924412911113826,
+          "p95": 47.91994359084168,
+          "max": 53.68666999022609
+        },
+        "input_tokens_known_sum": 97167,
+        "output_tokens_known_sum": 10425,
+        "unknown_input_token_calls": 0,
+        "unknown_output_token_calls": 0,
+        "known_estimated_cost_usd": 0.298584,
+        "unknown_cost_calls": 0,
+        "cost_complete": true,
+        "complete_case_cost_usd": {
+          "observations": 60,
+          "mean": 0.0049764,
+          "p50": 0.004456,
+          "p95": 0.007812299999999999,
+          "max": 0.010126
+        },
+        "provider_reported_cost_known_sum_usd": 0.1902891,
+        "provider_reported_cost_calls": 76,
+        "repair_cases": 0,
+        "model_error_cases": 0,
+        "resolved_models": [
+          "openai/gpt-6.1-sol"
+        ],
+        "finish_reasons": {
+          "stop": 76
+        }
+      },
+      "providers": {
+        "OpenAI": 76
+      },
+      "finish_reasons": {
+        "stop": 76
+      },
+      "tokens": {
+        "input_tokens": 97167,
+        "output_tokens": 10425,
+        "reasoning_tokens": 530,
+        "cached_input_tokens": 62496
+      },
+      "repair_attempted_cases": 0,
+      "repair_outcomes": {},
+      "repair_initial_errors": {},
+      "repair_stages": {},
+      "quote_diagnostic_events": 0,
+      "repair_calls_detected_from_prompt": 0,
+      "repair_calls_legacy_flag": 0,
+      "repair_billed_cost_usd": 0,
+      "repair_wall_ms": 0,
+      "api_errors": {},
+      "final_engineering_errors": {
+        "attachment:1: Malformed or encrypted Office archive": 1
+      },
+      "wrong_status_cases": [
+        {
+          "case_id": "C11",
+          "gold": "needs_review",
+          "prediction": "action",
+          "reason": "Mike asks Susan for her location; the information list clarifies what is being sought without expressly requesting another step.",
+          "errors": []
+        }
+      ],
+      "fence_only_diagnostic": {},
+      "direct_first_extraction_fence_probe": {},
+      "categories": {
+        "context_dependent": {
+          "matched": 9,
+          "n": 10
+        },
+        "explicit_action": {
+          "matched": 15,
+          "n": 15
+        },
+        "external_content": {
+          "matched": 10,
+          "n": 10
+        },
+        "limits_hostile": {
+          "matched": 2,
+          "n": 2
+        },
+        "links_mixed": {
+          "matched": 2,
+          "n": 2
+        },
+        "long_content": {
+          "matched": 2,
+          "n": 2
+        },
+        "no_action": {
+          "matched": 15,
+          "n": 15
+        },
+        "real_attachments": {
+          "matched": 4,
+          "n": 4
+        }
+      }
+    },
+    "full_m06": {
+      "model_id": "anthropic/claude-sonnet-5.5",
+      "metrics": {
+        "analyses": 60,
+        "strict_status_match": 58,
+        "strict_status_rate": 0.9666666666666667,
+        "accepted_joint_status_count_match": 59,
+        "action_count_match": 59,
+        "matrix": {
+          "action": {
+            "action": 26,
+            "no_action": 0,
+            "needs_review": 1,
+            "error": 0
+          },
+          "no_action": {
+            "action": 0,
+            "no_action": 23,
+            "needs_review": 0,
+            "error": 0
+          },
+          "needs_review": {
+            "action": 1,
+            "no_action": 0,
+            "needs_review": 9,
+            "error": 0
+          }
+        },
+        "action_tp": 26,
+        "action_fp": 1,
+        "action_fn": 1,
+        "action_precision": 0.9629629629629629,
+        "action_recall": 0.9629629629629629,
+        "action_f1": 0.9629629629629629,
+        "review_count": 10,
+        "review_rate": 0.16666666666666666,
+        "review_precision": 0.9,
+        "review_recall": 0.9,
+        "unnecessary_reviews": 1,
+        "quote_count": 137,
+        "quote_exact_cases": 60,
+        "deadlines": {
+          "non_null_checked": 10,
+          "non_null_match": 10,
+          "null_checked": 11,
+          "null_match": 11
+        },
+        "wall_ms_median": 2970.747199957259,
+        "model_errors": 0,
+        "semantic_review_complete": false
+      },
+      "operations": {
+        "completed_cases": 60,
+        "calls": 77,
+        "calls_without_completed_case": 0,
+        "case_wall_ms": {
+          "observations": 60,
+          "mean": 4023.374528319497,
+          "p50": 2970.747199957259,
+          "p95": 7607.875294855328,
+          "max": 9948.745199944824
+        },
+        "call_wall_ms": {
+          "observations": 77,
+          "mean": 3133.6612064896344,
+          "p50": 2772.7814000099897,
+          "p95": 5774.621600052344,
+          "max": 7249.271999928169
+        },
+        "openrouter_latency_ms": {
+          "observations": 76,
+          "mean": 2067.6315789473683,
+          "p50": 1881.0,
+          "p95": 3714.75,
+          "max": 7053
+        },
+        "openrouter_generation_time_ms": {
+          "observations": 76,
+          "mean": 2964.184210526316,
+          "p50": 2566.0,
+          "p95": 5617.0,
+          "max": 7053
+        },
+        "known_billed_cost_usd": 0.475764,
+        "unknown_billed_cost_calls": 0,
+        "billed_cost_complete": true,
+        "complete_case_billed_cost_usd": {
+          "observations": 60,
+          "mean": 0.0079294,
+          "p50": 0.006497,
+          "p95": 0.012779599999999999,
+          "max": 0.019794
+        },
+        "repair_calls": 1,
+        "repair_wall_ms_total": 7249.271999928169,
+        "known_repair_billed_cost_usd": 0.012984,
+        "unknown_repair_billed_cost_calls": 0,
+        "repair_validated_events": 1,
+        "repair_failed_events": 0,
+        "repair_skipped_events": 0,
+        "calls_per_case": {
+          "observations": 60,
+          "mean": 1.2833333333333334,
+          "p50": 1.0,
+          "p95": 2.0,
+          "max": 2
+        },
+        "end_to_end_output_tokens_per_second": {
+          "observations": 77,
+          "mean": 65.90381167947709,
+          "p50": 64.46823480855916,
+          "p95": 94.99703290340287,
+          "max": 108.44165979396485
+        },
+        "input_tokens_known_sum": 155017,
+        "output_tokens_known_sum": 16573,
+        "unknown_input_token_calls": 0,
+        "unknown_output_token_calls": 0,
+        "known_estimated_cost_usd": 0.475764,
+        "unknown_cost_calls": 0,
+        "cost_complete": true,
+        "complete_case_cost_usd": {
+          "observations": 60,
+          "mean": 0.0079294,
+          "p50": 0.006497,
+          "p95": 0.012779599999999999,
+          "max": 0.019794
+        },
+        "provider_reported_cost_known_sum_usd": 0.475764,
+        "provider_reported_cost_calls": 77,
+        "repair_cases": 1,
+        "model_error_cases": 0,
+        "resolved_models": [
+          "anthropic/claude-sonnet-5.5"
+        ],
+        "finish_reasons": {
+          "stop": 77
+        }
+      },
+      "providers": {
+        "Claude Platform on AWS": 77
+      },
+      "finish_reasons": {
+        "stop": 77
+      },
+      "tokens": {
+        "input_tokens": 155017,
+        "output_tokens": 16573,
+        "reasoning_tokens": 2424,
+        "cached_input_tokens": 0
+      },
+      "repair_attempted_cases": 1,
+      "repair_outcomes": {
+        "validated": 1
+      },
+      "repair_initial_errors": {
+        "Evidence quote is absent from source: body": 1
+      },
+      "repair_stages": {
+        "extraction": 1
+      },
+      "quote_diagnostic_events": 1,
+      "repair_calls_detected_from_prompt": 1,
+      "repair_calls_legacy_flag": 1,
+      "repair_billed_cost_usd": 0.012984,
+      "repair_wall_ms": 7249.271999928169,
+      "api_errors": {},
+      "final_engineering_errors": {
+        "attachment:1: Malformed or encrypted Office archive": 1
+      },
+      "wrong_status_cases": [
+        {
+          "case_id": "C11",
+          "gold": "needs_review",
+          "prediction": "action",
+          "reason": "Michael asks a direct question about where the recipients sit, and Susan is the meeting organizer. The numbered list only restates what the requesters are looking for and does not ask her to do anything.",
+          "errors": []
+        },
+        {
+          "case_id": "C10",
+          "gold": "action",
+          "prediction": "needs_review",
+          "reason": "The newest message says the team is \"waiting to hear from Darrell\", but it does not say what Darrell is expected to provide. It is not clear whether this is a request for approval, an answer to Dennis's question, or something else, so no specific next step can be identified.",
+          "errors": []
+        }
+      ],
+      "fence_only_diagnostic": {},
+      "direct_first_extraction_fence_probe": {},
+      "categories": {
+        "context_dependent": {
+          "matched": 8,
+          "n": 10
+        },
+        "explicit_action": {
+          "matched": 15,
+          "n": 15
+        },
+        "external_content": {
+          "matched": 10,
+          "n": 10
+        },
+        "limits_hostile": {
+          "matched": 2,
+          "n": 2
+        },
+        "links_mixed": {
+          "matched": 2,
+          "n": 2
+        },
+        "long_content": {
+          "matched": 2,
+          "n": 2
+        },
+        "no_action": {
+          "matched": 15,
+          "n": 15
+        },
+        "real_attachments": {
+          "matched": 4,
+          "n": 4
+        }
+      }
+    }
+  },
+  "counterfactual_limit": "Removing one whole-response Markdown fence only. Raw reply schema/evidence probes cannot recreate unexecuted downstream planning/extraction and are not a corrected benchmark.",
+  "billing": {
+    "before": {
+      "observed_utc": "2026-10-02T13:08:15.896786+00:00",
+      "key_usage_usd": 1.935986843,
+      "key_byok_usage_usd": 0,
+      "key_error": null
+    },
+    "after": {
+      "observed_utc": "2026-10-02T15:29:30.515325+00:00",
+      "key_usage_usd": 3.280788146,
+      "key_byok_usage_usd": 0,
+      "key_error": null
+    },
+    "key_usage_delta_usd": 1.344801303,
+    "account_usage_delta_usd": null,
+    "account_balance_decrease_usd": null,
+    "credits_added_usd": null,
+    "generation_cost_known_sum_usd": 1.3448013030000001,
+    "generation_cost_calls": 595,
+    "missing_generation_cost_calls": 1,
+    "key_delta_minus_generation_sum_usd": -2.220446049250313e-16,
+    "reconciled": false,
+    "attribution": "Counter delta is observed actual consumption in this time window. Concurrent use can contaminate attribution; isolated key required for experiment-only attribution.",
+    "settlement": "A mismatch or missing record is pending, not replaced with token-price estimates. Reconcile later without new inference.",
+    "audit_wall_ms": 312889.33980092406
+  }
+}

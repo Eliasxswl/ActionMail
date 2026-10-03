@@ -1,0 +1,474 @@
+\RequirePackage{fix-cm}
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=20mm]{geometry}
+\usepackage{graphicx,xcolor,caption,mathptmx,fancyhdr,hyperref}
+\definecolor{NTUBlue}{HTML}{181C62}
+\hypersetup{colorlinks=true,linkcolor=NTUBlue,citecolor=NTUBlue,urlcolor=NTUBlue,
+  pdftitle={ActionMail: Evidence-backed email task identification},
+  pdfsubject={PE6201 individual course project report},bookmarksopen=true}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily ActionMail}
+\fancyhead[R]{\small\sffamily PE6201}
+\fancyfoot[C]{\small\thepage}
+\setlength{\headheight}{14pt}
+\renewcommand{\headrulewidth}{0.3pt}
+\newcommand{\reporttitle}[1]{\thispagestyle{plain}\begin{center}
+  \includegraphics[width=55mm]{assets/ntu_template_logo.png}\par\vspace{10mm}
+  {\fontsize{18}{21}\selectfont\bfseries #1\par}\vspace{3mm}
+  {\small PE6201 --- Individual course project report\par}
+\end{center}\vspace{2mm}}
+\newcommand{\reportsection}[2]{\section*{#1}\label{#2}\addcontentsline{toc}{section}{#1}}
+\newcommand{\reportattribution}{\par\smallskip{\footnotesize
+  Typesetting and logo asset adapted from Chen Wang's NTU template~\cite{template};
+  logo placement follows NTU's brand guide~\cite{brand}.\par}}
+\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=true,skip=5pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\clubpenalty=10000
+\widowpenalty=10000
+\newcommand{\reportfigure}[3]{\par\medskip\noindent\begin{minipage}{\linewidth}\captionsetup{type=figure}\centering\csname panel:#1\endcsname\caption{#2}\label{#3}\end{minipage}\par\medskip}
+\newcommand{\reporttable}[3]{\par\medskip\noindent\begin{minipage}{\linewidth}\captionsetup{type=table}\centering\caption{#2}\label{#3}\smallskip\csname panel:#1\endcsname\end{minipage}\par\medskip}
+% BEGIN GENERATED PANELS
+\expandafter\def\csname panel:01_architecture\endcsname{\resizebox{\linewidth}{!}{\setlength{\unitlength}{1pt}\begin{picture}(1200,335)
+\put(0.000,0.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{1200.000pt}{335.000pt}}
+\put(25.000,212.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{330.000pt}{103.000pt}}
+\put(25.000,314.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(25.000,211.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(24.500,212.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(354.500,212.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(39.000,285.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Normalize inputs}}
+\put(39.000,257.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Recipient, newest mail, thread}}
+\put(39.000,232.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Declared source inventory}}
+\put(435.000,212.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{330.000pt}{103.000pt}}
+\put(435.000,314.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(435.000,211.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(434.500,212.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(764.500,212.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(449.000,285.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Plan and read}}
+\put(449.000,257.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Select necessary sources}}
+\put(449.000,232.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Bounded reading / segmentation}}
+\put(845.000,212.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{330.000pt}{103.000pt}}
+\put(845.000,314.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(845.000,211.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(844.500,212.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(1174.500,212.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(859.000,285.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Extract and validate}}
+\put(859.000,257.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Current tasks, dates, evidence}}
+\put(859.000,232.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Contract and original-text checks}}
+\put(355.000,263.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{80.000pt}{2.000pt}}
+\put(0,0){\color[rgb]{0.0902,0.1765,0.2627}\linethickness{2pt}\qbezier(426.224,259.206)(430.612,261.603)(435.000,264.000)}
+\put(0,0){\color[rgb]{0.0902,0.1765,0.2627}\linethickness{2pt}\qbezier(426.224,268.794)(430.612,266.397)(435.000,264.000)}
+\put(765.000,263.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{80.000pt}{2.000pt}}
+\put(0,0){\color[rgb]{0.0902,0.1765,0.2627}\linethickness{2pt}\qbezier(836.224,259.206)(840.612,261.603)(845.000,264.000)}
+\put(0,0){\color[rgb]{0.0902,0.1765,0.2627}\linethickness{2pt}\qbezier(836.224,268.794)(840.612,266.397)(845.000,264.000)}
+\put(845.000,16.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{330.000pt}{103.000pt}}
+\put(845.000,118.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(845.000,15.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(844.500,16.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(1174.500,16.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(859.000,89.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Repair allowance}}
+\put(859.000,61.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont At most once per email}}
+\put(859.000,36.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Validate the corrected output}}
+\put(952.000,119.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{2.000pt}{93.000pt}}
+\put(0,0){\color[rgb]{0.7412,0.4549,0.0353}\linethickness{2pt}\qbezier(948.206,127.776)(950.603,123.388)(953.000,119.000)}
+\put(0,0){\color[rgb]{0.7412,0.4549,0.0353}\linethickness{2pt}\qbezier(957.794,127.776)(955.397,123.388)(953.000,119.000)}
+\put(1067.000,119.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{2.000pt}{93.000pt}}
+\put(0,0){\color[rgb]{0.7412,0.4549,0.0353}\linethickness{2pt}\qbezier(1072.794,203.224)(1070.397,207.612)(1068.000,212.000)}
+\put(0,0){\color[rgb]{0.7412,0.4549,0.0353}\linethickness{2pt}\qbezier(1063.206,203.224)(1065.603,207.612)(1068.000,212.000)}
+\put(975.000,169.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont Repairable}}
+\put(975.000,145.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont failure}}
+\put(25.000,16.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{330.000pt}{103.000pt}}
+\put(25.000,118.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(25.000,15.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(24.500,16.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(354.500,16.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(39.000,89.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Reviewed output}}
+\put(39.000,61.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont action / no\_action / needs\_review}}
+\put(39.000,36.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Human accept / edit / reject}}
+\put(435.000,16.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{330.000pt}{103.000pt}}
+\put(435.000,118.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(435.000,15.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{330.000pt}{1.000pt}}
+\put(434.500,16.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(764.500,16.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{103.000pt}}
+\put(449.000,89.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Calendar draft}}
+\put(449.000,61.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Accepted task + reviewed date}}
+\put(449.000,36.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Confirm saved fields / export}}
+\put(877.000,191.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{2.000pt}{21.000pt}}
+\put(190.000,190.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{688.000pt}{2.000pt}}
+\put(189.000,119.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{2.000pt}{72.000pt}}
+\put(0,0){\color[rgb]{0.0902,0.1765,0.2627}\linethickness{2pt}\qbezier(185.206,127.776)(187.603,123.388)(190.000,119.000)}
+\put(0,0){\color[rgb]{0.0902,0.1765,0.2627}\linethickness{2pt}\qbezier(194.794,127.776)(192.397,123.388)(190.000,119.000)}
+\put(340.000,152.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont Valid result or review fallback}}
+\put(355.000,67.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{80.000pt}{2.000pt}}
+\put(0,0){\color[rgb]{0.0902,0.1765,0.2627}\linethickness{2pt}\qbezier(426.224,63.206)(430.612,65.603)(435.000,68.000)}
+\put(0,0){\color[rgb]{0.0902,0.1765,0.2627}\linethickness{2pt}\qbezier(426.224,72.794)(430.612,70.397)(435.000,68.000)}\end{picture}}}
+\expandafter\def\csname panel:06_scope_and_ownership\endcsname{\resizebox{\linewidth}{!}{\setlength{\unitlength}{1pt}\begin{picture}(1200,275)
+\put(0.000,0.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{1200.000pt}{275.000pt}}
+\put(25.000,246.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Layer}}
+\put(330.000,246.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Sourcing}}
+\put(660.000,246.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Rationale / responsibility}}
+\put(25.000,232.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{1150.000pt}{1.500pt}}
+\put(25.000,196.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Interface and serving}}
+\put(330.000,196.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Own local CLI / review UI}}
+\put(660.000,196.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Direct task review and confirmation}}
+\put(25.000,153.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Orchestration and policy}}
+\put(330.000,153.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Own Python workflow}}
+\put(660.000,153.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Control source budgets and repair}}
+\put(25.000,110.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Foundation model}}
+\put(330.000,110.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Rent via OpenRouter}}
+\put(660.000,110.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Avoid training; depend on API behavior}}
+\put(25.000,67.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Data and parsing}}
+\put(330.000,67.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Own references; reuse parsers}}
+\put(660.000,67.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Traceable sources and portable inputs}}
+\put(25.000,24.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Evaluation and logs}}
+\put(330.000,24.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Own metrics and traces}}
+\put(660.000,24.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Inspect outputs, failures and spend}}
+\put(25.000,7.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{1150.000pt}{1.500pt}}\end{picture}}}
+\expandafter\def\csname panel:05_data_provenance\endcsname{\resizebox{\linewidth}{!}{\setlength{\unitlength}{1pt}\begin{picture}(1200,290)
+\put(0.000,0.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{1200.000pt}{290.000pt}}
+\put(25.000,234.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{22}{24}\selectfont \bfseries Input origins}}
+\put(250.000,228.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{506.000pt}{32.000pt}}
+\put(503.000,236.000){\makebox(0,0)[c]{\color[rgb]{1.0000,1.0000,1.0000}\sffamily\fontsize{21}{23}\selectfont 33}}
+\put(756.000,228.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{15.333pt}{32.000pt}}
+\put(771.333,228.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{291.333pt}{32.000pt}}
+\put(917.000,236.000){\makebox(0,0)[c]{\color[rgb]{1.0000,1.0000,1.0000}\sffamily\fontsize{21}{23}\selectfont 19}}
+\put(1062.667,228.000){\color[rgb]{0.7098,0.3020,0.3137}\rule{107.333pt}{32.000pt}}
+\put(1116.333,236.000){\makebox(0,0)[c]{\color[rgb]{1.0000,1.0000,1.0000}\sffamily\fontsize{21}{23}\selectfont 7}}
+\put(250.000,204.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{14.000pt}{11.000pt}}
+\put(273.000,203.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont MailEx: 33}}
+\put(480.000,204.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{14.000pt}{11.000pt}}
+\put(503.000,203.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont Enron export: 1}}
+\put(710.000,204.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{14.000pt}{11.000pt}}
+\put(733.000,203.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont Authored JSON: 19}}
+\put(940.000,204.000){\color[rgb]{0.7098,0.3020,0.3137}\rule{14.000pt}{11.000pt}}
+\put(963.000,203.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont Authored EML: 7}}
+\put(250.000,183.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{920.000pt}{1.000pt}}
+\put(249.500,179.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(250.000,159.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0}}
+\put(479.500,179.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(480.000,159.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 15}}
+\put(709.500,179.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(710.000,159.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 30}}
+\put(939.500,179.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(940.000,159.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 45}}
+\put(1169.500,179.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(1170.000,159.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 60}}
+\put(25.000,126.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{22}{24}\selectfont \bfseries Reference status}}
+\put(250.000,120.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{414.000pt}{32.000pt}}
+\put(457.000,128.000){\makebox(0,0)[c]{\color[rgb]{1.0000,1.0000,1.0000}\sffamily\fontsize{21}{23}\selectfont 27}}
+\put(664.000,120.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{352.667pt}{32.000pt}}
+\put(840.333,128.000){\makebox(0,0)[c]{\color[rgb]{1.0000,1.0000,1.0000}\sffamily\fontsize{21}{23}\selectfont 23}}
+\put(1016.667,120.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{153.333pt}{32.000pt}}
+\put(1093.333,128.000){\makebox(0,0)[c]{\color[rgb]{1.0000,1.0000,1.0000}\sffamily\fontsize{21}{23}\selectfont 10}}
+\put(250.000,96.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{14.000pt}{11.000pt}}
+\put(273.000,95.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont action: 27}}
+\put(480.000,96.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{14.000pt}{11.000pt}}
+\put(503.000,95.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont no\_action: 23}}
+\put(710.000,96.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{14.000pt}{11.000pt}}
+\put(733.000,95.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont needs\_review: 10}}
+\put(250.000,75.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{920.000pt}{1.000pt}}
+\put(249.500,71.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(250.000,51.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0}}
+\put(479.500,71.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(480.000,51.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 15}}
+\put(709.500,71.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(710.000,51.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 30}}
+\put(939.500,71.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(940.000,51.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 45}}
+\put(1169.500,71.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(1170.000,51.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 60}}
+\put(710.000,8.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Cumulative case count}}\end{picture}}}
+\expandafter\def\csname panel:02_model_comparison\endcsname{\resizebox{\linewidth}{!}{\setlength{\unitlength}{1pt}\begin{picture}(1200,475)
+\put(0.000,0.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{1200.000pt}{475.000pt}}
+\put(300.000,450.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{22}{24}\selectfont \bfseries a  Matched cases (/60)}}
+\put(655.000,450.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{22}{24}\selectfont \bfseries b  Case time (s)}}
+\put(963.000,450.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont \bfseries c  Subtotal (USD)}}
+\put(300.000,421.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{16.000pt}{10.000pt}}
+\put(325.000,419.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont Strict}}
+\put(413.000,421.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{16.000pt}{10.000pt}}
+\put(438.000,419.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont Permitted}}
+\put(663.000,425.000){\color[rgb]{0.1529,0.4000,0.6784}\circle*{8.000}}
+\put(679.000,419.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont Median}}
+\put(778.000,425.000){\color[rgb]{0.7412,0.4549,0.0353}\circle*{8.000}}
+\put(794.000,419.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 95th percentile}}
+\put(25.000,374.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont GPT-6 Luna}}
+\put(300.000,383.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{231.083pt}{10.000pt}}
+\put(552.000,383.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 59}}
+\put(300.000,361.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{235.000pt}{10.000pt}}
+\put(552.000,361.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 60}}
+\put(670.611,380.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{18.560pt}{1.500pt}}
+\put(670.611,381.000){\color[rgb]{0.1529,0.4000,0.6784}\circle*{8.000}}
+\put(689.171,381.000){\color[rgb]{0.7412,0.4549,0.0353}\circle*{8.000}}
+\put(655.000,353.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 3.99 / 8.72}}
+\put(963.000,375.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{4.113pt}{14.000pt}}
+\put(963.000,353.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0.012339}}
+\put(25.000,322.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont GLM-5.3 Flash}}
+\put(300.000,331.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{199.750pt}{10.000pt}}
+\put(552.000,331.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 51}}
+\put(300.000,309.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{199.750pt}{10.000pt}}
+\put(552.000,309.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 51}}
+\put(746.200,328.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{123.794pt}{1.500pt}}
+\put(746.200,329.000){\color[rgb]{0.1529,0.4000,0.6784}\circle*{8.000}}
+\put(869.994,329.000){\color[rgb]{0.7412,0.4549,0.0353}\circle*{8.000}}
+\put(655.000,301.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 23.29 / 54.89}}
+\put(963.000,323.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{18.901pt}{14.000pt}}
+\put(963.000,301.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0.056702}}
+\put(25.000,270.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Gemini 3.5 Flash Lite}}
+\put(300.000,279.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{39.167pt}{10.000pt}}
+\put(552.000,279.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 10}}
+\put(300.000,257.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{39.167pt}{10.000pt}}
+\put(552.000,257.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 10}}
+\put(665.701,276.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{2.652pt}{1.500pt}}
+\put(665.701,277.000){\color[rgb]{0.1529,0.4000,0.6784}\circle*{8.000}}
+\put(668.353,277.000){\color[rgb]{0.7412,0.4549,0.0353}\circle*{8.000}}
+\put(655.000,249.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 2.73 / 3.41}}
+\put(963.000,271.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{31.005pt}{14.000pt}}
+\put(963.000,249.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0.093015}}
+\put(25.000,218.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Gemini 3.8 Flash}}
+\put(300.000,227.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{164.500pt}{10.000pt}}
+\put(552.000,227.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 42}}
+\put(300.000,205.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{168.417pt}{10.000pt}}
+\put(552.000,205.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 43}}
+\put(712.700,224.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{34.626pt}{1.500pt}}
+\put(712.700,225.000){\color[rgb]{0.1529,0.4000,0.6784}\circle*{8.000}}
+\put(747.327,225.000){\color[rgb]{0.7412,0.4549,0.0353}\circle*{8.000}}
+\put(655.000,197.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 14.73 / 23.57}}
+\put(963.000,219.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{174.433pt}{14.000pt}}
+\put(963.000,197.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0.523299}}
+\put(25.000,166.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont GPT-6.1 Sol}}
+\put(300.000,175.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{231.083pt}{10.000pt}}
+\put(552.000,175.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 59}}
+\put(300.000,153.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{235.000pt}{10.000pt}}
+\put(552.000,153.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 60}}
+\put(670.831,172.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{29.636pt}{1.500pt}}
+\put(670.831,173.000){\color[rgb]{0.1529,0.4000,0.6784}\circle*{8.000}}
+\put(700.468,173.000){\color[rgb]{0.7412,0.4549,0.0353}\circle*{8.000}}
+\put(655.000,145.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 4.04 / 11.61}}
+\put(963.000,167.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{63.430pt}{14.000pt}}
+\put(963.000,145.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0.190289}}
+\put(25.000,114.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Claude Sonnet 5.5}}
+\put(300.000,123.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{227.167pt}{10.000pt}}
+\put(552.000,123.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 58}}
+\put(300.000,101.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{231.083pt}{10.000pt}}
+\put(552.000,101.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{17}{19}\selectfont 59}}
+\put(666.635,120.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{18.162pt}{1.500pt}}
+\put(666.635,121.000){\color[rgb]{0.1529,0.4000,0.6784}\circle*{8.000}}
+\put(684.798,121.000){\color[rgb]{0.7412,0.4549,0.0353}\circle*{8.000}}
+\put(655.000,93.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 2.97 / 7.61}}
+\put(963.000,115.000){\color[rgb]{0.0784,0.5137,0.4549}\rule{156.318pt}{14.000pt}}
+\put(963.000,93.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0.468954}}
+\put(300.000,67.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{235.000pt}{1.000pt}}
+\put(299.500,62.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{6.000pt}}
+\put(300.000,38.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0}}
+\put(417.000,62.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{6.000pt}}
+\put(417.500,38.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 30}}
+\put(534.500,62.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{6.000pt}}
+\put(535.000,38.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 60}}
+\put(655.000,67.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{235.000pt}{1.000pt}}
+\put(654.500,62.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{6.000pt}}
+\put(655.000,38.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0}}
+\put(772.000,62.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{6.000pt}}
+\put(772.500,38.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 30}}
+\put(889.500,62.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{6.000pt}}
+\put(890.000,38.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 60}}
+\put(963.000,67.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{200.000pt}{1.000pt}}
+\put(962.500,62.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{6.000pt}}
+\put(963.000,38.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0}}
+\put(1062.500,62.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{6.000pt}}
+\put(1063.000,38.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0.3}}
+\put(1162.500,62.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{6.000pt}}
+\put(1163.000,38.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0.6}}\end{picture}}}
+\expandafter\def\csname panel:03_paired_context\endcsname{\resizebox{\linewidth}{!}{\setlength{\unitlength}{1pt}\begin{picture}(1200,410)
+\put(0.000,0.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{1200.000pt}{410.000pt}}
+\put(25.000,383.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{18.000pt}{12.000pt}}
+\put(52.000,382.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Full workflow (same cases)}}
+\put(435.000,383.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{18.000pt}{12.000pt}}
+\put(462.000,382.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Comparison condition}}
+\put(290.000,345.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries GPT-6 Luna}}
+\put(25.000,300.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Single prompt}}
+\put(25.000,276.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont n = 60}}
+\put(290.000,304.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{285.167pt}{15.000pt}}
+\put(592.000,305.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 59/60}}
+\put(290.000,279.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{217.500pt}{15.000pt}}
+\put(592.000,280.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 45/60}}
+\put(25.000,236.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont No thread}}
+\put(25.000,212.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont n = 12}}
+\put(290.000,240.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{290.000pt}{15.000pt}}
+\put(592.000,241.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 12/12}}
+\put(290.000,215.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{217.500pt}{15.000pt}}
+\put(592.000,216.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 9/12}}
+\put(25.000,172.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont No external reading}}
+\put(25.000,148.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont n = 17}}
+\put(290.000,176.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{272.941pt}{15.000pt}}
+\put(592.000,177.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 16/17}}
+\put(290.000,151.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{51.176pt}{15.000pt}}
+\put(592.000,152.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 3/17}}
+\put(25.000,108.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Read all sources}}
+\put(25.000,84.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont n = 17}}
+\put(290.000,112.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{272.941pt}{15.000pt}}
+\put(592.000,113.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 16/17}}
+\put(290.000,87.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{255.882pt}{15.000pt}}
+\put(592.000,88.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 15/17}}
+\put(290.000,59.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{290.000pt}{1.000pt}}
+\put(289.500,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(290.000,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0}}
+\put(362.000,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(362.500,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 25}}
+\put(434.500,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(435.000,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 50}}
+\put(507.000,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(507.500,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 75}}
+\put(579.500,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(580.000,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 100}}
+\put(435.000,4.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Semantic delivery (\%)}}
+\put(760.000,345.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Claude Sonnet 5.5}}
+\put(760.000,304.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{290.000pt}{15.000pt}}
+\put(1062.000,305.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 60/60}}
+\put(760.000,279.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{203.000pt}{15.000pt}}
+\put(1062.000,280.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 42/60}}
+\put(760.000,240.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{290.000pt}{15.000pt}}
+\put(1062.000,241.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 12/12}}
+\put(760.000,215.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{145.000pt}{15.000pt}}
+\put(1062.000,216.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 6/12}}
+\put(760.000,176.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{290.000pt}{15.000pt}}
+\put(1062.000,177.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 17/17}}
+\put(760.000,151.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{51.176pt}{15.000pt}}
+\put(1062.000,152.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 3/17}}
+\put(760.000,112.000){\color[rgb]{0.1529,0.4000,0.6784}\rule{290.000pt}{15.000pt}}
+\put(1062.000,113.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 17/17}}
+\put(760.000,87.000){\color[rgb]{0.7412,0.4549,0.0353}\rule{255.882pt}{15.000pt}}
+\put(1062.000,88.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{19}{21}\selectfont 15/17}}
+\put(760.000,59.500){\color[rgb]{0.0902,0.1765,0.2627}\rule{290.000pt}{1.000pt}}
+\put(759.500,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(760.000,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 0}}
+\put(832.000,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(832.500,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 25}}
+\put(904.500,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(905.000,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 50}}
+\put(977.000,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(977.500,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 75}}
+\put(1049.500,55.000){\color[rgb]{0.0902,0.1765,0.2627}\rule{1.000pt}{5.000pt}}
+\put(1050.000,31.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{18}{20}\selectfont 100}}
+\put(905.000,4.000){\makebox(0,0)[c]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{20}{22}\selectfont Semantic delivery (\%)}}\end{picture}}}
+\expandafter\def\csname panel:04_metrics_and_cost\endcsname{\resizebox{\linewidth}{!}{\setlength{\unitlength}{1pt}\begin{picture}(1200,325)
+\put(0.000,0.000){\color[rgb]{1.0000,1.0000,1.0000}\rule{1200.000pt}{325.000pt}}
+\put(25.000,296.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Model / condition}}
+\put(353.000,296.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Strict}}
+\put(490.000,296.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Semantic}}
+\put(637.000,296.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Tasks}}
+\put(791.000,296.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Median (s)}}
+\put(970.000,296.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{23}{25}\selectfont \bfseries Fee (USD)}}
+\put(25.000,280.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{1150.000pt}{1.500pt}}
+\put(25.000,247.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Luna / Full}}
+\put(353.000,247.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 58/60}}
+\put(490.000,247.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 59/60}}
+\put(637.000,247.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 31/32}}
+\put(791.000,247.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 3.59}}
+\put(970.000,247.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 0.013395}}
+\put(25.000,204.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Luna / Single prompt}}
+\put(353.000,204.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 44/60}}
+\put(490.000,204.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 45/60}}
+\put(637.000,204.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 19/32}}
+\put(791.000,204.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 2.98}}
+\put(970.000,204.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 0.007212}}
+\put(25.000,161.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Luna / No repair}}
+\put(353.000,161.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 59/60}}
+\put(490.000,161.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 59/60}}
+\put(637.000,161.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 32/32}}
+\put(791.000,161.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 3.49}}
+\put(970.000,161.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 0.010359}}
+\put(25.000,146.500){\color[rgb]{0.8745,0.9059,0.9373}\rule{1150.000pt}{1.000pt}}
+\put(25.000,118.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Sonnet / Full}}
+\put(353.000,118.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 59/60}}
+\put(490.000,118.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 60/60}}
+\put(637.000,118.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 32/32}}
+\put(791.000,118.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 3.00}}
+\put(970.000,118.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 0.480094}}
+\put(25.000,75.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Sonnet / Single prompt}}
+\put(353.000,75.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 44/60}}
+\put(490.000,75.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 42/60}}
+\put(637.000,75.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 18/32}}
+\put(791.000,75.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 2.73}}
+\put(970.000,75.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 0.382232}}
+\put(25.000,32.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont Sonnet / No repair}}
+\put(353.000,32.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 58/60}}
+\put(490.000,32.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 58/60}}
+\put(637.000,32.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 31/32}}
+\put(791.000,32.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 2.87}}
+\put(970.000,32.000){\makebox(0,0)[l]{\color[rgb]{0.0902,0.1765,0.2627}\sffamily\fontsize{21}{23}\selectfont 0.464616}}
+\put(25.000,5.250){\color[rgb]{0.0902,0.1765,0.2627}\rule{1150.000pt}{1.500pt}}\end{picture}}}
+% END GENERATED PANELS
+\begin{document}
+% BEGIN EDITORIAL CONTENT
+\reporttitle{ActionMail: Evidence-backed email task identification}
+
+\reportsection{Problem and objectives}{sec:problem}
+ActionMail supports a project coordinator identifying current obligations for a named recipient across the newest email, its thread and necessary attachments. Missed requests leave deliverables unfinished; overstated obligations create unnecessary work. Gmail provides email-to-task creation, including tasks from Gemini summary cards \cite{gmail}. This project examines recipient-specific interpretation through an inspectable workflow and measures the quality, latency and cost of alternative designs.
+
+The system returns action, no\_action or needs\_review, with up to three independent tasks, resolvable explicit deadlines and original-text evidence. Success requires useful task delivery rather than status agreement alone, following outcome-based evaluation~\cite{evals}. Action precision and recall of at least 90\% were pre-specified for shortlisting ablation models, subject to semantic review.
+
+\reportsection{System design and boundaries}{sec:design}
+The workflow normalizes inputs, inventories sources, selectively reads necessary material, extracts tasks and validates structure and evidence (Figure~\ref{fig:architecture}). Long content is segmented and merged. One repair allowance is shared across planning, extraction and merging; similarity locates correction candidates but cannot approve changed facts \cite{architecture}. Older requests require renewal in the newest message, optional suggestions retain their commitment level, and missing decisive material triggers review. Exact quotation matching establishes provenance, not semantic completeness.
+
+\reportfigure{01_architecture}{Workflow and human review. Amber arrows denote bounded repair; black arrows denote controlled processing.}{fig:architecture}
+
+Foundation-model inference is rented through OpenRouter; domain policy, orchestration, review and evaluation remain locally controlled, applying layer-specific own/rent decisions~\cite{ownrent} (Table~\ref{tab:ownership}). Python replaced the proposed UiPath approach to support explicit source budgets, reproducible traces and controlled experimental conditions. UiPath was not implemented or benchmarked. This choice avoids model training and a vector database for declared sources, while retaining maintenance and compatibility responsibilities.
+
+\reporttable{06_scope_and_ownership}{Ownership by layer. CLI: command-line interface; UI: user interface.}{tab:ownership}
+
+The delivered application includes a local CLI, persistent accept/edit/reject review, calendar drafts and ICS calendar-file export. Google adapters were tested offline with artificial responses; real Gmail authorization and Calendar writes remain unverified. The demonstration uses authored emails and scripted model replies. Calendar operations require accepted tasks and confirmation of saved fields; automated replies, task execution and background inbox monitoring are outside scope.
+
+\reportsection{Evaluation design}{sec:evaluation}
+The evaluation uses 60 development/regression cases (Figure~\ref{fig:data}), with separate recipient-obligation references rather than MailEx's original event/argument labels \cite{mailex}. Seventeen cases contain 20 source entries: 13 attachments and seven links. Twelve attachments and all links are authored; supplied file bytes and page snapshots do not establish natural workplace provenance or live browsing.
+
+\reportfigure{05_data_provenance}{Input origins and strict reference statuses (60 cases). Segment widths represent counts; each row totals 60.}{fig:data}
+
+Dataset, references, business code (c405d29) and request configuration were frozen before formal runs. Benchmark initial requests differed only in model, with temperature 0 and a 2,048-token output cap. API-enforced JSON and provider pinning were absent. Six models contributed 360 observations; Luna and Sonnet contributed 500 ablation observations with fresh complete-workflow controls. Strict status, permitted status/count and semantic delivery are distinguished. Semantic delivery additionally requires task matching, faithful ownership, commitment, deadlines, evidence and justified review. Codex assisted code, examples and annotation; its 500 semantic reviews use saved owner judgments as anchors, not independent human assessment. C11's alternative interpretation was allowed beforehand. The benchmark lacks equally exhaustive semantic review.
+
+\reportsection{Results and trade-offs}{sec:results}
+The deterministic body/subject baseline matched 31/60 statuses, with action precision of 60\% and recall of 44.4\% \cite{experiment}. Its narrower source-reading and multi-task capabilities make this a system-level comparison. The six-model results show that interface behavior materially affects delivery (Figure~\ref{fig:benchmark}). Flash Lite's fenced JSON caused every case to end in review; its 10/60 matches are not successful task extractions. Flash's repeated format failures exhausted the shared repair budget, while GLM's effective output budget and provider variation complicate interpretation; OpenRouter can route a model across providers~\cite{routing}. These are workflow-and-routing outcomes, not universal model rankings.
+
+\reportfigure{02_model_comparison}{Six-model comparison, 60 cases per model. Strict: exact status; permitted: pre-approved status/count. Lines join median and 95th-percentile times, not confidence intervals. Panel c shows generation-verified service-fee subtotals.}{fig:benchmark}
+
+Complete-workflow semantic delivery was 59/60 for Luna and 60/60 for Sonnet, versus 45/60 and 42/60 for single prompts (Figure~\ref{fig:ablation}). Without external reading, both fell to 3/17. Reasonable abstention avoids unsupported guesses but still leaves tasks undelivered. Removing threads reduced delivery from 12/12 for both models to 9/12 and 6/12. Reading all sources unnecessarily blocked S07 on an irrelevant unreadable footer link: selective planning adds a call but limits avoidable failure exposure.
+
+\reportfigure{03_paired_context}{Semantic delivery on identical case subsets. Bar-end labels show passes/cases; n denotes paired emails.}{fig:ablation}
+
+Repair restored C12's explanation and evidence without changing its review status. Table~\ref{tab:metrics} therefore separates status, semantic delivery and task-unit matching. Independent first answers differ across arms, preventing a causal claim that repair consistently improves total scores.
+
+\reporttable{04_metrics_and_cost}{Ablation quality, latency and service fees. Luna: GPT-6 Luna; Sonnet: Claude Sonnet 5.5. Strict and semantic columns count email passes; tasks are matched/expected obligation units. Fees cover each 60-case arm.}{tab:metrics}
+
+Complete-workflow median latency was 3.59 seconds for Luna and 3.00 for Sonnet. Their per-case service fees were approximately USD 0.000223 and 0.008002, a 35.8-fold difference, favoring Luna's measured cost/quality trade-off. Total spend was USD 3.224528503 against a USD 5 cap. Sonnet's benchmark verified subtotal of USD 0.468954 excludes one missing generation bill; total spend uses usage-counter differences \cite{experiment}. Human review, hosting, storage, deployment effort and actual time savings were not measured, so low inference spend does not establish commercial ROI~\cite{costs}.
+
+\reportsection{Limitations and next steps}{sec:limitations}
+Cases were reused for tuning and regression, initially with Luna, allowing hidden adaptation and optimistic results. Single benchmark trials and repeats on eight selected cases cannot establish generalization. Warm caches, routing and output compatibility affect measured outcomes. Source limits and hostile fixtures demonstrate specific protections, not comprehensive prompt-injection resistance; private email transmission also requires deliberate controls.
+
+Priorities are an unused test set with independent human review, fixed-first-answer repair replay and JSON-schema transport on compatible endpoints~\cite{structured}. Using the outcome criteria in \hyperref[sec:evaluation]{Evaluation design}, review time and useful task completion should be measured before making business-value claims.
+
+
+\reportattribution
+
+\begingroup\small
+\renewcommand{\refname}{References}
+\phantomsection\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{11}
+\setlength{\itemsep}{2pt}
+\setlength{\parskip}{0pt}
+\raggedright
+\bibitem{gmail} Google. \href{https://support.google.com/mail/answer/9920317?hl=en}{Create a task in Gmail}.
+\bibitem{evals} NTU (2026). PE6201: Evals as a layer, Class 2 C4, pp. 3--7; Steer it and prove it, Class 3 C2, pp. 9--10, 13--15. Course slides.
+\bibitem{architecture} ActionMail (2026). Architecture and offline demonstration documentation. Project records.
+\bibitem{ownrent} NTU (2026). PE6201: Build-vs-buy, Class 2 C2, pp. 2--3. Course slides.
+\bibitem{mailex} Srivastava et al. (2023). \href{https://aclanthology.org/2023.emnlp-main.801/}{MailEx: Email Event and Argument Extraction}. EMNLP, 12964--12987. DOI: \href{https://doi.org/10.18653/v1/2023.emnlp-main.801}{10.18653/v1/2023.emnlp-main.801}.
+\bibitem{experiment} ActionMail (2026). Experiment report, sections 2, 11--12; billing clarification. Project records.
+\bibitem{routing} OpenRouter. \href{https://openrouter.ai/docs/guides/routing/provider-selection}{Provider Routing}. API documentation.
+\bibitem{costs} NTU (2026). PE6201: What does it actually cost?, Class 5 C2, p. 21. Course slides.
+\bibitem{structured} OpenRouter. \href{https://openrouter.ai/docs/guides/features/structured-outputs}{Structured Outputs}. API documentation.
+\bibitem{template} C. Wang. \href{https://github.com/wang-chen/thesis_template_ntu}{NTU Ph.D. Thesis Template}. GitHub. MIT license.
+\bibitem{brand} NTU (2018). \href{https://www3.ntu.edu.sg/CorpComms2/NTU\%20Quick\%20Brand\%20Guide\%202018.pdf}{Quick Brand Guide}.
+\end{thebibliography}
+\endgroup
+
+% END EDITORIAL CONTENT
+\end{document}

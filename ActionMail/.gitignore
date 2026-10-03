@@ -1,15 +1,20 @@
-# Local environments, credentials and generated runtime artifacts.
-.venv/
-venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .ruff_cache/
+.venv/
+venv/
 .env
 .env.*
 !.env.example
-*.egg-info/
 *.log
+results/private/
+data/private/
+*.egg-info/
+backup/*/data/
+backup/legacy/code/*.zip
+docs/course/*.pdf
+docs/course/*.docx
 *.sqlite3
 *.sqlite3-*
 *-token.json
@@ -19,5 +24,3 @@ client_secret*.json
 *.demo-events.json
 build/
 dist/
-ActionMail/results/private/
-ActionMail/data/private/

@@ -1,0 +1,25 @@
+{
+  "started_utc": "2026-10-02T11:16:08.006584+00:00",
+  "bundle": "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\artifacts\\core-final-c405d29-20261002",
+  "bundle_sha256": "a90d9238047679fa9b1654ccdaf7c2cf0de8fd16a827ac7d20fdbcb5f1395c58",
+  "experiment_code": {
+    "engine.py": "77de07fb852a64890caf44b7a7e851a85d3aea5fdc8e917fd4c7c59e5ea4d532",
+    "pipeline.py": "6ddd3dacaf3c0d5cd720da0244c9ab93403cfed1090780f5b6f7025570d9c9e5",
+    "scoring.py": "0282f7010c58c663811f974811fa9ea7a26039bcd6b6ab324768b1f2580715da"
+  },
+  "config_sha256": "b4d7b808654127097fdc135e59b355df7b2e7a60151b858014f27a22184192a2",
+  "selected_arms": [
+    "rules"
+  ],
+  "mode": "offline rules",
+  "planned_analyses": 60,
+  "complete": true,
+  "budget_usd": 1.0,
+  "billing_note": "Conservative token-byte reservations under declared prices; not provider billing enforcement.",
+  "ended_utc": "2026-10-02T11:16:08.009094+00:00",
+  "reserved_usd": 0.0,
+  "measured_usd": 0.0,
+  "paid_calls": 0,
+  "unknown_usage_calls": 0,
+  "experiment_code_unchanged": true
+}

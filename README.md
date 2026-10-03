@@ -1,50 +1,43 @@
-# ActionMail
+# ActionMail — final PE6201 submission
 
-Start with [the final submission README](../README.md). This directory contains the runnable product. [Architecture and integration boundaries](docs/architecture.md) explain input/output, modules and capabilities; [data and evaluation](docs/evaluation.md) explain the registry and final evidence.
+ActionMail helps a named email recipient review current obligations in the newest work email. Local JSON/EML, thread context and selected attachments become up to three tasks, supported explicit deadlines, reasons and original-source quotes. Unavailable decisive information produces review. Users approve tasks; models have no mailbox/calendar write capability.
 
-## Install and run
+## Start here
 
-From this directory, with Python 3.10 or newer:
+- [Final report (PDF)](report/FINAL_REPORT.pdf); [editable manuscript](report/FINAL_REPORT.tex).
+- [Code and run instructions](ActionMail/README.md).
+- [Final experimental findings](experiments/REPORT.md); [protocol](experiments/PROTOCOL.md).
+- [Report reproduction and evidence mapping](report/README.md).
+
+## Run without accounts or model charges
+
+From this extracted directory, with Python 3.10 or newer:
 
 ```powershell
 python -m venv .venv
-.venv/Scripts/Activate.ps1
-python -m pip install -e .
-actionmail start                 # terminal menu
-actionmail demo                  # scripted offline demo, fresh private output
-actionmail eval --validate       # 60-case input validation, no inference
-actionmail doctor                # local runtime/data/provider readiness
-actionmail ui                    # optional offline product UI
+.venv/Scripts/python.exe -m pip install -e ./ActionMail
+.venv/Scripts/actionmail.exe demo
+.venv/Scripts/actionmail.exe eval --validate
+.venv/Scripts/python.exe -m unittest discover -s ActionMail/tests -q
+.venv/Scripts/python.exe -m unittest discover -s experiments/code/tests -q
+.venv/Scripts/python.exe ActionMail/tools/check_repository.py
 ```
 
-The demo saves JSON traces, SQLite records, an ICS file and one simulated event. It is engineering evidence, not an AI accuracy experiment. The UI defaults to authored Google-shaped responses and scripted replies at `http://127.0.0.1:61933/`. One service can use the port at a time; `--port` selects another. Use `actionmail ui --help` for controls.
+The demo uses authored mail and scripted replies and records zero real API calls. Tests are offline engineering checks. Final measured results are included under `experiments/results/`; no account/key or new paid run is needed to inspect them. The experiment README explains its independent frozen harness.
 
-## Results and analysis
+## Final evidence and metrics
 
-The final benchmark/ablation uses the independent harness: [experiments/README.md](../experiments/README.md), [experiments/REPORT.md](../experiments/REPORT.md). `actionmail results` instead reads the retained older 60-case regression fixture used by source-review tests/UI; it is not the final cross-model experiment.
+Six models were compared on 60 reused development cases (360 observations); two selected models underwent 500 ablation/repeat observations. Measured service spend was USD 3.224528503 against the authorized USD 5 cap. The fresh full-workflow ablation attained 59/60 and 60/60 semantic-delivery passes for Luna and Sonnet under recorded Codex AI review. The prior model candidate gate targeted at least 90% action precision and recall. Strict status, permitted interpretations, task semantics, latency and fees remain separate metrics. These results establish neither blind-test generalization nor independent human accuracy. One benchmark generation bill remains missing. The experiment report preserves all denominators and compatibility failures.
 
-```powershell
-actionmail results
-actionmail results --all
-actionmail results --case S02 --trace
-actionmail eval --saved          # regression view, no inference
-actionmail review               # optional original-source review
-actionmail analyze examples/sample_email.json --schema v2 --external-mode snapshots
-```
+## Layout and version boundaries
 
-Real analysis requires local `ACTIONMAIL_MODEL` and `OPENROUTER_API_KEY` settings and confirmation before transmission. EML needs `--recipient ADDRESS`. Historical `actionmail INPUT ...` and detailed `actionmail-eval` remain compatible. The single-email CLI defaults to v1; select v2 for multiple tasks. `snapshots` reads selected attachment bytes and supplied link snapshots. Live HTTPS needs `--external-mode allowed-live --allow-domain DOMAIN`.
+| Directory | Submission purpose |
+| --- | --- |
+| `ActionMail/` | Runnable product, tests and two core design/data documents |
+| `experiments/` | Sealed code, original inputs, measured runtime snapshot, outputs, bills and reviews |
+| `report/` | Final PDF, editable LaTeX, generated Markdown, figures, assets and evidence map |
+| `data/` | Minimal original corpus for evaluation and negative tests, with provenance explainer |
 
-`actionmail eval --estimate` previews provider pricing/cost without inference; provider API queries may occur. `actionmail eval` selects v2-60 and asks before inference. Frozen experiments need not be rerun. Missing confirmation input stops the operation. Never overwrite sealed evidence. Use `actionmail eval --help` and `actionmail-workflow --help` for detailed controls. Retired pending-label and draft authoring commands are only in the historical ZIP.
+The measured runtime originated at c405d29 in `experiments/data/frozen-core/`. The original 120-file seal is archived; current English-localized hashes and original/new provenance are in experiments/results/english_localization.json. Cleanup removes retired authoring commands/history dependencies. English localization translates review explanations and analysis labels, plus one equivalent Unicode-regex spelling, without changing model responses, scores, fees or adjudications. Real Google/UiPath connectivity is not claimed. Development history is maintained as one recoverable ZIP under `archive/`, excluded from submission.
 
-## Verification and maintenance
-
-```powershell
-python -m unittest discover -s tests -q
-python tools/check_repository.py
-```
-
-The sibling `../data` includes current original corpus files; `--mailex-root` selects another location. Active manifest/fixture paths remain hash-bound, including six active fixtures under the historically named `evaluation/archive/fixtures_v2_1/`. Current negative-test inputs live under `tests/fixtures/`; focused historical replies preserve their original provenance.
-
-Measured code in `experiments/data/frozen-core/runtime/` is immutable and is not a second development branch. Product code lives in `src/actionmail/`. V1 helpers remain live dependencies of v2 and the rule baseline. Google adapters are implemented but verified only with fakes. UiPath, automatic replies and background monitoring are not implemented. Environments, private demos, build outputs and credentials are excluded from submission.
-
-[package_submission.py](tools/package_submission.py) packages the final four-directory layout from the workspace root.
+The final version remains expanded. Only retired material and originals superseded by English translations are compressed under archive/. No current-submission archive is maintained.

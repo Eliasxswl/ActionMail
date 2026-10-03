@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1200" height="290" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1200 290" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1200" height="290"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-290)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1200" height="290" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="25" y="234" style="font-family: Helvetica-Bold; font-size: 22px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,468) scale(1,-1)">Input origins</text>
+			<rect x="250" y="228" width="506.0" height="32" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,40%,67%); fill-rule: evenodd;"/>
+			<text x="491.324" y="236" style="font-family: Helvetica; font-size: 21px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,472) scale(1,-1)">33</text>
+			<rect x="756.0" y="228" width="15.333333333333371" height="32" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(74%,45%,3%); fill-rule: evenodd;"/>
+			<rect x="771.3333333333334" y="228" width="291.33333333333337" height="32" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,51%,45%); fill-rule: evenodd;"/>
+			<text x="905.324" y="236" style="font-family: Helvetica; font-size: 21px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,472) scale(1,-1)">19</text>
+			<rect x="1062.6666666666667" y="228" width="107.33333333333326" height="32" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(70%,30%,31%); fill-rule: evenodd;"/>
+			<text x="1110.4953333333335" y="236" style="font-family: Helvetica; font-size: 21px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,472) scale(1,-1)">7</text>
+			<rect x="250" y="204" width="14" height="11" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,40%,67%); fill-rule: evenodd;"/>
+			<text x="273" y="203" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,406) scale(1,-1)">MailEx: 33</text>
+			<rect x="480" y="204" width="14" height="11" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(74%,45%,3%); fill-rule: evenodd;"/>
+			<text x="503" y="203" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,406) scale(1,-1)">Enron export: 1</text>
+			<rect x="710" y="204" width="14" height="11" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,51%,45%); fill-rule: evenodd;"/>
+			<text x="733" y="203" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,406) scale(1,-1)">Authored JSON: 19</text>
+			<rect x="940" y="204" width="14" height="11" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(70%,30%,31%); fill-rule: evenodd;"/>
+			<text x="963" y="203" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,406) scale(1,-1)">Authored EML: 7</text>
+			<path d="M 250,184 L 1170,184 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 250,184 L 250,179 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="244.996" y="159" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,318) scale(1,-1)">0</text>
+			<path d="M 480,184 L 480,179 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="469.992" y="159" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,318) scale(1,-1)">15</text>
+			<path d="M 710,184 L 710,179 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="699.992" y="159" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,318) scale(1,-1)">30</text>
+			<path d="M 940,184 L 940,179 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="929.992" y="159" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,318) scale(1,-1)">45</text>
+			<path d="M 1170,184 L 1170,179 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="1159.992" y="159" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,318) scale(1,-1)">60</text>
+			<text x="25" y="126" style="font-family: Helvetica-Bold; font-size: 22px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,252) scale(1,-1)">Reference status</text>
+			<rect x="250" y="120" width="414.0" height="32" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,40%,67%); fill-rule: evenodd;"/>
+			<text x="445.324" y="128" style="font-family: Helvetica; font-size: 21px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,256) scale(1,-1)">27</text>
+			<rect x="664.0" y="120" width="352.66666666666674" height="32" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,51%,45%); fill-rule: evenodd;"/>
+			<text x="828.6573333333333" y="128" style="font-family: Helvetica; font-size: 21px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,256) scale(1,-1)">23</text>
+			<rect x="1016.6666666666667" y="120" width="153.33333333333326" height="32" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(74%,45%,3%); fill-rule: evenodd;"/>
+			<text x="1081.6573333333336" y="128" style="font-family: Helvetica; font-size: 21px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,256) scale(1,-1)">10</text>
+			<rect x="250" y="96" width="14" height="11" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(15%,40%,67%); fill-rule: evenodd;"/>
+			<text x="273" y="95" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,190) scale(1,-1)">action: 27</text>
+			<rect x="480" y="96" width="14" height="11" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(7%,51%,45%); fill-rule: evenodd;"/>
+			<text x="503" y="95" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,190) scale(1,-1)">no_action: 23</text>
+			<rect x="710" y="96" width="14" height="11" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(74%,45%,3%); fill-rule: evenodd;"/>
+			<text x="733" y="95" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,190) scale(1,-1)">needs_review: 10</text>
+			<path d="M 250,76 L 1170,76 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 250,76 L 250,71 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="244.996" y="51" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,102) scale(1,-1)">0</text>
+			<path d="M 480,76 L 480,71 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="469.992" y="51" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,102) scale(1,-1)">15</text>
+			<path d="M 710,76 L 710,71 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="699.992" y="51" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,102) scale(1,-1)">30</text>
+			<path d="M 940,76 L 940,71 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="929.992" y="51" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,102) scale(1,-1)">45</text>
+			<path d="M 1170,76 L 1170,71 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="1159.992" y="51" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,102) scale(1,-1)">60</text>
+			<text x="608.85" y="8" style="font-family: Helvetica; font-size: 20px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,16) scale(1,-1)">Cumulative case count</text>
+		</g>
+	</g>
+</svg>

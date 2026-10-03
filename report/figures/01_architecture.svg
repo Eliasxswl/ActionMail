@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1200" height="335" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1200 335" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1200" height="335"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-335)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1200" height="335" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 25,315 L 355,315 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 25,212 L 355,212 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 25,315 L 25,212 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 355,315 L 355,212 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<rect x="25" y="212" width="330" height="103" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="39" y="285" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,570) scale(1,-1)">Normalize inputs</text>
+			<text x="39" y="257" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,514) scale(1,-1)">Recipient, newest mail, thread</text>
+			<text x="39" y="232" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,464) scale(1,-1)">Declared source inventory</text>
+			<path d="M 435,315 L 765,315 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 435,212 L 765,212 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 435,315 L 435,212 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 765,315 L 765,212 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<rect x="435" y="212" width="330" height="103" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="449" y="285" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,570) scale(1,-1)">Plan and read</text>
+			<text x="449" y="257" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,514) scale(1,-1)">Select necessary sources</text>
+			<text x="449" y="232" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,464) scale(1,-1)">Bounded reading / segmentation</text>
+			<path d="M 845,315 L 1175,315 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 845,212 L 1175,212 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 845,315 L 845,212 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 1175,315 L 1175,212 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<rect x="845" y="212" width="330" height="103" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="859" y="285" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,570) scale(1,-1)">Extract and validate</text>
+			<text x="859" y="257" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,514) scale(1,-1)">Current tasks, dates, evidence</text>
+			<text x="859" y="232" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,464) scale(1,-1)">Contract and original-text checks</text>
+			<path d="M 355,264 L 435,264 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="435 264, 426.2242 259.2057, 426.2242 268.7943" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(9%,17%,26%); fill-rule: evenodd;"/>
+			<path d="M 765,264 L 845,264 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="845 264, 836.2242 259.2057, 836.2242 268.7943" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(9%,17%,26%); fill-rule: evenodd;"/>
+			<path d="M 845,119 L 1175,119 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 845,16 L 1175,16 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 845,119 L 845,16 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 1175,119 L 1175,16 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<rect x="845" y="16" width="330" height="103" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="859" y="89" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,178) scale(1,-1)">Repair allowance</text>
+			<text x="859" y="61" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,122) scale(1,-1)">At most once per email</text>
+			<text x="859" y="36" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,72) scale(1,-1)">Validate the corrected output</text>
+			<path d="M 953,212 L 953,119 Z" style="stroke: rgb(74%,45%,3%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="953 119, 948.2057 127.7758, 957.7943 127.7758" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(74%,45%,3%); fill-rule: evenodd;"/>
+			<path d="M 1068,119 L 1068,212 Z" style="stroke: rgb(74%,45%,3%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="1068 212, 1072.794 203.2242, 1063.206 203.2242" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(74%,45%,3%); fill-rule: evenodd;"/>
+			<text x="975" y="169" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,338) scale(1,-1)">Repairable</text>
+			<text x="975" y="145" style="font-family: Helvetica; font-size: 18px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,290) scale(1,-1)">failure</text>
+			<path d="M 25,119 L 355,119 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 25,16 L 355,16 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 25,119 L 25,16 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 355,119 L 355,16 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<rect x="25" y="16" width="330" height="103" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="39" y="89" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,178) scale(1,-1)">Reviewed output</text>
+			<text x="39" y="61" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,122) scale(1,-1)">action / no_action / needs_review</text>
+			<text x="39" y="36" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,72) scale(1,-1)">Human accept / edit / reject</text>
+			<path d="M 435,119 L 765,119 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 435,16 L 765,16 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 435,119 L 435,16 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 765,119 L 765,16 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1;"/>
+			<rect x="435" y="16" width="330" height="103" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="449" y="89" style="font-family: Helvetica-Bold; font-size: 23px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,178) scale(1,-1)">Calendar draft</text>
+			<text x="449" y="61" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,122) scale(1,-1)">Accepted task + reviewed date</text>
+			<text x="449" y="36" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,72) scale(1,-1)">Confirm saved fields / export</text>
+			<path d="M 878,212 L 878,191 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 878,191 L 190,191 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 2;"/>
+			<path d="M 190,191 L 190,119 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="190 119, 185.2057 127.7758, 194.7943 127.7758" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(9%,17%,26%); fill-rule: evenodd;"/>
+			<text x="340" y="152" style="font-family: Helvetica; font-size: 19px;fill: rgb(9%,17%,26%); stroke:none;" transform="translate(0,304) scale(1,-1)">Valid result or review fallback</text>
+			<path d="M 355,68 L 435,68 Z" style="stroke: rgb(9%,17%,26%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="435 68, 426.2242 63.20574, 426.2242 72.79426" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(9%,17%,26%); fill-rule: evenodd;"/>
+		</g>
+	</g>
+</svg>

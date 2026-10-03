@@ -1,0 +1,43 @@
+{
+  "kind": "Post-finalization accounting interpretation clarification; original files and frozen hashes unchanged",
+  "date": "2026-10-03",
+  "reason": "operations.py uses response.usage.cost as fallback when generation.total_cost is unavailable, so its known_billed_cost_usd field is not always generation-verified billing.",
+  "sources": {
+    "calls.jsonl": "ecf484caf6920eff81c33c09ad5e2d7aef009d87e51b398e1c34b0caf1da60ad",
+    "generations.jsonl": "d7353ecaf2d0f59221b49e3c2af145120a3bcb693202d349dbad369b5fdec0bb",
+    "operations.json": "c1fee3d18c285fd023a9bbee072ad4358c2d1b20169b90fa36467d52bfbc5daa",
+    "billing.json": "76688fb077dc4fb8ae151fb791839ce037085043c2a87ba783b911ce05d1da30"
+  },
+  "generation_verified_cost_by_completed_arm_usd": {
+    "full_m01": 0.012339495000000006,
+    "full_m02": 0.05670210799999997,
+    "full_m03": 0.093015,
+    "full_m04": 0.5232990000000002,
+    "full_m05": 0.1902891000000001,
+    "full_m06": 0.4689539999999999
+  },
+  "generation_verified_completed_calls_cost_usd": 1.3445987030000002,
+  "missing_completed_call_generation_bills": [
+    {
+      "arm": "full_m06",
+      "case_id": "C12",
+      "call": 1,
+      "response_id": "gen-1790949061-Www6X4wu7BEkn7Pm3j8K",
+      "response_usage_cost": 0.00681,
+      "policy": "Provider response usage cost preserved as unaudited; not added to verified generation bills."
+    }
+  ],
+  "generation_records_without_completed_call": [
+    {
+      "arm": "full_m01",
+      "case_id": "E04",
+      "call": 1,
+      "response_id": "gen-1790949533-JS8ukm9rg1czOLN2ggkg",
+      "generation_total_cost": 0.0002026
+    }
+  ],
+  "counter_delta_usd": 1.344801303,
+  "all_known_generation_bills_usd": 1.3448013030000001,
+  "full_audit_reconciled": false,
+  "no_inference": "No new API request or inference; no assumed zero cost/refund for missing bill."
+}

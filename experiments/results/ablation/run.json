@@ -1,0 +1,32 @@
+{
+  "started_utc": "2026-10-03T00:14:49.888095+00:00",
+  "bundle": "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\data\\frozen-core",
+  "bundle_sha256": "a90d9238047679fa9b1654ccdaf7c2cf0de8fd16a827ac7d20fdbcb5f1395c58",
+  "experiment_code": {
+    "billing.py": "a08c169b7665f78ef7e68aa1a27cec645acba499dfd2a4f7bf5c2c2d2e1bbd60",
+    "design.py": "73c42fe010100dcedcd45425d2eebe27cda531f52cdb4f0cbbef76420741752d",
+    "engine.py": "e3c783023ef04d1b98e8a5f3ddf87cc5ea741016e8e6503383f33983e45c411d",
+    "operations.py": "e9fb37b33a36c7d16b29b7370d13fd09bebae323d02cfb8221732e206c21f901",
+    "pipeline.py": "e394406985b4930729856a44c2544a2d72ebe1306d14484072829f6ac27fae0f",
+    "run_ablation.py": "d8e8b75780022c9cc2e257eea56c4da534bf5840bd78835e36fb7d936bd26fe4",
+    "scoring.py": "575cbc506d6d9e72ebafe981191dc76d5c24b3759482233889fc36e4ace73c34",
+    "telemetry.py": "72c23b6998f209b35f92a6f77b9cf702ee45797dd9b42b58bb57c6bbb35ac717"
+  },
+  "config_sha256": "e5548dab70deb889dcafc41a0da2ec12a6a638c897e72b81af06b615cbe2d88b",
+  "mode": "live",
+  "planned_analyses": 500,
+  "complete": true,
+  "budget_usd": 3.6551986970000003,
+  "paid_calls": 579,
+  "measured_usd": 1.9070012999999995,
+  "reserved_usd": 15.313090599999997,
+  "unknown_usage_calls": 0,
+  "source_benchmark": "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\results\\model-benchmark",
+  "global_total_cap_usd": 5.0,
+  "status": "complete",
+  "reservation_policy": "Original frozen Meter per analysis, remaining global actual-spend cap. Full reservation held within an analysis; unused reservation released afterward.",
+  "prompt_parser_transport": "Same as stage-one. API JSON mode is deferred to separately versioned upgrade.",
+  "completed_analyses": 500,
+  "ended_utc": "2026-10-03T00:56:38.566455+00:00",
+  "experiment_code_unchanged": true
+}

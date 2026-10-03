@@ -1,0 +1,3928 @@
+{
+  "scope": "live composite of disjoint completed observations",
+  "run_complete": true,
+  "planned_analyses": 360,
+  "completed_analyses": 360,
+  "classification_policy": "Strict scalar gold; FN includes review/error on action gold. Approved alternatives reported as joint status/count matches, not substituted into precision/recall.",
+  "arms": {
+    "full_m01": {
+      "analyses": 60,
+      "strict_status_match": 59,
+      "strict_status_rate": 0.9833333333333333,
+      "accepted_joint_status_count_match": 60,
+      "action_count_match": 60,
+      "matrix": {
+        "action": {
+          "action": 27,
+          "no_action": 0,
+          "needs_review": 0,
+          "error": 0
+        },
+        "no_action": {
+          "action": 0,
+          "no_action": 23,
+          "needs_review": 0,
+          "error": 0
+        },
+        "needs_review": {
+          "action": 1,
+          "no_action": 0,
+          "needs_review": 9,
+          "error": 0
+        }
+      },
+      "action_tp": 27,
+      "action_fp": 1,
+      "action_fn": 0,
+      "action_precision": 0.9642857142857143,
+      "action_recall": 1.0,
+      "action_f1": 0.9818181818181818,
+      "review_count": 9,
+      "review_rate": 0.15,
+      "review_precision": 1.0,
+      "review_recall": 0.9,
+      "unnecessary_reviews": 0,
+      "quote_count": 128,
+      "quote_exact_cases": 60,
+      "deadlines": {
+        "non_null_checked": 10,
+        "non_null_match": 10,
+        "null_checked": 12,
+        "null_match": 12
+      },
+      "wall_ms_median": 3985.777249909006,
+      "model_errors": 0,
+      "semantic_review_complete": false
+    },
+    "full_m02": {
+      "analyses": 60,
+      "strict_status_match": 51,
+      "strict_status_rate": 0.85,
+      "accepted_joint_status_count_match": 51,
+      "action_count_match": 55,
+      "matrix": {
+        "action": {
+          "action": 22,
+          "no_action": 0,
+          "needs_review": 5,
+          "error": 0
+        },
+        "no_action": {
+          "action": 0,
+          "no_action": 19,
+          "needs_review": 4,
+          "error": 0
+        },
+        "needs_review": {
+          "action": 0,
+          "no_action": 0,
+          "needs_review": 10,
+          "error": 0
+        }
+      },
+      "action_tp": 22,
+      "action_fp": 0,
+      "action_fn": 5,
+      "action_precision": 1.0,
+      "action_recall": 0.8148148148148148,
+      "action_f1": 0.8979591836734694,
+      "review_count": 19,
+      "review_rate": 0.31666666666666665,
+      "review_precision": 0.5263157894736842,
+      "review_recall": 1.0,
+      "unnecessary_reviews": 9,
+      "quote_count": 119,
+      "quote_exact_cases": 60,
+      "deadlines": {
+        "non_null_checked": 8,
+        "non_null_match": 8,
+        "null_checked": 10,
+        "null_match": 10
+      },
+      "wall_ms_median": 23285.210299945902,
+      "model_errors": 5,
+      "semantic_review_complete": false
+    },
+    "full_m03": {
+      "analyses": 60,
+      "strict_status_match": 10,
+      "strict_status_rate": 0.16666666666666666,
+      "accepted_joint_status_count_match": 10,
+      "action_count_match": 33,
+      "matrix": {
+        "action": {
+          "action": 0,
+          "no_action": 0,
+          "needs_review": 27,
+          "error": 0
+        },
+        "no_action": {
+          "action": 0,
+          "no_action": 0,
+          "needs_review": 23,
+          "error": 0
+        },
+        "needs_review": {
+          "action": 0,
+          "no_action": 0,
+          "needs_review": 10,
+          "error": 0
+        }
+      },
+      "action_tp": 0,
+      "action_fp": 0,
+      "action_fn": 27,
+      "action_precision": null,
+      "action_recall": 0.0,
+      "action_f1": 0.0,
+      "review_count": 60,
+      "review_rate": 1.0,
+      "review_precision": 0.16666666666666666,
+      "review_recall": 1.0,
+      "unnecessary_reviews": 50,
+      "quote_count": 0,
+      "quote_exact_cases": 60,
+      "deadlines": {
+        "non_null_checked": 0,
+        "non_null_match": 0,
+        "null_checked": 0,
+        "null_match": 0
+      },
+      "wall_ms_median": 2732.047300087288,
+      "model_errors": 0,
+      "semantic_review_complete": false
+    },
+    "full_m04": {
+      "analyses": 60,
+      "strict_status_match": 42,
+      "strict_status_rate": 0.7,
+      "accepted_joint_status_count_match": 43,
+      "action_count_match": 49,
+      "matrix": {
+        "action": {
+          "action": 17,
+          "no_action": 0,
+          "needs_review": 10,
+          "error": 0
+        },
+        "no_action": {
+          "action": 0,
+          "no_action": 17,
+          "needs_review": 6,
+          "error": 0
+        },
+        "needs_review": {
+          "action": 2,
+          "no_action": 0,
+          "needs_review": 8,
+          "error": 0
+        }
+      },
+      "action_tp": 17,
+      "action_fp": 2,
+      "action_fn": 10,
+      "action_precision": 0.8947368421052632,
+      "action_recall": 0.6296296296296297,
+      "action_f1": 0.7391304347826086,
+      "review_count": 24,
+      "review_rate": 0.4,
+      "review_precision": 0.3333333333333333,
+      "review_recall": 0.8,
+      "unnecessary_reviews": 16,
+      "quote_count": 64,
+      "quote_exact_cases": 60,
+      "deadlines": {
+        "non_null_checked": 4,
+        "non_null_match": 4,
+        "null_checked": 12,
+        "null_match": 12
+      },
+      "wall_ms_median": 14731.975699891336,
+      "model_errors": 0,
+      "semantic_review_complete": false
+    },
+    "full_m05": {
+      "analyses": 60,
+      "strict_status_match": 59,
+      "strict_status_rate": 0.9833333333333333,
+      "accepted_joint_status_count_match": 60,
+      "action_count_match": 60,
+      "matrix": {
+        "action": {
+          "action": 27,
+          "no_action": 0,
+          "needs_review": 0,
+          "error": 0
+        },
+        "no_action": {
+          "action": 0,
+          "no_action": 23,
+          "needs_review": 0,
+          "error": 0
+        },
+        "needs_review": {
+          "action": 1,
+          "no_action": 0,
+          "needs_review": 9,
+          "error": 0
+        }
+      },
+      "action_tp": 27,
+      "action_fp": 1,
+      "action_fn": 0,
+      "action_precision": 0.9642857142857143,
+      "action_recall": 1.0,
+      "action_f1": 0.9818181818181818,
+      "review_count": 9,
+      "review_rate": 0.15,
+      "review_precision": 1.0,
+      "review_recall": 0.9,
+      "unnecessary_reviews": 0,
+      "quote_count": 133,
+      "quote_exact_cases": 60,
+      "deadlines": {
+        "non_null_checked": 10,
+        "non_null_match": 10,
+        "null_checked": 12,
+        "null_match": 12
+      },
+      "wall_ms_median": 4042.039649968501,
+      "model_errors": 0,
+      "semantic_review_complete": false
+    },
+    "full_m06": {
+      "analyses": 60,
+      "strict_status_match": 58,
+      "strict_status_rate": 0.9666666666666667,
+      "accepted_joint_status_count_match": 59,
+      "action_count_match": 59,
+      "matrix": {
+        "action": {
+          "action": 26,
+          "no_action": 0,
+          "needs_review": 1,
+          "error": 0
+        },
+        "no_action": {
+          "action": 0,
+          "no_action": 23,
+          "needs_review": 0,
+          "error": 0
+        },
+        "needs_review": {
+          "action": 1,
+          "no_action": 0,
+          "needs_review": 9,
+          "error": 0
+        }
+      },
+      "action_tp": 26,
+      "action_fp": 1,
+      "action_fn": 1,
+      "action_precision": 0.9629629629629629,
+      "action_recall": 0.9629629629629629,
+      "action_f1": 0.9629629629629629,
+      "review_count": 10,
+      "review_rate": 0.16666666666666666,
+      "review_precision": 0.9,
+      "review_recall": 0.9,
+      "unnecessary_reviews": 1,
+      "quote_count": 137,
+      "quote_exact_cases": 60,
+      "deadlines": {
+        "non_null_checked": 10,
+        "non_null_match": 10,
+        "null_checked": 11,
+        "null_match": 11
+      },
+      "wall_ms_median": 2970.747199957259,
+      "model_errors": 0,
+      "semantic_review_complete": false
+    }
+  },
+  "paired_comparisons": {},
+  "slices": {
+    "full_m01": {
+      "category": {
+        "no_action": {
+          "analyses": 15,
+          "strict_status_match": 15,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 15,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 15,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 17,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2986.627700040117,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "explicit_action": {
+          "analyses": 15,
+          "strict_status_match": 15,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 15,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 11,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 11,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 4,
+          "review_rate": 0.26666666666666666,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 29,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 4,
+            "non_null_match": 4,
+            "null_checked": 6,
+            "null_match": 6
+          },
+          "wall_ms_median": 3042.8260000189766,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "context_dependent": {
+          "analyses": 10,
+          "strict_status_match": 9,
+          "strict_status_rate": 0.9,
+          "accepted_joint_status_count_match": 10,
+          "action_count_match": 10,
+          "matrix": {
+            "action": {
+              "action": 6,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            }
+          },
+          "action_tp": 6,
+          "action_fp": 1,
+          "action_fn": 0,
+          "action_precision": 0.8571428571428571,
+          "action_recall": 1.0,
+          "action_f1": 0.9230769230769231,
+          "review_count": 2,
+          "review_rate": 0.2,
+          "review_precision": 1.0,
+          "review_recall": 0.6666666666666666,
+          "unnecessary_reviews": 0,
+          "quote_count": 23,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 6,
+            "null_match": 6
+          },
+          "wall_ms_median": 5019.668349879794,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "external_content": {
+          "analyses": 10,
+          "strict_status_match": 10,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 10,
+          "action_count_match": 10,
+          "matrix": {
+            "action": {
+              "action": 6,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 4,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 6,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 30,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 6,
+            "non_null_match": 6,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 6514.412999909837,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "long_content": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 2,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 3,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 4063.8012499548495,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "real_attachments": {
+          "analyses": 4,
+          "strict_status_match": 4,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 4,
+          "action_count_match": 4,
+          "matrix": {
+            "action": {
+              "action": 2,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 2,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.25,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 14,
+          "quote_exact_cases": 4,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 6942.191200039815,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "links_mixed": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 1,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 5,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 7631.455799972173,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "limits_hostile": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 1,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 7,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 4161.335050011985,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      },
+      "origin": {
+        "mailex_raw": {
+          "analyses": 33,
+          "strict_status_match": 32,
+          "strict_status_rate": 0.9696969696969697,
+          "accepted_joint_status_count_match": 33,
+          "action_count_match": 33,
+          "matrix": {
+            "action": {
+              "action": 12,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 18,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            }
+          },
+          "action_tp": 12,
+          "action_fp": 1,
+          "action_fn": 0,
+          "action_precision": 0.9230769230769231,
+          "action_recall": 1.0,
+          "action_f1": 0.96,
+          "review_count": 2,
+          "review_rate": 0.06060606060606061,
+          "review_precision": 1.0,
+          "review_recall": 0.6666666666666666,
+          "unnecessary_reviews": 0,
+          "quote_count": 55,
+          "quote_exact_cases": 33,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 12,
+            "null_match": 12
+          },
+          "wall_ms_median": 3538.686499930918,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored": {
+          "analyses": 19,
+          "strict_status_match": 19,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 19,
+          "action_count_match": 19,
+          "matrix": {
+            "action": {
+              "action": 11,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 4,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 11,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 4,
+          "review_rate": 0.21052631578947367,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 47,
+          "quote_exact_cases": 19,
+          "deadlines": {
+            "non_null_checked": 10,
+            "non_null_match": 10,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 4978.965900023468,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "enron_export": {
+          "analyses": 1,
+          "strict_status_match": 1,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 1,
+          "quote_exact_cases": 1,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 6936.103399959393,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored_eml": {
+          "analyses": 7,
+          "strict_status_match": 7,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 7,
+          "action_count_match": 7,
+          "matrix": {
+            "action": {
+              "action": 4,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 4,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 3,
+          "review_rate": 0.42857142857142855,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 25,
+          "quote_exact_cases": 7,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 6556.453499943018,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      }
+    },
+    "full_m02": {
+      "category": {
+        "no_action": {
+          "analyses": 15,
+          "strict_status_match": 14,
+          "strict_status_rate": 0.9333333333333333,
+          "accepted_joint_status_count_match": 14,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 14,
+              "needs_review": 1,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 1,
+          "review_rate": 0.06666666666666667,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 1,
+          "quote_count": 24,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 10891.512700123712,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "explicit_action": {
+          "analyses": 15,
+          "strict_status_match": 15,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 15,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 11,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 11,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 4,
+          "review_rate": 0.26666666666666666,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 35,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 4,
+            "non_null_match": 4,
+            "null_checked": 6,
+            "null_match": 6
+          },
+          "wall_ms_median": 14431.463500019163,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "context_dependent": {
+          "analyses": 10,
+          "strict_status_match": 8,
+          "strict_status_rate": 0.8,
+          "accepted_joint_status_count_match": 8,
+          "action_count_match": 8,
+          "matrix": {
+            "action": {
+              "action": 4,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 4,
+          "action_fp": 0,
+          "action_fn": 2,
+          "action_precision": 1.0,
+          "action_recall": 0.6666666666666666,
+          "action_f1": 0.8,
+          "review_count": 5,
+          "review_rate": 0.5,
+          "review_precision": 0.6,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 2,
+          "quote_count": 17,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 4,
+            "null_match": 4
+          },
+          "wall_ms_median": 38216.68335009599,
+          "model_errors": 3,
+          "semantic_review_complete": false
+        },
+        "external_content": {
+          "analyses": 10,
+          "strict_status_match": 6,
+          "strict_status_rate": 0.6,
+          "accepted_joint_status_count_match": 6,
+          "action_count_match": 8,
+          "matrix": {
+            "action": {
+              "action": 4,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 2,
+              "needs_review": 2,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 4,
+          "action_fp": 0,
+          "action_fn": 2,
+          "action_precision": 1.0,
+          "action_recall": 0.6666666666666666,
+          "action_f1": 0.8,
+          "review_count": 4,
+          "review_rate": 0.4,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 4,
+          "quote_count": 19,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 4,
+            "non_null_match": 4,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 35012.60984997498,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "long_content": {
+          "analyses": 2,
+          "strict_status_match": 1,
+          "strict_status_rate": 0.5,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 1,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 1,
+          "quote_count": 3,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 36139.275799971074,
+          "model_errors": 1,
+          "semantic_review_complete": false
+        },
+        "real_attachments": {
+          "analyses": 4,
+          "strict_status_match": 3,
+          "strict_status_rate": 0.75,
+          "accepted_joint_status_count_match": 3,
+          "action_count_match": 3,
+          "matrix": {
+            "action": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 1,
+          "action_fp": 0,
+          "action_fn": 1,
+          "action_precision": 1.0,
+          "action_recall": 0.5,
+          "action_f1": 0.6666666666666666,
+          "review_count": 2,
+          "review_rate": 0.5,
+          "review_precision": 0.5,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 1,
+          "quote_count": 11,
+          "quote_exact_cases": 4,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 27653.47825002391,
+          "model_errors": 1,
+          "semantic_review_complete": false
+        },
+        "links_mixed": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 1,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 5,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 32989.195200032555,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "limits_hostile": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 1,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 5,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 31309.5660500112,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      },
+      "origin": {
+        "mailex_raw": {
+          "analyses": 33,
+          "strict_status_match": 29,
+          "strict_status_rate": 0.8787878787878788,
+          "accepted_joint_status_count_match": 29,
+          "action_count_match": 31,
+          "matrix": {
+            "action": {
+              "action": 10,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 16,
+              "needs_review": 2,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 10,
+          "action_fp": 0,
+          "action_fn": 2,
+          "action_precision": 1.0,
+          "action_recall": 0.8333333333333334,
+          "action_f1": 0.9090909090909091,
+          "review_count": 7,
+          "review_rate": 0.21212121212121213,
+          "review_precision": 0.42857142857142855,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 4,
+          "quote_count": 58,
+          "quote_exact_cases": 33,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 10,
+            "null_match": 10
+          },
+          "wall_ms_median": 21252.829500008374,
+          "model_errors": 4,
+          "semantic_review_complete": false
+        },
+        "authored": {
+          "analyses": 19,
+          "strict_status_match": 15,
+          "strict_status_rate": 0.7894736842105263,
+          "accepted_joint_status_count_match": 15,
+          "action_count_match": 17,
+          "matrix": {
+            "action": {
+              "action": 9,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 2,
+              "needs_review": 2,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 9,
+          "action_fp": 0,
+          "action_fn": 2,
+          "action_precision": 1.0,
+          "action_recall": 0.8181818181818182,
+          "action_f1": 0.9,
+          "review_count": 8,
+          "review_rate": 0.42105263157894735,
+          "review_precision": 0.5,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 4,
+          "quote_count": 40,
+          "quote_exact_cases": 19,
+          "deadlines": {
+            "non_null_checked": 8,
+            "non_null_match": 8,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 23632.65590008814,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "enron_export": {
+          "analyses": 1,
+          "strict_status_match": 1,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 2,
+          "quote_exact_cases": 1,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 62065.981800085865,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored_eml": {
+          "analyses": 7,
+          "strict_status_match": 6,
+          "strict_status_rate": 0.8571428571428571,
+          "accepted_joint_status_count_match": 6,
+          "action_count_match": 6,
+          "matrix": {
+            "action": {
+              "action": 3,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 3,
+          "action_fp": 0,
+          "action_fn": 1,
+          "action_precision": 1.0,
+          "action_recall": 0.75,
+          "action_f1": 0.8571428571428571,
+          "review_count": 4,
+          "review_rate": 0.5714285714285714,
+          "review_precision": 0.75,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 1,
+          "quote_count": 19,
+          "quote_exact_cases": 7,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 22555.303700035438,
+          "model_errors": 1,
+          "semantic_review_complete": false
+        }
+      }
+    },
+    "full_m03": {
+      "category": {
+        "no_action": {
+          "analyses": 15,
+          "strict_status_match": 0,
+          "strict_status_rate": 0.0,
+          "accepted_joint_status_count_match": 0,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 15,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 15,
+          "review_rate": 1.0,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 15,
+          "quote_count": 0,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2592.769000097178,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "explicit_action": {
+          "analyses": 15,
+          "strict_status_match": 4,
+          "strict_status_rate": 0.26666666666666666,
+          "accepted_joint_status_count_match": 4,
+          "action_count_match": 4,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 11,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 11,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 15,
+          "review_rate": 1.0,
+          "review_precision": 0.26666666666666666,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 11,
+          "quote_count": 0,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2799.025399959646,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "context_dependent": {
+          "analyses": 10,
+          "strict_status_match": 3,
+          "strict_status_rate": 0.3,
+          "accepted_joint_status_count_match": 3,
+          "action_count_match": 4,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 6,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 6,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 10,
+          "review_rate": 1.0,
+          "review_precision": 0.3,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 7,
+          "quote_count": 0,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2768.7681497773156,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "external_content": {
+          "analyses": 10,
+          "strict_status_match": 0,
+          "strict_status_rate": 0.0,
+          "accepted_joint_status_count_match": 0,
+          "action_count_match": 4,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 6,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 6,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 10,
+          "review_rate": 1.0,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 10,
+          "quote_count": 0,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2785.8573499834165,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "long_content": {
+          "analyses": 2,
+          "strict_status_match": 0,
+          "strict_status_rate": 0.0,
+          "accepted_joint_status_count_match": 0,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 2,
+          "review_rate": 1.0,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 2,
+          "quote_count": 0,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2715.318700124044,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "real_attachments": {
+          "analyses": 4,
+          "strict_status_match": 1,
+          "strict_status_rate": 0.25,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 2,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 4,
+          "review_rate": 1.0,
+          "review_precision": 0.25,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 3,
+          "quote_count": 0,
+          "quote_exact_cases": 4,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2864.558599947486,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "links_mixed": {
+          "analyses": 2,
+          "strict_status_match": 1,
+          "strict_status_rate": 0.5,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 1,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 2,
+          "review_rate": 1.0,
+          "review_precision": 0.5,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 1,
+          "quote_count": 0,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 3140.56454988895,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "limits_hostile": {
+          "analyses": 2,
+          "strict_status_match": 1,
+          "strict_status_rate": 0.5,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 1,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 2,
+          "review_rate": 1.0,
+          "review_precision": 0.5,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 1,
+          "quote_count": 0,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2492.176150146406,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      },
+      "origin": {
+        "mailex_raw": {
+          "analyses": 33,
+          "strict_status_match": 3,
+          "strict_status_rate": 0.09090909090909091,
+          "accepted_joint_status_count_match": 3,
+          "action_count_match": 21,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 12,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 18,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 12,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 33,
+          "review_rate": 1.0,
+          "review_precision": 0.09090909090909091,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 30,
+          "quote_count": 0,
+          "quote_exact_cases": 33,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2690.08079986088,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored": {
+          "analyses": 19,
+          "strict_status_match": 4,
+          "strict_status_rate": 0.21052631578947367,
+          "accepted_joint_status_count_match": 4,
+          "action_count_match": 8,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 11,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 11,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 19,
+          "review_rate": 1.0,
+          "review_precision": 0.21052631578947367,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 15,
+          "quote_count": 0,
+          "quote_exact_cases": 19,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2823.244799859822,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "enron_export": {
+          "analyses": 1,
+          "strict_status_match": 0,
+          "strict_status_rate": 0.0,
+          "accepted_joint_status_count_match": 0,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 1,
+          "review_rate": 1.0,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 1,
+          "quote_count": 0,
+          "quote_exact_cases": 1,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 3078.0278999591246,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored_eml": {
+          "analyses": 7,
+          "strict_status_match": 3,
+          "strict_status_rate": 0.42857142857142855,
+          "accepted_joint_status_count_match": 3,
+          "action_count_match": 3,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 4,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 7,
+          "review_rate": 1.0,
+          "review_precision": 0.42857142857142855,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 4,
+          "quote_count": 0,
+          "quote_exact_cases": 7,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2651.0892999358475,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      }
+    },
+    "full_m04": {
+      "category": {
+        "no_action": {
+          "analyses": 15,
+          "strict_status_match": 15,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 15,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 15,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 16,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 9656.566300196573,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "explicit_action": {
+          "analyses": 15,
+          "strict_status_match": 14,
+          "strict_status_rate": 0.9333333333333333,
+          "accepted_joint_status_count_match": 14,
+          "action_count_match": 14,
+          "matrix": {
+            "action": {
+              "action": 11,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 11,
+          "action_fp": 1,
+          "action_fn": 0,
+          "action_precision": 0.9166666666666666,
+          "action_recall": 1.0,
+          "action_f1": 0.9565217391304348,
+          "review_count": 3,
+          "review_rate": 0.2,
+          "review_precision": 1.0,
+          "review_recall": 0.75,
+          "unnecessary_reviews": 0,
+          "quote_count": 27,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 4,
+            "non_null_match": 4,
+            "null_checked": 6,
+            "null_match": 6
+          },
+          "wall_ms_median": 13311.13839999307,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "context_dependent": {
+          "analyses": 10,
+          "strict_status_match": 9,
+          "strict_status_rate": 0.9,
+          "accepted_joint_status_count_match": 10,
+          "action_count_match": 10,
+          "matrix": {
+            "action": {
+              "action": 6,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            }
+          },
+          "action_tp": 6,
+          "action_fp": 1,
+          "action_fn": 0,
+          "action_precision": 0.8571428571428571,
+          "action_recall": 1.0,
+          "action_f1": 0.9230769230769231,
+          "review_count": 2,
+          "review_rate": 0.2,
+          "review_precision": 1.0,
+          "review_recall": 0.6666666666666666,
+          "unnecessary_reviews": 0,
+          "quote_count": 18,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 6,
+            "null_match": 6
+          },
+          "wall_ms_median": 18222.677549812943,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "external_content": {
+          "analyses": 10,
+          "strict_status_match": 0,
+          "strict_status_rate": 0.0,
+          "accepted_joint_status_count_match": 0,
+          "action_count_match": 4,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 6,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 6,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 10,
+          "review_rate": 1.0,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 10,
+          "quote_count": 0,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 19286.32239997387,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "long_content": {
+          "analyses": 2,
+          "strict_status_match": 1,
+          "strict_status_rate": 0.5,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 1,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 1,
+          "quote_count": 1,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 16683.95174999023,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "real_attachments": {
+          "analyses": 4,
+          "strict_status_match": 1,
+          "strict_status_rate": 0.25,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 2,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 4,
+          "review_rate": 1.0,
+          "review_precision": 0.25,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 3,
+          "quote_count": 1,
+          "quote_exact_cases": 4,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 21141.432599979453,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "links_mixed": {
+          "analyses": 2,
+          "strict_status_match": 1,
+          "strict_status_rate": 0.5,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 1,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 2,
+          "review_rate": 1.0,
+          "review_precision": 0.5,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 1,
+          "quote_count": 0,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 20312.640550138894,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "limits_hostile": {
+          "analyses": 2,
+          "strict_status_match": 1,
+          "strict_status_rate": 0.5,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 1,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 2,
+          "review_rate": 1.0,
+          "review_precision": 0.5,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 1,
+          "quote_count": 1,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 15625.091750058345,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      },
+      "origin": {
+        "mailex_raw": {
+          "analyses": 33,
+          "strict_status_match": 31,
+          "strict_status_rate": 0.9393939393939394,
+          "accepted_joint_status_count_match": 32,
+          "action_count_match": 33,
+          "matrix": {
+            "action": {
+              "action": 12,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 17,
+              "needs_review": 1,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            }
+          },
+          "action_tp": 12,
+          "action_fp": 1,
+          "action_fn": 0,
+          "action_precision": 0.9230769230769231,
+          "action_recall": 1.0,
+          "action_f1": 0.96,
+          "review_count": 3,
+          "review_rate": 0.09090909090909091,
+          "review_precision": 0.6666666666666666,
+          "review_recall": 0.6666666666666666,
+          "unnecessary_reviews": 1,
+          "quote_count": 47,
+          "quote_exact_cases": 33,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 12,
+            "null_match": 12
+          },
+          "wall_ms_median": 12720.613400102593,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored": {
+          "analyses": 19,
+          "strict_status_match": 8,
+          "strict_status_rate": 0.42105263157894735,
+          "accepted_joint_status_count_match": 8,
+          "action_count_match": 12,
+          "matrix": {
+            "action": {
+              "action": 5,
+              "no_action": 0,
+              "needs_review": 6,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 5,
+          "action_fp": 1,
+          "action_fn": 6,
+          "action_precision": 0.8333333333333334,
+          "action_recall": 0.45454545454545453,
+          "action_f1": 0.5882352941176471,
+          "review_count": 13,
+          "review_rate": 0.6842105263157895,
+          "review_precision": 0.23076923076923078,
+          "review_recall": 0.75,
+          "unnecessary_reviews": 10,
+          "quote_count": 15,
+          "quote_exact_cases": 19,
+          "deadlines": {
+            "non_null_checked": 4,
+            "non_null_match": 4,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 18028.14609988127,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "enron_export": {
+          "analyses": 1,
+          "strict_status_match": 0,
+          "strict_status_rate": 0.0,
+          "accepted_joint_status_count_match": 0,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 1,
+          "review_rate": 1.0,
+          "review_precision": 0.0,
+          "review_recall": null,
+          "unnecessary_reviews": 1,
+          "quote_count": 0,
+          "quote_exact_cases": 1,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 18740.694600041024,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored_eml": {
+          "analyses": 7,
+          "strict_status_match": 3,
+          "strict_status_rate": 0.42857142857142855,
+          "accepted_joint_status_count_match": 3,
+          "action_count_match": 3,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 4,
+          "action_precision": null,
+          "action_recall": 0.0,
+          "action_f1": 0.0,
+          "review_count": 7,
+          "review_rate": 1.0,
+          "review_precision": 0.42857142857142855,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 4,
+          "quote_count": 2,
+          "quote_exact_cases": 7,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 18110.156500013545,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      }
+    },
+    "full_m05": {
+      "category": {
+        "no_action": {
+          "analyses": 15,
+          "strict_status_match": 15,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 15,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 15,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 23,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 3205.6189000140876,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "explicit_action": {
+          "analyses": 15,
+          "strict_status_match": 15,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 15,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 11,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 11,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 4,
+          "review_rate": 0.26666666666666666,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 29,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 4,
+            "non_null_match": 4,
+            "null_checked": 6,
+            "null_match": 6
+          },
+          "wall_ms_median": 3850.6695999531075,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "context_dependent": {
+          "analyses": 10,
+          "strict_status_match": 9,
+          "strict_status_rate": 0.9,
+          "accepted_joint_status_count_match": 10,
+          "action_count_match": 10,
+          "matrix": {
+            "action": {
+              "action": 6,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            }
+          },
+          "action_tp": 6,
+          "action_fp": 1,
+          "action_fn": 0,
+          "action_precision": 0.8571428571428571,
+          "action_recall": 1.0,
+          "action_f1": 0.9230769230769231,
+          "review_count": 2,
+          "review_rate": 0.2,
+          "review_precision": 1.0,
+          "review_recall": 0.6666666666666666,
+          "unnecessary_reviews": 0,
+          "quote_count": 24,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 6,
+            "null_match": 6
+          },
+          "wall_ms_median": 5298.375350015704,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "external_content": {
+          "analyses": 10,
+          "strict_status_match": 10,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 10,
+          "action_count_match": 10,
+          "matrix": {
+            "action": {
+              "action": 6,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 4,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 6,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 27,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 6,
+            "non_null_match": 6,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 9196.139250008855,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "long_content": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 2,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 3,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 5247.962799970992,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "real_attachments": {
+          "analyses": 4,
+          "strict_status_match": 4,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 4,
+          "action_count_match": 4,
+          "matrix": {
+            "action": {
+              "action": 2,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 2,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.25,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 17,
+          "quote_exact_cases": 4,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 9164.042150136083,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "links_mixed": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 1,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 5,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 7780.554500001017,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "limits_hostile": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 1,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 5,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 5809.262850147206,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      },
+      "origin": {
+        "mailex_raw": {
+          "analyses": 33,
+          "strict_status_match": 32,
+          "strict_status_rate": 0.9696969696969697,
+          "accepted_joint_status_count_match": 33,
+          "action_count_match": 33,
+          "matrix": {
+            "action": {
+              "action": 12,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 18,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            }
+          },
+          "action_tp": 12,
+          "action_fp": 1,
+          "action_fn": 0,
+          "action_precision": 0.9230769230769231,
+          "action_recall": 1.0,
+          "action_f1": 0.96,
+          "review_count": 2,
+          "review_rate": 0.06060606060606061,
+          "review_precision": 1.0,
+          "review_recall": 0.6666666666666666,
+          "unnecessary_reviews": 0,
+          "quote_count": 63,
+          "quote_exact_cases": 33,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 12,
+            "null_match": 12
+          },
+          "wall_ms_median": 3785.1433999603614,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored": {
+          "analyses": 19,
+          "strict_status_match": 19,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 19,
+          "action_count_match": 19,
+          "matrix": {
+            "action": {
+              "action": 11,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 4,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 11,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 4,
+          "review_rate": 0.21052631578947367,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 43,
+          "quote_exact_cases": 19,
+          "deadlines": {
+            "non_null_checked": 10,
+            "non_null_match": 10,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 7123.040900100023,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "enron_export": {
+          "analyses": 1,
+          "strict_status_match": 1,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 2,
+          "quote_exact_cases": 1,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 8372.09270009771,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored_eml": {
+          "analyses": 7,
+          "strict_status_match": 7,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 7,
+          "action_count_match": 7,
+          "matrix": {
+            "action": {
+              "action": 4,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 4,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 3,
+          "review_rate": 0.42857142857142855,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 25,
+          "quote_exact_cases": 7,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 7829.017500160262,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      }
+    },
+    "full_m06": {
+      "category": {
+        "no_action": {
+          "analyses": 15,
+          "strict_status_match": 15,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 15,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 15,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 23,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 2374.621299910359,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "explicit_action": {
+          "analyses": 15,
+          "strict_status_match": 15,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 15,
+          "action_count_match": 15,
+          "matrix": {
+            "action": {
+              "action": 11,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 11,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 4,
+          "review_rate": 0.26666666666666666,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 33,
+          "quote_exact_cases": 15,
+          "deadlines": {
+            "non_null_checked": 4,
+            "non_null_match": 4,
+            "null_checked": 6,
+            "null_match": 6
+          },
+          "wall_ms_median": 2697.8656999999657,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "context_dependent": {
+          "analyses": 10,
+          "strict_status_match": 8,
+          "strict_status_rate": 0.8,
+          "accepted_joint_status_count_match": 9,
+          "action_count_match": 9,
+          "matrix": {
+            "action": {
+              "action": 5,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            }
+          },
+          "action_tp": 5,
+          "action_fp": 1,
+          "action_fn": 1,
+          "action_precision": 0.8333333333333334,
+          "action_recall": 0.8333333333333334,
+          "action_f1": 0.8333333333333334,
+          "review_count": 3,
+          "review_rate": 0.3,
+          "review_precision": 0.6666666666666666,
+          "review_recall": 0.6666666666666666,
+          "unnecessary_reviews": 1,
+          "quote_count": 22,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 5,
+            "null_match": 5
+          },
+          "wall_ms_median": 3540.0532499770634,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "external_content": {
+          "analyses": 10,
+          "strict_status_match": 10,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 10,
+          "action_count_match": 10,
+          "matrix": {
+            "action": {
+              "action": 6,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 4,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 6,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 27,
+          "quote_exact_cases": 10,
+          "deadlines": {
+            "non_null_checked": 6,
+            "non_null_match": 6,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 5677.118049934506,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "long_content": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 2,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 4,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 3254.59464994492,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "real_attachments": {
+          "analyses": 4,
+          "strict_status_match": 4,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 4,
+          "action_count_match": 4,
+          "matrix": {
+            "action": {
+              "action": 2,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 2,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.25,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 15,
+          "quote_exact_cases": 4,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 6024.341699958313,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "links_mixed": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 1,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 5,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 6384.192149969749,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "limits_hostile": {
+          "analyses": 2,
+          "strict_status_match": 2,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 2,
+          "action_count_match": 2,
+          "matrix": {
+            "action": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            }
+          },
+          "action_tp": 1,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 1,
+          "review_rate": 0.5,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 8,
+          "quote_exact_cases": 2,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 4844.28535006009,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      },
+      "origin": {
+        "mailex_raw": {
+          "analyses": 33,
+          "strict_status_match": 31,
+          "strict_status_rate": 0.9393939393939394,
+          "accepted_joint_status_count_match": 32,
+          "action_count_match": 32,
+          "matrix": {
+            "action": {
+              "action": 11,
+              "no_action": 0,
+              "needs_review": 1,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 18,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 1,
+              "no_action": 0,
+              "needs_review": 2,
+              "error": 0
+            }
+          },
+          "action_tp": 11,
+          "action_fp": 1,
+          "action_fn": 1,
+          "action_precision": 0.9166666666666666,
+          "action_recall": 0.9166666666666666,
+          "action_f1": 0.9166666666666666,
+          "review_count": 3,
+          "review_rate": 0.09090909090909091,
+          "review_precision": 0.6666666666666666,
+          "review_recall": 0.6666666666666666,
+          "unnecessary_reviews": 1,
+          "quote_count": 63,
+          "quote_exact_cases": 33,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 11,
+            "null_match": 11
+          },
+          "wall_ms_median": 2825.153599958867,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored": {
+          "analyses": 19,
+          "strict_status_match": 19,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 19,
+          "action_count_match": 19,
+          "matrix": {
+            "action": {
+              "action": 11,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 4,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 4,
+              "error": 0
+            }
+          },
+          "action_tp": 11,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 4,
+          "review_rate": 0.21052631578947367,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 46,
+          "quote_exact_cases": 19,
+          "deadlines": {
+            "non_null_checked": 10,
+            "non_null_match": 10,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 5087.485099793412,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "enron_export": {
+          "analyses": 1,
+          "strict_status_match": 1,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 1,
+          "action_count_match": 1,
+          "matrix": {
+            "action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 1,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            }
+          },
+          "action_tp": 0,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": null,
+          "action_recall": null,
+          "action_f1": null,
+          "review_count": 0,
+          "review_rate": 0.0,
+          "review_precision": null,
+          "review_recall": null,
+          "unnecessary_reviews": 0,
+          "quote_count": 2,
+          "quote_exact_cases": 1,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 6040.025099879131,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        },
+        "authored_eml": {
+          "analyses": 7,
+          "strict_status_match": 7,
+          "strict_status_rate": 1.0,
+          "accepted_joint_status_count_match": 7,
+          "action_count_match": 7,
+          "matrix": {
+            "action": {
+              "action": 4,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "no_action": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 0,
+              "error": 0
+            },
+            "needs_review": {
+              "action": 0,
+              "no_action": 0,
+              "needs_review": 3,
+              "error": 0
+            }
+          },
+          "action_tp": 4,
+          "action_fp": 0,
+          "action_fn": 0,
+          "action_precision": 1.0,
+          "action_recall": 1.0,
+          "action_f1": 1.0,
+          "review_count": 3,
+          "review_rate": 0.42857142857142855,
+          "review_precision": 1.0,
+          "review_recall": 1.0,
+          "unnecessary_reviews": 0,
+          "quote_count": 26,
+          "quote_exact_cases": 7,
+          "deadlines": {
+            "non_null_checked": 0,
+            "non_null_match": 0,
+            "null_checked": 0,
+            "null_match": 0
+          },
+          "wall_ms_median": 6008.658300037496,
+          "model_errors": 0,
+          "semantic_review_complete": false
+        }
+      }
+    }
+  },
+  "repeatability": [],
+  "semantic_review_complete": false,
+  "paid_calls": 596,
+  "cost": {
+    "reported_usage_estimate_usd": 1.47020915,
+    "unknown_usage_calls": 5,
+    "reservation_usd": 11.9094188
+  },
+  "cost_by_arm": {
+    "full_m01": {
+      "reported_usage_estimate_usd": 0.017539799999999998,
+      "known_billed_cost_usd": 0.012339495,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "run_counter_reconciled": false,
+      "calls": 76
+    },
+    "full_m02": {
+      "reported_usage_estimate_usd": 0.06180475,
+      "known_billed_cost_usd": 0.056702108,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "run_counter_reconciled": false,
+      "calls": 110
+    },
+    "full_m03": {
+      "reported_usage_estimate_usd": 0.093015,
+      "known_billed_cost_usd": 0.093015,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "run_counter_reconciled": false,
+      "calls": 120
+    },
+    "full_m04": {
+      "reported_usage_estimate_usd": 0.523299,
+      "known_billed_cost_usd": 0.523299,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "run_counter_reconciled": false,
+      "calls": 136
+    },
+    "full_m05": {
+      "reported_usage_estimate_usd": 0.298584,
+      "known_billed_cost_usd": 0.1902891,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "run_counter_reconciled": false,
+      "calls": 76
+    },
+    "full_m06": {
+      "reported_usage_estimate_usd": 0.475764,
+      "known_billed_cost_usd": 0.475764,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "run_counter_reconciled": false,
+      "calls": 77
+    }
+  }
+}

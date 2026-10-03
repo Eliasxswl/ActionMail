@@ -1,0 +1,23 @@
+{
+  "protocol_version": "1.0",
+  "purpose": "Recipient-specific current email tasks; core only",
+  "reference_policy": "strict_plus_approved_alternatives",
+  "models": {
+    "primary": {"id": "openai/gpt-6-luna", "input_usd_per_million": null, "output_usd_per_million": null, "request_usd": 0},
+    "comparison": {"id": null, "input_usd_per_million": null, "output_usd_per_million": null, "request_usd": 0}
+  },
+  "budget_usd": 0.2,
+  "max_calls_per_email": 80,
+  "arms": [
+    {"id": "rules", "mode": "rules", "selector": "all", "trials": 1, "layer": "baseline"},
+    {"id": "prompt_only", "mode": "prompt_only", "selector": "all", "trials": 1, "model": "primary", "layer": "baseline"},
+    {"id": "full", "mode": "full", "selector": "all", "trials": 1, "model": "primary", "layer": "reference"},
+    {"id": "no_thread", "mode": "no_thread", "selector": "thread", "trials": 1, "model": "primary", "layer": "ablation", "comparator": "full"},
+    {"id": "no_external", "mode": "no_external", "selector": "external", "trials": 1, "model": "primary", "layer": "ablation", "comparator": "full"},
+    {"id": "read_all", "mode": "read_all", "selector": "external", "trials": 1, "model": "primary", "layer": "ablation", "comparator": "full"},
+    {"id": "no_repair", "mode": "no_repair", "selector": "all", "trials": 1, "model": "primary", "layer": "ablation", "comparator": "full"},
+    {"id": "comparison_model", "mode": "full", "selector": "all", "trials": 1, "model": "comparison", "layer": "model", "comparator": "full"},
+    {"id": "stability", "mode": "full", "selector": "stability", "trials": 3, "model": "primary", "layer": "repeatability"}
+  ],
+  "stability_ids": ["N01", "A23", "A16", "C11", "E01", "S01", "S02", "S08"]
+}

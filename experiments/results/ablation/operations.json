@@ -1,0 +1,1273 @@
+{
+  "scope": "live",
+  "run_complete": true,
+  "by_arm": {
+    "full_m01": {
+      "completed_cases": 60,
+      "calls": 79,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 60,
+        "mean": 4365.731361624785,
+        "p50": 3586.608200101182,
+        "p95": 8515.076509851493,
+        "max": 11631.955299992114
+      },
+      "call_wall_ms": {
+        "observations": 79,
+        "mean": 3313.9733809983663,
+        "p50": 2934.9579999689013,
+        "p95": 5801.196700008586,
+        "max": 11629.754200112075
+      },
+      "openrouter_latency_ms": {
+        "observations": 79,
+        "mean": 2411.227848101266,
+        "p50": 2123.0,
+        "p95": 4964.8,
+        "max": 5746
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 79,
+        "mean": 3009.1772151898736,
+        "p50": 2664.0,
+        "p95": 5337.199999999999,
+        "max": 11345
+      },
+      "known_billed_cost_usd": 0.01339466,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 60,
+        "mean": 0.00022324433333333334,
+        "p50": 0.0001637725,
+        "p95": 0.0004769037499999999,
+        "max": 0.000670335
+      },
+      "repair_calls": 3,
+      "repair_wall_ms_total": 13976.76769993268,
+      "known_repair_billed_cost_usd": 0.00094888,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 2,
+      "repair_failed_events": 1,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 60,
+        "mean": 1.3166666666666667,
+        "p50": 1.0,
+        "p95": 2.0,
+        "max": 3
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 79,
+        "mean": 63.18296014565624,
+        "p50": 59.34742357747501,
+        "p95": 94.0968796276976,
+        "max": 108.70610378069766
+      },
+      "input_tokens_known_sum": 102691,
+      "output_tokens_known_sum": 17398,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.018968099999999998,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 60,
+        "mean": 0.000316135,
+        "p50": 0.00025505000000000005,
+        "p95": 0.0006564549999999999,
+        "max": 0.0007926999999999999
+      },
+      "provider_reported_cost_known_sum_usd": 0.01339466,
+      "provider_reported_cost_calls": 79,
+      "repair_cases": 3,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "openai/gpt-6-luna"
+      ],
+      "finish_reasons": {
+        "stop": 79
+      }
+    },
+    "prompt_only_m01": {
+      "completed_cases": 60,
+      "calls": 60,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 60,
+        "mean": 3265.938576706685,
+        "p50": 2981.9517501164228,
+        "p95": 4939.926395053042,
+        "max": 6382.99970026128
+      },
+      "call_wall_ms": {
+        "observations": 60,
+        "mean": 3264.5767116880356,
+        "p50": 2980.6114500388503,
+        "p95": 4938.9227649429795,
+        "max": 6381.491699954495
+      },
+      "openrouter_latency_ms": {
+        "observations": 60,
+        "mean": 2435.883333333333,
+        "p50": 2156.5,
+        "p95": 4040.1,
+        "max": 5382
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 60,
+        "mean": 2966.0833333333335,
+        "p50": 2655.5,
+        "p95": 4727.349999999998,
+        "max": 6065
+      },
+      "known_billed_cost_usd": 0.007212145,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 60,
+        "mean": 0.00012020241666666666,
+        "p50": 0.00010130250000000001,
+        "p95": 0.00021508849999999998,
+        "max": 0.00033483
+      },
+      "repair_calls": 0,
+      "repair_wall_ms_total": 0,
+      "known_repair_billed_cost_usd": 0,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 0,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 60,
+        "mean": 1,
+        "p50": 1.0,
+        "p95": 1.0,
+        "max": 1
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 60,
+        "mean": 58.638185167930665,
+        "p50": 55.15048109428929,
+        "p95": 92.62536316060101,
+        "max": 105.49975083038298
+      },
+      "input_tokens_known_sum": 83880,
+      "output_tokens_known_sum": 11720,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.014248,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 60,
+        "mean": 0.00023746666666666665,
+        "p50": 0.00021129999999999999,
+        "p95": 0.00034691499999999983,
+        "max": 0.00047010000000000004
+      },
+      "provider_reported_cost_known_sum_usd": 0.007212145,
+      "provider_reported_cost_calls": 60,
+      "repair_cases": 0,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "openai/gpt-6-luna"
+      ],
+      "finish_reasons": {
+        "stop": 60
+      }
+    },
+    "no_repair_m01": {
+      "completed_cases": 60,
+      "calls": 76,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 60,
+        "mean": 3974.937209960384,
+        "p50": 3487.1846499154344,
+        "p95": 7523.078249988612,
+        "max": 8404.724800027907
+      },
+      "call_wall_ms": {
+        "observations": 76,
+        "mean": 3136.5693736894937,
+        "p50": 2970.371100003831,
+        "p95": 4857.275174872484,
+        "max": 8402.761700097471
+      },
+      "openrouter_latency_ms": {
+        "observations": 76,
+        "mean": 2366.3684210526317,
+        "p50": 2163.5,
+        "p95": 3800.5,
+        "max": 7057
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 76,
+        "mean": 2846.7894736842104,
+        "p50": 2652.5,
+        "p95": 4521.25,
+        "max": 7847
+      },
+      "known_billed_cost_usd": 0.01035867,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 60,
+        "mean": 0.0001726445,
+        "p50": 0.000129275,
+        "p95": 0.0003555362499999998,
+        "max": 0.00045120999999999996
+      },
+      "repair_calls": 0,
+      "repair_wall_ms_total": 0,
+      "known_repair_billed_cost_usd": 0,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 0,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 1,
+      "calls_per_case": {
+        "observations": 60,
+        "mean": 1.2666666666666666,
+        "p50": 1.0,
+        "p95": 2.0,
+        "max": 2
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 76,
+        "mean": 63.49805009692462,
+        "p50": 60.13609289000049,
+        "p95": 96.05995552532582,
+        "max": 116.93290325928638
+      },
+      "input_tokens_known_sum": 97052,
+      "output_tokens_known_sum": 15315,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.0173627,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 60,
+        "mean": 0.00028937833333333334,
+        "p50": 0.00025435,
+        "p95": 0.00044548499999999986,
+        "max": 0.0005546
+      },
+      "provider_reported_cost_known_sum_usd": 0.01035867,
+      "provider_reported_cost_calls": 76,
+      "repair_cases": 0,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "openai/gpt-6-luna"
+      ],
+      "finish_reasons": {
+        "stop": 76
+      }
+    },
+    "stability_m01": {
+      "completed_cases": 24,
+      "calls": 30,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 24,
+        "mean": 4018.220820823141,
+        "p50": 2842.7346501266584,
+        "p95": 7886.858534871134,
+        "max": 9750.891100149602
+      },
+      "call_wall_ms": {
+        "observations": 30,
+        "mean": 3212.265793350525,
+        "p50": 2841.401149984449,
+        "p95": 5951.2786601087955,
+        "max": 7621.73549993895
+      },
+      "openrouter_latency_ms": {
+        "observations": 30,
+        "mean": 2548.866666666667,
+        "p50": 2093.5,
+        "p95": 5293.149999999994,
+        "max": 7153
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 30,
+        "mean": 2975.9666666666667,
+        "p50": 2642.0,
+        "p95": 5698.9999999999945,
+        "max": 7368
+      },
+      "known_billed_cost_usd": 0.004734295,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 24,
+        "mean": 0.00019726229166666667,
+        "p50": 0.00012869999999999998,
+        "p95": 0.00045863124999999996,
+        "max": 0.00062925
+      },
+      "repair_calls": 3,
+      "repair_wall_ms_total": 15606.435999972746,
+      "known_repair_billed_cost_usd": 0.0011515050000000001,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 3,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 24,
+        "mean": 1.25,
+        "p50": 1.0,
+        "p95": 2.0,
+        "max": 2
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 30,
+        "mean": 66.86461532914868,
+        "p50": 65.27001765047896,
+        "p95": 92.80461352013606,
+        "max": 101.60576690498314
+      },
+      "input_tokens_known_sum": 42770,
+      "output_tokens_known_sum": 6889,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.0077215,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 24,
+        "mean": 0.00032172916666666667,
+        "p50": 0.00027885,
+        "p95": 0.0006974749999999999,
+        "max": 0.0008682
+      },
+      "provider_reported_cost_known_sum_usd": 0.004734295,
+      "provider_reported_cost_calls": 30,
+      "repair_cases": 3,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "openai/gpt-6-luna"
+      ],
+      "finish_reasons": {
+        "stop": 30
+      }
+    },
+    "full_m06": {
+      "completed_cases": 60,
+      "calls": 77,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 60,
+        "mean": 4085.815141617786,
+        "p50": 2995.28580007609,
+        "p95": 7390.627910150214,
+        "max": 10665.29309982434
+      },
+      "call_wall_ms": {
+        "observations": 77,
+        "mean": 3182.328948037481,
+        "p50": 2738.415400031954,
+        "p95": 5757.025580015036,
+        "max": 7371.399200288579
+      },
+      "openrouter_latency_ms": {
+        "observations": 77,
+        "mean": 1861.922077922078,
+        "p50": 1495.0,
+        "p95": 3514.0,
+        "max": 4348
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 77,
+        "mean": 2873.4935064935066,
+        "p50": 2462.0,
+        "p95": 5606.200000000003,
+        "max": 6943
+      },
+      "known_billed_cost_usd": 0.480094,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 60,
+        "mean": 0.008001566666666666,
+        "p50": 0.006409,
+        "p95": 0.0126671,
+        "max": 0.02067
+      },
+      "repair_calls": 1,
+      "repair_wall_ms_total": 6852.898400044069,
+      "known_repair_billed_cost_usd": 0.01362,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 1,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 60,
+        "mean": 1.2833333333333334,
+        "p50": 1.0,
+        "p95": 2.0,
+        "max": 2
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 77,
+        "mean": 66.65990866543893,
+        "p50": 64.03758256346438,
+        "p95": 98.94539530995957,
+        "max": 112.06936907091185
+      },
+      "input_tokens_known_sum": 154932,
+      "output_tokens_known_sum": 17023,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.480094,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 60,
+        "mean": 0.008001566666666666,
+        "p50": 0.006409,
+        "p95": 0.0126671,
+        "max": 0.02067
+      },
+      "provider_reported_cost_known_sum_usd": 0.480094,
+      "provider_reported_cost_calls": 77,
+      "repair_cases": 1,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "anthropic/claude-sonnet-5.5"
+      ],
+      "finish_reasons": {
+        "stop": 77
+      }
+    },
+    "prompt_only_m06": {
+      "completed_cases": 60,
+      "calls": 60,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 60,
+        "mean": 3224.478126697553,
+        "p50": 2726.006150129251,
+        "p95": 5234.104779851622,
+        "max": 15157.287599984556
+      },
+      "call_wall_ms": {
+        "observations": 60,
+        "mean": 3223.1862133174823,
+        "p50": 2724.758749944158,
+        "p95": 5232.510209653991,
+        "max": 15155.752399936318
+      },
+      "openrouter_latency_ms": {
+        "observations": 60,
+        "mean": 1811.4,
+        "p50": 1438.5,
+        "p95": 3406.1499999999996,
+        "max": 4458
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 60,
+        "mean": 2767.2,
+        "p50": 2498.5,
+        "p95": 4737.599999999999,
+        "max": 8394
+      },
+      "known_billed_cost_usd": 0.382232,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 60,
+        "mean": 0.006370533333333333,
+        "p50": 0.005988,
+        "p95": 0.0086942,
+        "max": 0.014088
+      },
+      "repair_calls": 0,
+      "repair_wall_ms_total": 0,
+      "known_repair_billed_cost_usd": 0,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 0,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 60,
+        "mean": 1,
+        "p50": 1.0,
+        "p95": 1.0,
+        "max": 1
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 60,
+        "mean": 62.883262657651805,
+        "p50": 61.246814096438186,
+        "p95": 87.49399938616708,
+        "max": 105.24971926405571
+      },
+      "input_tokens_known_sum": 131036,
+      "output_tokens_known_sum": 12016,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.382232,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 60,
+        "mean": 0.006370533333333333,
+        "p50": 0.005988,
+        "p95": 0.0086942,
+        "max": 0.014088
+      },
+      "provider_reported_cost_known_sum_usd": 0.382232,
+      "provider_reported_cost_calls": 60,
+      "repair_cases": 0,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "anthropic/claude-sonnet-5.5"
+      ],
+      "finish_reasons": {
+        "stop": 60
+      }
+    },
+    "no_repair_m06": {
+      "completed_cases": 60,
+      "calls": 76,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 60,
+        "mean": 3837.9547533617974,
+        "p50": 2872.8261498035863,
+        "p95": 6949.544690048787,
+        "max": 7929.493499919772
+      },
+      "call_wall_ms": {
+        "observations": 76,
+        "mean": 3028.3808460563273,
+        "p50": 2728.0238502426073,
+        "p95": 5124.820475059096,
+        "max": 7928.59029979445
+      },
+      "openrouter_latency_ms": {
+        "observations": 76,
+        "mean": 1692.5657894736842,
+        "p50": 1343.0,
+        "p95": 3304.75,
+        "max": 4915
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 76,
+        "mean": 2762.6973684210525,
+        "p50": 2452.0,
+        "p95": 4763.25,
+        "max": 7729
+      },
+      "known_billed_cost_usd": 0.464616,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 60,
+        "mean": 0.0077436,
+        "p50": 0.006457,
+        "p95": 0.0127092,
+        "max": 0.014896
+      },
+      "repair_calls": 0,
+      "repair_wall_ms_total": 0,
+      "known_repair_billed_cost_usd": 0,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 0,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 1,
+      "calls_per_case": {
+        "observations": 60,
+        "mean": 1.2666666666666666,
+        "p50": 1.0,
+        "p95": 2.0,
+        "max": 2
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 76,
+        "mean": 67.30325900791017,
+        "p50": 64.54338105201592,
+        "p95": 96.08663827576441,
+        "max": 108.77186496359221
+      },
+      "input_tokens_known_sum": 152068,
+      "output_tokens_known_sum": 16048,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.464616,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 60,
+        "mean": 0.0077436,
+        "p50": 0.006457,
+        "p95": 0.0127092,
+        "max": 0.014896
+      },
+      "provider_reported_cost_known_sum_usd": 0.464616,
+      "provider_reported_cost_calls": 76,
+      "repair_cases": 0,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "anthropic/claude-sonnet-5.5"
+      ],
+      "finish_reasons": {
+        "stop": 76
+      }
+    },
+    "stability_m06": {
+      "completed_cases": 24,
+      "calls": 27,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 24,
+        "mean": 3656.871158290111,
+        "p50": 2925.997099839151,
+        "p95": 7010.325184755491,
+        "max": 7374.315799679607
+      },
+      "call_wall_ms": {
+        "observations": 27,
+        "mean": 3249.170844460389,
+        "p50": 2803.5877000074834,
+        "p95": 6848.208039859309,
+        "max": 7372.824999736622
+      },
+      "openrouter_latency_ms": {
+        "observations": 27,
+        "mean": 1779.888888888889,
+        "p50": 1329.0,
+        "p95": 3410.3999999999996,
+        "max": 5266
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 27,
+        "mean": 2998.259259259259,
+        "p50": 2549.0,
+        "p95": 6627.199999999999,
+        "max": 7075
+      },
+      "known_billed_cost_usd": 0.174678,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 24,
+        "mean": 0.00727825,
+        "p50": 0.006881,
+        "p95": 0.010912499999999999,
+        "max": 0.012688
+      },
+      "repair_calls": 0,
+      "repair_wall_ms_total": 0,
+      "known_repair_billed_cost_usd": 0,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 0,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 24,
+        "mean": 1.125,
+        "p50": 1.0,
+        "p95": 2.0,
+        "max": 2
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 27,
+        "mean": 67.63284639159924,
+        "p50": 65.00507719032235,
+        "p95": 97.50041925681647,
+        "max": 105.25137922407231
+      },
+      "input_tokens_known_sum": 56349,
+      "output_tokens_known_sum": 6198,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.174678,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 24,
+        "mean": 0.00727825,
+        "p50": 0.006881,
+        "p95": 0.010912499999999999,
+        "max": 0.012688
+      },
+      "provider_reported_cost_known_sum_usd": 0.174678,
+      "provider_reported_cost_calls": 27,
+      "repair_cases": 0,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "anthropic/claude-sonnet-5.5"
+      ],
+      "finish_reasons": {
+        "stop": 27
+      }
+    },
+    "no_thread_m01": {
+      "completed_cases": 12,
+      "calls": 13,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 12,
+        "mean": 4320.608633356945,
+        "p50": 3777.8818499064073,
+        "p95": 8015.088190045207,
+        "max": 8923.162500141189
+      },
+      "call_wall_ms": {
+        "observations": 13,
+        "mean": 3986.536476976023,
+        "p50": 3033.5857002064586,
+        "p95": 7931.322900019583,
+        "max": 8921.691900119185
+      },
+      "openrouter_latency_ms": {
+        "observations": 13,
+        "mean": 3191.6923076923076,
+        "p50": 2711.0,
+        "p95": 6420.999999999995,
+        "max": 8227
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 13,
+        "mean": 3744.5384615384614,
+        "p50": 2892.0,
+        "p95": 7583.399999999997,
+        "max": 8781
+      },
+      "known_billed_cost_usd": 0.002504105,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 12,
+        "mean": 0.00020867541666666665,
+        "p50": 0.0001512725,
+        "p95": 0.0004141787499999998,
+        "max": 0.000554085
+      },
+      "repair_calls": 1,
+      "repair_wall_ms_total": 3033.5857002064586,
+      "known_repair_billed_cost_usd": 0.000158835,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 1,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 12,
+        "mean": 1.0833333333333333,
+        "p50": 1.0,
+        "p95": 1.4499999999999993,
+        "max": 2
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 13,
+        "mean": 72.60028676368498,
+        "p50": 75.02991843802141,
+        "p95": 102.37817687779986,
+        "max": 114.55226334215229
+      },
+      "input_tokens_known_sum": 17548,
+      "output_tokens_known_sum": 3960,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.0037348,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 12,
+        "mean": 0.00031123333333333333,
+        "p50": 0.00024665,
+        "p95": 0.0005206549999999999,
+        "max": 0.0006482
+      },
+      "provider_reported_cost_known_sum_usd": 0.002504105,
+      "provider_reported_cost_calls": 13,
+      "repair_cases": 1,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "openai/gpt-6-luna"
+      ],
+      "finish_reasons": {
+        "stop": 13
+      }
+    },
+    "no_thread_m06": {
+      "completed_cases": 12,
+      "calls": 13,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 12,
+        "mean": 4509.979508312729,
+        "p50": 4660.5069999350235,
+        "p95": 8012.687214941251,
+        "max": 8402.875199913979
+      },
+      "call_wall_ms": {
+        "observations": 13,
+        "mean": 4161.767853817974,
+        "p50": 3132.746900198981,
+        "p95": 7975.963799841701,
+        "max": 8401.96739998646
+      },
+      "openrouter_latency_ms": {
+        "observations": 13,
+        "mean": 2377.076923076923,
+        "p50": 2292.0,
+        "p95": 4075.1999999999994,
+        "max": 4311
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 13,
+        "mean": 3834.5384615384614,
+        "p50": 2374.0,
+        "p95": 7672.399999999999,
+        "max": 8057
+      },
+      "known_billed_cost_usd": 0.097756,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 12,
+        "mean": 0.008146333333333334,
+        "p50": 0.008060000000000001,
+        "p95": 0.0124867,
+        "max": 0.012622
+      },
+      "repair_calls": 1,
+      "repair_wall_ms_total": 2417.2162001486868,
+      "known_repair_billed_cost_usd": 0.005724,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 0,
+      "repair_failed_events": 1,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 12,
+        "mean": 1.0833333333333333,
+        "p50": 1.0,
+        "p95": 1.4499999999999993,
+        "max": 2
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 13,
+        "mean": 69.80168549804131,
+        "p50": 66.70860120807589,
+        "p95": 99.9849008105673,
+        "max": 105.17473475969328
+      },
+      "input_tokens_known_sum": 27563,
+      "output_tokens_known_sum": 4263,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.097756,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 12,
+        "mean": 0.008146333333333334,
+        "p50": 0.008060000000000001,
+        "p95": 0.0124867,
+        "max": 0.012622
+      },
+      "provider_reported_cost_known_sum_usd": 0.097756,
+      "provider_reported_cost_calls": 13,
+      "repair_cases": 1,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "anthropic/claude-sonnet-5.5"
+      ],
+      "finish_reasons": {
+        "stop": 13
+      }
+    },
+    "no_external_m01": {
+      "completed_cases": 17,
+      "calls": 17,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 17,
+        "mean": 2871.4321706279675,
+        "p50": 2888.850300339982,
+        "p95": 3639.6652600262305,
+        "max": 4463.28269992955
+      },
+      "call_wall_ms": {
+        "observations": 17,
+        "mean": 2869.9813941082753,
+        "p50": 2887.284500291571,
+        "p95": 3638.528640056028,
+        "max": 4461.435999954119
+      },
+      "openrouter_latency_ms": {
+        "observations": 17,
+        "mean": 2091.1176470588234,
+        "p50": 1980.0,
+        "p95": 2950.2,
+        "max": 3123
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 17,
+        "mean": 2615.5882352941176,
+        "p50": 2619.0,
+        "p95": 3350.399999999999,
+        "max": 4260
+      },
+      "known_billed_cost_usd": 0.00147755,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 17,
+        "mean": 8.691470588235294e-05,
+        "p50": 7.694e-05,
+        "p95": 0.00013735,
+        "max": 0.00014323
+      },
+      "repair_calls": 0,
+      "repair_wall_ms_total": 0,
+      "known_repair_billed_cost_usd": 0,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 0,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 17,
+        "mean": 1,
+        "p50": 1.0,
+        "p95": 1.0,
+        "max": 1
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 17,
+        "mean": 51.50129471512541,
+        "p50": 46.27260121178668,
+        "p95": 74.9296817010918,
+        "max": 81.23101933337747
+      },
+      "input_tokens_known_sum": 23346,
+      "output_tokens_known_sum": 2479,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.0035740999999999998,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 17,
+        "mean": 0.00021024117647058823,
+        "p50": 0.00019969999999999998,
+        "p95": 0.00026290000000000005,
+        "max": 0.0002641
+      },
+      "provider_reported_cost_known_sum_usd": 0.00147755,
+      "provider_reported_cost_calls": 17,
+      "repair_cases": 0,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "openai/gpt-6-luna"
+      ],
+      "finish_reasons": {
+        "stop": 17
+      }
+    },
+    "read_all_m01": {
+      "completed_cases": 17,
+      "calls": 15,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 17,
+        "mean": 2613.509564728969,
+        "p50": 3035.171300172806,
+        "p95": 3589.3815603107214,
+        "max": 3605.699799954891
+      },
+      "call_wall_ms": {
+        "observations": 15,
+        "mean": 2935.5412533972412,
+        "p50": 3054.260000353679,
+        "p95": 3589.542830339633,
+        "max": 3604.006300214678
+      },
+      "openrouter_latency_ms": {
+        "observations": 15,
+        "mean": 2130.6666666666665,
+        "p50": 2186.0,
+        "p95": 2659.7,
+        "max": 2820
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 15,
+        "mean": 2653.4,
+        "p50": 2777.0,
+        "p95": 3345.9,
+        "max": 3348
+      },
+      "known_billed_cost_usd": 0.002551775,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 17,
+        "mean": 0.00015010441176470588,
+        "p50": 0.00015021,
+        "p95": 0.00024783499999999985,
+        "max": 0.000386335
+      },
+      "repair_calls": 0,
+      "repair_wall_ms_total": 0,
+      "known_repair_billed_cost_usd": 0,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 0,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 17,
+        "mean": 0.8823529411764706,
+        "p50": 1.0,
+        "p95": 1.0,
+        "max": 1
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 15,
+        "mean": 72.48573380667267,
+        "p50": 65.67977461711372,
+        "p95": 93.43622965668877,
+        "max": 104.55174854714579
+      },
+      "input_tokens_known_sum": 23196,
+      "output_tokens_known_sum": 3157,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.0038981,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 17,
+        "mean": 0.0002293,
+        "p50": 0.0002437,
+        "p95": 0.0003317399999999999,
+        "max": 0.0004327
+      },
+      "provider_reported_cost_known_sum_usd": 0.002551775,
+      "provider_reported_cost_calls": 15,
+      "repair_cases": 0,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "openai/gpt-6-luna"
+      ],
+      "finish_reasons": {
+        "stop": 15
+      }
+    },
+    "no_external_m06": {
+      "completed_cases": 17,
+      "calls": 21,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 17,
+        "mean": 3547.5299293860135,
+        "p50": 2972.583399619907,
+        "p95": 5381.368979997932,
+        "max": 6568.95889993757
+      },
+      "call_wall_ms": {
+        "observations": 21,
+        "mean": 2870.399419040907,
+        "p50": 2528.5870998632163,
+        "p95": 4592.359500005841,
+        "max": 6567.629500059411
+      },
+      "openrouter_latency_ms": {
+        "observations": 21,
+        "mean": 1690.4285714285713,
+        "p50": 1416.0,
+        "p95": 2971.0,
+        "max": 2973
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 21,
+        "mean": 2560.285714285714,
+        "p50": 2178.0,
+        "p95": 4190.0,
+        "max": 6134
+      },
+      "known_billed_cost_usd": 0.126428,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 17,
+        "mean": 0.007436941176470588,
+        "p50": 0.006044,
+        "p95": 0.011852,
+        "max": 0.01194
+      },
+      "repair_calls": 4,
+      "repair_wall_ms_total": 8783.91300002113,
+      "known_repair_billed_cost_usd": 0.024484,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 4,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 17,
+        "mean": 1.2352941176470589,
+        "p50": 1.0,
+        "p95": 2.0,
+        "max": 2
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 21,
+        "mean": 53.49258576897412,
+        "p50": 52.32794183037741,
+        "p95": 63.26398315392917,
+        "max": 93.03204451384977
+      },
+      "input_tokens_known_sum": 46364,
+      "output_tokens_known_sum": 3370,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.126428,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 17,
+        "mean": 0.007436941176470588,
+        "p50": 0.006044,
+        "p95": 0.011852,
+        "max": 0.01194
+      },
+      "provider_reported_cost_known_sum_usd": 0.126428,
+      "provider_reported_cost_calls": 21,
+      "repair_cases": 4,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "anthropic/claude-sonnet-5.5"
+      ],
+      "finish_reasons": {
+        "stop": 21
+      }
+    },
+    "read_all_m06": {
+      "completed_cases": 17,
+      "calls": 15,
+      "calls_without_completed_case": 0,
+      "case_wall_ms": {
+        "observations": 17,
+        "mean": 3009.608511758201,
+        "p50": 2866.9520998373628,
+        "p95": 5667.79748010449,
+        "max": 6634.039399912581
+      },
+      "call_wall_ms": {
+        "observations": 15,
+        "mean": 3406.033239979297,
+        "p50": 3057.3434000834823,
+        "p95": 5786.881710099987,
+        "max": 6632.597699994221
+      },
+      "openrouter_latency_ms": {
+        "observations": 15,
+        "mean": 2095.5333333333333,
+        "p50": 1008.0,
+        "p95": 4662.099999999998,
+        "max": 6452
+      },
+      "openrouter_generation_time_ms": {
+        "observations": 15,
+        "mean": 3140.2,
+        "p50": 2828.0,
+        "p95": 5481.0999999999985,
+        "max": 6452
+      },
+      "known_billed_cost_usd": 0.11169,
+      "unknown_billed_cost_calls": 0,
+      "billed_cost_complete": true,
+      "complete_case_billed_cost_usd": {
+        "observations": 17,
+        "mean": 0.00657,
+        "p50": 0.006788,
+        "p95": 0.010789599999999998,
+        "max": 0.011772
+      },
+      "repair_calls": 0,
+      "repair_wall_ms_total": 0,
+      "known_repair_billed_cost_usd": 0,
+      "unknown_repair_billed_cost_calls": 0,
+      "repair_validated_events": 0,
+      "repair_failed_events": 0,
+      "repair_skipped_events": 0,
+      "calls_per_case": {
+        "observations": 17,
+        "mean": 0.8823529411764706,
+        "p50": 1.0,
+        "p95": 1.0,
+        "max": 1
+      },
+      "end_to_end_output_tokens_per_second": {
+        "observations": 15,
+        "mean": 76.34000339287117,
+        "p50": 72.97291678046773,
+        "p95": 126.54617210888493,
+        "max": 133.1882032241814
+      },
+      "input_tokens_known_sum": 35540,
+      "output_tokens_known_sum": 4061,
+      "unknown_input_token_calls": 0,
+      "unknown_output_token_calls": 0,
+      "known_estimated_cost_usd": 0.11169,
+      "unknown_cost_calls": 0,
+      "cost_complete": true,
+      "complete_case_cost_usd": {
+        "observations": 17,
+        "mean": 0.00657,
+        "p50": 0.006788,
+        "p95": 0.010789599999999998,
+        "max": 0.011772
+      },
+      "provider_reported_cost_known_sum_usd": 0.11169,
+      "provider_reported_cost_calls": 15,
+      "repair_cases": 0,
+      "model_error_cases": 0,
+      "resolved_models": [
+        "anthropic/claude-sonnet-5.5"
+      ],
+      "finish_reasons": {
+        "stop": 15
+      }
+    }
+  },
+  "cross_model_case_robustness": [],
+  "actual_consumption_reconciliation": {
+    "before": {
+      "observed_utc": "2026-10-03T00:14:49.622875+00:00",
+      "key_usage_usd": 3.280788146,
+      "key_byok_usage_usd": 0,
+      "key_error": null
+    },
+    "after": {
+      "observed_utc": "2026-10-03T00:56:38.369403+00:00",
+      "key_usage_usd": 5.160515346,
+      "key_byok_usage_usd": 0,
+      "key_error": null
+    },
+    "key_usage_delta_usd": 1.8797272000000005,
+    "account_usage_delta_usd": null,
+    "account_balance_decrease_usd": null,
+    "credits_added_usd": null,
+    "generation_cost_known_sum_usd": 1.8797272,
+    "generation_cost_calls": 579,
+    "missing_generation_cost_calls": 0,
+    "key_delta_minus_generation_sum_usd": 4.440892098500626e-16,
+    "reconciled": true,
+    "attribution": "Counter delta is observed actual consumption in this time window. Concurrent use can contaminate attribution; isolated key required for experiment-only attribution.",
+    "settlement": "A mismatch or missing record is pending, not replaced with token-price estimates. Reconcile later without new inference.",
+    "audit_wall_ms": 628904.9859058578
+  },
+  "notes": [
+    "P95 uses linear interpolation; small samples remain descriptive.",
+    "Call time includes network, queueing, inference and response transfer; TTFT is unavailable.",
+    "Output tokens per second is end-to-end, not decode throughput; reasoning tokens may be included.",
+    "Cost estimates use declared prices; provider-reported cost is separately preserved, not audited billing.",
+    "Known cost subtotals do not turn missing/failed usage into zero cost.",
+    "Status/count agreement does not establish semantic agreement or correctness."
+  ]
+}

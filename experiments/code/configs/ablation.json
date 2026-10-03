@@ -1,0 +1,224 @@
+{
+  "protocol_version": "2.0",
+  "phase": "selected_model_ablation",
+  "schedule": "case_round_robin",
+  "models": {
+    "m01": {
+      "id": "openai/gpt-6-luna",
+      "family": "OpenAI",
+      "price_tier": "low",
+      "input_usd_per_million": 0.09999999999999999,
+      "output_usd_per_million": 0.5,
+      "request_usd": 0.0,
+      "price_source": "https://openrouter.ai/api/v1/models",
+      "verified_utc": "2026-10-02T11:53:45.233015+00:00",
+      "catalog_created_unix": 1790100786,
+      "model_page": "https://openrouter.ai/openai/gpt-6-luna",
+      "supported_parameters": [
+        "include_reasoning",
+        "max_completion_tokens",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "tool_choice",
+        "tools",
+        "verbosity"
+      ]
+    },
+    "m06": {
+      "id": "anthropic/claude-sonnet-5.5",
+      "family": "Anthropic",
+      "price_tier": "middle",
+      "input_usd_per_million": 2.0,
+      "output_usd_per_million": 10.0,
+      "request_usd": 0.0,
+      "price_source": "https://openrouter.ai/api/v1/models",
+      "verified_utc": "2026-10-02T11:53:45.233015+00:00",
+      "catalog_created_unix": 1790618686,
+      "model_page": "https://openrouter.ai/anthropic/claude-sonnet-5.5",
+      "supported_parameters": [
+        "include_reasoning",
+        "max_completion_tokens",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "response_format",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "verbosity"
+      ]
+    }
+  },
+  "arms": [
+    {
+      "id": "full_m01",
+      "mode": "full",
+      "selector": "all",
+      "trials": 1,
+      "model": "m01",
+      "layer": "reference"
+    },
+    {
+      "id": "prompt_only_m01",
+      "mode": "prompt_only",
+      "selector": "all",
+      "trials": 1,
+      "model": "m01",
+      "layer": "baseline",
+      "comparator": "full_m01"
+    },
+    {
+      "id": "no_thread_m01",
+      "mode": "no_thread",
+      "selector": "thread",
+      "trials": 1,
+      "model": "m01",
+      "layer": "ablation",
+      "comparator": "full_m01"
+    },
+    {
+      "id": "no_external_m01",
+      "mode": "no_external",
+      "selector": "external",
+      "trials": 1,
+      "model": "m01",
+      "layer": "ablation",
+      "comparator": "full_m01"
+    },
+    {
+      "id": "read_all_m01",
+      "mode": "read_all",
+      "selector": "external",
+      "trials": 1,
+      "model": "m01",
+      "layer": "ablation",
+      "comparator": "full_m01"
+    },
+    {
+      "id": "no_repair_m01",
+      "mode": "no_repair",
+      "selector": "all",
+      "trials": 1,
+      "model": "m01",
+      "layer": "ablation",
+      "comparator": "full_m01"
+    },
+    {
+      "id": "stability_m01",
+      "mode": "full",
+      "selector": "stability",
+      "trials": 3,
+      "model": "m01",
+      "layer": "repeatability"
+    },
+    {
+      "id": "full_m06",
+      "mode": "full",
+      "selector": "all",
+      "trials": 1,
+      "model": "m06",
+      "layer": "reference"
+    },
+    {
+      "id": "prompt_only_m06",
+      "mode": "prompt_only",
+      "selector": "all",
+      "trials": 1,
+      "model": "m06",
+      "layer": "baseline",
+      "comparator": "full_m06"
+    },
+    {
+      "id": "no_thread_m06",
+      "mode": "no_thread",
+      "selector": "thread",
+      "trials": 1,
+      "model": "m06",
+      "layer": "ablation",
+      "comparator": "full_m06"
+    },
+    {
+      "id": "no_external_m06",
+      "mode": "no_external",
+      "selector": "external",
+      "trials": 1,
+      "model": "m06",
+      "layer": "ablation",
+      "comparator": "full_m06"
+    },
+    {
+      "id": "read_all_m06",
+      "mode": "read_all",
+      "selector": "external",
+      "trials": 1,
+      "model": "m06",
+      "layer": "ablation",
+      "comparator": "full_m06"
+    },
+    {
+      "id": "no_repair_m06",
+      "mode": "no_repair",
+      "selector": "all",
+      "trials": 1,
+      "model": "m06",
+      "layer": "ablation",
+      "comparator": "full_m06"
+    },
+    {
+      "id": "stability_m06",
+      "mode": "full",
+      "selector": "stability",
+      "trials": 3,
+      "model": "m06",
+      "layer": "repeatability"
+    }
+  ],
+  "stability_ids": [
+    "N01",
+    "A23",
+    "A16",
+    "C11",
+    "E01",
+    "S01",
+    "S02",
+    "S08"
+  ],
+  "budget_usd": 3.6551986970000003,
+  "max_calls_per_email": 80,
+  "authorization_status": "Owner authorized on 2026-10-03; all phases cumulatively <= USD 5",
+  "required_bundle_sha256": "a90d9238047679fa9b1654ccdaf7c2cf0de8fd16a827ac7d20fdbcb5f1395c58",
+  "selection": {
+    "models": [
+      "m01",
+      "m06"
+    ],
+    "reason": "Owner explicitly selected GPT-6 Luna and Claude Sonnet 5.5 and authorized immediate ablation. Both meet predeclared classification thresholds. Cross-family low-cost versus quality contrast; semantic review remains pending and is not relabelled complete. No JSON-mode upgrade in this protocol.",
+    "source_run": "E:\\NTU Learn\\PE6201\\End_Course_project\\experiments\\results\\model-benchmark",
+    "source_run_sha256": "b1212b73fed62a20d826c421518a755166bc85aabd05322f3739a45755d65af2",
+    "semantic_review_complete_at_selection": false,
+    "classification_eligibility": {
+      "m01": true,
+      "m02": false,
+      "m03": false,
+      "m04": false,
+      "m05": true,
+      "m06": true
+    }
+  },
+  "comparator_policy": "Fresh full-workflow reference per selected model in stage two; stage-one scores not merged as new trials.",
+  "total_experiment_spend_limit_usd": 5.0,
+  "accounting_policy": "Actual counter delta from original stage-one baseline; unreconciled requests held conservatively. Per-analysis upper reservations never used as actual costs.",
+  "global_billing_baseline": {
+    "observed_utc": "2026-10-02T13:08:15.896786+00:00",
+    "key_usage_usd": 1.935986843,
+    "key_byok_usage_usd": 0,
+    "key_error": null
+  },
+  "spend_before_stage_two_usd": 1.344801303
+}

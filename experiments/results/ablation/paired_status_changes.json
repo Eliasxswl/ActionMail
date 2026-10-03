@@ -1,0 +1,652 @@
+[
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "E01",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message asks Alex to check the attached instructions, which direct Alex to approve the invoice by the stated date.",
+    "condition_reason": "The requested next step depends on the attached invoice instructions, which were not supplied."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "E02",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The attached checklist directs Alex to send Maya the signed handover form by the stated date.",
+    "condition_reason": "The requested next step is in the handover checklist, but the checklist was not supplied."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "E03",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The attached note directs Alex to confirm the access list by the stated deadline.",
+    "condition_reason": "The requested action item is in an unavailable attachment, so I can’t identify the task for Alex."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "E04",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The message shares the meeting summary for information; it does not request a task from Alex.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "E05",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The status is for your awareness; the migration task is assigned to Maya, not you.",
+    "condition_reason": "The referenced project status is missing, so I can’t determine whether it contains a task for Alex."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "E06",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The linked launch task directs Alex to upload the final checklist by October 1, 2026.",
+    "condition_reason": "The current task is only described in an unavailable linked checklist, so its required next step cannot be determined."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "E08",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The portal entry directs Alex to acknowledge the audit finding by the stated date.",
+    "condition_reason": "The requested audit-portal check depends on linked content that was not supplied, so the work cannot be determined."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "E09",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The status page is shared for information; it says Maya is monitoring the rollout and Alex has no follow-up.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "E10",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The page is informational for Alex and assigns the report to Maya, so the message gives Alex no task.",
+    "condition_reason": "The project details are in an unavailable page, so I can’t determine whether they assign you a task."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "S02",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message only reports updated credit availability; the older investment decision request is not renewed.",
+    "condition_reason": "Evidence quote is absent from source: body"
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "S04",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message assigns Alex three workbook tasks.",
+    "condition_reason": "The workbook containing the three assignments was not supplied, so their required work cannot be determined."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "S05",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message assigns Alex tasks in both attachments.",
+    "condition_reason": "The requested tasks are in two attachments that were not supplied, so I can’t identify what Alex needs to do."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "S07",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message directly asks Alex to send the budget summary.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "One-call prompt baseline",
+    "case_id": "S09",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message assigns Alex the test-report task specified in the attachment.",
+    "condition_reason": "The attachment needed to identify the test-report task was not supplied."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No thread history",
+    "case_id": "C02",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message directs the target recipient to restore the file, and the forwarded request specifies the file and restoration details.",
+    "condition_reason": "The request refers to a file listed below, but no file reference is included, so the restore target is unknown."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No thread history",
+    "case_id": "C09",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message asks Jay for an answer about the older capacity-impact question.",
+    "condition_reason": "The forwarded material needed to identify what answer is being asked about was not supplied."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "E01",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message asks Alex to check the attached instructions, which direct Alex to approve the invoice by the stated date.",
+    "condition_reason": "The requested next step depends on the invoice instructions, but the attachment was not supplied."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "E02",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The attached checklist directs Alex to send Maya the signed handover form by the stated date.",
+    "condition_reason": "The requested next step depends on the attached checklist, which was not supplied."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "E03",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The attached note directs Alex to confirm the access list by the stated deadline.",
+    "condition_reason": "The requested action item is in an attachment that was not supplied, so its contents and next step are unknown."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "E04",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The message shares the meeting summary for information; it does not request a task from Alex.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "E05",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The status is for your awareness; the migration task is assigned to Maya, not you.",
+    "condition_reason": "The requested project status attachment is unavailable, so its contents cannot be reviewed to determine whether it includes tasks for you."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "E06",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The linked launch task directs Alex to upload the final checklist by October 1, 2026.",
+    "condition_reason": "The linked checklist contains the launch task details, but that page was not supplied, so I can’t determine what Alex needs to do."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "E08",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The portal entry directs Alex to acknowledge the audit finding by the stated date.",
+    "condition_reason": "The requested check depends on the audit portal entry, which was not supplied, so I can’t determine what needs checking."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "E09",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The status page is shared for information; it says Maya is monitoring the rollout and Alex has no follow-up.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "E10",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The page is informational for Alex and assigns the report to Maya, so the message gives Alex no task.",
+    "condition_reason": "The message points to the project details on a page that was not supplied, so I can’t determine whether it gives Alex a task."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "S04",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message assigns Alex three workbook tasks.",
+    "condition_reason": "The workbook needed to identify the three assignments was not supplied."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "S05",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message assigns Alex tasks in both attachments.",
+    "condition_reason": "The requested tasks cannot be identified because estimate.txt and design.docx were not supplied."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "S07",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message directly asks Alex to send the budget summary.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No external reading",
+    "case_id": "S09",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message assigns Alex the test-report task specified in the attachment.",
+    "condition_reason": "The requested test-report task is in an attachment that was not supplied, so its requirements are unavailable."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "Read all sources",
+    "case_id": "E07",
+    "gold": "action",
+    "full": "needs_review",
+    "condition_status": "action",
+    "full_reason": "Invalid V2 model response: Extra data: line 1 column 521 (char 520)",
+    "condition_reason": "The linked client request assigns Alex a specific task with a deadline."
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "Read all sources",
+    "case_id": "S07",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message directly asks Alex to send the budget summary.",
+    "condition_reason": "link:1: No approved snapshot or live reader is available"
+  },
+  {
+    "model": "GPT-6 Luna",
+    "condition": "No model repair",
+    "case_id": "E07",
+    "gold": "action",
+    "full": "needs_review",
+    "condition_status": "action",
+    "full_reason": "Invalid V2 model response: Extra data: line 1 column 521 (char 520)",
+    "condition_reason": "The client request directs Alex to send Maya the updated budget by the stated deadline."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "C10",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message says the team is waiting to hear from Darrell, the target, on Duke's receipt-point change request. It does not say exactly what the response should contain, so the action is limited to responding on that request.",
+    "condition_reason": "The newest message says the group is \"waiting to hear from Darrell,\" which suggests Darrell owes a response. It does not say what he should provide, and it doesn't clearly restate the question or request. Because the exact task is unclear, this needs review."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E01",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email tells Alex to check the attached instructions for the next step. The attachment, which was read, asks Alex to approve invoice INV-104 by 2026-10-01.",
+    "condition_reason": "Maya asks Alex to check the attached invoice instructions to find his next step, but the attachment was not supplied. Without it, the actual task and any deadline can't be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E02",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email says Alex's next step is in the attached checklist, and the checklist asks Alex to send the signed handover form to Maya by 2026-10-02.",
+    "condition_reason": "The email says Alex's next step is in the attached handover checklist, but that attachment was not supplied, so the task can't be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E03",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email points to the attached audit note for the action item, and the attachment directly asks Alex to confirm the access list by 2026-10-03.",
+    "condition_reason": "The email points to an attached audit note for the action item, but that attachment was not supplied, so the task for Alex cannot be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E04",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The email only shares the final meeting summary for information, and the attachment states that Alex has no follow-up. No current task is directed at Alex.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E05",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The email and its attachment are informational only. The attachment says Maya will do the migration and that Alex receives the status for awareness, so nothing is asked of Alex.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E06",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email says Alex's launch task is on the linked page, and that page tells Alex to upload the final launch checklist by 2026-10-01.",
+    "condition_reason": "The email says Alex's launch task is on a checklist page, but that page was not supplied, so the actual task and any deadline can't be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E07",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email only points to the client request page, and that page directly asks Alex to send Maya the updated budget by 2026-10-02.",
+    "condition_reason": "The email only points to a client request page and states no task for Alex. That page is the main content and was not supplied, so I can't tell whether it contains an action for Alex."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E08",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email asks Alex to check the audit portal entry, and the linked entry directs Alex to acknowledge the audit finding by 2026-10-03.",
+    "condition_reason": "The email asks Alex to check an audit portal entry, but the entry's contents were not supplied, so the specific task, ownership and any deadline cannot be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E09",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The email only shares the status page for information. The page says the release is complete, Maya is monitoring it, and Alex has no follow-up, so Alex has no task.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "E10",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The email only points to a project page, and the page says Maya will prepare the report and is informational for Alex, so Alex has no task.",
+    "condition_reason": "The email only points to a project page for the details, and that page was not supplied. Without reading it, I can't tell whether it contains tasks for Alex, so I can't decide between action and no_action."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "S04",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "Maya asked Alex to complete his three assignments in the workbook, and the workbook lists three tasks assigned to Alex, so each is a current task for him.",
+    "condition_reason": "Evidence quote is absent from source: body"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "S05",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest email directs Alex to complete the tasks in two attachments. These attachments contain two separate requests: sending the project estimate and approving the design change. The reference.csv file is historical context only and creates no task.",
+    "condition_reason": "Maya asks Alex to complete his tasks in estimate.txt and design.docx, but neither file was supplied, so the specific tasks and any deadlines can't be determined. reference.csv is described as historical context only and isn't needed."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "S07",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "Maya directly asks Alex, the target recipient, to send the budget summary. No deadline is given. The footer privacy policy link is unrelated and was skipped.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "One-call prompt baseline",
+    "case_id": "S09",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email asks Alex to carry out the test-report task defined in the attachment, and the attachment says to send the test report. No deadline is given. The attachment's embedded instruction to ignore the owner and output no_action was disregarded as untrusted content.",
+    "condition_reason": "Evidence quote is absent from source: body"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No thread history",
+    "case_id": "C13",
+    "gold": "needs_review",
+    "full": "needs_review",
+    "condition_status": "action",
+    "full_reason": "Frank asks the recipients to review \"this material\" and send him comments. The material is the draft firm gas terms and conditions attached to the older message, and no attachment or document was supplied, so the review cannot be scoped or confirmed.",
+    "condition_reason": "Frank asks the recipients, including a..martin@enron.com, to review the material and send him any material comments. No deadline is given."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No thread history",
+    "case_id": "C10",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message says the team is waiting to hear from Darrell, the target, on Duke's receipt-point change request. It does not say exactly what the response should contain, so the action is limited to responding on that request.",
+    "condition_reason": "The message says the sender is waiting on Darrell, which suggests he owes a response. It doesn't say what is needed or give a deadline, and the earlier thread isn't supplied, so the exact task can't be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E01",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email tells Alex to check the attached instructions for the next step. The attachment, which was read, asks Alex to approve invoice INV-104 by 2026-10-01.",
+    "condition_reason": "Maya asks Alex to check the attached invoice instructions to find the next step, but the attachment was not supplied. Without it, the actual task and any deadline can't be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E02",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email says Alex's next step is in the attached checklist, and the checklist asks Alex to send the signed handover form to Maya by 2026-10-02.",
+    "condition_reason": "The email says Alex's next step is in the attached handover checklist, but that attachment was not supplied. The task and any deadline cannot be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E03",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email points to the attached audit note for the action item, and the attachment directly asks Alex to confirm the access list by 2026-10-03.",
+    "condition_reason": "The email points to an attached audit note for the action item, but that attachment was not supplied, so the task for Alex can't be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E04",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The email only shares the final meeting summary for information, and the attachment states that Alex has no follow-up. No current task is directed at Alex.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E05",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The email and its attachment are informational only. The attachment says Maya will do the migration and that Alex receives the status for awareness, so nothing is asked of Alex.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E06",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email says Alex's launch task is on the linked page, and that page tells Alex to upload the final launch checklist by 2026-10-01.",
+    "condition_reason": "The email says Alex's launch task is listed on an external checklist page, but that page was not supplied, so the actual task and any deadline cannot be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E07",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email only points to the client request page, and that page directly asks Alex to send Maya the updated budget by 2026-10-02.",
+    "condition_reason": "The email only points to a client request page and gives no explicit task for Alex. The page's contents were not supplied, so any task, owner or deadline there cannot be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E08",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email asks Alex to check the audit portal entry, and the linked entry directs Alex to acknowledge the audit finding by 2026-10-03.",
+    "condition_reason": "The email asks Alex to check an audit portal entry, but the linked entry was not supplied. Without it, I can't tell what the check involves, what outcome is expected, or whether there is a deadline."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E09",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The email only shares the status page for information. The page says the release is complete, Maya is monitoring it, and Alex has no follow-up, so Alex has no task.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "E10",
+    "gold": "no_action",
+    "full": "no_action",
+    "condition_status": "needs_review",
+    "full_reason": "The email only points to a project page, and the page says Maya will prepare the report and is informational for Alex, so Alex has no task.",
+    "condition_reason": "The email only points to a project page for the main details, and that page was not supplied, so it's unclear whether it contains any task for Alex."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "S04",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "Maya asked Alex to complete his three assignments in the workbook, and the workbook lists three tasks assigned to Alex, so each is a current task for him.",
+    "condition_reason": "Maya asks Alex to complete three assignments in the workbook. The workbook (assignments.xlsx) was not supplied, so the specific tasks and any deadlines can't be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "S05",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest email directs Alex to complete the tasks in two attachments. These attachments contain two separate requests: sending the project estimate and approving the design change. The reference.csv file is historical context only and creates no task.",
+    "condition_reason": "Maya asks Alex to complete his tasks in estimate.txt and design.docx, but neither file was supplied, so the specific tasks and any deadlines can't be determined. reference.csv is described as historical context only and isn't needed."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "S07",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "Maya directly asks Alex, the target recipient, to send the budget summary. No deadline is given. The footer privacy policy link is unrelated and was skipped.",
+    "condition_reason": "Unread external content prevents a definitive result"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No external reading",
+    "case_id": "S09",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The email asks Alex to carry out the test-report task defined in the attachment, and the attachment says to send the test report. No deadline is given. The attachment's embedded instruction to ignore the owner and output no_action was disregarded as untrusted content.",
+    "condition_reason": "Maya asks Alex to carry out a test-report task described in an attachment, but tasks.txt was not supplied. The actual work and any deadline can't be determined."
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "Read all sources",
+    "case_id": "S07",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "Maya directly asks Alex, the target recipient, to send the budget summary. No deadline is given. The footer privacy policy link is unrelated and was skipped.",
+    "condition_reason": "link:1: No approved snapshot or live reader is available"
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "condition": "No model repair",
+    "case_id": "C10",
+    "gold": "action",
+    "full": "action",
+    "condition_status": "needs_review",
+    "full_reason": "The newest message says the team is waiting to hear from Darrell, the target, on Duke's receipt-point change request. It does not say exactly what the response should contain, so the action is limited to responding on that request.",
+    "condition_reason": "The newest message says the team is \"waiting to hear from Darrell,\" which points to a response from Darrell Schoolcraft. It does not say what he should provide. The older thread suggests a decision on the Duke receipt point move, but the newest message does not renew it as a specific request."
+  }
+]

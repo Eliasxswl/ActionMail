@@ -1,0 +1,24 @@
+{
+  "baseline": {
+    "observed_utc": "2026-10-02T13:08:15.896786+00:00",
+    "key_usage_usd": 1.935986843,
+    "key_byok_usage_usd": 0,
+    "key_error": null
+  },
+  "actual_counter_delta_usd": 3.224528503,
+  "global_total_cap_usd": 5.0,
+  "unknown_held_usd": 0.0025667,
+  "snapshot_at_inference_end": {
+    "observed_utc": "2026-10-03T00:52:36.127896+00:00",
+    "key_usage_usd": 5.091048141,
+    "key_byok_usage_usd": 0,
+    "key_error": null
+  },
+  "after": {
+    "observed_utc": "2026-10-03T00:56:38.369403+00:00",
+    "key_usage_usd": 5.160515346,
+    "key_byok_usage_usd": 0,
+    "key_error": null
+  },
+  "updated_from": "Final settled ablation billing audit; replaces provisional inference-end counter."
+}
