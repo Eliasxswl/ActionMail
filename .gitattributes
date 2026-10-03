@@ -1,12 +1,4 @@
-# Hash-bound MIME fixtures and challenge manifests must keep their exact bytes.
+# Hash-bound inputs, saved evidence and test fixtures retain exact bytes.
 evaluation/** -text whitespace=cr-at-eol
 results/** -text whitespace=cr-at-eol
-backup/** -text whitespace=cr-at-eol
-evaluation/fixtures_v2_1/*.eml -text whitespace=cr-at-eol
-evaluation/challenge_v2_1*.jsonl -text whitespace=cr-at-eol
-evaluation/archive/fixtures_v2_1/*.eml -text whitespace=cr-at-eol
-evaluation/archive/challenge_v2_1*.jsonl -text whitespace=cr-at-eol
-results/evaluation/challenge-v2.1-gold-preview*/** -text whitespace=cr-at-eol
-evaluation/supplement_v2*.jsonl -text whitespace=cr-at-eol
-evaluation/fixtures_supplement/*.eml -text whitespace=cr-at-eol
-results/evaluation/supplement-v2-gold-preview*/** -text whitespace=cr-at-eol
+tests/fixtures/** -text whitespace=cr-at-eol
