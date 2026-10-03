@@ -102,7 +102,7 @@
       "path": "README.md",
       "original_archive_entry": "pre_english/README.md",
       "original_sha256": "709060d2f42740b3aff4f8cf57923a062e85e56588376bed44b27f62ad4fb52b",
-      "current_sha256": "89007d048a0403290df03bb59d4a530ea9acfd8ad2058f19c296ce4231a7df25",
+      "current_sha256": "921dce844e9f0baa6d541a7984d773d097741c04e178680f63b5ee47667141c9",
       "status": "localized_or_maintained"
     },
     {
@@ -1587,7 +1587,7 @@
   ],
   "post_localization_maintenance": {
     "date": "2026-10-03",
-    "scope": "Expanded command documentation; command checks are engineering acceptance, not additional AI measurements.",
+    "scope": "Expanded command documentation and outer README API-key environment setup; command checks are engineering acceptance, not additional AI measurements.",
     "updated_hash_paths": [
       "README.md",
       "ActionMail/README.md"
